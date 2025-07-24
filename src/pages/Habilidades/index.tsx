@@ -1,3 +1,5 @@
+import svgTailwind from '../../assets/image/tailwind-css-svgrepo-com.svg';
+
 const Habilidades = () => {
   return (
     <div className="groupSkills" id="skills">
@@ -45,41 +47,41 @@ const Habilidades = () => {
           <article className="skill-element bootstrap">
             <img
               loading="lazy"
-              src="src/img/bootstrap.webp"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/bootstrap.webp"
               alt="logo do Bootstrap"
             />
           </article>
           <article className="skill-element taiwind">
             <img
               loading="lazy"
-              src="src/img/tailwind-css-svgrepo-com.svg"
+              src={svgTailwind}
               alt="logo do Taiwind"
             />
           </article>
           <article className="skill-element sql">
             <img
               loading="lazy"
-              src="src/img/servidor-sql.webp"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/servidor-sql.webp"
               alt="logo da linguagem de consulta SQL"
             />
           </article>
           <article className="skill-element mysql">
-            <img loading="lazy" src="src/img/mysql.webp" alt="logo do MySQL" />
+            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/mysql.webp" alt="logo do MySQL" />
           </article>
           <article className="skill-element postgre">
             <img
               loading="lazy"
-              src="src/img/postgre.webp"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/postgre.webp"
               alt="logo do PostgreSQL"
             />
           </article>
           <article className="skill-element java">
-            <img loading="lazy" src="src/img/java.webp" alt="logo do Java" />
+            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/java.webp" alt="logo do Java" />
           </article>
           <article className="skill-element git">
             <img
               loading="lazy"
-              src="src/img/confirmar-git.webp"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/confirmar-git.webp"
               alt="logo do controlador de versões Git"
             />
           </article>
