@@ -1,11 +1,50 @@
-const Navegacao = () => {
+import themeObject from "../../assets/theme.json";
+import useTheme from "../../hooks/useTheme";
+
+interface INavegacaoProps {
+  toggleTheme: () => void;
+}
+
+const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="groupNav">
+    <div
+      className="groupNav"
+      style={
+        theme == "light"
+          ? {
+              backgroundColor:
+                themeObject.themes.light.navbar.container.background,
+              boxShadow: themeObject.themes.light.navbar.container.boxShadow,
+            }
+          : {
+              backgroundColor:
+                themeObject.themes.dark.navbar.container.background,
+              boxShadow: themeObject.themes.dark.navbar.container.boxShadow,
+            }
+      }
+    >
       <nav className="nav">
         <a className="logoNav" href="">
           &#8249; <span className="letraMonoton">J</span>eff &#8260; &#8250;
         </a>
-        <ul className="listNav" id="lista-menus" role="tablist">
+        <ul
+          style={
+            theme == "light"
+              ? {
+                  backgroundColor:
+                    themeObject.themes.light.navbar.list.background,
+                }
+              : {
+                  backgroundColor:
+                    themeObject.themes.dark.navbar.container.background,
+                }
+          }
+          className="listNav"
+          id="lista-menus"
+          role="tablist"
+        >
           <li>
             <a
               role="tab"
@@ -89,6 +128,7 @@ const Navegacao = () => {
                 className="icon-theme"
                 src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/modo-escuro.webp"
                 alt="icone do tema"
+                onClick={toggleTheme}
               />
             </a>
           </li>

@@ -2,13 +2,32 @@
   "themes": {
 
   "light": {
-    "navbar": {},
+    "navbar": {
+      "container": {
+        "background": "#ffffffed",
+        "boxShadow": "0px 0px 8px rgba(49, 49, 49, 0.438)"
+      },
+      "list": {
+        "background": "transparent"
+      },
+      "itemList": {
+        "background": "transparent"
+      },
+      "link": {
+        "color": "#00ffff"
+      }
+    },
     "init": {
       "container": {
         "background": "#f7f7f7"
       },
       "title": {
         "color": "rgb(49, 49, 49)"
+      },
+      "buttons": {
+        "background": "#fff",
+        "color": "rgb(49, 49, 49)",
+        "boxShadow": "0px 0px 10px rgba(128, 128, 128, 0.575)"
       }
     },
     "about": {},
@@ -21,13 +40,32 @@
   
 
   "dark": {
-    "navbar": {},
+    "navbar": {
+      "container": {
+        "background": "#080808ed",
+        "boxShadow": "0px 0px 8px rgb(49, 49, 49)"
+      },
+      "list": {
+        "background": "transparent"
+      },
+      "itemList": {
+        "background": "transparent"
+      },
+      "link": {
+        "color": "#00ffff"
+      }
+    },
     "init": {
       "container": {
         "background": "#0f0f0f"
       },
       "title": {
         "color": "#fff"
+      },
+      "buttons": {
+        "background": "#1d1d1d",
+        "color": "#fff",
+        "boxShadow": "none"
       }
     },
     "about": {},

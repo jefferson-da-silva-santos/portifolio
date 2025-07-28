@@ -3,6 +3,19 @@ import useTheme from "../../hooks/useTheme";
 import themeObject from "../../assets/theme.json";
 const Inicio = () => {
   const { theme, toggleTheme } = useTheme();
+  const stylesButtom =
+    theme === "light"
+      ? {
+          color: themeObject.themes.light.init.buttons.color,
+          backgroundColor: themeObject.themes.light.init.buttons.background,
+          boxShadow: themeObject.themes.light.init.buttons.boxShadow,
+        }
+      : {
+          color: themeObject.themes.dark.init.buttons.color,
+          backgroundColor: themeObject.themes.dark.init.buttons.background,
+          boxShadow: themeObject.themes.dark.init.buttons.boxShadow,
+        };
+
   return (
     <div
       className="groupHeader"
@@ -18,7 +31,7 @@ const Inicio = () => {
             }
       }
     >
-      <Navegacao />
+      <Navegacao toggleTheme={toggleTheme} />
       <header className="header" id="home">
         <section className="groupHeader-texts hidden-scroll-left">
           <div className="textsHeader">
@@ -39,6 +52,7 @@ const Inicio = () => {
           </div>
           <div className="groupHeader-socialMedia">
             <a
+              style={stylesButtom}
               role="button"
               target="_blank"
               aria-label="Abrir github"
@@ -48,6 +62,7 @@ const Inicio = () => {
               <i className="bx bxl-github"></i>
             </a>
             <a
+              style={stylesButtom}
               role="button"
               target="_blank"
               aria-label="Abrir linkedin"
@@ -57,6 +72,7 @@ const Inicio = () => {
               <i className="bx bxl-linkedin-square"></i>
             </a>
             <a
+              style={stylesButtom}
               role="button"
               target="_blank"
               aria-label="Abrir whatsapp"

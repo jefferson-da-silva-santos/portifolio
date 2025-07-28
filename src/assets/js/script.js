@@ -593,16 +593,6 @@ function themeLight() {
   document.querySelector('textarea').addEventListener('focus', () => {
     document.querySelector('textarea').style.boxShadow = '0px 0px 8px #00ffff';
   });
-  // document.querySelectorAll('.listNav > li').forEach(element => {
-  //   if (window.innerWidth < 896) {
-  //     element.addEventListener('mouseover', () => {
-  //       element.style.backgroundColor = 'rgb(229, 229, 229)';
-  //     });
-  //     element.addEventListener('mouseout', () => {
-  //       element.style.backgroundColor = 'transparent';
-  //     });
-  //   }
-  // });
 }
 
 function themeDark() {
@@ -751,16 +741,6 @@ function themeDark() {
   document.querySelector('textarea').addEventListener('focus', () => {
     document.querySelector('textarea').style.boxShadow = '0px 0px 8px #00ffff';
   });
-  // document.querySelectorAll('.listNav > li').forEach(element => {
-  //   if (window.innerWidth < 896) {
-  //     element.addEventListener('mouseover', () => {
-  //       element.style.backgroundColor = 'rgb(45, 45, 45)';
-  //     });
-  //     element.addEventListener('mouseout', () => {
-  //       element.style.backgroundColor = 'transparent';
-  //     });
-  //   }
-  // });
 }
 
 function createObservation(hiddenClass, visibleClass) {
