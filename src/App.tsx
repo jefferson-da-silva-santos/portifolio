@@ -1,4 +1,5 @@
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./contexts/ThemeProvider";
 import Contato from "./pages/Contato";
 import Habilidades from "./pages/Habilidades";
 import Inicio from "./pages/Inicio";
@@ -9,15 +10,17 @@ import Sobre from "./pages/Sobre";
 function App() {
   return (
     <>
-      <Inicio />
-      <main>
-        <Sobre />
-        <Habilidades />
-        <Projetos />
-        <Servicos />
-        <Contato />
-      </main>
-      <Footer />
+      <ThemeProvider>
+        <Inicio />
+        <main>
+          <Sobre />
+          <Habilidades />
+          <Projetos />
+          <Servicos />
+          <Contato />
+        </main>
+        <Footer />
+      </ThemeProvider>
     </>
   );
 }

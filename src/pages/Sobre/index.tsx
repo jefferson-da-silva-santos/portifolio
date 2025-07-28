@@ -33,7 +33,7 @@ const Sobre = () => {
           <img
             loading="lazy"
             className="minha-img"
-            src="src/img/cafe_semfundo.webp"
+            src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cafe_semfundo.png"
             alt="xicara de café flutuante"
           />
         </article>

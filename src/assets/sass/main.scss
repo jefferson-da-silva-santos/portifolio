@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 @import "effect.scss";
+@import "mixins.scss";
 
 :root {
   --color-primary: #0f0f0f;
@@ -14,31 +15,27 @@
   --font-secundary: "Monoton", sans-serif;
 }
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-primary);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 /* Barra de rolagem */
 
 ::-webkit-scrollbar {
-  width: .6em;
+  width: 0.6em;
 }
 
 ::-webkit-scrollbar-thumb {
   background-image: linear-gradient(to bottom, transparent, #00ffff65, #00ffff);
   border-radius: 10px;
 }
-
 
 /* Estilo do options */
 
@@ -57,7 +54,7 @@ body {
   display: flex;
   list-style: none;
   -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
   flex-wrap: wrap;
   row-gap: 1em;
 }
@@ -82,17 +79,17 @@ body {
 .groupBtn-options-box {
   display: flex;
   -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
 .groupBtn-options-box a {
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   border: none;
   border-radius: 8px;
   background-color: #2e2e2e;
   color: white;
   text-decoration: none;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .groupBtn-options-box a:hover {
@@ -110,7 +107,7 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 1.2em;
-  animation: optionsSurge .5s ease 0s 1 normal forwards;
+  animation: optionsSurge 0.5s ease 0s 1 normal forwards;
 }
 
 @keyframes optionsSurge {
@@ -140,13 +137,17 @@ body {
   overflow: hidden;
 }
 
+.groupHeader {
+  background-color: var(--color-primary);
+}
+
 .logoNav {
   font-family: "Saira", sans-serif;
   font-weight: 500;
   font-size: 2em;
   color: var(--white);
   text-decoration: none;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .letraMonoton {
@@ -160,7 +161,7 @@ body {
   background-color: #080808ed;
   box-shadow: 0px 0px 8px rgb(49, 49, 49);
   z-index: 1;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .nav {
@@ -177,7 +178,7 @@ body {
   display: flex;
   list-style: none;
   -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+  column-gap: 1.5rem;
   align-items: center;
   position: relative;
 }
@@ -193,13 +194,12 @@ body {
   filter: drop-shadow(0px 0px 80px rgba(0, 255, 242, 0.603));
 }
 
-
 .listNav > li > a {
   text-decoration: none;
   padding: 2px;
   color: var(--white);
   font-size: 1.1em;
-  transition: color .5s ease;
+  transition: color 0.5s ease;
 }
 
 .icon-idioma {
@@ -214,7 +214,6 @@ body {
   color: var(--color-terciary);
 }
 
-
 .select-menu-humburguer {
   width: 33px;
   height: 22px;
@@ -228,7 +227,7 @@ body {
   background-color: var(--white);
   height: 100%;
   border-radius: 5px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
@@ -261,7 +260,7 @@ body {
   font-family: var(--font-primary);
   color: var(--white);
   width: 8em;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .title-secundary-header {
@@ -384,23 +383,27 @@ body {
   display: flex;
   justify-content: space-between;
   -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
-.geoupHeader-socialMediaButton {
+.groupHeader-socialMediaButton {
   text-decoration: none;
   padding: 0.2em 0.5em;
-  font-size: 1.3em;
   border-radius: 5px;
   background-color: #1d1d1d;
   color: var(--white);
   transition-property: all;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
+
+  i {
+    font-size: 1.9em;
+    margin-top: 4px;
+  }
 }
 
-.geoupHeader-socialMediaButton:hover {
+.groupHeader-socialMediaButton:hover {
   color: var(--color-terciary);
   transform: scale(120%);
   box-shadow: 0px 0px 10px var(--color-terciary);
@@ -434,7 +437,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   overflow: hidden;
 }
 
@@ -446,7 +449,7 @@ body {
   margin: auto;
   max-width: 1024px;
   -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
 .groupSobre-primary {
@@ -463,7 +466,7 @@ body {
   font-family: var(--font-primary);
   font-weight: 500;
   margin-left: 10px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .logoNav {
@@ -471,7 +474,7 @@ body {
   font-size: 2em;
   color: var(--white);
   text-decoration: none;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .groupSobre-primary p {
@@ -480,7 +483,7 @@ body {
   line-height: 30px;
   width: 100%;
   font-weight: 200;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .groupSobre-secundary {
@@ -506,7 +509,6 @@ body {
   }
 }
 
-
 .circle {
   position: absolute;
   width: 15em;
@@ -520,12 +522,10 @@ body {
 .dividir-titulo-linha {
   display: flex;
   -moz-column-gap: 2px;
-       column-gap: 2px;
+  column-gap: 2px;
 }
 
-
 /* Estilos do Skills */
-
 
 .groupSkills {
   min-height: 100vh;
@@ -533,6 +533,7 @@ body {
   align-items: center;
   padding-top: 4em;
   overflow: hidden;
+  background-color: var(--color-primary);
 }
 
 .skills {
@@ -544,9 +545,8 @@ body {
   max-width: 1024px;
   padding: 1em;
   -moz-column-gap: 2em;
-       column-gap: 2em;
+  column-gap: 2em;
 }
-
 
 .groupSkills-primary {
   display: flex;
@@ -560,7 +560,7 @@ body {
   font-family: var(--font-primary);
   font-weight: 500;
   margin-left: 10px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .groupSkills-secundary {
@@ -569,7 +569,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
   row-gap: 1.3em;
   -moz-column-gap: 1.3em;
-       column-gap: 1.3em;
+  column-gap: 1.3em;
 }
 
 .skill-element {
@@ -579,7 +579,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border .5s ease-in-out;
+  transition: border 0.5s ease-in-out;
 }
 
 .skill-element:hover {
@@ -605,15 +605,14 @@ body {
   line-height: 30px;
   width: 100%;
   font-weight: 200;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 strong {
   color: rgb(212, 212, 212);
   font-weight: 500;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
-
 
 /* Estilos dos Projetos */
 
@@ -622,7 +621,7 @@ strong {
   min-height: 100vh;
   padding: 2em 0 2em 0;
   display: flex;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   overflow: hidden;
 }
 
@@ -647,7 +646,7 @@ strong {
   font-family: var(--font-primary);
   font-weight: 500;
   margin-left: 10px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .select-texts {
@@ -657,14 +656,18 @@ strong {
 .select-linhas-projeto-title {
   display: flex;
   -moz-column-gap: 2px;
-       column-gap: 2px;
+  column-gap: 2px;
 }
 
 .linhas {
   width: 4px;
-  background-image: linear-gradient(to top, transparent 20%, var(--color-terciary));
+  background-image: linear-gradient(
+    to top,
+    transparent 20%,
+    var(--color-terciary)
+  );
   height: 65px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .groupProjetos-secundary {
@@ -672,7 +675,7 @@ strong {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   -moz-column-gap: 1.5em;
-       column-gap: 1.5em;
+  column-gap: 1.5em;
   row-gap: 1.5em;
 }
 
@@ -687,7 +690,7 @@ strong {
   border: 1px solid #2e2e2e;
   row-gap: 5px;
   border-radius: 5px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .group-image-project {
@@ -701,20 +704,19 @@ strong {
   width: 90%;
 }
 
-
 .title-project {
   color: var(--white);
   font-size: 1.3em;
   font-weight: 600;
   margin-top: 10px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .description-project {
   color: #5b5b5b;
   font-size: 1.1em;
   font-weight: 400;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .btn-project {
@@ -728,11 +730,11 @@ strong {
   color: #ffffff;
   margin-top: 25px;
   font-weight: 600;
-  gap: .5em;
+  gap: 0.5em;
   border-radius: 5px;
-  transition: .5s ease;
+  transition: 0.5s ease;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .btn-project:hover {
@@ -750,42 +752,40 @@ strong {
   background-position: center center;
 }
 
-
-
-.groupProjetos-secundary :nth-child(1) .group-image-project  {
-  background-image: url('../img/cardapio.png');
+.groupProjetos-secundary :nth-child(1) .group-image-project {
+  background-image: url("../img/cardapio.png");
 }
 
-.groupProjetos-secundary :nth-child(2) .group-image-project  {
-  background-image: url('../img/projeto-jessica-planilhas.webp');
+.groupProjetos-secundary :nth-child(2) .group-image-project {
+  background-image: url("../img/projeto-jessica-planilhas.webp");
 }
 
-.groupProjetos-secundary :nth-child(3) .group-image-project  {
-  background-image: url('../img/sushi.png');
+.groupProjetos-secundary :nth-child(3) .group-image-project {
+  background-image: url("../img/sushi.png");
 }
 
-.groupProjetos-secundary :nth-child(4) .group-image-project  {
-  background-image: url('../img/infoccell.png');
+.groupProjetos-secundary :nth-child(4) .group-image-project {
+  background-image: url("../img/infoccell.png");
 }
 
-.groupProjetos-secundary :nth-child(5) .group-image-project  {
-  background-image: url('../img/leo-de-lita.png');
+.groupProjetos-secundary :nth-child(5) .group-image-project {
+  background-image: url("../img/leo-de-lita.png");
 }
 
-.groupProjetos-secundary :nth-child(6) .group-image-project  {
-  background-image: url('../img/projeto-calculadora-de-imc.webp');
+.groupProjetos-secundary :nth-child(6) .group-image-project {
+  background-image: url("../img/projeto-calculadora-de-imc.webp");
 }
 
-.groupProjetos-secundary :nth-child(7) .group-image-project  {
-  background-image: url('../img/pagina-de-vendas.png');
+.groupProjetos-secundary :nth-child(7) .group-image-project {
+  background-image: url("../img/pagina-de-vendas.png");
 }
 
-.groupProjetos-secundary :nth-child(8) .group-image-project  {
-  background-image: url('../img/promocao3d.png');
+.groupProjetos-secundary :nth-child(8) .group-image-project {
+  background-image: url("../img/promocao3d.png");
 }
 
-.groupProjetos-secundary :nth-child(9) .group-image-project  {
-  background-image: url('../img/planner.png');
+.groupProjetos-secundary :nth-child(9) .group-image-project {
+  background-image: url("../img/planner.png");
 }
 
 /* Estilos do Serviço */
@@ -795,7 +795,7 @@ strong {
   min-height: 100vh;
   padding-top: 5em;
   display: flex;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   overflow: hidden;
 }
 
@@ -819,7 +819,7 @@ strong {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   -moz-column-gap: 2em;
-       column-gap: 2em;
+  column-gap: 2em;
   padding: 2.5em 0;
 }
 
@@ -836,7 +836,7 @@ strong {
   border: 1px solid #1e1d1d;
   padding: 2em;
   transition: border 1s ease;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .card-service:hover {
@@ -861,10 +861,10 @@ strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
-.circle-interno-servico img{
+.circle-interno-servico img {
   width: 50%;
 }
 
@@ -874,22 +874,21 @@ strong {
   font-weight: 500;
   margin-left: 10px;
   color: var(--white);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .title-card-service {
   color: var(--white);
   font-size: 1.3em;
   font-weight: 500;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .description-card-service {
   color: var(--color-texts);
   font-size: 0.9em;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
- 
 
 /* Estilos do Contato */
 
@@ -897,10 +896,9 @@ strong {
   background-color: var(--color-secundary);
   min-height: 100vh;
   display: flex;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   overflow: hidden;
 }
-
 
 .contato {
   display: grid;
@@ -928,7 +926,7 @@ strong {
   font-family: var(--font-primary);
   font-weight: 500;
   margin-left: 10px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .form {
@@ -939,13 +937,13 @@ strong {
 
 .form input {
   border: 1px solid var(--color-terciary);
-  padding: .7em 5px;
+  padding: 0.7em 5px;
   background-color: #161616;
   border-radius: 5px;
   font-family: var(--font-primary);
-  transition: padding-left .2s ease 0s;
+  transition: padding-left 0.2s ease 0s;
   color: var(--white);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .form input:focus {
@@ -957,17 +955,17 @@ strong {
 textarea {
   height: 10em;
   border: 1px solid var(--color-terciary);
-  padding: .7em 5px;
+  padding: 0.7em 5px;
   background-color: #161616;
   border-radius: 5px;
   font-family: var(--font-primary);
   color: var(--white);
   outline: none;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 textarea:focus {
-  box-shadow: 0px 0px 8px var(--color-terciary); 
+  box-shadow: 0px 0px 8px var(--color-terciary);
 }
 
 .groupContact-terciary {
@@ -987,7 +985,16 @@ textarea:focus {
 
 .groupContact-terciary img {
   width: 65%;
-  clip-path: polygon(0 0, 80% 0%, 100% 20%, 81% 81%, 100% 100%, 20% 100%, 0% 80%, 18% 23%);
+  clip-path: polygon(
+    0 0,
+    80% 0%,
+    100% 20%,
+    81% 81%,
+    100% 100%,
+    20% 100%,
+    0% 80%,
+    18% 23%
+  );
   filter: drop-shadow(0px 0px 200px rgba(0, 255, 242, 0.603));
   animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
   z-index: 0;
@@ -1004,6 +1011,5 @@ textarea:focus {
   justify-content: center;
   box-shadow: 0px 0px 8px rgb(49, 49, 49);
 }
-
 
 @import "media.scss";

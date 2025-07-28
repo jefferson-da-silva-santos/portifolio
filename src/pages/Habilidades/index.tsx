@@ -18,7 +18,7 @@ const Habilidades = () => {
         </article>
         <article className="groupSkills-secundary hidden-scroll-left">
           <article className="skill-element html">
-            <img loading="lazy" src="shttps://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/html-5.webp" alt="logo do HTML5" />
+            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/html-5.webp" alt="logo do HTML5" />
           </article>
           <article className="skill-element css">
             <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/css-3.webp" alt="logo do CSS3" />

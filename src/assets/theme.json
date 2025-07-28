@@ -1,0 +1,41 @@
+{
+  "themes": {
+
+  "light": {
+    "navbar": {},
+    "init": {
+      "container": {
+        "background": "#f7f7f7"
+      },
+      "title": {
+        "color": "rgb(49, 49, 49)"
+      }
+    },
+    "about": {},
+    "skills": {},
+    "projects": {},
+    "services": {},
+    "contact": {},
+    "footer": {}
+  },
+  
+
+  "dark": {
+    "navbar": {},
+    "init": {
+      "container": {
+        "background": "#0f0f0f"
+      },
+      "title": {
+        "color": "#fff"
+      }
+    },
+    "about": {},
+    "skills": {},
+    "projects": {},
+    "services": {},
+    "contact": {},
+    "footer": {}
+  }
+}
+}

@@ -1,13 +1,40 @@
 import Navegacao from "../../components/Navegacao";
-
+import useTheme from "../../hooks/useTheme";
+import themeObject from "../../assets/theme.json";
 const Inicio = () => {
+  const { theme, toggleTheme } = useTheme();
   return (
-    <div className="groupHeader">
+    <div
+      className="groupHeader"
+      style={
+        theme == "light"
+          ? {
+              backgroundColor:
+                themeObject.themes.light.init.container.background,
+            }
+          : {
+              backgroundColor:
+                themeObject.themes.dark.init.container.background,
+            }
+      }
+    >
       <Navegacao />
       <header className="header" id="home">
         <section className="groupHeader-texts hidden-scroll-left">
           <div className="textsHeader">
-            <h1>Jefferson Santos</h1>
+            <h1
+              style={
+                theme === "light"
+                  ? {
+                      color: themeObject.themes.light.init.title.color,
+                    }
+                  : {
+                      color: themeObject.themes.dark.init.title.color,
+                    }
+              }
+            >
+              Jefferson Santos
+            </h1>
             <p className="title-secundary-header"></p>
           </div>
           <div className="groupHeader-socialMedia">
@@ -15,28 +42,28 @@ const Inicio = () => {
               role="button"
               target="_blank"
               aria-label="Abrir github"
-              className="geoupHeader-socialMediaButton"
+              className="groupHeader-socialMediaButton"
               href="https://github.com/jefferson-da-silva-santos"
             >
-              <i className="bi bi-github"></i>
+              <i className="bx bxl-github"></i>
             </a>
             <a
               role="button"
               target="_blank"
               aria-label="Abrir linkedin"
-              className="geoupHeader-socialMediaButton"
+              className="groupHeader-socialMediaButton"
               href="https://www.linkedin.com/in/jefferson-santos-a87b74277/"
             >
-              <i className="bi bi-linkedin"></i>
+              <i className="bx bxl-linkedin-square"></i>
             </a>
             <a
               role="button"
               target="_blank"
               aria-label="Abrir whatsapp"
-              className="geoupHeader-socialMediaButton"
+              className="groupHeader-socialMediaButton"
               href="https://wa.me/558195124550?text=Olá%2C%20Jefferson!%20Encontrei%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20programação.%20Poderíamos%20conversar%3F"
             >
-              <i className="bi bi-whatsapp"></i>
+              <i className="bx bxl-whatsapp"></i>
             </a>
           </div>
         </section>
