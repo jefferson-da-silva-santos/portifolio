@@ -3,10 +3,17 @@ import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
 import { listIconTheme, navLinks } from "../../consts/dataConsts";
 import type { INavegacaoProps } from "./types";
+import "../../i18n";
+import { useTranslation } from "react-i18next";
 
 const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const [isHover, setIsHover] = useState<Record<string, boolean>>({});
   const [iconTheme] = useState(listIconTheme);
+  const {t, i18n} = useTranslation();
+
+  const changeLanguage = (lng: "pt" | "en" | "es" | "fr" | "it") => {
+    i18n.changeLanguage(lng);
+  };
 
   const { theme } = useTheme();
 
@@ -104,7 +111,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
               role="button"
               aria-label="Mudar tema"
             >
-              <img
+              <img 
                 loading="lazy"
                 id="btn-tema"
                 className="icon-theme"

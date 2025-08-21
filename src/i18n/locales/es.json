@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "links": {
+      "home": "Inicio",
+      "about": "Acerca de",
+      "services": "Servicios",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "ariaLabels": {
+      "changeLanguage": "Cambiar idioma",
+      "changeTheme": "Cambiar tema",
+      "toggleMenu": "Abrir y cerrar menú"
+    },
+    "altTexts": {
+      "languageIcon": "icono de idioma",
+      "themeIcon": "icono de tema"
+    }
+  }
+}
