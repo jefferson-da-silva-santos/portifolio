@@ -15,6 +15,10 @@ export const projectImages: IProjectImages[] = [
     url: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/modo-escuro.webp",
     alt: "Icone do tema escuro",
   },
+  {
+    url: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cafe_semfundo.png",
+     alt: "xicara de café flutuante"
+  }
 ];
 
 // icones relacionados ao tema do portfólio

@@ -38,7 +38,14 @@
         }
       }
     },
-    "about": {},
+    "about": {
+      "container": {
+        "background": "#FFF",
+        "colorTitle": "#3b3b3b",
+        "colorText": "#1d1d1d",
+        "strong": "#3b3b3b"
+      }
+    },
     "skills": {},
     "projects": {},
     "services": {},
@@ -84,7 +91,14 @@
         }
       }
     },
-    "about": {},
+    "about": {
+      "container": {
+        "background": "#0b0b0b",
+        "colorTitle": "#fff",
+        "colorText": "#9ca3af",
+        "strong": "#d4d4d4"
+      }
+    },
     "skills": {},
     "projects": {},
     "services": {},
