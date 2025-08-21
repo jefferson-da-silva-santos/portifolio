@@ -1,11 +1,12 @@
 {
   "navigation": {
     "links": {
-      "home": "Home",
-      "about": "Chi sono",
-      "services": "Servizi",
-      "projects": "Progetti",
-      "contact": "Contatti"
+      "home": "home",
+      "about": "chi sono",
+      "skills": "competenze",
+      "services": "servizi",
+      "projects": "progetti",
+      "contact": "contatti"
     },
     "ariaLabels": {
       "changeLanguage": "Cambia lingua",

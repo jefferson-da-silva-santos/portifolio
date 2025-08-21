@@ -1,7 +1,7 @@
 import { useState } from "react";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
-import { listIconTheme, navLinks } from "../../consts/dataConsts";
+import { listIconTheme, useNavLinks } from "../../consts/dataConsts";
 import type { INavegacaoProps } from "./types";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
@@ -9,10 +9,43 @@ import { useTranslation } from "react-i18next";
 const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const [isHover, setIsHover] = useState<Record<string, boolean>>({});
   const [iconTheme] = useState(listIconTheme);
+  const [countClickLenguage, setCountClickLenguage] = useState(0);
   const {t, i18n} = useTranslation();
+  const navLinks = useNavLinks();
 
   const changeLanguage = (lng: "pt" | "en" | "es" | "fr" | "it") => {
     i18n.changeLanguage(lng);
+  };
+
+  const handleLanguageChange = () => {
+   setCountClickLenguage(countClickLenguage + 1);
+   if (countClickLenguage === 0) {
+      changeLanguage("en");
+      return;
+   } 
+
+   if (countClickLenguage === 1) {
+      changeLanguage("pt");
+      return;
+   }
+
+   if (countClickLenguage === 2) {
+      changeLanguage("es");
+      return;
+   }
+
+    if (countClickLenguage === 3) {
+        changeLanguage("fr");
+        return;
+    }
+
+    if (countClickLenguage === 4) {
+        changeLanguage("it");
+        return;
+    }
+
+    changeLanguage("pt");
+    setCountClickLenguage(0);
   };
 
   const { theme } = useTheme();
@@ -95,7 +128,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           ))}
 
           <li>
-            <a href="#" id="btn-idioma" role="button" aria-label="Mudar idioma">
+            <a onClick={() => handleLanguageChange()} id="btn-idioma" role="button" aria-label={t("navigation.ariaLabels.changeLanguage")}>
               <img
                 loading="lazy"
                 className="icon-idioma"
@@ -109,7 +142,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
               href="#"
               className="icon-theme-1"
               role="button"
-              aria-label="Mudar tema"
+              aria-label={t("navigation.ariaLabels.changeTheme")}
             >
               <img 
                 loading="lazy"
@@ -126,7 +159,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           className="select-menu-humburguer"
           id="menu"
           role="button"
-          aria-label="Abrir e fechar menu"
+          aria-label={t("navigation.ariaLabels.toggleMenu")}
         >
           <div className="linha-menu-humburguer"></div>
           <div className="linha-menu-humburguer"></div>

@@ -1,4 +1,6 @@
+import { useTranslation } from "react-i18next";
 import type { INavLinks, IProjectImages, ISocialButton } from "./types";
+import "../i18n";
 
 export const projectImages: IProjectImages[] = [
   {
@@ -13,7 +15,6 @@ export const projectImages: IProjectImages[] = [
     url: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/modo-escuro.webp",
     alt: "Icone do tema escuro",
   },
-  
 ];
 
 // icones relacionados ao tema do portfólio
@@ -23,14 +24,18 @@ export const listIconTheme: string[] = [
 ];
 
 // links de navegação do portfólio e seus respectivos ids
-export const navLinks: INavLinks[] = [
-  { text: "home", href: "#home", controls: "home" },
-  { text: "about", href: "#about", controls: "about" },
-  { text: "skills", href: "#skills", controls: "skills" },
-  { text: "projects", href: "#project", controls: "project" },
-  { text: "service", href: "#service", controls: "service" },
-  { text: "contact", href: "#contact", controls: "contact" },
-];
+export const useNavLinks = (): INavLinks[] => {
+  const { t } = useTranslation();
+
+  return [
+    { text: t("navigation.links.home"), href: "#home", controls: "home" },
+    { text: t("navigation.links.about"), href: "#about", controls: "about" },
+    { text: t("navigation.links.skills"), href: "#skills", controls: "skills" },
+    { text: t("navigation.links.projects"), href: "#project", controls: "project" },
+    { text: t("navigation.links.services"), href: "#service", controls: "service" },
+    { text: t("navigation.links.contact"), href: "#contact", controls: "contact" },
+  ];
+};
 
 // lista de botões de redes sociais com seus respectivos links e classes de ícones
 export const socialButtonList: ISocialButton[] = [
