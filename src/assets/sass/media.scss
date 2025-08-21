@@ -1,25 +1,10 @@
 @media screen and (min-width: 896px) {
-  .itemsMenu-header--dark:hover::before {
+  .itemsMenu-header:hover::before {
     position: absolute;
     content: "";
     width: 0%;
     height: 2px;
-    background-image: linear-gradient(to left, white, #00ffff, #0f0f0f);
-    bottom: 0;
-    left: 0;
-    border-radius: 10px;
-    transition-property: width;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    animation: beforeMenu 0.5s ease-in-out 0s 1 normal forwards;
-  }
-
-  .itemsMenu-header--ligth:hover::before {
-    position: absolute;
-    content: "";
-    width: 0%;
-    height: 2px;
-    background-image: linear-gradient(to right, white, #00ffff);
+    background-image: linear-gradient(to left, white, #00ffff, transparent);
     bottom: 0;
     left: 0;
     border-radius: 10px;

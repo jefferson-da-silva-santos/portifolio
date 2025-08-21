@@ -197,7 +197,6 @@ body {
 .listNav > li > a {
   text-decoration: none;
   padding: 2px;
-  color: var(--white);
   font-size: 1.1em;
   transition: color 0.5s ease;
 }
@@ -399,7 +398,9 @@ body {
 
   i {
     font-size: 1.9em;
+    pointer-events: none;
     margin-top: 4px;
+    transition: all 0.5s ease;
   }
 }
 

@@ -7,6 +7,9 @@
         "background": "#ffffffed",
         "boxShadow": "0px 0px 8px rgba(49, 49, 49, 0.438)"
       },
+      "logo": {
+        "color": "#313131"
+      },
       "list": {
         "background": "transparent"
       },
@@ -14,7 +17,7 @@
         "background": "transparent"
       },
       "link": {
-        "color": "#00ffff"
+        "color": "#313131"
       }
     },
     "init": {
@@ -27,7 +30,12 @@
       "buttons": {
         "background": "#fff",
         "color": "rgb(49, 49, 49)",
-        "boxShadow": "0px 0px 10px rgba(128, 128, 128, 0.575)"
+        "boxShadow": "rgba(128, 128, 128, 0.576) 0px 0px 10px",
+        "hoverBoxShadow": "0px 0px 10px #00ffff",
+        "icon": {
+          "color": "#313131",
+          "hoverColor":"#00ffff"
+        }
       }
     },
     "about": {},
@@ -45,6 +53,9 @@
         "background": "#080808ed",
         "boxShadow": "0px 0px 8px rgb(49, 49, 49)"
       },
+      "logo": {
+        "color": "white"
+      },
       "list": {
         "background": "transparent"
       },
@@ -52,7 +63,7 @@
         "background": "transparent"
       },
       "link": {
-        "color": "#00ffff"
+        "color": "white"
       }
     },
     "init": {
@@ -65,7 +76,12 @@
       "buttons": {
         "background": "#1d1d1d",
         "color": "#fff",
-        "boxShadow": "none"
+        "boxShadow": "none",
+        "hoverBoxShadow": "0px 0px 10px #00ffff",
+         "icon": {
+          "color": "white",
+          "hoverColor":"#00ffff"
+        }
       }
     },
     "about": {},

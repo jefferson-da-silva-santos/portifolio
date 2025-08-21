@@ -2,7 +2,7 @@ const Projetos = () => {
   return (
     <div className="groupProjetos" id="project">
       <section className="projetos">
-        <article className="groupProjetos-primary hidden-scroll-bottom">
+        <article className="groupProjetos-primary">
           <div className="select-linhas-projeto-title">
             <div className="linhas"></div>
             <div className="linhas"></div>
@@ -14,7 +14,7 @@ const Projetos = () => {
           </h2>
         </article>
         <article className="groupProjetos-secundary">
-          <div className="card-item hidden-scroll-p1">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Cardápio Online</h3>
             <p className="description-project">
@@ -29,7 +29,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p2">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Jéssica Planilhas</h3>
             <p className="description-project">
@@ -44,7 +44,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p3">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Loja de Sushi</h3>
             <p className="description-project">
@@ -59,7 +59,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p4">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Lan House Infoccell</h3>
             <p className="description-project">
@@ -74,7 +74,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p5">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Bolachas Léo de Lita</h3>
             <p className="description-project">
@@ -89,7 +89,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p6">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Calculadora de IMC</h3>
             <p className="description-project previsaoTempo">
@@ -104,7 +104,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p7">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Página de Venda de Plani</h3>
             <p className="description-project previsaoTempo">
@@ -119,7 +119,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p8">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Promoção 3D</h3>
             <p className="description-project previsaoTempo">
@@ -134,7 +134,7 @@ const Projetos = () => {
             </a>
           </div>
 
-          <div className="card-item hidden-scroll-p9">
+          <div className="card-item">
             <div className="group-image-project"></div>
             <h3 className="title-project">Promoção 3D</h3>
             <p className="description-project previsaoTempo">
