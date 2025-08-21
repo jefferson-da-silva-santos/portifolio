@@ -1,23 +1,14 @@
 import { useState } from "react";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
-
-interface INavegacaoProps {
-  toggleTheme: () => void;
-}
+import { listIconTheme, navLinks } from "../../consts/dataConsts";
+import type { INavegacaoProps } from "./types";
 
 const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const [isHover, setIsHover] = useState<Record<string, boolean>>({});
-  const { theme } = useTheme();
+  const [iconTheme] = useState(listIconTheme);
 
-  const navLinks = [
-    { text: "home", href: "#home", controls: "home" },
-    { text: "about", href: "#about", controls: "about" },
-    { text: "skills", href: "#skills", controls: "skills" },
-    { text: "projects", href: "#project", controls: "project" },
-    { text: "service", href: "#service", controls: "service" },
-    { text: "contact", href: "#contact", controls: "contact" },
-  ];
+  const { theme } = useTheme();
 
   const getLinkStyle = (linkId: string) => {
     const isHovering = isHover[linkId];
@@ -76,8 +67,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           id="lista-menus"
           role="tablist"
         >
-
-           {navLinks.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 style={getLinkStyle(link.href)}
@@ -85,14 +75,18 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
                 aria-controls={link.controls}
                 className="itemsMenu-header"
                 href={link.href}
-                onMouseEnter={() => setIsHover({ ...isHover, [link.href]: true })}
-                onMouseLeave={() => setIsHover({ ...isHover, [link.href]: false })}
+                onMouseEnter={() =>
+                  setIsHover({ ...isHover, [link.href]: true })
+                }
+                onMouseLeave={() =>
+                  setIsHover({ ...isHover, [link.href]: false })
+                }
               >
                 {link.text}
               </a>
             </li>
           ))}
-          
+
           <li>
             <a href="#" id="btn-idioma" role="button" aria-label="Mudar idioma">
               <img
@@ -114,7 +108,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
                 loading="lazy"
                 id="btn-tema"
                 className="icon-theme"
-                src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/modo-escuro.webp"
+                src={theme === "light" ? iconTheme[0] : iconTheme[1]}
                 alt="icone do tema"
                 onClick={toggleTheme}
               />

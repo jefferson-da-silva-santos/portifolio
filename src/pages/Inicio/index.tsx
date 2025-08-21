@@ -3,27 +3,7 @@ import useTheme from "../../hooks/useTheme";
 import themeObject from "../../assets/theme.json";
 import { useState } from "react";
 import SocialButton from "./Link";
-
- const socialButtonList = [
-    {
-      arialLAbel: "Abrir github",
-      url: "https://github.com/jefferson-da-silva-santos",
-      iconClass: "bx bxl-github",
-      index: 0,
-    },
-    {
-      arialLAbel: "Abrir linkedin",
-      url: "https://www.linkedin.com/in/jefferson-santos-a87b74277/",
-      iconClass: "bx bxl-linkedin-square",
-      index: 1,
-    },
-    {
-      arialLAbel: "Abrir linkedin",
-      url: "https://wa.me/558195124550?text=Olá%2C%20Jefferson!%20Encontrei%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20programação.%20Poderíamos%20conversar%3F",
-      iconClass: "bx bxl-whatsapp",
-      index: 2,
-    },
- ];
+import { projectImages, socialButtonList } from "../../consts/dataConsts";
 
 const Inicio = () => {
   const { theme, toggleTheme } = useTheme();
@@ -122,8 +102,8 @@ const Inicio = () => {
         <section className="groupHeader-img">
           <img
             loading="lazy"
-            src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
-            alt="simbolo do framework react"
+            src={projectImages[0].url}
+            alt={projectImages[0].alt}
           />
         </section>
       </header>
