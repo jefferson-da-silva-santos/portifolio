@@ -188,10 +188,16 @@ body {
   border-radius: 50%;
 }
 
+.icon-idioma {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .icon-theme:hover,
 .icon-idioma:hover {
   transform: scale(120%);
   filter: drop-shadow(0px 0px 80px rgba(0, 255, 242, 0.603));
+  overflow: hidden;
 }
 
 .listNav > li > a {

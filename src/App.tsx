@@ -1,4 +1,5 @@
 import Footer from "./components/Footer";
+import { LanguageProvider } from "./contexts/LenguageProvider";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import Contato from "./pages/Contato";
 import Habilidades from "./pages/Habilidades";
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <ThemeProvider>
+        <LanguageProvider>
         <Inicio />
         <main>
           <Sobre />
@@ -20,6 +22,7 @@ function App() {
           <Contato />
         </main>
         <Footer />
+        </LanguageProvider>
       </ThemeProvider>
     </>
   );

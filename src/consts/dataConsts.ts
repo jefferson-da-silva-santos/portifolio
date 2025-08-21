@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { INavLinks, IProjectImages, ISocialButton } from "./types";
 import "../i18n";
-
+import type { LanguageMap } from "../contexts/types";
 export const projectImages: IProjectImages[] = [
   {
     url: "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
@@ -22,6 +22,15 @@ export const listIconTheme: string[] = [
   projectImages[1].url,
   projectImages[2].url,
 ];
+
+// icones relacionados ao idioma do portfólio
+export const listIconLenguage: string[] = [
+  "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/brasil.png",
+  "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/eua.webp",
+  "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/es_1.webp",
+  "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/it_1.webp",
+  "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/france_1.webp"
+]
 
 // links de navegação do portfólio e seus respectivos ids
 export const useNavLinks = (): INavLinks[] => {
@@ -58,3 +67,11 @@ export const socialButtonList: ISocialButton[] = [
     index: 2,
   },
 ];
+
+export const languageMap: LanguageMap = {
+  pt: { icon: listIconLenguage[0], locale: 'pt' },
+  en: { icon: listIconLenguage[1], locale: 'en' },
+  es: { icon: listIconLenguage[2], locale: 'es' },
+  it: { icon: listIconLenguage[3], locale: 'it' },
+  fr: { icon: listIconLenguage[4], locale: 'fr' },
+};

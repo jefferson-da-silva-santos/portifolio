@@ -1,3 +1,4 @@
+// src/components/Navegacao.js (Versão refatorada)
 import { useState } from "react";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
@@ -5,52 +6,20 @@ import { listIconTheme, useNavLinks } from "../../consts/dataConsts";
 import type { INavegacaoProps } from "./types";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../hooks/useLenguage";
 
 const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const [isHover, setIsHover] = useState<Record<string, boolean>>({});
   const [iconTheme] = useState(listIconTheme);
-  const [countClickLenguage, setCountClickLenguage] = useState(0);
-  const {t, i18n} = useTranslation();
+  const { t } = useTranslation();
   const navLinks = useNavLinks();
-
-  const changeLanguage = (lng: "pt" | "en" | "es" | "fr" | "it") => {
-    i18n.changeLanguage(lng);
-  };
-
-  const handleLanguageChange = () => {
-   setCountClickLenguage(countClickLenguage + 1);
-   if (countClickLenguage === 0) {
-      changeLanguage("en");
-      return;
-   } 
-
-   if (countClickLenguage === 1) {
-      changeLanguage("pt");
-      return;
-   }
-
-   if (countClickLenguage === 2) {
-      changeLanguage("es");
-      return;
-   }
-
-    if (countClickLenguage === 3) {
-        changeLanguage("fr");
-        return;
-    }
-
-    if (countClickLenguage === 4) {
-        changeLanguage("it");
-        return;
-    }
-
-    changeLanguage("pt");
-    setCountClickLenguage(0);
-  };
-
   const { theme } = useTheme();
 
+  // Use o hook do contexto para pegar o idioma, o ícone e a função
+  const { language, icon, toggleLanguage } = useLanguage();
+
   const getLinkStyle = (linkId: string) => {
+    // ... (sua lógica de estilo permanece a mesma)
     const isHovering = isHover[linkId];
     const defaultColor =
       theme === "light"
@@ -68,13 +37,11 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
       style={
         theme == "light"
           ? {
-              backgroundColor:
-                themeObject.themes.light.navbar.container.background,
+              backgroundColor: themeObject.themes.light.navbar.container.background,
               boxShadow: themeObject.themes.light.navbar.container.boxShadow,
             }
           : {
-              backgroundColor:
-                themeObject.themes.dark.navbar.container.background,
+              backgroundColor: themeObject.themes.dark.navbar.container.background,
               boxShadow: themeObject.themes.dark.navbar.container.boxShadow,
             }
       }
@@ -95,12 +62,10 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           style={
             theme == "light"
               ? {
-                  backgroundColor:
-                    themeObject.themes.light.navbar.list.background,
+                  backgroundColor: themeObject.themes.light.navbar.list.background,
                 }
               : {
-                  backgroundColor:
-                    themeObject.themes.dark.navbar.list.background,
+                  backgroundColor: themeObject.themes.dark.navbar.list.background,
                 }
           }
           className="listNav"
@@ -128,11 +93,11 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           ))}
 
           <li>
-            <a onClick={() => handleLanguageChange()} id="btn-idioma" role="button" aria-label={t("navigation.ariaLabels.changeLanguage")}>
+            <a onClick={toggleLanguage} id="btn-idioma" role="button" aria-label={t("navigation.ariaLabels.changeLanguage")}>
               <img
                 loading="lazy"
                 className="icon-idioma"
-                src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/eua.webp"
+                src={icon} // Use o ícone do contexto
                 alt="icone do idioma"
               />
             </a>
@@ -144,7 +109,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
               role="button"
               aria-label={t("navigation.ariaLabels.changeTheme")}
             >
-              <img 
+              <img
                 loading="lazy"
                 id="btn-tema"
                 className="icon-theme"
