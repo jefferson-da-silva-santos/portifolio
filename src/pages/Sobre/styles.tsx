@@ -5,10 +5,6 @@ export const styleContainer = (theme: string) => ({
   backgroundColor: getThemeProps(theme, themeObject, "about", "container", "background"),
 });
 
-export const styleStrong = (theme: string) => ({
-  color: getThemeProps(theme, themeObject, "about", "container", "strong")
-});
-
 export const styleText = (theme: string) => ({
   color: getThemeProps(theme, themeObject, "about", "container", "colorText"),
 });

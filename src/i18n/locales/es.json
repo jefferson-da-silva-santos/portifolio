@@ -21,7 +21,7 @@
   "init": {},
   "about": {
     "title": "Acerca de",
-    "description1": "Mi nombre es <strong style={styleStrong(theme)}>Jefferson Santos</strong> y soy un entusiasta de la tecnología que decidió seguir una carrera en programación. Durante los últimos <strong style={styleStrong(theme)}>cuatro años</strong>, me he dedicado a comprender las principales tecnologías del mercado y a aplicar <strong style={styleStrong(theme)}>metodologías de desarrollo ágiles</strong> (soy unamante del café).",
-    "description2": "Completé un curso técnico en <strong style={styleStrong(theme)}> Desarrollo de Sistemas (DS)</strong> con un enfoque en <strong style={styleStrong(theme)}> desarrollo Full Stack</strong>. Desde entonces, he trabajado en proyectos como freelancer y he contribuido a proyectos de código abierto, mejorando continuamente mis habilidades y experiencia en el campo."
+    "description1": "Mi nombre es <strong className='strong-light'>Jefferson Santos</strong> y soy un entusiasta de la tecnología que decidió seguir una carrera en programación. Durante los últimos <strong className='strong-light'>cuatro años</strong>, me he dedicado a comprender las principales tecnologías del mercado y a aplicar <strong className='strong-light'>metodologías de desarrollo ágiles</strong> (soy unamante del café).",
+    "description2": "Completé un curso técnico en <strong className='strong-light'> Desarrollo de Sistemas (DS)</strong> con un enfoque en <strong className='strong-light'> desarrollo Full Stack</strong>. Desde entonces, he trabajado en proyectos como freelancer y he contribuido a proyectos de código abierto, mejorando continuamente mis habilidades y experiencia en el campo."
   }
 }

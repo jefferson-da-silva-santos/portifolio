@@ -532,6 +532,14 @@ body {
   column-gap: 2px;
 }
 
+.strong-light {
+  color: #3b3b3b;
+}
+
+.strong-dark {
+  color: #d4d4d4;
+}
+
 /* Estilos do Skills */
 
 .groupSkills {
@@ -616,7 +624,6 @@ body {
 }
 
 strong {
-  color: rgb(212, 212, 212);
   font-weight: 500;
   transition: all 0.5s ease;
 }

@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
-import { LanguageProvider } from "./contexts/LenguageProvider";
-import { ThemeProvider } from "./contexts/ThemeProvider";
+import { LanguageProvider } from "./provider/LenguageProvider";
+import { ThemeProvider } from "./provider/ThemeProvider";
 import Contato from "./pages/Contato";
 import Habilidades from "./pages/Habilidades";
 import Inicio from "./pages/Inicio";

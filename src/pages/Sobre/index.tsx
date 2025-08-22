@@ -2,13 +2,25 @@ import { useTranslation } from "react-i18next";
 import { projectImages } from "../../consts/dataConsts";
 import useTheme from "../../hooks/useTheme";
 import { styleContainer, styleText, styleTitle } from "./styles";
-const Sobre = () => {
-  const {theme} = useTheme();
-  const { t } = useTranslation();
+import { useEffect, useState } from "react";
+import { toggleClassInText } from "../../utils/textUtilites";
 
-  // Prime letra do título em maiúscula e restante em minúscula
+const Sobre = () => {
+  const { theme } = useTheme();
+  const { t } = useTranslation();
+  const [description1, setDescription1] = useState<string>("");
+  const [description2, setDescription2] = useState<string>("");
+
   const firstLetterTitle = t("about.title").charAt(0).toUpperCase();
   const restOfTitle = t("about.title").slice(1);
+
+  const oldClass = theme === 'light' ? 'strong-light' : 'strong-dark';
+  const newClass = theme === 'light' ? 'strong-dark' : 'strong-light';
+
+  useEffect(() => {
+    setDescription1(toggleClassInText(t("about.description1"), oldClass, newClass));
+    setDescription2(toggleClassInText(t("about.description2"), oldClass, newClass));
+  }, [theme, t, oldClass, newClass]);
 
   return (
     <div className="groupSobre" id="about" style={styleContainer(theme)}>
@@ -23,8 +35,8 @@ const Sobre = () => {
               &#8250;
             </h2>
           </div>
-          <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: t("about.description1") }}></p>
-          <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: t("about.description2") }}></p>
+          <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: description1 }}></p>
+          <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: description2 }}></p>
         </article>
         <article className="groupSobre-secundary hidden-scroll-right">
           <div className="circle"></div>

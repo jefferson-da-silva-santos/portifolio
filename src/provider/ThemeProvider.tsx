@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 export const ThemeProvider = ({ children }: any) => {
   const [theme, setTheme] = useState("dark");
