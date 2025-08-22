@@ -52,7 +52,7 @@
           "colorText": "#1d1d1d",
           "card": {
             "background": "#fff",
-            "border": "1px solid rgb(228, 228, 228)"
+            "borderColor": "rgb(228, 228, 228)"
           }
         }
       },
@@ -113,7 +113,7 @@
           "colorText": "#9ca3af",
           "card": {
             "background": "#1d1d1d",
-            "border": "1px solid rgb(19, 19, 19)"
+            "borderColor": "rgb(19, 19, 19)"
           }
         }
       },
