@@ -17,5 +17,11 @@
       "languageIcon": "language icon",
       "themeIcon": "theme icon"
     }
+  },
+  "init": {},
+  "about": {
+    "title": "About",
+    "description1": "My name is <strong style={styleStrong(theme)}>Jefferson Santos</strong> and I am a technology enthusiast who decided to pursue a career in programming. Over the last <strong style={styleStrong(theme)}>four years</strong>, I have dedicated myself to understanding the main technologies on the market and applying  <strong style={styleStrong(theme)}> agile development methodologies</strong> (I&#8217;m a coffee lover).",
+    "description2": "I completed a technical course in <strong style={styleStrong(theme)}> Systems Development (DS)</strong> with a focus on <strong style={styleStrong(theme)}> Full Stack development</strong>. Since then, I have worked on projects as a freelancer and contributed to open source projects, continually improving my skills and experience in the field."
   }
 }

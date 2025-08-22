@@ -7,6 +7,7 @@ import type { INavegacaoProps } from "./types";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "../../hooks/useLenguage";
+import { containerStyle, getLinkStyle, linkStyle, listStyle } from "./styles";
 
 const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const [isHover, setIsHover] = useState<Record<string, boolean>>({});
@@ -14,60 +15,16 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const { t } = useTranslation();
   const navLinks = useNavLinks();
   const { theme } = useTheme();
-
-  // Use o hook do contexto para pegar o idioma, o ícone e a função
   const { language, icon, toggleLanguage } = useLanguage();
 
-  const getLinkStyle = (linkId: string) => {
-    // ... (sua lógica de estilo permanece a mesma)
-    const isHovering = isHover[linkId];
-    const defaultColor =
-      theme === "light"
-        ? themeObject.themes.light.navbar.link.color
-        : themeObject.themes.dark.navbar.link.color;
-
-    return {
-      color: isHovering ? "#00ffff" : defaultColor,
-    };
-  };
-
   return (
-    <div
-      className="groupNav"
-      style={
-        theme == "light"
-          ? {
-              backgroundColor: themeObject.themes.light.navbar.container.background,
-              boxShadow: themeObject.themes.light.navbar.container.boxShadow,
-            }
-          : {
-              backgroundColor: themeObject.themes.dark.navbar.container.background,
-              boxShadow: themeObject.themes.dark.navbar.container.boxShadow,
-            }
-      }
-    >
+    <div className="groupNav" style={containerStyle(theme, themeObject)}>
       <nav className="nav">
-        <a
-          style={
-            theme == "light"
-              ? { color: themeObject.themes.light.navbar.logo.color }
-              : { color: themeObject.themes.dark.navbar.logo.color }
-          }
-          className="logoNav"
-          href=""
-        >
+        <a style={linkStyle(theme, themeObject)} className="logoNav" href="">
           &#8249; <span className="letraMonoton">J</span>eff &#8260; &#8250;
         </a>
         <ul
-          style={
-            theme == "light"
-              ? {
-                  backgroundColor: themeObject.themes.light.navbar.list.background,
-                }
-              : {
-                  backgroundColor: themeObject.themes.dark.navbar.list.background,
-                }
-          }
+          style={listStyle(theme, themeObject)}
           className="listNav"
           id="lista-menus"
           role="tablist"
@@ -75,7 +32,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                style={getLinkStyle(link.href)}
+                style={getLinkStyle(link.href, isHover, theme, themeObject)}
                 role="tab"
                 aria-controls={link.controls}
                 className="itemsMenu-header"
@@ -93,11 +50,16 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           ))}
 
           <li>
-            <a onClick={toggleLanguage} id="btn-idioma" role="button" aria-label={t("navigation.ariaLabels.changeLanguage")}>
+            <a
+              onClick={toggleLanguage}
+              id="btn-idioma"
+              role="button"
+              aria-label={t("navigation.ariaLabels.changeLanguage")}
+            >
               <img
                 loading="lazy"
                 className="icon-idioma"
-                src={icon} // Use o ícone do contexto
+                src={icon}
                 alt="icone do idioma"
               />
             </a>
@@ -108,6 +70,10 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
               className="icon-theme-1"
               role="button"
               aria-label={t("navigation.ariaLabels.changeTheme")}
+              onClick={(e) => {
+                e.preventDefault();
+                toggleTheme();
+              }}
             >
               <img
                 loading="lazy"
@@ -115,7 +81,6 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
                 className="icon-theme"
                 src={theme === "light" ? iconTheme[0] : iconTheme[1]}
                 alt="icone do tema"
-                onClick={toggleTheme}
               />
             </a>
           </li>

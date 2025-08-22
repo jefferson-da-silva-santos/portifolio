@@ -17,5 +17,11 @@
       "languageIcon": "icône de la langue",
       "themeIcon": "icône du thème"
     }
+  },
+  "init": {},
+  "about": {
+    "title": "À propos",
+    "description1": "Je m'appelle <strong style={styleStrong(theme)}>Jefferson Santos</strong> et je suis un passionné de technologie qui a décidé de faire carrière dans la programmation. Au cours des <strong style={styleStrong(theme)}>quatre dernières années</strong>, je me suis consacré à la compréhension des principales technologies du marché et à l'application de <strong style={styleStrong(theme)}>méthodologies de développement agiles</strong> (je suis un amateur de café).",
+    "description2": "J'ai terminé un cours technique en <strong style={styleStrong(theme)}> Développement de Systèmes (DS)</strong> axé sur le <strong style={styleStrong(theme)}> développement Full Stack</strong>. Depuis, j'ai travaillé sur des projets en tant que freelance et j'ai contribué à des projets open source, améliorant continuellement mes compétences et mon expérience dans le domaine."
   }
 }

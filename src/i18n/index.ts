@@ -25,6 +25,10 @@ i18n
     interpolation: {
       escapeValue: false,
     },
+    react: {
+      // Esta linha permite que i18n renderize tags HTML como componentes React
+      transKeepBasicHtmlNodesFor: ["br", "strong", "i", "p"],
+    },
   });
 
 export default i18n;
