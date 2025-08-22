@@ -2,6 +2,8 @@
 
 import React from "react";
 import type { SocialButtonProps } from "./types";
+import useTheme from "../../../hooks/useTheme";
+import themeObject from "../../../assets/theme.json";
 
 const SocialButton: React.FC<SocialButtonProps> = ({
   href,
@@ -11,11 +13,13 @@ const SocialButton: React.FC<SocialButtonProps> = ({
   functionIconStyle,
   onMouseEnter,
   onMouseLeave,
-  index
+  index,
+  isHoverButton
 }) => {
+  const { theme } = useTheme();
   return (
     <a
-      style={functionStyle(index)}
+      style={functionStyle(theme, themeObject, isHoverButton, index)}
       role="button"
       target="_blank"
       aria-label={ariaLabel}
@@ -24,7 +28,12 @@ const SocialButton: React.FC<SocialButtonProps> = ({
       onMouseEnter={() => onMouseEnter(index, true)}
       onMouseLeave={() => onMouseLeave(index, false)}
     >
-      <i style={functionIconStyle(index)} className={iconClass}></i>
+      <i style={functionIconStyle(
+        index,
+        isHoverButton,
+        theme,
+        themeObject
+      )} className={iconClass}></i>
     </a>
   );
 };

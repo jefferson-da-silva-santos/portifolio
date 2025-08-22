@@ -1,29 +1,18 @@
 import themeObject from "../../assets/theme.json";
+import { getThemeProps } from "../../utils/themeUtilities";
 
 export const styleContainer = (theme: string) => ({
-  backgroundColor:
-    theme === "light"
-      ? themeObject.themes.light.about.container.background
-      : themeObject.themes.dark.about.container.background,
+  backgroundColor: getThemeProps(theme, themeObject, "about", "container", "background"),
 });
 
 export const styleStrong = (theme: string) => ({
-  color:
-    theme === "light"
-      ? themeObject.themes.light.about.container.strong
-      : themeObject.themes.dark.about.container.strong,
+  color: getThemeProps(theme, themeObject, "about", "container", "strong")
 });
 
 export const styleText = (theme: string) => ({
-  color:
-    theme === "light"
-      ? themeObject.themes.light.about.container.colorText
-      : themeObject.themes.dark.about.container.colorText,
+  color: getThemeProps(theme, themeObject, "about", "container", "colorText"),
 });
 
 export const styleTitle = (theme: string) => ({
-  color:
-    theme === "light"
-      ? themeObject.themes.light.about.container.colorTitle
-      : themeObject.themes.dark.about.container.colorTitle,
+  color: getThemeProps(theme, themeObject, "about", "container", "colorTitle"),
 });
