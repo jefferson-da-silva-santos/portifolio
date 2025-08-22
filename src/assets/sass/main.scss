@@ -595,23 +595,113 @@ body {
   align-items: center;
   justify-content: center;
   transition: border 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 .skill-element:hover {
-  border: 1px solid var(--color-terciary);
+
+  img {
+    transform: scale(120%);
+    transition: all 1s ease;
+  }
+
+  &:nth-child(1) {
+    border: 1px solid #93F02F;
+  }
+  &:nth-child(2) {
+    border: 1px solid #F29057;
+  }
+  &:nth-child(3) {
+    border: 1px solid #9956F6;
+  }
+  &:nth-child(4) {
+    border: 1px solid #2AC5E1;
+  }
+  &:nth-child(5) {
+    border: 1px solid #FFFFFF;
+  }
+  &:nth-child(6) {
+    border: 1px solid #FF74B6;
+  }
+  &:nth-child(7) {
+    border: 1px solid #9956F6;
+  }
+  &:nth-child(8) {
+    border: 1px solid #93F02F;
+  }
+  &:nth-child(9) {
+    border: 1px solid #FF80BD;
+  }
+  &:nth-child(10) {
+    border: 1px solid #F5C022;
+  }
+  &:nth-child(11) {
+    border: 1px solid #FF74B6;
+  }
+  &:nth-child(12) {
+    border: 1px solid #2AC5E1;
+  }
 }
 
 .skill-element img {
   width: 40%;
 }
 
-.react img,
-.taiwind img,
-.sql img,
-.java img,
-.nodejs img,
+.react img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 20px rgb(0, 255, 242));
+}
+.express img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 20px #F5C022);
+}
 .mysql img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 20px #F5C022);
+}
+
+.sass img {
+  width: 65%;
+  filter: drop-shadow(0px 0px 20px #FF74B6);
+}
+
+.docker img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 20px #2AC5E1);
+}
+
+.postgresql img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 20px #FF74B6);
+}
+
+.nextjs img {
+  filter: drop-shadow(0px 0px 20px #FFF);
+   width: 63%;
+}
+.nestjs img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 20px #9956F6);
+}
+
+.java img{
   width: 50%;
+  filter: drop-shadow(0px 0px 20px #93F02F);
+}
+
+.git img{
+  width: 50%;
+  filter: drop-shadow(0px 0px 20px #FF74B6);
+}
+
+.nodejs img{
+  width: 55%;
+  filter: drop-shadow(0px 0px 20px #93F02F);
+}
+
+.flutter img{
+  width: 50%;
+  filter: drop-shadow(0px 0px 20px #9956F6);
 }
 
 .textSkills {

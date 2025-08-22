@@ -1,4 +1,4 @@
-import svgTailwind from '../../assets/image/tailwind-css-svgrepo-com.svg';
+import React from 'react';
 
 const Habilidades = () => {
   return (
@@ -17,72 +17,88 @@ const Habilidades = () => {
           <p className="textSkills" id="description-skills"></p>
         </article>
         <article className="groupSkills-secundary hidden-scroll-left">
-          <article className="skill-element html">
-            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/html-5.webp" alt="logo do HTML5" />
-          </article>
-          <article className="skill-element css">
-            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/css-3.webp" alt="logo do CSS3" />
-          </article>
-          <article className="skill-element javascript">
-            <img
-              loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/logotipo-do-java-script.webp"
-              alt="logo do JavaScript"
-            />
-          </article>
           <article className="skill-element nodejs">
             <img
               loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/nodejs.webp"
-              alt="logo do NodeJs"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_node.webp"
+              alt="Logo do Node.js"
+            />
+          </article>
+          <article className="skill-element express">
+            <img
+              loading="lazy"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_express.webp"
+              alt="Logo do Express"
+            />
+          </article>
+          <article className="skill-element nestjs">
+            <img
+              loading="lazy"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_nest.webp"
+              alt="Logo do NestJS"
             />
           </article>
           <article className="skill-element react">
             <img
               loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/biblioteca.webp"
-              alt="logo do ReactJs"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_react.webp"
+              alt="Logo do React"
             />
           </article>
-          <article className="skill-element bootstrap">
+          <article className="skill-element nextjs">
             <img
               loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/bootstrap.webp"
-              alt="logo do Bootstrap"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_next.webp"
+              alt="Logo do Next.js"
             />
           </article>
-          <article className="skill-element taiwind">
+          <article className="skill-element sass">
             <img
               loading="lazy"
-              src={svgTailwind}
-              alt="logo do Taiwind"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_sass.webp"
+              alt="Logo do Sass"
             />
           </article>
-          <article className="skill-element sql">
+          <article className="skill-element flutter">
             <img
               loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/servidor-sql.webp"
-              alt="logo da linguagem de consulta SQL"
-            />
-          </article>
-          <article className="skill-element mysql">
-            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/mysql.webp" alt="logo do MySQL" />
-          </article>
-          <article className="skill-element postgre">
-            <img
-              loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/postgre.webp"
-              alt="logo do PostgreSQL"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_flutter.webp"
+              alt="Logo do Flutter"
             />
           </article>
           <article className="skill-element java">
-            <img loading="lazy" src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/java.webp" alt="logo do Java" />
+            <img
+              loading="lazy"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_java.webp"
+              alt="Logo do Java"
+            />
+          </article>
+          <article className="skill-element postgresql">
+            <img
+              loading="lazy"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_postgres.webp"
+              alt="Logo do PostgreSQL"
+            />
+          </article>
+          <article className="skill-element mysql">
+            <img
+              loading="lazy"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_mysql.webp"
+              alt="Logo do MySQL"
+            />
           </article>
           <article className="skill-element git">
             <img
               loading="lazy"
-              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/confirmar-git.webp"
-              alt="logo do controlador de versões Git"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_git.webp"
+              alt="Logo do Git"
+            />
+          </article>
+          <article className="skill-element docker">
+            <img
+              loading="lazy"
+              src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_docker.webp"
+              alt="Logo do Docker"
             />
           </article>
         </article>
