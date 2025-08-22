@@ -1,6 +1,10 @@
 import React from 'react';
+import useTheme from '../../hooks/useTheme';
+import themeObject from '../../assets/theme.json';
 
 const Habilidades = () => {
+  const { theme } = useTheme();
+  
   return (
     <div className="groupSkills" id="skills">
       <section className="skills">
@@ -14,7 +18,9 @@ const Habilidades = () => {
               &#8250;
             </h2>
           </div>
-          <p className="textSkills" id="description-skills"></p>
+          <p className="textSkills" id="description-skills">
+            * Passe o mouse sobre as habilidades para saber mais * 
+          </p>
         </article>
         <article className="groupSkills-secundary hidden-scroll-left">
           <article className="skill-element nodejs">

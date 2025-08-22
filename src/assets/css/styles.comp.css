@@ -175,7 +175,6 @@
   filter: blur(0);
 }
 
-
 :root {
   --color-primary: #0f0f0f;
   --color-secundary: #0b0b0b;
@@ -194,7 +193,6 @@
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-primary);
   transition: all 0.5s ease;
 }
 
@@ -302,6 +300,10 @@ body {
   overflow: hidden;
 }
 
+.groupHeader {
+  background-color: var(--color-primary);
+}
+
 .logoNav {
   font-family: "Saira", sans-serif;
   font-weight: 500;
@@ -349,16 +351,21 @@ body {
   border-radius: 50%;
 }
 
+.icon-idioma {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .icon-theme:hover,
 .icon-idioma:hover {
   transform: scale(120%);
   filter: drop-shadow(0px 0px 80px rgba(0, 255, 242, 0.603));
+  overflow: hidden;
 }
 
 .listNav > li > a {
   text-decoration: none;
   padding: 2px;
-  color: var(--white);
   font-size: 1.1em;
   transition: color 0.5s ease;
 }
@@ -544,10 +551,9 @@ body {
   column-gap: 1em;
 }
 
-.geoupHeader-socialMediaButton {
+.groupHeader-socialMediaButton {
   text-decoration: none;
   padding: 0.2em 0.5em;
-  font-size: 1.3em;
   border-radius: 5px;
   background-color: #1d1d1d;
   color: var(--white);
@@ -556,8 +562,14 @@ body {
   transition-timing-function: ease-in-out;
   transition: all 0.5s ease;
 }
+.groupHeader-socialMediaButton i {
+  font-size: 1.9em;
+  pointer-events: none;
+  margin-top: 4px;
+  transition: all 0.5s ease;
+}
 
-.geoupHeader-socialMediaButton:hover {
+.groupHeader-socialMediaButton:hover {
   color: var(--color-terciary);
   transform: scale(120%);
   box-shadow: 0px 0px 10px var(--color-terciary);
@@ -676,6 +688,14 @@ body {
   column-gap: 2px;
 }
 
+.strong-light {
+  color: #3b3b3b;
+}
+
+.strong-dark {
+  color: #d4d4d4;
+}
+
 /* Estilos do Skills */
 .groupSkills {
   min-height: 100vh;
@@ -683,6 +703,7 @@ body {
   align-items: center;
   padding-top: 4em;
   overflow: hidden;
+  background-color: var(--color-primary);
 }
 
 .skills {
@@ -729,23 +750,112 @@ body {
   align-items: center;
   justify-content: center;
   transition: border 0.5s ease-in-out;
+  overflow: hidden;
 }
 
-.skill-element:hover {
-  border: 1px solid var(--color-terciary);
+.skill-element:hover img {
+  transform: scale(120%);
+  transition: all 1s ease;
+}
+.skill-element:hover:nth-child(1) {
+  border: 1px solid #93F02F;
+}
+.skill-element:hover:nth-child(2) {
+  border: 1px solid #F29057;
+}
+.skill-element:hover:nth-child(3) {
+  border: 1px solid #9956F6;
+}
+.skill-element:hover:nth-child(4) {
+  border: 1px solid #2AC5E1;
+}
+.skill-element:hover:nth-child(5) {
+  border: 1px solid #FFFFFF;
+}
+.skill-element:hover:nth-child(6) {
+  border: 1px solid #FF74B6;
+}
+.skill-element:hover:nth-child(7) {
+  border: 1px solid #9956F6;
+}
+.skill-element:hover:nth-child(8) {
+  border: 1px solid #93F02F;
+}
+.skill-element:hover:nth-child(9) {
+  border: 1px solid #FF80BD;
+}
+.skill-element:hover:nth-child(10) {
+  border: 1px solid #F5C022;
+}
+.skill-element:hover:nth-child(11) {
+  border: 1px solid #FF74B6;
+}
+.skill-element:hover:nth-child(12) {
+  border: 1px solid #2AC5E1;
 }
 
 .skill-element img {
   width: 40%;
 }
 
-.react img,
-.taiwind img,
-.sql img,
-.java img,
-.nodejs img,
+.react img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 25px rgb(0, 255, 242));
+}
+
+.express img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 25px #F5C022);
+}
+
 .mysql img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 25px #F5C022);
+}
+
+.sass img {
+  width: 65%;
+  filter: drop-shadow(0px 0px 25px #FF74B6);
+}
+
+.docker img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 25px #2AC5E1);
+}
+
+.postgresql img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 25px #FF74B6);
+}
+
+.nextjs img {
+  filter: drop-shadow(0px 0px 25px #FFF);
+  width: 63%;
+}
+
+.nestjs img {
+  width: 60%;
+  filter: drop-shadow(0px 0px 25px #9956F6);
+}
+
+.java img {
   width: 50%;
+  filter: drop-shadow(0px 0px 25px #93F02F);
+}
+
+.git img {
+  width: 50%;
+  filter: drop-shadow(0px 0px 25px #FF74B6);
+}
+
+.nodejs img {
+  width: 55%;
+  filter: drop-shadow(0px 0px 25px #93F02F);
+}
+
+.flutter img {
+  width: 50%;
+  filter: drop-shadow(0px 0px 25px #9956F6);
 }
 
 .textSkills {
@@ -758,7 +868,6 @@ body {
 }
 
 strong {
-  color: rgb(212, 212, 212);
   font-weight: 500;
   transition: all 0.5s ease;
 }
@@ -1145,26 +1254,12 @@ textarea:focus {
 }
 
 @media screen and (min-width: 896px) {
-  .itemsMenu-header--dark:hover::before {
+  .itemsMenu-header:hover::before {
     position: absolute;
     content: "";
     width: 0%;
     height: 2px;
-    background-image: linear-gradient(to left, white, #00ffff, #0f0f0f);
-    bottom: 0;
-    left: 0;
-    border-radius: 10px;
-    transition-property: width;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    animation: beforeMenu 0.5s ease-in-out 0s 1 normal forwards;
-  }
-  .itemsMenu-header--ligth:hover::before {
-    position: absolute;
-    content: "";
-    width: 0%;
-    height: 2px;
-    background-image: linear-gradient(to right, white, #00ffff);
+    background-image: linear-gradient(to left, white, #00ffff, transparent);
     bottom: 0;
     left: 0;
     border-radius: 10px;
@@ -1218,7 +1313,7 @@ textarea:focus {
     font-size: 23px;
   }
   /* Estilos do Header */
-  .header {
+  .hero {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     padding-top: 0;
@@ -1372,7 +1467,7 @@ textarea:focus {
     padding-bottom: 1em;
   }
   .skill-element img {
-    width: 4em;
+    width: 5em;
   }
   /* Estilos do Projetos */
   .groupProjetos-primary .titleProjetos {

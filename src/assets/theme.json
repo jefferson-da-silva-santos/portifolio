@@ -1,109 +1,126 @@
 {
   "themes": {
-
-  "light": {
-    "navbar": {
-      "container": {
-        "background": "#ffffffed",
-        "boxShadow": "0px 0px 8px rgba(49, 49, 49, 0.438)"
-      },
-      "logo": {
-        "color": "#313131"
-      },
-      "list": {
-        "background": "transparent"
-      },
-      "itemList": {
-        "background": "transparent"
-      },
-      "link": {
-        "color": "#313131"
-      }
-    },
-    "init": {
-      "container": {
-        "background": "#f7f7f7"
-      },
-      "title": {
-        "color": "rgb(49, 49, 49)"
-      },
-      "buttons": {
-        "background": "#fff",
-        "color": "rgb(49, 49, 49)",
-        "boxShadow": "rgba(128, 128, 128, 0.576) 0px 0px 10px",
-        "hoverBoxShadow": "0px 0px 10px #00ffff",
-        "icon": {
-          "color": "#313131",
-          "hoverColor":"#00ffff"
+    "light": {
+      "navbar": {
+        "container": {
+          "background": "#ffffffed",
+          "boxShadow": "0px 0px 8px rgba(49, 49, 49, 0.438)"
+        },
+        "logo": {
+          "color": "#313131"
+        },
+        "list": {
+          "background": "transparent"
+        },
+        "itemList": {
+          "background": "transparent"
+        },
+        "link": {
+          "color": "#313131"
         }
-      }
-    },
-    "about": {
-      "container": {
-        "background": "#FFF",
-        "colorTitle": "#3b3b3b",
-        "colorText": "#1d1d1d",
-        "strong": "#3b3b3b"
-      }
-    },
-    "skills": {},
-    "projects": {},
-    "services": {},
-    "contact": {},
-    "footer": {}
-  },
-  
-
-  "dark": {
-    "navbar": {
-      "container": {
-        "background": "#080808ed",
-        "boxShadow": "0px 0px 8px rgb(49, 49, 49)"
       },
-      "logo": {
-        "color": "white"
-      },
-      "list": {
-        "background": "transparent"
-      },
-      "itemList": {
-        "background": "transparent"
-      },
-      "link": {
-        "color": "white"
-      }
-    },
-    "init": {
-      "container": {
-        "background": "#0f0f0f"
-      },
-      "title": {
-        "color": "#fff"
-      },
-      "buttons": {
-        "background": "#1d1d1d",
-        "color": "#fff",
-        "boxShadow": "none",
-        "hoverBoxShadow": "0px 0px 10px #00ffff",
-         "icon": {
-          "color": "white",
-          "hoverColor":"#00ffff"
+      "init": {
+        "container": {
+          "background": "#f7f7f7"
+        },
+        "title": {
+          "color": "rgb(49, 49, 49)"
+        },
+        "buttons": {
+          "background": "#fff",
+          "color": "rgb(49, 49, 49)",
+          "boxShadow": "rgba(128, 128, 128, 0.576) 0px 0px 10px",
+          "hoverBoxShadow": "0px 0px 10px #00ffff",
+          "icon": {
+            "color": "#313131",
+            "hoverColor": "#00ffff"
+          }
         }
-      }
+      },
+      "about": {
+        "container": {
+          "background": "#FFF",
+          "colorTitle": "#3b3b3b",
+          "colorText": "#1d1d1d",
+          "strong": "#3b3b3b"
+        }
+      },
+      "skills": {
+        "container": {
+          "background": "#f7f7f7",
+          "colorTitle": "#3b3b3b",
+          "colorText": "#1d1d1d",
+          "card": {
+            "background": "#fff",
+            "border": "1px solid rgb(228, 228, 228)"
+          }
+        }
+      },
+      "projects": {},
+      "services": {},
+      "contact": {},
+      "footer": {}
     },
-    "about": {
-      "container": {
-        "background": "#0b0b0b",
-        "colorTitle": "#fff",
-        "colorText": "#9ca3af",
-        "strong": "#d4d4d4"
-      }
-    },
-    "skills": {},
-    "projects": {},
-    "services": {},
-    "contact": {},
-    "footer": {}
+    "dark": {
+      "navbar": {
+        "container": {
+          "background": "#080808ed",
+          "boxShadow": "0px 0px 8px rgb(49, 49, 49)"
+        },
+        "logo": {
+          "color": "white"
+        },
+        "list": {
+          "background": "transparent"
+        },
+        "itemList": {
+          "background": "transparent"
+        },
+        "link": {
+          "color": "white"
+        }
+      },
+      "init": {
+        "container": {
+          "background": "#0f0f0f"
+        },
+        "title": {
+          "color": "#fff"
+        },
+        "buttons": {
+          "background": "#1d1d1d",
+          "color": "#fff",
+          "boxShadow": "none",
+          "hoverBoxShadow": "0px 0px 10px #00ffff",
+          "icon": {
+            "color": "white",
+            "hoverColor": "#00ffff"
+          }
+        }
+      },
+      "about": {
+        "container": {
+          "background": "#0b0b0b",
+          "colorTitle": "#fff",
+          "colorText": "#9ca3af",
+          "strong": "#d4d4d4"
+        }
+      },
+      "skills": {
+        "container": {
+          "background": "#0f0f0f",
+          "colorTitle": "#fff",
+          "colorText": "#9ca3af",
+          "card": {
+            "background": "#1d1d1d",
+            "border": "1px solid rgb(19, 19, 19)"
+          }
+        }
+      },
+      "projects": {},
+      "services": {},
+      "contact": {},
+      "footer": {}
+    }
   }
-}
 }
