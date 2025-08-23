@@ -46,24 +46,196 @@ body {
   z-index: 3;
   align-items: center;
   justify-content: center;
-  display: none;
+  display: flex;
+}
+
+.close-options {
+  background-color: transparent;
+  height: max-content;
+  border-radius: 50%;
+  border: none;
+
+  i {
+    font-size: 2.5rem;
+    color: #00ffff;
+    cursor: pointer;
+  }
 }
 
 .list-options-box-tec {
   display: flex;
   list-style: none;
-  -moz-column-gap: 1em;
-  column-gap: 1em;
+  -moz-column-gap: .5em;
+  column-gap: .5em;
   flex-wrap: wrap;
-  row-gap: 1em;
+  row-gap: .5em;
+}
+
+@keyframes animatedSkill {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .list-options-box-tec li {
-  background-color: #00ffff;
-  padding: 3px 1em;
-  color: var(--color-primary);
-  border-radius: 8px;
-  font-weight: 600;
+  background-color: #141414;
+  @include flex(row, flex-start, center, 5px);
+  padding: 2px 1rem 2px 0.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid lighten(#141414, 5%);
+}
+
+.react-item-list {
+  text-shadow: 0px 0px 21px #0dd9fd;
+  color: #00e5ff;
+  img {
+    animation: animatedSkill 1s ease 0s infinite normal forwards;
+    width: 1.5rem;
+    filter: drop-shadow(0px 0px 9px #2ac5e1);
+  }
+}
+
+.sass-item-list {
+  text-shadow: 0px 0px 21px #ff74b6;
+  color: #ff74b6;
+  img {
+    width:1.7rem;
+    filter: drop-shadow(0px 0px 10px #ff74b6);
+  }
+}
+.java-item-list {
+  text-shadow: 0px 0px 21px #93f02f;
+  color: #93f02f;
+  img {
+    filter: drop-shadow(0px 0px 10px #93f02f);
+    width: 1.2rem;
+  }
+}
+.nest-item-list {
+  text-shadow: 0px 0px 14px #9956f6;
+  color: #9956f6;
+  img {
+    filter: drop-shadow(0px 0px 10px #9956f6);
+    width: 1.5rem;
+  }
+}
+.next-item-list {
+  text-shadow: 0px 0px 14px white;
+  color: white;
+  img {
+    filter: drop-shadow(0px 0px 10px white);
+    width: 1.5rem;
+  }
+}
+.express-item-list {
+  text-shadow: 0px 0px 14px #ff9d57;
+  color: #ff9d57;
+  img {
+    filter: drop-shadow(0px 0px 10px #ff9d57);
+    width: 1.5rem;
+  }
+}
+.mysql-item-list {
+  text-shadow: 0px 0px 14px #dad600;
+  color: #dad600;
+  img {
+    filter: drop-shadow(0px 0px 10px #dad600);
+    width: 1.5rem;
+  }
+}
+.postgres-item-list {
+  text-shadow: 0px 0px 14px #ff74b6;
+  color: #ff74b6;
+  img {
+    filter: drop-shadow(0px 0px 10px #7b043c9b);
+    width: 1.3rem;
+  }
+}
+.git-item-list {
+  text-shadow: 0px 0px 14px #ff74b6;
+  color: #ff74b6;
+  img {
+    filter: drop-shadow(0px 0px 10px #ff74b6);
+    width: 1rem;
+  }
+}
+.docker-item-list {
+  text-shadow: 0px 0px 14px #2ac5e1;
+  color: #2ac5e1;
+  img {
+    filter: drop-shadow(0px 0px 10px #2ac5e1);
+    width: 1.5rem;
+  }
+}
+.flutter-item-list {
+  text-shadow: 0px 0px 14px #9956f6;
+  color: #9956f6;
+  img {
+    filter: drop-shadow(0px 0px 10px #9956f6);
+    width: 1.3rem;
+  }
+}
+
+.node-item-list {
+  text-shadow: 0px 0px 14px #93f02f;
+  color: #93f02f;
+  img {
+    filter: drop-shadow(0px 0px 10px #93f02f);
+    width: 1.3rem;
+  }
+}
+.vite-item-list {
+  text-shadow: 0px 0px 14px #2f6cf0;
+  color: #2f6cf0;
+  img {
+    filter: drop-shadow(0px 0px 10px #2f6cf0);
+    width: 1.3rem;
+  }
+}
+.css-item-list {
+  text-shadow: 0px 0px 14px #2f6cf0;
+  color: #2f6cf0;
+  img {
+    filter: drop-shadow(0px 0px 10px #2f6cf0);
+    width: 1.2rem;
+  }
+}
+.js-item-list {
+  text-shadow: 0px 0px 14px #ffd500;
+  color: #ffd500;
+  img {
+    filter: drop-shadow(0px 0px 10px #ffd500);
+    width: 1.2rem;
+  }
+}
+.ts-item-list {
+  text-shadow: 0px 0px 14px #006EFF;
+  color: #006EFF;
+  img {
+    filter: drop-shadow(0px 0px 10px #006EFF);
+    width: 1.2rem;
+  }
+}
+.html-item-list {
+  text-shadow: 0px 0px 14px #F06317;
+  color: #F06317;
+  img {
+    filter: drop-shadow(0px 0px 10px #F06317);
+    width: 1.1rem;
+  }
 }
 
 .group-texts-options-box {
@@ -1097,6 +1269,18 @@ strong {
   gap: 2em;
 }
 
+.group-input {
+  width: 100%;
+  position: relative;
+}
+
+.error-message {
+  color: rgb(255, 75, 75);
+  position: absolute;
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+}
+
 .form input {
   border: 1px solid var(--color-terciary);
   padding: 0.7em 5px;
@@ -1106,6 +1290,7 @@ strong {
   transition: padding-left 0.2s ease 0s;
   color: var(--white);
   transition: all 0.5s ease;
+  width: 100%;
 }
 
 .form input:focus {
@@ -1116,6 +1301,7 @@ strong {
 
 textarea {
   height: 10em;
+  width: 100%;
   border: 1px solid var(--color-terciary);
   padding: 0.7em 5px;
   background-color: #161616;
@@ -1166,8 +1352,6 @@ textarea:focus {
 
 .footer {
   padding: 1em;
-  background-color: #080808cb;
-  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;

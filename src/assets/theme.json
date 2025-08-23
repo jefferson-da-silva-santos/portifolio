@@ -100,8 +100,26 @@
           }
         }
       },
-      "contact": {},
-      "footer": {}
+      "contact": {
+        "container": {
+          "background": "#FFF"
+        },
+        "title": {
+          "color": "#313131"
+        },
+        "form": {
+          "input": {
+            "borderColor": "#dbdbdb",
+            "background": "#eeeeee",
+            "color": "#313131"
+          }
+        }
+      },
+      "footer": {
+        "background": "#f7f7f7",
+        "color": "#080808",
+        "boxShadow": "0px 0px 8px #ababab"
+      }
     },
     "dark": {
       "navbar": {
@@ -194,7 +212,7 @@
             "circleCenter": {
               "background": "#0f0f0f"
             },
-           "title": {
+            "title": {
               "color": "#FFF"
             },
             "text": {
@@ -203,8 +221,26 @@
           }
         }
       },
-      "contact": {},
-      "footer": {}
+      "contact": {
+        "container": {
+          "background": "#0b0b0b"
+        },
+        "title": {
+          "color": "#FFF"
+        },
+        "form": {
+          "input": {
+            "borderColor": "#00ffff",
+            "background": "#161616",
+            "color": "#FFF"
+          }
+        }
+      },
+      "footer": {
+        "background": "#080808",
+        "color": "#9ca3af",
+        "boxShadow": "0px 0px 8px #313131"
+      }
     }
   }
 }

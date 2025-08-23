@@ -1,78 +1,75 @@
+// src/components/Contato.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Formik, Form, type FormikHelpers } from 'formik'; // Importe FormikHelpers
+import FormField from '../../components/FormField';
+import { contactFormSchema } from '../../utils/validationUtilities';
+import type { ContactFormValues } from './types';
+import useTheme from '../../hooks/useTheme';
+import objectTheme from '../../assets/theme.json';
+import { containerStyle, inputStyle, titleStyle } from './styles';
+
 const Contato = () => {
+  const { t } = useTranslation();
+  const {theme} = useTheme();
+
+  const initialValues: ContactFormValues = {
+    nome: '',
+    email: '',
+    assunto: '',
+    mensagem: '',
+  };
+
+  const handleSubmit = (
+    values: ContactFormValues,
+    { resetForm }: FormikHelpers<ContactFormValues>
+  ) => {
+    console.log('Formulário submetido com os seguintes valores:', values);
+    alert('Formulário enviado com sucesso!');
+    resetForm();
+  };
+
   return (
-    <div className="groupContact">
+    <div className="groupContact" style={containerStyle(theme, objectTheme)}>
       <section className="contato" id="contact">
         <article className="groupContact-primary">
           <div className="linhas"></div>
           <div className="linhas"></div>
           <div className="linhas"></div>
-          <h2 className="titleContact">
+          <h2 className="titleContact" style={titleStyle(theme, objectTheme)}>
             &#8249; <span className="letraMonoton">C</span>ontact &#8260;
             &#8250;
           </h2>
         </article>
         <article className="groupContact-secundary">
-          <form className="form" id="form-contato">
-            <input
-              aria-required="true"
-              role="textbox"
-              aria-label="Nome completo"
-              className="inputsFormContato"
-              type="text"
-              name="nome"
-              id="nome"
-              placeholder="Enter your first and last name"
-              required
-              min="3"
-              max="50"
-            />
-            <input
-              aria-required="true"
-              role="textbox"
-              aria-label="Email"
-              className="inputsFormContato"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              required
-            />
-            <input
-              aria-required="true"
-              role="textbox"
-              aria-label="Assunto do Email"
-              className="inputsFormContato"
-              type="text"
-              name="assunto"
-              id="assunto"
-              placeholder="Message subject"
-              required
-            />
-            <textarea
-              aria-required="true"
-              role="textbox"
-              aria-label="Mensagem do email"
-              className="inputsFormContato"
-              name="mensagem"
-              id="mensagem"
-              placeholder="Your message..."
-              required
-            ></textarea>
-            <input
-              role="button"
-              aria-label="Enviar email"
-              type="submit"
-              value="Send"
-              id="enviar"
-            />
-          </form>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={contactFormSchema}
+            onSubmit={handleSubmit}
+          >
+            <Form className="form" id="form-contato">
+              <FormField id="nome" name="nome" placeholder={t("contact.namePlaceholder")} />
+              <FormField id="email" name="email" type="email" placeholder={t("contact.emailPlaceholder")} />
+              <FormField id="assunto" name="assunto" placeholder={t("contact.subjectPlaceholder")} />
+              <FormField id="mensagem" name="mensagem" type="textarea" placeholder={t("contact.messagePlaceholder")} />
+              
+              <input
+              style={inputStyle(theme, objectTheme)}
+                role="button"
+                aria-label={t("contact.sendButtonAria")}
+                type="submit"
+                value={t("contact.sendButton")}
+                id="enviar"
+              />
+            </Form>
+          </Formik>
         </article>
         <div className="groupContact-terciary">
           <div className="circle-2"></div>
           <img
             loading="lazy"
             src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/jefferson-image.jpeg"
-            alt="Foto do dono do portifólio "
+            alt="Foto do dono do portifólio"
           />
         </div>
       </section>
