@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
-@import "effect.scss";
 @import "mixins.scss";
 
 :root {
@@ -606,47 +605,46 @@ body {
 }
 
 .skill-element:hover {
-
   img {
     transform: scale(120%);
     transition: all 1s ease;
   }
 
   &:nth-child(1) {
-    border: 1px solid #93F02F;
+    border: 1px solid #93f02f;
   }
   &:nth-child(2) {
-    border: 1px solid #F29057;
+    border: 1px solid #f29057;
   }
   &:nth-child(3) {
-    border: 1px solid #9956F6;
+    border: 1px solid #9956f6;
   }
   &:nth-child(4) {
-    border: 1px solid #2AC5E1;
+    border: 1px solid #2ac5e1;
   }
   &:nth-child(5) {
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffffff;
   }
   &:nth-child(6) {
-    border: 1px solid #FF74B6;
+    border: 1px solid #ff74b6;
   }
   &:nth-child(7) {
-    border: 1px solid #9956F6;
+    border: 1px solid #9956f6;
   }
   &:nth-child(8) {
-    border: 1px solid #93F02F;
+    border: 1px solid #93f02f;
   }
   &:nth-child(9) {
-    border: 1px solid #FF80BD;
+    border: 1px solid #ff80bd;
   }
   &:nth-child(10) {
-    border: 1px solid #F5C022;
+    border: 1px solid #f5c022;
   }
   &:nth-child(11) {
-    border: 1px solid #FF74B6;
+    border: 1px solid #ff74b6;
   }
   &:nth-child(12) {
-    border: 1px solid #2AC5E1;
+    border: 1px solid #2ac5e1;
   }
 }
 
@@ -660,55 +658,55 @@ body {
 }
 .express img {
   width: 60%;
-  filter: drop-shadow(0px 0px 25px #F5C022);
+  filter: drop-shadow(0px 0px 25px #f5c022);
 }
 .mysql img {
   width: 60%;
-  filter: drop-shadow(0px 0px 25px #F5C022);
+  filter: drop-shadow(0px 0px 25px #ffd500);
 }
 
 .sass img {
   width: 65%;
-  filter: drop-shadow(0px 0px 25px #FF74B6);
+  filter: drop-shadow(0px 0px 25px #ff74b6);
 }
 
 .docker img {
   width: 60%;
-  filter: drop-shadow(0px 0px 25px #2AC5E1);
+  filter: drop-shadow(0px 0px 25px #2ac5e1);
 }
 
 .postgresql img {
   width: 60%;
-  filter: drop-shadow(0px 0px 25px #FF74B6);
+  filter: drop-shadow(0px 0px 25px #ff74b6);
 }
 
 .nextjs img {
-  filter: drop-shadow(0px 0px 25px #FFF);
-   width: 63%;
+  filter: drop-shadow(0px 0px 25px #fff);
+  width: 63%;
 }
 .nestjs img {
   width: 60%;
-  filter: drop-shadow(0px 0px 25px #9956F6);
+  filter: drop-shadow(0px 0px 25px #9956f6);
 }
 
-.java img{
+.java img {
   width: 50%;
-  filter: drop-shadow(0px 0px 25px #93F02F);
+  filter: drop-shadow(0px 0px 25px #93f02f);
 }
 
-.git img{
+.git img {
   width: 50%;
-  filter: drop-shadow(0px 0px 25px #FF74B6);
+  filter: drop-shadow(0px 0px 25px #ff74b6);
 }
 
-.nodejs img{
+.nodejs img {
   width: 55%;
-  filter: drop-shadow(0px 0px 25px #93F02F);
+  filter: drop-shadow(0px 0px 25px #93f02f);
 }
 
-.flutter img{
+.flutter img {
   width: 50%;
-  filter: drop-shadow(0px 0px 25px #9956F6);
+  filter: drop-shadow(0px 0px 25px #9956f6);
 }
 
 .textSkills {
@@ -948,20 +946,55 @@ strong {
   padding: 2em;
   transition: border 1s ease;
   transition: all 0.5s ease;
+
+  &:hover {
+    border: 1px solid white;
+  }
+
+  .circle-externo-servico {
+    width: 11em;
+    height: 11em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circle-externo-servico-code {
+    background-image: linear-gradient(
+      to bottom right,
+      #93f02f,
+      darken(#93f02f, 40%),
+      #93f02f
+    );
+  }
+
+  .circle-externo-servico-api {
+    background-image: linear-gradient(
+      to bottom right,
+      #ff9d57,
+      darken(#ff9d57, 40%),
+      #ff9d57
+    );
+  }
+
+  .circle-externo-servico-phone {
+    background-image: linear-gradient(
+      to bottom right,
+      #9956f6,
+      darken(#9956f6, 40%),
+      #9956f6
+    );
+  }
 }
 
-.card-service:hover {
-  border: 1px solid var(--color-terciary);
+.card-service-code:hover {
+  border: 1px solid #93f02f;
 }
-
-.circle-externo-servico {
-  width: 11em;
-  height: 11em;
-  border-radius: 50%;
-  background-image: linear-gradient(to bottom right, #00ffff, #155558, #00ffff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.card-service-phone:hover {
+  border: 1px solid #9956f6;
+}
+.card-service-api:hover {
+  border: 1px solid #ff9d57;
 }
 
 .circle-interno-servico {
@@ -975,8 +1008,26 @@ strong {
   transition: all 0.5s ease;
 }
 
-.circle-interno-servico img {
+.service-card-border-light {
+  border: 1px solid #e2e2e2;
+}
+.service-card-border-dark {
+  border: 1px solid #1a1a1a;
+}
+
+.service_code {
   width: 50%;
+  filter: drop-shadow(0px 0px 25px #93f02f);
+}
+
+.service_phone {
+  width: 40%;
+  filter: drop-shadow(0px 0px 25px #9956f6);
+}
+
+.service_api {
+  width: 65%;
+  filter: drop-shadow(0px 0px 25px #ff9d57bd);
 }
 
 .titleService {

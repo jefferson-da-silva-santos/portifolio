@@ -1,70 +1,37 @@
+import ServiceCard from '../../components/CardService';
+import { servicesData } from '../../consts/dataConsts';
+import useTheme from '../../hooks/useTheme';
+import objectTheme from '../../assets/theme.json';
+import { containerStyles, titleStyles } from './styles';
+
 const Servicos = () => {
+  const {theme} = useTheme();
+
   return (
-    <div className="groupService" id="service">
+    <div className="groupService" id="service" style={containerStyles(theme, objectTheme)}>
       <section className="service">
-        <article className="groupService-primary hidden-scroll-bottom">
+        <article className="groupService-primary">
           <div className="linhas"></div>
           <div className="linhas"></div>
           <div className="linhas"></div>
-          <h2 className="titleService">
+          <h2 className="titleService" style={titleStyles(theme, objectTheme)}>
             &#8249; <span className="letraMonoton">S</span>ervices &#8260;
             &#8250;
           </h2>
         </article>
         <article className="groupService-secundary">
-          <article className="card-service hidden-scroll-s1">
-            <div className="circle-externo-servico">
-              <div className="circle-interno-servico">
-                <img
-                  loading="lazy"
-                  src="src/img/code-icom.svg"
-                  alt="simbolo da programação"
-                />
-              </div>
-            </div>
-
-            <h3 className="title-card-service">Website Creation</h3>
-            <p className="description-card-service">
-              Creation of personalized websites, whether personal or for various
-              business sectors
-            </p>
-          </article>
-
-          <article className="card-service hidden-scroll-s2">
-            <div className="circle-externo-servico">
-              <div className="circle-interno-servico">
-                <img
-                  loading="lazy"
-                  src="src/img/mobile-icon.svg"
-                  alt="imagem de um celular"
-                />
-              </div>
-            </div>
-
-            <h3 className="title-card-service">Responsive Websites</h3>
-            <p className="description-card-service">
-              All websites are responsive, to further improve the user
-              experience on any device.
-            </p>
-          </article>
-
-          <article className="card-service hidden-scroll-s3">
-            <div className="circle-externo-servico">
-              <div className="circle-interno-servico">
-                <img
-                  loading="lazy"
-                  src="src/img/api-icon.svg"
-                  alt="Simbolo de uma API"
-                />
-              </div>
-            </div>
-
-            <h3 className="title-card-service">Creating APIs</h3>
-            <p className="description-card-service">
-              Creation of secure Rest APIs, and integration with external
-              databases experience.
-            </p>
-          </article>
+          {servicesData.map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              description={service.description}
+              imageSrc={service.imageSrc}
+              imageAlt={service.imageAlt}
+              cardClass={service.cardClass}
+              circleClass={service.circleClass}
+              imageClass={service.imageClass}
+            />
+          ))}
         </article>
       </section>
     </div>

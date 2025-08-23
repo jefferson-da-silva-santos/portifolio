@@ -2,7 +2,7 @@ const Contato = () => {
   return (
     <div className="groupContact">
       <section className="contato" id="contact">
-        <article className="groupContact-primary hidden-scroll-bottom">
+        <article className="groupContact-primary">
           <div className="linhas"></div>
           <div className="linhas"></div>
           <div className="linhas"></div>
@@ -11,7 +11,7 @@ const Contato = () => {
             &#8250;
           </h2>
         </article>
-        <article className="groupContact-secundary hidden-scroll-bottom">
+        <article className="groupContact-secundary">
           <form className="form" id="form-contato">
             <input
               aria-required="true"
@@ -67,7 +67,7 @@ const Contato = () => {
             />
           </form>
         </article>
-        <div className="groupContact-terciary hidden-scroll-bottom">
+        <div className="groupContact-terciary">
           <div className="circle-2"></div>
           <img
             loading="lazy"

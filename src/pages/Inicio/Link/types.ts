@@ -4,7 +4,7 @@ export interface SocialButtonProps {
   iconClass: string;
   functionStyle: (
     theme: string,
-    themeObject: any,
+    themeObject: object,
     isHoverButton: boolean[],
     i: number
   ) => React.CSSProperties;
@@ -12,7 +12,7 @@ export interface SocialButtonProps {
     index: number,
     isHoverButton: boolean[],
     theme: string,
-    themeObject: any
+    themeObject: object
   ) => React.CSSProperties;
   onMouseEnter: (index: number, state: boolean) => void;
   onMouseLeave: (index: number, state: boolean) => void;

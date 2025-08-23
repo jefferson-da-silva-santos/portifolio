@@ -3,7 +3,7 @@ import { getThemeProps } from "../../utils/themeUtilities";
 
 export const stylesButton = (
   theme: string,
-  themeObject: any,
+  themeObject: object,
   isHoverButton: boolean[],
   i: number
 ) => {
@@ -23,7 +23,7 @@ export const handleSetHoverButtonIcon = (
   index: number,
   isHoverButton: boolean[],
   theme: string,
-  themeObject: any
+  themeObject: object
 ) => {
   const isHovering = isHoverButton[index];
   const buttonProps = getThemeProps(theme, themeObject, "init", "buttons");
@@ -33,14 +33,14 @@ export const handleSetHoverButtonIcon = (
   };
 };
 
-export const styleContainer = (theme: string, themeObject: any) => {
+export const styleContainer = (theme: string, themeObject: object) => {
   const containerProps = getThemeProps(theme, themeObject, "init", "container");
   return {
     backgroundColor: containerProps.background,
   };
 };
 
-export const styleTitle = (theme: string, themeObject: any) => {
+export const styleTitle = (theme: string, themeObject: object) => {
   const titleProps = getThemeProps(theme, themeObject, "init", "title");
   return {
     color: titleProps.color,
