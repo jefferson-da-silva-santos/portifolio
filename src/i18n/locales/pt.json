@@ -39,5 +39,31 @@
     "textMySQL": "Esse é o texto do MySQL pt-br",
     "textGit": "Esse é o texto do GIT pt-br",
     "textDocker": "Esse é o texto do DOcker pt-br"
+  },
+  "project": {
+    "title": "Projetos"
+  },
+  "services": {
+    "title": "Serviços",
+    "card1": {
+      "title": "Criação de Sites",
+      "text": "Criação de sites personalizados, sejam pessoais ou para diversos setores de negócio"
+    },
+    "card2": {
+      "title": "Sites Responsivos",
+      "text": "Todos os sites são responsivos, para melhorar ainda mais a experiência do usuário em qualquer dispositivo."
+    },
+    "card3": {
+      "title": "Criação de APIs",
+      "text": "Criação de APIs Rest seguras e experiência de integração com bancos de dados externos."
+    }
+  },
+  "contact": {
+    "title": "Contato",
+    "namePlaceholder": "Insira seu nome e sobrenome",
+    "emailPlaceholder": "Insira seu email",
+    "subjectPlaceholder": "Assunto da mensagem",
+    "messagePlaceholder": "Sua mensagem...",
+    "sendButton": "Enviar"
   }
 }

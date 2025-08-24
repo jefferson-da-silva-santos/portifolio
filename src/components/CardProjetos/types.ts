@@ -3,4 +3,5 @@ export interface ProjectCardProps {
   title: string;
   stack: string;
   buttonClass: string;
+  handleOpenModal: () => void
 }

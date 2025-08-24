@@ -1,6 +1,25 @@
 {
   "themes": {
     "light": {
+      "modal": {
+        "container": {
+          "background": "#ffffff8c"
+        },
+        "section": {
+          "background": "#FFF"
+        },
+        "title": {
+          "color": "#000",
+          "textShadow": "rgba(0, 0, 0, 0.604) 0px 0px 5px"
+        },
+        "text": {
+          "color": "#000"
+        },
+        "skill": {
+          "background": "#f7f7f7",
+          "border": "1px solid #efefef"
+        }
+      },
       "navbar": {
         "container": {
           "background": "#ffffffed",
@@ -122,6 +141,25 @@
       }
     },
     "dark": {
+      "modal": {
+        "container": {
+          "background": "#000000db"
+        },
+        "section": {
+          "background": "#0b0b0b"
+        },
+        "title": {
+          "color": "rgb(0, 255, 255)",
+          "textShadow": "rgba(0, 255, 255, 0.604) 0px 0px 5px"
+        },
+        "text": {
+          "color": "#FFF"
+        },
+        "skill": {
+          "background": "#141414",
+          "border": "1px solid #212121"
+        }
+      },
       "navbar": {
         "container": {
           "background": "#080808ed",

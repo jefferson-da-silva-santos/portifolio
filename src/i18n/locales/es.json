@@ -24,7 +24,7 @@
     "description1": "Mi nombre es <strong className='strong-light'>Jefferson Santos</strong> y soy un entusiasta de la tecnología que decidió seguir una carrera en programación. Durante los últimos <strong className='strong-light'>cuatro años</strong>, me he dedicado a comprender las principales tecnologías del mercado y a aplicar <strong className='strong-light'>metodologías de desarrollo ágiles</strong> (soy unamante del café).",
     "description2": "Completé un curso técnico en <strong className='strong-light'> Desarrollo de Sistemas (DS)</strong> con un enfoque en <strong className='strong-light'> desarrollo Full Stack</strong>. Desde entonces, he trabajado en proyectos como freelancer y he contribuido a proyectos de código abierto, mejorando continuamente mis habilidades y experiencia en el campo."
   },
-    "skills": {
+  "skills": {
     "title": "Habilidades",
     "defaultText": "* Passe o mouse sobre as habilidades para saber mais * Es",
     "textNodejs": "Esse é o texto do NodeJs Es",
@@ -39,5 +39,31 @@
     "textMySQL": "Esse é o texto do MySQL Es",
     "textGit": "Esse é o texto do GIT Es",
     "textDocker": "Esse é o texto do DOcker Es"
+  },
+  "project": {
+    "title": "Proyectos"
+  },
+  "services": {
+    "title": "Servicios",
+    "card1": {
+      "title": "Creación de Sitios Web",
+      "text": "Creación de sitios web personalizados, ya sean personales o para diversos sectores de negocio."
+    },
+    "card2": {
+      "title": "Sitios Web Adaptables",
+      "text": "Todos los sitios web son adaptables, para mejorar aún más la experiencia del usuario en cualquier dispositivo."
+    },
+    "card3": {
+      "title": "Creación de APIs",
+      "text": "Creación de APIs Rest seguras y experiencia en integración con bases de datos externas."
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "namePlaceholder": "Ingresa tu nombre y apellido",
+    "emailPlaceholder": "Ingresa tu correo electrónico",
+    "subjectPlaceholder": "Asunto del mensaje",
+    "messagePlaceholder": "Tu mensaje...",
+    "sendButton": "Enviar"
   }
 }

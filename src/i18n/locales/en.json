@@ -24,7 +24,7 @@
     "description1": "My name is <strong className='strong-light'>Jefferson Santos</strong> and I am a technology enthusiast who decided to pursue a career in programming. Over the last <strong className='strong-light'>four years</strong>, I have dedicated myself to understanding the main technologies on the market and applying  <strong className='strong-light'> agile development methodologies</strong> (I&#8217;m a coffee lover).",
     "description2": "I completed a technical course in <strong className='strong-light'> Systems Development (DS)</strong> with a focus on <strong className='strong-light'> Full Stack development</strong>. Since then, I have worked on projects as a freelancer and contributed to open source projects, continually improving my skills and experience in the field."
   },
-    "skills": {
+  "skills": {
     "title": "Habilidades",
     "defaultText": "* Passe o mouse sobre as habilidades para saber mais * Inglês",
     "textNodejs": "Esse é o texto do NodeJs Inglês",
@@ -39,5 +39,31 @@
     "textMySQL": "Esse é o texto do MySQL Inglês",
     "textGit": "Esse é o texto do GIT Inglês",
     "textDocker": "Esse é o texto do DOcker Inglês"
+  },
+  "project": {
+    "title": "Projects"
+  },
+  "services": {
+    "title": "Services",
+    "card1": {
+      "title": "Website Creation",
+      "text": "Creation of personalized websites, whether personal or for various business sectors"
+    },
+    "card2": {
+      "title": "Responsive Websites",
+      "text": "All websites are responsive, to further improve the user experience on any device."
+    },
+    "card3": {
+      "title": "API Creation",
+      "text": "Creation of secure Rest APIs and integration experience with external databases."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "namePlaceholder": "Enter your first and last name",
+    "emailPlaceholder": "Enter your email",
+    "subjectPlaceholder": "Subject of the message",
+    "messagePlaceholder": "Your message...",
+    "sendButton": "Send"
   }
 }

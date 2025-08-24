@@ -1,23 +1,40 @@
 // components/ModalProject.tsx
 import React from 'react';
 import type { ModalProjectProps } from './types';
+import useTheme from '../../hooks/useTheme';
+import themeObject from '../../assets/theme.json';
+import {
+  containerModalStyles,
+  sectionModalStyles,
+  skillModalStyles,
+  textModalStyles,
+  titleModalStyles,
+} from './styles';
+
+// Assumindo que a interface para technologiesData está em '../../consts/dataConsts'
+import { technologiesData } from '../../consts/dataConsts';
 
 const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, projectData }) => {
-  if (!isVisible) {
+  const { theme } = useTheme();
+
+  if (!isVisible || !projectData) {
     return null;
   }
 
   const { title, description, technologies, githubUrl, deployUrl } = projectData;
+
+  const projectTechnologies: string[] = technologies || [];
 
   return (
     <aside
       className="group-project-options-box"
       role="dialog"
       aria-label="Ver projeto"
+      style={containerModalStyles(theme, themeObject)}
     >
-      <section className="project-options-box">
+      <section className="project-options-box" style={sectionModalStyles(theme, themeObject)}>
         <article className="group-texts-options-box">
-          <h1 className="name-project-option">{title}</h1>
+          <h1 style={titleModalStyles(theme, themeObject)} className="name-project-option">{title}</h1>
           <button
             className="close-options"
             onClick={onClose}
@@ -27,68 +44,22 @@ const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, project
             <i className='bx bx-x'></i>
           </button>
         </article>
-        <p className="description-option-project">{description}</p>
-        <p className="text-tecnologias-options">Tecnologias:</p>
+        <p className="description-option-project" style={textModalStyles(theme, themeObject)}>{description}</p>
+        <p className="text-tecnologias-options" style={textModalStyles(theme, themeObject)}>Tecnologias:</p>
         <ul className="list-options-box-tec">
-          {/* {technologies.map((tech, index) => (
-            <li key={index}>{tech}</li>
-          ))} */}
-          <li className='react-item-list'>
-            <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="" /> React
-          </li>
+          {projectTechnologies.map((techKey: string, index: number) => {
+            const techInfo = technologiesData[techKey.toLowerCase()];
 
-           <li className='sass-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_sass.webp" alt="" /> SASS
-          </li>
+            if (!techInfo) {
+              return null;
+            }
 
-          <li className='java-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_java.webp" alt="" /> Java
-          </li>
-
-           <li className='nest-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_nest.webp" alt="" /> NestJs
-          </li>
-
-           <li className='next-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_next.webp" alt="" /> NextJs
-          </li>
-           <li className='express-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_express.webp" alt="" /> Express
-          </li>
-           <li className='mysql-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_mysql.webp" alt="" /> MySQL
-          </li>
-           <li className='postgres-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_postgres.webp" alt="" /> PostgreSQL
-          </li>
-           <li className='git-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_git.webp" alt="" /> GIT/GitHub
-          </li>
-           <li className='docker-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_docker.webp" alt="" /> Docker
-          </li>
-           <li className='flutter-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_flutter.webp" alt="" /> Flutter
-          </li>
-           <li className='node-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_node.webp" alt="" /> NodeJs
-          </li>
-           <li className='vite-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_vite.webp" alt="" /> Vite
-          </li>
-           <li className='css-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_css.webp" alt="" /> CSS
-          </li>
-           <li className='js-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_js.webp" alt="" /> JavaScript
-          </li>
-           <li className='ts-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_ts.webp" alt="" /> TypesScript
-          </li>
-           <li className='html-item-list'>
-            <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_html.webp" alt="" /> HTML
-          </li>
-
+            return (
+              <li key={index} className={techInfo.className} style={skillModalStyles(theme, themeObject)}>
+                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} /> {techInfo.text}
+              </li>
+            );
+          })}
         </ul>
         <p className="text-see-in-options">Veja em:</p>
         <article className="groupBtn-options-box">

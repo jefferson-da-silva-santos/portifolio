@@ -24,7 +24,7 @@
     "description1": "Mi chiamo <strong className='strong-light'>Jefferson Santos</strong> e sono un appassionato di tecnologia che ha deciso di intraprendere una carriera nella programmazione. Negli ultimi <strong className='strong-light'>quattro anni</strong>, mi sono dedicato a comprendere le principali tecnologie sul mercato e ad applicare <strong className='strong-light'>metodologie di sviluppo agili</strong> (sono un amante del caffè).",
     "description2": "Ho completato un corso tecnico in <strong className='strong-light'> Sviluppo di Sistemi (DS)</strong> con un focus sullo <strong className='strong-light'> sviluppo Full Stack</strong>. Da allora, ho lavorato su progetti come freelance e ho contribuito a progetti open source, migliorando continuamente le mie competenze ed esperienza nel settore."
   },
-    "skills": {
+  "skills": {
     "title": "Habilidades",
     "defaultText": "* Passe o mouse sobre as habilidades para saber mais * It",
     "textNodejs": "Esse é o texto do NodeJs It",
@@ -39,5 +39,31 @@
     "textMySQL": "Esse é o texto do MySQL It",
     "textGit": "Esse é o texto do GIT It",
     "textDocker": "Esse é o texto do DOcker It"
+  },
+  "project": {
+    "title": "Progetti"
+  },
+  "services": {
+    "title": "Servizi",
+    "card1": {
+      "title": "Creazione di Siti Web",
+      "text": "Creazione di siti web personalizzati, sia personali che per diversi settori commerciali."
+    },
+    "card2": {
+      "title": "Siti Web Reattivi",
+      "text": "Tutti i siti web sono reattivi, per migliorare ulteriormente l'esperienza dell'utente su qualsiasi dispositivo."
+    },
+    "card3": {
+      "title": "Creazione di API",
+      "text": "Creazione di API Rest sicure ed esperienza nell'integrazione con database esterni."
+    }
+  },
+  "contact": {
+    "title": "Contatto",
+    "namePlaceholder": "Inserisci nome e cognome",
+    "emailPlaceholder": "Inserisci la tua email",
+    "subjectPlaceholder": "Oggetto del messaggio",
+    "messagePlaceholder": "Il tuo messaggio...",
+    "sendButton": "Invia"
   }
 }

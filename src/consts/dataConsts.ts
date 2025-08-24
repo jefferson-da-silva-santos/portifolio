@@ -18,6 +18,11 @@ export const ImageUrls = {
     mysql: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_mysql.webp",
     git: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_git.webp",
     docker: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_docker.webp",
+    vite: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_vite.webp",
+    css: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_css.webp",
+    javascript: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_js.webp",
+    typescript: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_ts.webp",
+    html: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_html.webp"
   },
   icons: {
     brazil: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/brasil.png",
@@ -121,67 +126,166 @@ export const getSkillsData = (theme: string) => {
   ];
 };
 
+export const technologiesData = {
+  react: {
+    imageSrc: ImageUrls.logos.react,
+    text: "React",
+    className: "react-item-list"
+  },
+  sass: {
+    imageSrc: ImageUrls.logos.sass,
+    text: "SASS",
+    className: "sass-item-list"
+  },
+  java: {
+    imageSrc: ImageUrls.logos.java,
+    text: "Java",
+    className: "java-item-list"
+  },
+  nest: {
+    imageSrc: ImageUrls.logos.nest,
+    text: "NestJS",
+    className: "nest-item-list"
+  },
+  next: {
+    imageSrc: ImageUrls.logos.next,
+    text: "NextJs",
+    className: "next-item-list"
+  },
+  express: {
+    imageSrc: ImageUrls.logos.express,
+    text: "Express",
+    className: "express-item-list"
+  },
+  mysql: {
+    imageSrc: ImageUrls.logos.mysql,
+    text: "MySQL",
+    className: "mysql-item-list"
+  },
+  postgresql: {
+    imageSrc: ImageUrls.logos.postgresql,
+    text: "PostgreSQL",
+    className: "postgres-item-list"
+  },
+  git: {
+    imageSrc: ImageUrls.logos.git,
+    text: "GIT/GitHub",
+    className: "git-item-list"
+  },
+  docker: {
+    imageSrc: ImageUrls.logos.docker,
+    text: "Docker",
+    className: "docker-item-list"
+  },
+  flutter: {
+    imageSrc: ImageUrls.logos.flutter,
+    text: "Flutter",
+    className: "flutter-item-list"
+  },
+  nodejs: {
+    imageSrc: ImageUrls.logos.node,
+    text: "NodeJs",
+    className: "node-item-list"
+  },
+  vite: {
+    imageSrc: ImageUrls.logos.vite,
+    text: "Vite",
+    className: "vite-item-list"
+  },
+  css: {
+    imageSrc: ImageUrls.logos.css,
+    text: "CSS",
+    className: "css-item-list"
+  },
+  javascript: {
+    imageSrc: ImageUrls.logos.javascript,
+    text: "JavaScript",
+    className: "js-item-list"
+  },
+  typescript: {
+    imageSrc: ImageUrls.logos.typescript,
+    text: "TypeScript",
+    className: "ts-item-list"
+  },
+  html: {
+    imageSrc: ImageUrls.logos.html,
+    text: "HTML",
+    className: "html-item-list"
+  }
+};
+
 export const projectsData = [
   {
     title: "Cardápio Online",
     stack: "Stack: Vite | HTML | SASS | CSS | JavaScript | API ViaCep",
+    technologies: ["vite", "html", "sass", "css", "javascript"],
     imageClass: "cardapio",
     buttonClass: "cardapio"
   },
   {
     title: "Jéssica Planilhas",
     stack: "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons",
+    technologies: ["vite", "html", "css", "javascript"],
     imageClass: "planilhas",
     buttonClass: "planilhas"
   },
   {
     title: "Loja de Sushi",
     stack: "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer",
+    technologies: ["vite", "html", "css", "sass", "javascript"],
     imageClass: "sushi",
     buttonClass: "sushi"
   },
   {
     title: "Lan House Infoccell",
     stack: "Stack: Vite | HTML | CSS | SASS | JavaScript",
+    technologies: ["vite", "html", "css", "sass", "javascript"],
     imageClass: "infoccell",
     buttonClass: "infoccell"
   },
   {
     title: "Bolachas Léo de Lita",
     stack: "Stack: Vite | HTML | CSS | SASS | JavaScript",
+    technologies: ["vite", "html", "css", "sass", "javascript"],
     imageClass: "leoLita",
     buttonClass: "leoLita"
   },
   {
     title: "Calculadora de IMC",
     stack: "Stack: HTML | CSS | JavaScript | SEO",
+    technologies: ["html", "css", "javascript"],
     imageClass: "calculadoraIMC",
     buttonClass: "calculadoraIMC"
   },
   {
     title: "Página de Venda de Plani",
     stack: "Stack: HTML | SASS | CSS | JavaScript | SEO",
+    technologies: ["html", "sass", "css", "javascript"],
     imageClass: "paginaVendasJessica",
     buttonClass: "paginaVendasJessica"
   },
   {
     title: "Promoção 3D",
     stack: "Stack: HTML | SASS | CSS | JavaScript | SEO",
+    technologies: ["html", "sass", "css", "javascript"],
     imageClass: "promocao3D",
     buttonClass: "promocao3D"
   },
   {
     title: "Promoção 3D",
     stack: "Stack: HTML | SASS | CSS | JavaScript | SEO",
+    technologies: ["html", "sass", "css", "javascript"],
     imageClass: "paginaPlanner",
     buttonClass: "paginaPlanner"
   }
 ];
 
-export const servicesData = [
-  {
-    title: "Website Creation",
-    description: "Creation of personalized websites, whether personal or for various business sectors",
+export const useServicesData = () => {
+  const { t } = useTranslation();
+  const servicesData = [
+     {
+    title: t('services.card1.title'),
+    description: t('services.card1.text'),
     imageSrc: ImageUrls.services.code,
     imageAlt: "simbolo da programação",
     cardClass: "card-service-code",
@@ -189,8 +293,8 @@ export const servicesData = [
     imageClass: "service_code",
   },
   {
-    title: "Responsive Websites",
-    description: "All websites are responsive, to further improve the user experience on any device.",
+    title: t('services.card2.title'),
+    description: t('services.card2.text'),
     imageSrc: ImageUrls.services.phone,
     imageAlt: "imagem de um celular",
     cardClass: "card-service-phone",
@@ -198,12 +302,15 @@ export const servicesData = [
     imageClass: "service_phone",
   },
   {
-    title: "Creating APIs",
-    description: "Creation of secure Rest APIs, and integration with external databases experience.",
+   title: t('services.card3.title'),
+    description: t('services.card3.text'),
     imageSrc: ImageUrls.services.api,
     imageAlt: "Simbolo de uma API",
     cardClass: "card-service-api",
     circleClass: "circle-externo-servico-api",
     imageClass: "service_api",
   },
-];
+  ]
+
+  return {servicesData}
+}

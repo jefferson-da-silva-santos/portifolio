@@ -12,6 +12,8 @@ import { containerStyle, inputStyle, titleStyle } from './styles';
 const Contato = () => {
   const { t } = useTranslation();
   const {theme} = useTheme();
+  const firstLetterTitle = t("contact.title").charAt(0).toUpperCase();
+  const restOfTitle = t("contact.title").slice(1);
 
   const initialValues: ContactFormValues = {
     nome: '',
@@ -37,7 +39,7 @@ const Contato = () => {
           <div className="linhas"></div>
           <div className="linhas"></div>
           <h2 className="titleContact" style={titleStyle(theme, objectTheme)}>
-            &#8249; <span className="letraMonoton">C</span>ontact &#8260;
+            &#8249; <span className="letraMonoton">{firstLetterTitle}</span>{restOfTitle} &#8260;
             &#8250;
           </h2>
         </article>

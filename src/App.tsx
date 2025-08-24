@@ -14,7 +14,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const handleOpenModal = (project) => {
+  const handleOpenModal = (projec) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -43,15 +43,15 @@ function App() {
       <ThemeProvider>
         <LanguageProvider>
           <ModalProject
-            isVisible={true}
-            onClose={() => {}}
+            isVisible={isModalOpen}
+            onClose={handleCloseModal}
             projectData={adaptedProjectsData[0]}
           />
           <Inicio />
           <main>
             <Sobre />
             <Habilidades />
-            <Projetos />
+            <Projetos handleOpenModal={handleOpenModal} />
             <Servicos />
             <Contato />
           </main>

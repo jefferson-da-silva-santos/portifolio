@@ -39,5 +39,31 @@
     "textMySQL": "Esse é o texto do MySQL Fr",
     "textGit": "Esse é o texto do GIT Fr",
     "textDocker": "Esse é o texto do DOcker Fr"
+  },
+  "project": {
+    "title": "Projets"
+  },
+  "services": {
+    "title": "Services",
+    "card1": {
+      "title": "Création de Sites Web",
+      "text": "Création de sites web personnalisés, qu'ils soient personnels ou pour divers secteurs d'activité."
+    },
+    "card2": {
+      "title": "Sites Web Adaptatifs",
+      "text": "Tous les sites web sont adaptatifs, pour améliorer encore l'expérience utilisateur sur n'importe quel appareil."
+    },
+    "card3": {
+      "title": "Création d'APIs",
+      "text": "Création d'APIs Rest sécurisées et expérience d'intégration avec des bases de données externes."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "namePlaceholder": "Entrez votre prénom et nom de famille",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "subjectPlaceholder": "Objet du message",
+    "messagePlaceholder": "Votre message...",
+    "sendButton": "Envoyer"
   }
 }

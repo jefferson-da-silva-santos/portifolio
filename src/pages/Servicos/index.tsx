@@ -1,11 +1,16 @@
 import ServiceCard from '../../components/CardService';
-import { servicesData } from '../../consts/dataConsts';
 import useTheme from '../../hooks/useTheme';
 import objectTheme from '../../assets/theme.json';
 import { containerStyles, titleStyles } from './styles';
+import { useTranslation } from 'react-i18next';
+import { useServicesData } from '../../consts/dataConsts';
 
 const Servicos = () => {
   const {theme} = useTheme();
+   const { t } = useTranslation();
+    const firstLetterTitle = t("services.title").charAt(0).toUpperCase();
+    const restOfTitle = t("services.title").slice(1);
+    const {servicesData} = useServicesData();
 
   return (
     <div className="groupService" id="service" style={containerStyles(theme, objectTheme)}>
@@ -15,7 +20,7 @@ const Servicos = () => {
           <div className="linhas"></div>
           <div className="linhas"></div>
           <h2 className="titleService" style={titleStyles(theme, objectTheme)}>
-            &#8249; <span className="letraMonoton">S</span>ervices &#8260;
+            &#8249; <span className="letraMonoton">{firstLetterTitle}</span>{restOfTitle} &#8260;
             &#8250;
           </h2>
         </article>

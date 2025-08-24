@@ -10,6 +10,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   stack,
   buttonClass,
+  handleOpenModal
 }) => {
   const {theme} = useTheme();
 
@@ -23,6 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         aria-label="Ver projeto"
         className={`btn-project ${buttonClass}`}
         style={buttomCardStyles(theme, themeObject)}
+        onClick={handleOpenModal}
       >
         Ver projeto <i className="bi bi-box-arrow-up-right"></i>
       </a>
