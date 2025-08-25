@@ -1,5 +1,4 @@
-// src/components/Contato.tsx
-import React from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { Formik, Form, type FormikHelpers } from 'formik'; // Importe FormikHelpers
 import FormField from '../../components/FormField';

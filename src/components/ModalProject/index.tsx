@@ -1,5 +1,4 @@
 // components/ModalProject.tsx
-import React from "react";
 import type { ModalProjectProps } from "./types";
 import useTheme from "../../hooks/useTheme";
 import themeObject from "../../assets/theme.json";

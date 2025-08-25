@@ -1,10 +1,11 @@
 import { createContext } from "react";
 import type { IProject } from "../provider/types";
+import type { ModalProjectContextProps } from "./types";
 
-export const ModalProjectContext = createContext({
+export const ModalProjectContext = createContext<ModalProjectContextProps>({
   isModalOpen: false,
-  openModal: (project: IProject) => {},
+  openModal: (_: IProject) => {},
   closeModal: () => {},
-  selectedProject: null as IProject | null,
+  selectedProject: null,
 })
 

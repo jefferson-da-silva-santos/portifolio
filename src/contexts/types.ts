@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { IProject } from "../provider/types";
 
 export type LanguageType = 'pt' | 'en' | 'es' | 'it' | 'fr';
 
@@ -21,4 +22,11 @@ export interface MenuContextProps {
   toggleMenuVisibility: () => void;
   classMenuList: string;
   iconMenu: string;
+}
+
+export interface ModalProjectContextProps {
+  isModalOpen: boolean;
+  openModal: (project: IProject) => void; 
+  closeModal: () => void;
+  selectedProject: IProject | null;
 }

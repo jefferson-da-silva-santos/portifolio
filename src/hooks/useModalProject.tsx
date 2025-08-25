@@ -1,8 +1,9 @@
-import React from "react";
+
+import { useContext } from "react";
 import { ModalProjectContext } from "../contexts/ModalProjectContext";
 
 const useModalProject = () => {
-  const context = React.useContext(ModalProjectContext);
+  const context = useContext(ModalProjectContext);
   if (!context) {
     throw new Error("useModalProject must be used within a ModalProjectProvider");
   }

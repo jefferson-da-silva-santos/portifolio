@@ -1,5 +1,5 @@
 // components/ServiceCard.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { ServiceCardProps } from "./types";
 import useTheme from "../../hooks/useTheme";
 import objectTheme from "../../assets/theme.json";

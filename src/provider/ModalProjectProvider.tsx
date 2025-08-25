@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ModalProjectContext } from "../contexts/ModalProjectContext";
 import type { IProject } from "./types";
 
