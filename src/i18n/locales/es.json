@@ -26,7 +26,7 @@
   },
   "skills": {
     "title": "Habilidades",
-    "defaultText": "* Pasa el cursor sobre las habilidades para saber más * es-es",
+    "defaultText": "* Pasa el cursor sobre las habilidades para saber más *",
     "textNodejs": "Elegí Node.js porque me permite crear aplicaciones escalables y rápidas, que aguantan muchas peticiones al mismo tiempo sin perder rendimiento. Me gusta explorar el poder de JavaScript en el backend y sus frameworks para desarrollar soluciones modernas, sólidas y que realmente marcan la diferencia.",
     "textExpress": "Express.js es mi framework de elección para crear APIs RESTful robustas y escalables, proporcionando una estructura flexible y modular para manejar peticiones y respuestas de forma eficiente.",
     "textNestjs": "Estoy apasionado por aprender y dominar Nest.js, un framework que promete revolucionar la forma en que desarrollo aplicaciones server-side robustas y escalables, con una arquitectura modular e integración con TypeScript.",

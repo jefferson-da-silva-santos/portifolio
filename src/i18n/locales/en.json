@@ -26,7 +26,7 @@
   },
   "skills": {
     "title": "Skills",
-    "defaultText": "* Hover over skills to learn more * en-us",
+    "defaultText": "* Hover over skills to learn more *",
     "textNodejs": "I chose Node.js because it allows me to create scalable and fast applications that can handle many requests at the same time without losing performance. I enjoy exploring the power of JavaScript on the backend and its frameworks to develop modern, solid solutions that truly make a difference.",
     "textExpress": "Express.js is my go-to framework for creating robust and scalable RESTful APIs, providing a flexible and modular structure to handle requests and responses efficiently.",
     "textNestjs": "I am passionate about learning and mastering Nest.js, a framework that promises to revolutionize the way I develop robust and scalable server-side applications, with a modular architecture and integration with TypeScript.",

@@ -24,15 +24,10 @@ const ModalProject: React.FC<ModalProjectProps> = ({
   if (!selectedProject || isVisible) {
     return null;
   }
-  const {
-    title,
-    description,
-    gitHubUrl,
-    deployUrl,
-    technologies,
-  } = selectedProject;
+  const { title, description, gitHubUrl, deployUrl, technologies } =
+    selectedProject;
 
-  const {closeModal} = useModalProject();
+  const { closeModal } = useModalProject();
 
   const projectTechnologies: string[] = technologies || [];
 
@@ -81,7 +76,9 @@ const ModalProject: React.FC<ModalProjectProps> = ({
         </p>
         <ul className="list-options-box-tec">
           {projectTechnologies.map((techKey: string, index: number) => {
-            const techInfo = technologiesData[techKey.toLowerCase()];
+            const techKeyLower =
+              techKey.toLowerCase() as keyof typeof technologiesData;
+            const techInfo = technologiesData[techKeyLower];
 
             if (!techInfo) {
               return null;

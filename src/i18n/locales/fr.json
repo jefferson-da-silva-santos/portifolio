@@ -26,7 +26,7 @@
   },
   "skills": {
     "title": "Compétences",
-    "defaultText": "* Survolez les compétences pour en savoir plus * fr-fr",
+    "defaultText": "* Survolez les compétences pour en savoir plus *",
     "textNodejs": "J'ai choisi Node.js car il me permet de créer des applications évolutives et rapides, qui peuvent gérer de nombreuses requêtes en même temps sans perdre de performance. J'aime explorer la puissance de JavaScript dans le backend et ses frameworks pour développer des solutions modernes, solides et qui font vraiment la différence.",
     "textExpress": "Express.js est mon framework de prédilection pour créer des API RESTful robustes et évolutives, offrant une structure flexible et modulaire pour gérer les requêtes et les réponses de manière efficace.",
     "textNestjs": "Je suis passionné par l'apprentissage et la maîtrise de Nest.js, un framework qui promet de révolutionner la façon dont je développe des applications côté serveur robustes et évolutives, avec une architecture modulaire et une intégration avec TypeScript.",

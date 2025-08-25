@@ -3,16 +3,13 @@ import { projectImages } from "../../consts/dataConsts";
 import useTheme from "../../hooks/useTheme";
 import { styleContainer, styleText, styleTitle } from "./styles";
 import { useEffect, useState } from "react";
-import { toggleClassInText } from "../../utils/textUtilites";
+import { getFirstLetterTitle, getRestOfTitle, toggleClassInText } from "../../utils/textUtilites";
 
 const Sobre = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const [description1, setDescription1] = useState<string>("");
   const [description2, setDescription2] = useState<string>("");
-
-  const firstLetterTitle = t("about.title").charAt(0).toUpperCase();
-  const restOfTitle = t("about.title").slice(1);
 
   const oldClass = theme === 'light' ? 'strong-light' : 'strong-dark';
   const newClass = theme === 'light' ? 'strong-dark' : 'strong-light';
@@ -31,7 +28,7 @@ const Sobre = () => {
             <div className="linhas"></div>
             <div className="linhas"></div>
             <h2 className="titleSobre" style={styleTitle(theme)}>
-              &#8249; <span className="letraMonoton">{firstLetterTitle}</span>{restOfTitle} &#8260;
+              &#8249; <span className="letraMonoton">{getFirstLetterTitle(t("about.title"))}</span>{getRestOfTitle(t("about.title"))} &#8260;
               &#8250;
             </h2>
           </div>

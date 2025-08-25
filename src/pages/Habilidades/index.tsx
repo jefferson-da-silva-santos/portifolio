@@ -4,6 +4,7 @@ import themeObject from '../../assets/theme.json';
 import { useTranslation } from 'react-i18next';
 import { getSkillsData } from '../../consts/dataConsts';
 import { containerStyle, styleCardSkill, textStyle } from './styles';
+import { getFirstLetterTitle, getRestOfTitle } from '../../utils/textUtilites';
 
 const Habilidades = () => {
   const { theme } = useTheme();
@@ -39,7 +40,7 @@ const Habilidades = () => {
             <div className="linhas"></div>
             <div className="linhas"></div>
             <h2 className="titleSkills" style={titleStyle}>
-              &#8249; <span className="letraMonoton">S</span>kills &#8260; &#8250;
+              &#8249; <span className="letraMonoton">{getFirstLetterTitle(t("skills.title"))}</span>{getRestOfTitle(t("skills.title"))} &#8260; &#8250;
             </h2>
           </div>
           <p className="textSkills" id="description-skills" style={textStyle(theme, themeObject)}>

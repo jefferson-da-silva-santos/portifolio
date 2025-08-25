@@ -4,12 +4,12 @@ import useTheme from "../../hooks/useTheme";
 import { containerStyles, titleStyles } from "./styles";
 import objectTheme from '../../assets/theme.json';
 import { useTranslation } from "react-i18next";
+import { getFirstLetterTitle, getRestOfTitle } from "../../utils/textUtilites";
 
 const Projetos = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const firstLetterTitle = t("project.title").charAt(0).toUpperCase();
-  const restOfTitle = t("project.title").slice(1);
+  
   return (
     <div className="groupProjetos" id="project" style={containerStyles(theme, objectTheme)}>
       <section className="projetos">
@@ -20,7 +20,7 @@ const Projetos = () => {
             <div className="linhas"></div>
           </div>
           <h2 className="titleProjetos" style={titleStyles(theme, objectTheme)}>
-            &#8249; <span className="letraMonoton">{firstLetterTitle}</span>{restOfTitle} &#8260;
+            &#8249; <span className="letraMonoton">{getFirstLetterTitle(t("project.title"))}</span>{getRestOfTitle(t("project.title"))} &#8260;
             &#8250;
           </h2>
         </article>

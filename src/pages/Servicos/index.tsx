@@ -4,12 +4,11 @@ import objectTheme from '../../assets/theme.json';
 import { containerStyles, titleStyles } from './styles';
 import { useTranslation } from 'react-i18next';
 import { useServicesData } from '../../consts/dataConsts';
+import { getFirstLetterTitle, getRestOfTitle } from '../../utils/textUtilites';
 
 const Servicos = () => {
   const {theme} = useTheme();
    const { t } = useTranslation();
-    const firstLetterTitle = t("services.title").charAt(0).toUpperCase();
-    const restOfTitle = t("services.title").slice(1);
     const {servicesData} = useServicesData();
 
   return (
@@ -20,7 +19,7 @@ const Servicos = () => {
           <div className="linhas"></div>
           <div className="linhas"></div>
           <h2 className="titleService" style={titleStyles(theme, objectTheme)}>
-            &#8249; <span className="letraMonoton">{firstLetterTitle}</span>{restOfTitle} &#8260;
+            &#8249; <span className="letraMonoton">{getFirstLetterTitle(t("services.title"))}</span>{getRestOfTitle(t("services.title"))} &#8260;
             &#8250;
           </h2>
         </article>
