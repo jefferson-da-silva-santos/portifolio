@@ -6,7 +6,8 @@
           "background": "#ffffff8c"
         },
         "section": {
-          "background": "#FFF"
+          "background": "#FFF",
+          "boxShadow": "rgba(128, 128, 128, 0.576) 0px 0px 10px"
         },
         "title": {
           "color": "#000",
@@ -146,7 +147,8 @@
           "background": "#000000db"
         },
         "section": {
-          "background": "#0b0b0b"
+          "background": "#0b0b0b",
+          "boxShadow": "rgb(49, 49, 49) 0px 0px 8px"
         },
         "title": {
           "color": "rgb(0, 255, 255)",

@@ -5,7 +5,8 @@ export const containerModalStyles = (theme: string, themeObject: object) => ({
 });
 
 export const sectionModalStyles = (theme: string, themeObject: object) => ({
-  backgroundColor: getThemeProps(theme, themeObject, "modal", "section", "background")
+  backgroundColor: getThemeProps(theme, themeObject, "modal", "section", "background"),
+  boxShadow: getThemeProps(theme, themeObject, "modal", "section", "boxShadow")
 })
 
 export const titleModalStyles = (theme: string, themeObject: object) => ({
