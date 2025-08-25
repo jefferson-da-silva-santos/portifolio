@@ -21,14 +21,10 @@ export const linkStyle = (theme: string, themeObject: any) => ({
   color: getThemeProps(theme, themeObject, "navbar", "logo", "color"),
 });
 
-export const listStyle = (theme: string, themeObject: any) => ({
-  backgroundColor: getThemeProps(
-    theme,
-    themeObject,
-    "navbar",
-    "list",
-    "background"
-  ),
+export const listStyle = (theme: string, isMobile: boolean, isMenuMobileVisible: boolean) => ({
+  backgroundColor: isMobile ? theme === "light" ? "#fff" : "#0b0b0b" : "transparent",
+  display: isMobile ? isMenuMobileVisible ? "flex" : "none" : "flex",
+  boxShadow: isMobile ? theme === "light" ? "0px 0px 8px rgb(184, 184, 184)" : "0px 0px 8px rgb(0, 0, 0)" : "none",
 });
 
 export const getLinkStyle = (
@@ -48,5 +44,11 @@ export const getLinkStyle = (
 
   return {
     color: isHovering ? "#00ffff" : defaultColor,
-  };
+  }; 
+  
 };
+
+export const iconStyles = (theme: string) => ({
+  fontSize: "3rem",
+  color: theme === "dark" ? "white" : "black",
+})

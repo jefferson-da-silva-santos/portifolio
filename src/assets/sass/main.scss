@@ -36,6 +36,51 @@ body {
   border-radius: 10px;
 }
 
+// Shines
+
+@keyframes shines {
+  0% {
+    transform: rotate(-4deg) translateX(26);
+  }
+  100% {
+    transform: rotate(-4deg) translateX(-26rem);
+  }
+}
+
+.shines {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 6rem;
+  height: 400%;
+  background-color: transparent;
+  transform: rotate(-4deg) translateX(26rem);
+  @include flex(row, space-between, center, 1rem);
+
+  .primary-shine {
+    height: 100%;
+    width: 90%;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.177),
+      rgba(255, 255, 255, 0.282)
+    );
+    filter: blur(8px);
+  }
+
+  .secundary-shine {
+    height: 100%;
+    width: 20%;
+    background-image: linear-gradient(
+      to bottom,
+        rgba(255, 255, 255, 0.177),
+      rgba(255, 255, 255, 0.282)
+    );
+    filter: blur(8px);
+  }
+}
+
 /* Estilo do options */
 
 .group-project-options-box {
@@ -65,10 +110,10 @@ body {
 .list-options-box-tec {
   display: flex;
   list-style: none;
-  -moz-column-gap: .5em;
-  column-gap: .5em;
+  -moz-column-gap: 0.5em;
+  column-gap: 0.5em;
   flex-wrap: wrap;
-  row-gap: .5em;
+  row-gap: 0.5em;
 }
 
 @keyframes animatedSkill {
@@ -112,7 +157,7 @@ body {
   text-shadow: 0px 0px 21px #ff74b6;
   color: #ff74b6;
   img {
-    width:1.7rem;
+    width: 1.7rem;
     filter: drop-shadow(0px 0px 10px #ff74b6);
   }
 }
@@ -222,18 +267,18 @@ body {
   }
 }
 .ts-item-list {
-  text-shadow: 0px 0px 14px #006EFF;
-  color: #006EFF;
+  text-shadow: 0px 0px 14px #006eff;
+  color: #006eff;
   img {
-    filter: drop-shadow(0px 0px 10px #006EFF);
+    filter: drop-shadow(0px 0px 10px #006eff);
     width: 1.2rem;
   }
 }
 .html-item-list {
-  text-shadow: 0px 0px 14px #F06317;
-  color: #F06317;
+  text-shadow: 0px 0px 14px #f06317;
+  color: #f06317;
   img {
-    filter: drop-shadow(0px 0px 10px #F06317);
+    filter: drop-shadow(0px 0px 10px #f06317);
     width: 1.1rem;
   }
 }
@@ -331,7 +376,7 @@ body {
   width: 100%;
   background-color: #080808ed;
   box-shadow: 0px 0px 8px rgb(49, 49, 49);
-  z-index: 1;
+  z-index: 9999;
   transition: all 0.5s ease;
 }
 
@@ -391,12 +436,10 @@ body {
 }
 
 .select-menu-humburguer {
-  width: 33px;
-  height: 22px;
   display: none;
-  flex-direction: column;
-  gap: 5px;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 .linha-menu-humburguer {
@@ -1016,11 +1059,17 @@ strong {
   transition: 0.5s ease;
   cursor: pointer;
   transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-project:hover {
   background-color: #2e2e2e;
   font-weight: 800;
+
+  .shines {
+    animation: 1.3s shines ease-out 0s 1 normal forwards;
+  }
 }
 
 .group-image-project {

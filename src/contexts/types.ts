@@ -19,4 +19,6 @@ export interface LanguageProviderProps {
 export interface MenuContextProps {
   isMenuMobileVisible: boolean;
   toggleMenuVisibility: () => void;
+  classMenuList: string;
+  iconMenu: string;
 }

@@ -32,6 +32,42 @@ body {
   border-radius: 10px;
 }
 
+@keyframes shines {
+  0% {
+    transform: rotate(-4deg) translateX(26);
+  }
+  100% {
+    transform: rotate(-4deg) translateX(-26rem);
+  }
+}
+.shines {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 6rem;
+  height: 400%;
+  background-color: transparent;
+  transform: rotate(-4deg) translateX(26rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.shines .primary-shine {
+  height: 100%;
+  width: 90%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.177), rgba(255, 255, 255, 0.282));
+  filter: blur(8px);
+}
+.shines .secundary-shine {
+  height: 100%;
+  width: 20%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.177), rgba(255, 255, 255, 0.282));
+  filter: blur(8px);
+}
+
 /* Estilo do options */
 .group-project-options-box {
   position: fixed;
@@ -232,20 +268,20 @@ body {
 }
 
 .ts-item-list {
-  text-shadow: 0px 0px 14px #006EFF;
-  color: #006EFF;
+  text-shadow: 0px 0px 14px #006eff;
+  color: #006eff;
 }
 .ts-item-list img {
-  filter: drop-shadow(0px 0px 10px #006EFF);
+  filter: drop-shadow(0px 0px 10px #006eff);
   width: 1.2rem;
 }
 
 .html-item-list {
-  text-shadow: 0px 0px 14px #F06317;
-  color: #F06317;
+  text-shadow: 0px 0px 14px #f06317;
+  color: #f06317;
 }
 .html-item-list img {
-  filter: drop-shadow(0px 0px 10px #F06317);
+  filter: drop-shadow(0px 0px 10px #f06317);
   width: 1.1rem;
 }
 
@@ -337,7 +373,7 @@ body {
   width: 100%;
   background-color: rgba(8, 8, 8, 0.9294117647);
   box-shadow: 0px 0px 8px rgb(49, 49, 49);
-  z-index: 1;
+  z-index: 9999;
   transition: all 0.5s ease;
 }
 
@@ -397,12 +433,10 @@ body {
 }
 
 .select-menu-humburguer {
-  width: 33px;
-  height: 22px;
   display: none;
-  flex-direction: column;
-  gap: 5px;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 .linha-menu-humburguer {
@@ -1009,11 +1043,16 @@ strong {
   transition: 0.5s ease;
   cursor: pointer;
   transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-project:hover {
   background-color: #2e2e2e;
   font-weight: 800;
+}
+.btn-project:hover .shines {
+  animation: 1.3s shines ease-out 0s 1 normal forwards;
 }
 
 .group-image-project {
@@ -1348,19 +1387,51 @@ textarea:focus {
   }
 }
 @media screen and (max-width: 896px) {
+  @keyframes menuOpen {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+  .header {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding-top: 0;
+  }
+  @keyframes closeMenu {
+    0% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
   /* Estilos do Nav */
   .listNav {
-    visibility: hidden;
+    visibility: visible;
     cursor: pointer;
     position: absolute;
     flex-direction: column;
-    background-color: var(--color-secundary);
     left: 0;
     top: 0;
-    width: 100vw;
+    width: 50vw;
     height: 100vh;
     justify-content: center;
-    z-index: -1;
+    border-radius: 0 2em 2em 0;
+    z-index: 9999;
+    transform: translateX(-100%);
+  }
+  .open-menu {
+    animation: menuOpen 0.5s ease-in-out 0s 1 normal forwards;
+  }
+  .close-menu {
+    animation: closeMenu 0.5s ease-in-out 0s 1 normal forwards;
   }
   .groupHeader-img img {
     max-width: 20em;
@@ -1375,9 +1446,6 @@ textarea:focus {
     padding: 0.6em;
     width: 100%;
     text-align: center;
-  }
-  .listNav > li:hover {
-    background-color: var(--color-primary);
   }
   .listNav > li > a {
     font-size: 23px;

@@ -1,5 +1,5 @@
 // src/components/Navegacao.js (Versão refatorada)
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
 import { listIconTheme, useNavLinks } from "../../consts/dataConsts";
@@ -7,7 +7,8 @@ import type { INavegacaoProps } from "./types";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "../../hooks/useLenguage";
-import { containerStyle, getLinkStyle, linkStyle, listStyle } from "./styles";
+import { containerStyle, getLinkStyle, iconStyles, linkStyle, listStyle } from "./styles";
+import { useMenu } from "../../hooks/useMenu";
 
 const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const [isHover, setIsHover] = useState<Record<string, boolean>>({});
@@ -15,7 +16,20 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const { t } = useTranslation();
   const navLinks = useNavLinks();
   const { theme } = useTheme();
-  const { language, icon, toggleLanguage } = useLanguage();
+  const { icon, toggleLanguage } = useLanguage();
+  const { isMenuMobileVisible, toggleMenuVisibility, classMenuList, iconMenu } = useMenu();
+  
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 896);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 896);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="groupNav" style={containerStyle(theme, themeObject)}>
@@ -24,8 +38,8 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           &#8249; <span className="letraMonoton">J</span>eff &#8260; &#8250;
         </a>
         <ul
-          style={listStyle(theme, themeObject)}
-          className="listNav"
+          style={listStyle(theme, isMobile, isMenuMobileVisible)}
+          className={`listNav ${classMenuList}`}
           id="lista-menus"
           role="tablist"
         >
@@ -85,16 +99,18 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
             </a>
           </li>
         </ul>
-        <div
+        <button
           className="select-menu-humburguer"
           id="menu"
           role="button"
           aria-label={t("navigation.ariaLabels.toggleMenu")}
+          onClick={toggleMenuVisibility}
         >
-          <div className="linha-menu-humburguer"></div>
-          <div className="linha-menu-humburguer"></div>
-          <div className="linha-menu-humburguer"></div>
-        </div>
+          <i
+            style={iconStyles(theme)}
+            className={iconMenu}
+          ></i>
+        </button>
       </nav>
     </div>
   );

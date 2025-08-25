@@ -9,6 +9,7 @@ import {
 } from "./styles";
 import useModalProject from "../../hooks/useModalProject";
 import type { IProject } from "../../provider/types";
+import { Shines } from "../Shines";
 
 const ProjectCard: React.FC<IProject> = ({
   imageClass,
@@ -55,6 +56,7 @@ const ProjectCard: React.FC<IProject> = ({
         style={buttomCardStyles(theme, themeObject)}
         onClick={() => openModal(projectData)}
       >
+        <Shines />
         Ver projeto <i className="bi bi-box-arrow-up-right"></i>
       </a>
     </div>
