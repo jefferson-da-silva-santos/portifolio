@@ -216,67 +216,112 @@ export const technologiesData = {
 
 export const projectsData = [
   {
+    id: 1,
+    imgUrl: "",
     title: "Cardápio Online",
+    description: "Descrição do projeto Cardápio Online",
     stack: "Stack: Vite | HTML | SASS | CSS | JavaScript | API ViaCep",
     technologies: ["vite", "html", "sass", "css", "javascript"],
     imageClass: "cardapio",
-    buttonClass: "cardapio"
+    buttonClass: "cardapio",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 2,
+    imgUrl: "",
     title: "Jéssica Planilhas",
+    description: "Descrição do projeto Jéssica Planilhas",
     stack: "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons",
     technologies: ["vite", "html", "css", "javascript"],
     imageClass: "planilhas",
-    buttonClass: "planilhas"
+    buttonClass: "planilhas",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 3,
+    imgUrl: "",
     title: "Loja de Sushi",
+    description: "Descrição do projeto Loja de Sushi",
     stack: "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer",
     technologies: ["vite", "html", "css", "sass", "javascript"],
     imageClass: "sushi",
-    buttonClass: "sushi"
+    buttonClass: "sushi",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 4,
+    imgUrl: "",
     title: "Lan House Infoccell",
+    description: "Descrição do projeto Lan House Infoccell",
     stack: "Stack: Vite | HTML | CSS | SASS | JavaScript",
     technologies: ["vite", "html", "css", "sass", "javascript"],
     imageClass: "infoccell",
-    buttonClass: "infoccell"
+    buttonClass: "infoccell",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 5,
+    imgUrl: "",
     title: "Bolachas Léo de Lita",
+    description: "Descrição do projeto Bolachas Léo de Lita",
     stack: "Stack: Vite | HTML | CSS | SASS | JavaScript",
     technologies: ["vite", "html", "css", "sass", "javascript"],
     imageClass: "leoLita",
-    buttonClass: "leoLita"
+    buttonClass: "leoLita",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 6,
+    imgUrl: "",
     title: "Calculadora de IMC",
+    description: "Descrição do projeto Calculadora de IMC",
     stack: "Stack: HTML | CSS | JavaScript | SEO",
     technologies: ["html", "css", "javascript"],
     imageClass: "calculadoraIMC",
-    buttonClass: "calculadoraIMC"
+    buttonClass: "calculadoraIMC",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 7,
+    imgUrl: "",
     title: "Página de Venda de Plani",
+    description: "Descrição do projeto Página de Venda de Planilhas",
     stack: "Stack: HTML | SASS | CSS | JavaScript | SEO",
     technologies: ["html", "sass", "css", "javascript"],
     imageClass: "paginaVendasJessica",
-    buttonClass: "paginaVendasJessica"
+    buttonClass: "paginaVendasJessica",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 8,
+    imgUrl: "",
     title: "Promoção 3D",
+    description: "Descrição do projeto Promoção 3D",
     stack: "Stack: HTML | SASS | CSS | JavaScript | SEO",
     technologies: ["html", "sass", "css", "javascript"],
     imageClass: "promocao3D",
-    buttonClass: "promocao3D"
+    buttonClass: "promocao3D",
+    gitHubUrl: "",
+    deployUrl: ""
   },
   {
+    id: 9,
+    imgUrl: "",
     title: "Promoção 3D",
+    description: "Descrição do projeto Página Planner",
     stack: "Stack: HTML | SASS | CSS | JavaScript | SEO",
     technologies: ["html", "sass", "css", "javascript"],
     imageClass: "paginaPlanner",
-    buttonClass: "paginaPlanner"
+    buttonClass: "paginaPlanner",
+    gitHubUrl: "",
+    deployUrl: ""
   }
 ];
 

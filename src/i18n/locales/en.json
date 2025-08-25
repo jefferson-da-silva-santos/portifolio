@@ -25,20 +25,20 @@
     "description2": "I completed a technical course in <strong className='strong-light'> Systems Development (DS)</strong> with a focus on <strong className='strong-light'> Full Stack development</strong>. Since then, I have worked on projects as a freelancer and contributed to open source projects, continually improving my skills and experience in the field."
   },
   "skills": {
-    "title": "Habilidades",
-    "defaultText": "* Passe o mouse sobre as habilidades para saber mais * Inglês",
-    "textNodejs": "Esse é o texto do NodeJs Inglês",
-    "textExpress": "Esse é o texto do Express Inglês",
-    "textNestjs": "Esse é o texto do NestJs Inglês",
-    "textReact": "Esse é o texto do React Inglês",
-    "textNextJs": "Esse é o texto do NextJs Inglês",
-    "textSass": "Esse é o texto do SASS Inglês",
-    "textFlutter": "Esse é o texto do Flutter Inglês",
-    "textJava": "Esse é o texto do Java Inglês",
-    "textPostgres": "Esse é o texto do textPostgres Inglês",
-    "textMySQL": "Esse é o texto do MySQL Inglês",
-    "textGit": "Esse é o texto do GIT Inglês",
-    "textDocker": "Esse é o texto do DOcker Inglês"
+    "title": "Skills",
+    "defaultText": "* Hover over skills to learn more * en-us",
+    "textNodejs": "I chose Node.js because it allows me to create scalable and fast applications that can handle many requests at the same time without losing performance. I enjoy exploring the power of JavaScript on the backend and its frameworks to develop modern, solid solutions that truly make a difference.",
+    "textExpress": "Express.js is my go-to framework for creating robust and scalable RESTful APIs, providing a flexible and modular structure to handle requests and responses efficiently.",
+    "textNestjs": "I am passionate about learning and mastering Nest.js, a framework that promises to revolutionize the way I develop robust and scalable server-side applications, with a modular architecture and integration with TypeScript.",
+    "textReact": "With the powerful React library, I develop dynamic and reactive interfaces, creating fluid and interactive user experiences with JavaScript and TypeScript, always prioritizing performance and scalability.",
+    "textNextJs": "With Next.js, I create truly exceptional server-side rendering (SSR) and static site generation (SSG) web applications, ensuring impeccable speed, SEO, and user experience.",
+    "textSass": "Sass is my tool of choice for creating more efficient and modular CSS styles, leveraging the ability to use variables, mixins, and functions to create a personalized and responsive user experience.",
+    "textFlutter": "Currently, I study and apply Flutter in the development of cross-platform mobile applications, creating personalized interfaces and high-quality, fluid user experiences.",
+    "textJava": "Java is my first love; with it, I create 'Topzadas' applications that meet the most complex needs, leveraging the ability to handle large volumes of data and ensure data integrity and availability.",
+    "textPostgres": "Postgres is my database of choice, and with Neon, I can efficiently provision and manage serverless databases, ensuring data integrity and availability.",
+    "textMySQL": "With MySQL, I store and manage large volumes of data efficiently and scalably, ensuring data integrity and availability.",
+    "textGit": "Git and GitHub are my go-to tools for managing code versioning and collaborating with other developers, ensuring code integrity and traceability.",
+    "textDocker": "With Docker, I can containerize applications and ensure consistency and portability across different environments, simplifying the development, testing, and deployment process, and ensuring scalability and reliability."
   },
   "project": {
     "title": "Projects"

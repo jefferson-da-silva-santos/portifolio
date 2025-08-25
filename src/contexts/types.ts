@@ -15,3 +15,8 @@ export interface LanguageContextProps {
 export interface LanguageProviderProps {
   children: ReactNode;
 }
+
+export interface MenuContextProps {
+  isMenuMobileVisible: boolean;
+  toggleMenuVisibility: () => void;
+}

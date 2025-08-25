@@ -1,11 +1,6 @@
+import type { IProject } from "../../provider/types";
+
 export interface ModalProjectProps {
   isVisible: boolean;
-  onClose: () => void;
-  projectData: {
-    title: string;
-    description: string;
-    technologies: string[];
-    githubUrl: string;
-    deployUrl: string;
-  };
+  selectedProject: IProject | null;
 }

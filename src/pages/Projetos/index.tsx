@@ -5,11 +5,7 @@ import { containerStyles, titleStyles } from "./styles";
 import objectTheme from '../../assets/theme.json';
 import { useTranslation } from "react-i18next";
 
-interface IProjetos {
-  handleOpenModal: () => void
-}
-
-const Projetos = ({handleOpenModal}: IProjetos) => {
+const Projetos = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const firstLetterTitle = t("project.title").charAt(0).toUpperCase();
@@ -32,11 +28,16 @@ const Projetos = ({handleOpenModal}: IProjetos) => {
           {projectsData.map((project, index) => (
             <ProjectCard
               key={index} // Use uma chave única para a lista
+              id={project.id}
+              technologies={project.technologies}
+              imgUrl={project.imgUrl}
               title={project.title}
+              description={project.description}
               stack={project.stack}
               imageClass={project.imageClass}
               buttonClass={project.buttonClass}
-              handleOpenModal={handleOpenModal}
+              gitHubUrl={project.gitHubUrl}
+              deployUrl={project.deployUrl}
             />
           ))}
         </article>

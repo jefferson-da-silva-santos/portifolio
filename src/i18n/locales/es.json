@@ -26,19 +26,19 @@
   },
   "skills": {
     "title": "Habilidades",
-    "defaultText": "* Passe o mouse sobre as habilidades para saber mais * Es",
-    "textNodejs": "Esse é o texto do NodeJs Es",
-    "textExpress": "Esse é o texto do Express Es",
-    "textNestjs": "Esse é o texto do NestJs Es",
-    "textReact": "Esse é o texto do React Es",
-    "textNextJs": "Esse é o texto do NextJs Es",
-    "textSass": "Esse é o texto do SASS Es",
-    "textFlutter": "Esse é o texto do Flutter Es",
-    "textJava": "Esse é o texto do Java Es",
-    "textPostgres": "Esse é o texto do textPostgres Es",
-    "textMySQL": "Esse é o texto do MySQL Es",
-    "textGit": "Esse é o texto do GIT Es",
-    "textDocker": "Esse é o texto do DOcker Es"
+    "defaultText": "* Pasa el cursor sobre las habilidades para saber más * es-es",
+    "textNodejs": "Elegí Node.js porque me permite crear aplicaciones escalables y rápidas, que aguantan muchas peticiones al mismo tiempo sin perder rendimiento. Me gusta explorar el poder de JavaScript en el backend y sus frameworks para desarrollar soluciones modernas, sólidas y que realmente marcan la diferencia.",
+    "textExpress": "Express.js es mi framework de elección para crear APIs RESTful robustas y escalables, proporcionando una estructura flexible y modular para manejar peticiones y respuestas de forma eficiente.",
+    "textNestjs": "Estoy apasionado por aprender y dominar Nest.js, un framework que promete revolucionar la forma en que desarrollo aplicaciones server-side robustas y escalables, con una arquitectura modular e integración con TypeScript.",
+    "textReact": "Con la poderosa biblioteca React, desarrollo interfaces dinámicas y reactivas, creando experiencias de usuario fluidas e interactivas con JavaScript y TypeScript, siempre priorizando el rendimiento y la escalabilidad.",
+    "textNextJs": "Con Next.js, creo aplicaciones web de renderizado del lado del servidor (SSR) y generación de sitios estáticos (SSG) que son verdaderamente excepcionales, garantizando velocidad, SEO y una experiencia de usuario impecable.",
+    "textSass": "Sass es mi herramienta de elección para crear estilos CSS más eficientes y modulares, aprovechando la capacidad de usar variables, mixins y funciones para crear una experiencia de usuario personalizada y receptiva.",
+    "textFlutter": "Actualmente, estudio y aplico Flutter en el desarrollo de aplicaciones móviles multiplataforma, creando interfaces personalizadas y experiencias de usuario fluidas y de alta calidad.",
+    "textJava": "Java es mi primer amor, con él creo aplicaciones 'Topzadas' que satisfacen las necesidades más complejas, aprovechando la capacidad de manejar grandes volúmenes de datos y garantizar la integridad y disponibilidad de los datos.",
+    "textPostgres": "Postgres es mi base de datos de elección, y con Neon, puedo aprovisionar y gestionar bases de datos sin servidor de forma eficiente, garantizando la integridad y disponibilidad de los datos.",
+    "textMySQL": "Con MySQL, almaceno y gestiono grandes volúmenes de datos de forma eficiente y escalable, garantizando la integridad y disponibilidad de los datos.",
+    "textGit": "Git y GitHub son mis herramientas de elección para gestionar el versionado de código y colaborar con otros desarrolladores, garantizando la integridad y trazabilidad del código.",
+    "textDocker": "Con Docker, puedo contenerizar aplicaciones y garantizar la consistencia y portabilidad en diferentes entornos, simplificando el proceso de desarrollo, prueba y despliegue, y garantizando la escalabilidad y confiabilidad."
   },
   "project": {
     "title": "Proyectos"

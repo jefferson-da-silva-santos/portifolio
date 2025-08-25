@@ -1,27 +1,38 @@
 // components/ModalProject.tsx
-import React from 'react';
-import type { ModalProjectProps } from './types';
-import useTheme from '../../hooks/useTheme';
-import themeObject from '../../assets/theme.json';
+import React from "react";
+import type { ModalProjectProps } from "./types";
+import useTheme from "../../hooks/useTheme";
+import themeObject from "../../assets/theme.json";
 import {
   containerModalStyles,
   sectionModalStyles,
   skillModalStyles,
   textModalStyles,
   titleModalStyles,
-} from './styles';
+} from "./styles";
 
 // Assumindo que a interface para technologiesData está em '../../consts/dataConsts'
-import { technologiesData } from '../../consts/dataConsts';
+import { technologiesData } from "../../consts/dataConsts";
+import useModalProject from "../../hooks/useModalProject";
 
-const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, projectData }) => {
+const ModalProject: React.FC<ModalProjectProps> = ({
+  isVisible,
+  selectedProject,
+}) => {
   const { theme } = useTheme();
 
-  if (!isVisible || !projectData) {
+  if (!selectedProject || isVisible) {
     return null;
   }
+  const {
+    title,
+    description,
+    gitHubUrl,
+    deployUrl,
+    technologies,
+  } = selectedProject;
 
-  const { title, description, technologies, githubUrl, deployUrl } = projectData;
+  const {closeModal} = useModalProject();
 
   const projectTechnologies: string[] = technologies || [];
 
@@ -32,20 +43,42 @@ const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, project
       aria-label="Ver projeto"
       style={containerModalStyles(theme, themeObject)}
     >
-      <section className="project-options-box" style={sectionModalStyles(theme, themeObject)}>
+      <section
+        className="project-options-box"
+        style={sectionModalStyles(theme, themeObject)}
+      >
         <article className="group-texts-options-box">
-          <h1 style={titleModalStyles(theme, themeObject)} className="name-project-option">{title}</h1>
+          <h1
+            style={titleModalStyles(theme, themeObject)}
+            className="name-project-option"
+          >
+            {title}
+          </h1>
           <button
             className="close-options"
-            onClick={onClose}
+            onClick={() => {
+              console.log("Fechando modal");
+              closeModal();
+            }}
+            type="button"
             aria-label="Fechar"
             aria-description="Fechar opções de visualização do projeto"
           >
-            <i className='bx bx-x'></i>
+            <i className="bx bx-x"></i>
           </button>
         </article>
-        <p className="description-option-project" style={textModalStyles(theme, themeObject)}>{description}</p>
-        <p className="text-tecnologias-options" style={textModalStyles(theme, themeObject)}>Tecnologias:</p>
+        <p
+          className="description-option-project"
+          style={textModalStyles(theme, themeObject)}
+        >
+          {description}
+        </p>
+        <p
+          className="text-tecnologias-options"
+          style={textModalStyles(theme, themeObject)}
+        >
+          Tecnologias:
+        </p>
         <ul className="list-options-box-tec">
           {projectTechnologies.map((techKey: string, index: number) => {
             const techInfo = technologiesData[techKey.toLowerCase()];
@@ -55,8 +88,13 @@ const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, project
             }
 
             return (
-              <li key={index} className={techInfo.className} style={skillModalStyles(theme, themeObject)}>
-                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} /> {techInfo.text}
+              <li
+                key={index}
+                className={techInfo.className}
+                style={skillModalStyles(theme, themeObject)}
+              >
+                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} />{" "}
+                {techInfo.text}
               </li>
             );
           })}
@@ -65,13 +103,13 @@ const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, project
         <article className="groupBtn-options-box">
           <a
             className="btn-options-git"
-            href={githubUrl}
+            href={gitHubUrl}
             target="_blank"
             rel="noopener noreferrer"
             role="button"
             aria-label="Ver projeto no github"
           >
-            <i className='bx bxl-github'></i> GitHub
+            <i className="bx bxl-github"></i> GitHub
           </a>
           <a
             className="btn-options-deploy"
@@ -81,7 +119,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({ isVisible, onClose, project
             role="button"
             aria-label="Ver o site"
           >
-            <i className='bx bx-link-external'></i> Visitar
+            <i className="bx bx-link-external"></i> Visitar
           </a>
         </article>
       </section>

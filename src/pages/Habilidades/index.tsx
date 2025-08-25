@@ -47,7 +47,6 @@ const Habilidades = () => {
           </p>
         </article>
         <article className="groupSkills-secundary hidden-scroll-left">
-          {/* 3. Mapeie o novo array skillsList */}
           {skillsList.map((skill) => (
             <article
               key={skill.tech}

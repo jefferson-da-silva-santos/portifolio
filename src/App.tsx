@@ -9,53 +9,38 @@ import Servicos from "./pages/Servicos";
 import Sobre from "./pages/Sobre";
 import ModalProject from "./components/ModalProject";
 import { useState } from "react";
+import { MenuProvider } from "./provider/MenuProvider";
+import { ModalProjectProvider } from "./provider/ModalProjectProvider";
+import useModalProject from "./hooks/useModalProject";
+import type { IProject } from "./provider/types"; 
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const handleOpenModal = (projec) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
-
-  // Adapte seus dados de projeto para incluir todas as informações necessárias
-  const adaptedProjectsData = [
-    {
-      title: "Cardápio Online",
-      description: "Descrição completa do cardápio online.",
-      technologies: ["Vite", "HTML", "SASS", "CSS", "JavaScript", "API ViaCep"],
-      githubUrl: "https://github.com/...",
-      deployUrl: "https://site.com.br/...",
-      imageClass: "cardapio",
-      buttonClass: "cardapio",
-    },
-    // ... outros projetos
-  ];
+  const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
+  const { isModalOpen } = useModalProject();
 
   return (
     <>
       <ThemeProvider>
         <LanguageProvider>
-          <ModalProject
-            isVisible={isModalOpen}
-            onClose={handleCloseModal}
-            projectData={adaptedProjectsData[0]}
-          />
-          <Inicio />
-          <main>
-            <Sobre />
-            <Habilidades />
-            <Projetos handleOpenModal={handleOpenModal} />
-            <Servicos />
-            <Contato />
-          </main>
-          <Footer />
+          <MenuProvider>
+            <ModalProjectProvider setSelectedProject={setSelectedProject}>
+              {selectedProject && (
+                <ModalProject
+                  isVisible={isModalOpen}
+                  selectedProject={selectedProject}
+                />
+              )}
+              <Inicio />
+              <main>
+                <Sobre />
+                <Habilidades />
+                <Projetos />
+                <Servicos />
+                <Contato />
+              </main>
+              <Footer />
+            </ModalProjectProvider>
+          </MenuProvider>
         </LanguageProvider>
       </ThemeProvider>
     </>
