@@ -34,7 +34,7 @@ const Projetos = () => {
         <article className="groupProjetos-secundary">
           {projectsData.map((project, index) => (
             <ProjectCard
-              key={index} // Use uma chave única para a lista
+              key={index}
               id={project.id}
               technologies={project.technologies}
               imgUrl={project.imgUrl}

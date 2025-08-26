@@ -1,4 +1,3 @@
-// src/contexts/LanguageContext.tsx
 import { createContext } from 'react';
 import { listIconLenguage } from '../consts/dataConsts';
 import type { LanguageContextProps } from './types';

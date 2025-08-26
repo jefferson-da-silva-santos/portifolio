@@ -4,5 +4,5 @@ export function toggleClassInText(text: string, oldClass: string, newClass: stri
   return newText;
 }
 
-export const getFirstLetterTitle = (title: string) => title.charAt(0).toUpperCase(); // get first letter of title
-export const getRestOfTitle = (title: string) => title.slice(1); // get rest of title
+export const getFirstLetterTitle = (title: string) => title.charAt(0).toUpperCase(); 
+export const getRestOfTitle = (title: string) => title.slice(1); 

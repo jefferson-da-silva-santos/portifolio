@@ -25,7 +25,7 @@ body {
   transition: all 0.5s ease;
 }
 
-/* Barra de rolagem */
+
 
 ::-webkit-scrollbar {
   width: 0.6em;
@@ -36,7 +36,6 @@ body {
   border-radius: 10px;
 }
 
-// Shines
 
 @keyframes shines {
   0% {
@@ -80,7 +79,7 @@ body {
     filter: blur(7px);
   }
 }
-/* Estilo do options */
+
 
 .group-project-options-box {
   position: fixed;
@@ -345,7 +344,7 @@ body {
 
 .project-options-box
 
-/* Estilos Nav */
+
 
 .groupHeader {
   min-height: 100vh;
@@ -449,7 +448,7 @@ body {
   cursor: pointer;
 }
 
-/* Estilos Header */
+
 
 .header {
   padding-top: 5em;
@@ -650,7 +649,7 @@ body {
   }
 }
 
-/* Estilos Sobre */
+
 
 .groupSobre {
   background-color: var(--color-secundary);
@@ -753,7 +752,7 @@ body {
   color: #d4d4d4;
 }
 
-/* Estilos do Skills */
+
 
 .groupSkills {
   min-height: 100vh;
@@ -937,7 +936,7 @@ strong {
   transition: all 0.5s ease;
 }
 
-/* Estilos dos Projetos */
+
 
 .groupProjetos {
   background-color: var(--color-secundary);
@@ -1121,7 +1120,7 @@ strong {
   background-image: url("https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cardapio.png");
 }
 
-/* Estilos do Serviço */
+
 
 .groupService {
   background-color: var(--color-primary);
@@ -1276,7 +1275,7 @@ strong {
   transition: all 0.5s ease;
 }
 
-/* Estilos do Contato */
+
 
 .groupContact {
   background-color: var(--color-secundary);
@@ -1400,7 +1399,7 @@ textarea:focus {
   z-index: 0;
 }
 
-/* Estilos Footer */
+
 
 .footer {
   padding: 1em;

@@ -368,7 +368,7 @@ export const useProjectsData = () => {
     },
   ];
 };
-// export const projectsData =
+
 export const useServicesData = () => {
   const { t } = useTranslation();
   const servicesData = [

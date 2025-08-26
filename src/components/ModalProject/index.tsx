@@ -1,4 +1,3 @@
-// components/ModalProject.tsx
 import type { ModalProjectProps } from "./types";
 import useTheme from "../../hooks/useTheme";
 import themeObject from "../../assets/theme.json";
@@ -10,7 +9,6 @@ import {
   titleModalStyles,
 } from "./styles";
 
-// Assumindo que a interface para technologiesData está em '../../consts/dataConsts'
 import { technologiesData } from "../../consts/dataConsts";
 import useModalProject from "../../hooks/useModalProject";
 

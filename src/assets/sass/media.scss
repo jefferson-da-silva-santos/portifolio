@@ -52,7 +52,7 @@
       opacity: 0;
     }
   }
-  /* Estilos do Nav */
+
   .listNav {
     visibility: visible;
     cursor: pointer;
@@ -98,7 +98,7 @@
     font-size: 23px;
   }
 
-  /* Estilos do Header */
+
 
   .hero {
     grid-template-columns: 1fr;
@@ -113,7 +113,7 @@
     padding: 1rem 1rem 4rem 1rem;
   }
 
-  /* Estilos do Sobre */
+
 
   .groupSobre {
     padding: 3em 0 0em 0;
@@ -139,7 +139,7 @@
     width: 80%;
   }
 
-  /* Estilos Skills */
+
 
   .skills {
     grid-template-columns: 1fr;
@@ -155,7 +155,7 @@
     padding: 1em;
   }
 
-  /* Estilos dos Projetos */
+
 
   .groupProjetos-primary {
     justify-content: center;
@@ -166,7 +166,7 @@
     grid-template-rows: repeat(3, 1fr);
   }
 
-  /* Estilos do Serviço */
+
 
   .groupService-primary {
     justify-content: center;
@@ -184,7 +184,7 @@
     width: 25em;
   }
 
-  /* Estilos do Contato */
+
 
   .contato {
     display: grid;
@@ -220,7 +220,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  /* Estilos das Skills */
+
 
   .groupSkills-secundary {
     grid-template-columns: repeat(3, 1fr);
@@ -228,7 +228,7 @@
     padding-bottom: 1em;
   }
 
-  /* Estilos do Projetos */
+
 
   .groupProjetos-secundary {
     grid-template-columns: 1fr;
@@ -262,7 +262,7 @@
 }
 
 @media screen and (max-width: 545px) {
-  /* Estilos do Header */
+
   .groupHeader-texts h1 {
     font-size: 3.5em;
     width: 100%;
@@ -272,7 +272,7 @@
     font-size: 2em;
   }
 
-  /* Estilos do Sobre */
+
 
   .titleSobre {
     font-size: 2em;
@@ -282,7 +282,7 @@
     font-size: 1.15em;
   }
 
-  /* Estilos do Skills */
+
 
   .titleSkills {
     font-size: 2em;
@@ -298,7 +298,7 @@
     width: 5em;
   }
 
-  /* Estilos do Projetos */
+
 
   .groupProjetos-primary .titleProjetos {
     font-size: 2em;
@@ -308,7 +308,7 @@
     height: 53px;
   }
 
-  /* Estilos Serviço */
+
 
   .titleService {
     font-size: 2em;
@@ -339,7 +339,7 @@
     width: 90%;
   }
 
-  /* Estilos Contato */
+
 
   .titleContact {
     font-size: 2em;
@@ -347,13 +347,13 @@
 }
 
 @media screen and (max-width: 480px) {
-  /* Estilo do Nav */
+
 
   .listNav > li {
     padding: 0.5em;
   }
 
-  /* Estilos Header */
+
 
   .groupHeader-texts {
     row-gap: 0;
@@ -367,7 +367,7 @@
     font-size: 1.5em;
   }
 
-  /* Estilo projetos */
+
   .card-item {
     margin: auto;
     height: auto;
@@ -375,7 +375,7 @@
     row-gap: 7px;
   }
 
-  /* Estilo do Sobre */
+
 
   .groupSobre-primary p {
     font-size: 1em;
@@ -432,7 +432,7 @@
 }
 
 @media screen and (max-width: 340px) {
-  /* Nav */
+
 
   .listNav > li {
     padding: 0.2em;
@@ -442,7 +442,7 @@
     font-size: 1.2em;
   }
 
-  /* Estilos Header */
+
 
   .groupHeader-texts h1 {
     font-size: 2.3em;
@@ -452,7 +452,7 @@
     font-size: 1.15em;
   }
 
-  /* Estilos do Sobre */
+
 
   .groupSobre {
     padding-top: 2em;
@@ -466,7 +466,7 @@
     font-size: 1.05em;
   }
 
-  /* Estilos do Skills */
+
 
   .titleSkills {
     font-size: 1.6em;
@@ -476,7 +476,7 @@
     width: 3.2em;
   }
 
-  /* Estilos do Projetos */
+
 
   .groupProjetos-primary .titleProjetos {
     font-size: 1.6em;
@@ -486,7 +486,7 @@
     height: 53px;
   }
 
-  /* Estilos Serviço */
+
 
   .titleService {
     font-size: 1.6em;
@@ -501,7 +501,7 @@
     height: 23em;
   }
 
-  /* Estilos Contato */
+
 
   .titleContact {
     font-size: 1.6em;

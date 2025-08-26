@@ -1,4 +1,3 @@
-// src/components/Navegacao.js (Versão refatorada)
 import { useEffect, useState } from "react";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
