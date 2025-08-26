@@ -37,7 +37,12 @@ const ProjectCard: React.FC<IProject> = ({
   };
 
   return (
-    <div className="card-item" style={cardStyles(theme, themeObject)}>
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+      className="card-item"
+      style={cardStyles(theme, themeObject)}
+    >
       <div className={`group-image-project ${imageClass}`}></div>
       <h3 className="title-project" style={titleCardStyles(theme, themeObject)}>
         {title}

@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import useTheme from '../../hooks/useTheme';
-import themeObject from '../../assets/theme.json';
-import { useTranslation } from 'react-i18next';
-import { getSkillsData } from '../../consts/dataConsts';
-import { containerStyle, styleCardSkill, textStyle } from './styles';
-import { getFirstLetterTitle, getRestOfTitle } from '../../utils/textUtilites';
+import { useEffect, useState } from "react";
+import useTheme from "../../hooks/useTheme";
+import themeObject from "../../assets/theme.json";
+import { useTranslation } from "react-i18next";
+import { getSkillsData } from "../../consts/dataConsts";
+import { containerStyle, styleCardSkill, textStyle } from "./styles";
+import { getFirstLetterTitle, getRestOfTitle } from "../../utils/textUtilites";
 
 const Habilidades = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const [textSkill, setTextSkill] = useState<string>('');
-  
+  const [textSkill, setTextSkill] = useState<string>("");
+
   const skillsList = getSkillsData(theme);
 
   useEffect(() => {
@@ -18,9 +18,10 @@ const Habilidades = () => {
   }, [t]);
 
   const titleStyle = {
-    color: theme === "light"
-      ? themeObject.themes.light.skills.container.colorTitle
-      : themeObject.themes.dark.skills.container.colorTitle
+    color:
+      theme === "light"
+        ? themeObject.themes.light.skills.container.colorTitle
+        : themeObject.themes.dark.skills.container.colorTitle,
   };
 
   const handleMouseEnter = (key: string) => {
@@ -32,28 +33,50 @@ const Habilidades = () => {
   };
 
   return (
-    <div className="groupSkills" id="skills" style={containerStyle(theme, themeObject)}>
+    <div
+      className="groupSkills"
+      id="skills"
+      style={containerStyle(theme, themeObject)}
+    >
       <section className="skills">
-        <article className="groupSkills-primary hidden-scroll-left">
+        <article
+          className="groupSkills-primary"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
           <div className="dividir-titulo-linha">
             <div className="linhas"></div>
             <div className="linhas"></div>
             <div className="linhas"></div>
             <h2 className="titleSkills" style={titleStyle}>
-              &#8249; <span className="letraMonoton">{getFirstLetterTitle(t("skills.title"))}</span>{getRestOfTitle(t("skills.title"))} &#8260; &#8250;
+              &#8249;{" "}
+              <span className="letraMonoton">
+                {getFirstLetterTitle(t("skills.title"))}
+              </span>
+              {getRestOfTitle(t("skills.title"))} &#8260; &#8250;
             </h2>
           </div>
-          <p className="textSkills" id="description-skills" style={textStyle(theme, themeObject)}>
+          <p
+            className="textSkills"
+            id="description-skills"
+            style={textStyle(theme, themeObject)}
+          >
             {textSkill}
           </p>
         </article>
-        <article className="groupSkills-secundary hidden-scroll-left">
+        <article className="groupSkills-secundary">
           {skillsList.map((skill) => (
             <article
+              data-aos="zoom-in-up"
               key={skill.tech}
               onMouseEnter={() => handleMouseEnter(skill.key)}
               onMouseLeave={handleMouseLeave}
-              className={`skill-element ${skill.tech.toLowerCase()} ${theme === "light" ? "skill-element-border-light" : "skill-element-border-dark"}`}
+              className={`skill-element ${skill.tech.toLowerCase()} ${
+                theme === "light"
+                  ? "skill-element-border-light"
+                  : "skill-element-border-dark"
+              }`}
               style={styleCardSkill(theme, themeObject)}
             >
               <img

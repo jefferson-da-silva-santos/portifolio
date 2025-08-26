@@ -8,15 +8,24 @@ import Projetos from "./pages/Projetos";
 import Servicos from "./pages/Servicos";
 import Sobre from "./pages/Sobre";
 import ModalProject from "./components/ModalProject";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuProvider } from "./provider/MenuProvider";
 import { ModalProjectProvider } from "./provider/ModalProjectProvider";
 import useModalProject from "./hooks/useModalProject";
 import type { IProject } from "./provider/types"; 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
   const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
   const { isModalOpen } = useModalProject();
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
 
   return (
     <>

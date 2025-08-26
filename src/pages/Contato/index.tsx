@@ -41,7 +41,7 @@ const Contato = () => {
             &#8250;
           </h2>
         </article>
-        <article className="groupContact-secundary">
+        <article className="groupContact-secundary" data-aos="fade-right">
           <Formik
             initialValues={initialValues}
             validationSchema={contactFormSchema}
@@ -64,7 +64,7 @@ const Contato = () => {
             </Form>
           </Formik>
         </article>
-        <div className="groupContact-terciary">
+        <div className="groupContact-terciary" data-aos="fade-left">
           <div className="circle-2"></div>
           <img
             loading="lazy"

@@ -13,7 +13,7 @@ const Projetos = () => {
   return (
     <div className="groupProjetos" id="project" style={containerStyles(theme, objectTheme)}>
       <section className="projetos">
-        <article className="groupProjetos-primary">
+        <article className="groupProjetos-primary" data-aos="fade-right">
           <div className="select-linhas-projeto-title">
             <div className="linhas"></div>
             <div className="linhas"></div>

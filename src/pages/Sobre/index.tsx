@@ -22,7 +22,7 @@ const Sobre = () => {
   return (
     <div className="groupSobre" id="about" style={styleContainer(theme)}>
       <section className="sobre">
-        <article className="groupSobre-primary hidden-scroll-right">
+        <article className="groupSobre-primary" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
           <div className="dividir-titulo-linha">
             <div className="linhas"></div>
             <div className="linhas"></div>
@@ -35,7 +35,7 @@ const Sobre = () => {
           <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: description1 }}></p>
           <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: description2 }}></p>
         </article>
-        <article className="groupSobre-secundary hidden-scroll-right">
+        <article className="groupSobre-secundary" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
           <div className="circle"></div>
           <img
             loading="lazy"

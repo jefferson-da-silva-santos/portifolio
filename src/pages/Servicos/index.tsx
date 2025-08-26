@@ -14,7 +14,7 @@ const Servicos = () => {
   return (
     <div className="groupService" id="service" style={containerStyles(theme, objectTheme)}>
       <section className="service">
-        <article className="groupService-primary">
+        <article className="groupService-primary" data-aos="fade-right">
           <div className="linhas"></div>
           <div className="linhas"></div>
           <div className="linhas"></div>
@@ -23,7 +23,7 @@ const Servicos = () => {
             &#8250;
           </h2>
         </article>
-        <article className="groupService-secundary">
+        <article className="groupService-secundary" data-aos="fade-left">
           {servicesData.map((service, index) => (
             <ServiceCard
               key={index}

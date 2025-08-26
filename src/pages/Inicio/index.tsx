@@ -25,7 +25,7 @@ const Inicio = () => {
     >
       <Navegacao toggleTheme={toggleTheme} />
       <header className="header" id="home">
-        <section className="groupHeader-texts">
+        <section data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine" className="groupHeader-texts">
           <div className="textsHeader">
             <h1
               style={styleTitle(theme, themeObject)}
@@ -51,7 +51,7 @@ const Inicio = () => {
             ))}
           </div>
         </section>
-        <section className="groupHeader-img">
+        <section data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine" className="groupHeader-img">
           <img
             loading="lazy"
             src={projectImages[0].url}
