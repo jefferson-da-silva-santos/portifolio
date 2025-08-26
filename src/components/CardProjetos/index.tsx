@@ -46,7 +46,9 @@ const ProjectCard: React.FC<IProject> = ({
       className="card-item"
       style={cardStyles(theme, themeObject)}
     >
-      <div className={`group-image-project ${imageClass}`}></div>
+      <div className={`group-image-project ${imageClass}`}>
+        <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cardapio.png" alt="" />
+      </div>
       <h3 className="title-project" style={titleCardStyles(theme, themeObject)}>
         {title}
       </h3>
