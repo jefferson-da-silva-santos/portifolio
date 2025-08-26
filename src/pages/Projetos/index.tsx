@@ -2,16 +2,20 @@ import ProjectCard from "../../components/CardProjetos";
 import { projectsData } from "../../consts/dataConsts";
 import useTheme from "../../hooks/useTheme";
 import { containerStyles, titleStyles } from "./styles";
-import objectTheme from '../../assets/theme.json';
+import objectTheme from "../../assets/theme.json";
 import { useTranslation } from "react-i18next";
 import { getFirstLetterTitle, getRestOfTitle } from "../../utils/textUtilites";
 
 const Projetos = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
-  
+
   return (
-    <div className="groupProjetos" id="project" style={containerStyles(theme, objectTheme)}>
+    <div
+      className="groupProjetos"
+      id="project"
+      style={containerStyles(theme, objectTheme)}
+    >
       <section className="projetos">
         <article className="groupProjetos-primary" data-aos="fade-right">
           <div className="select-linhas-projeto-title">
@@ -20,8 +24,11 @@ const Projetos = () => {
             <div className="linhas"></div>
           </div>
           <h2 className="titleProjetos" style={titleStyles(theme, objectTheme)}>
-            &#8249; <span className="letraMonoton">{getFirstLetterTitle(t("project.title"))}</span>{getRestOfTitle(t("project.title"))} &#8260;
-            &#8250;
+            &#8249;{" "}
+            <span className="letraMonoton">
+              {getFirstLetterTitle(t("project.title"))}
+            </span>
+            {getRestOfTitle(t("project.title"))} &#8260; &#8250;
           </h2>
         </article>
         <article className="groupProjetos-secundary">

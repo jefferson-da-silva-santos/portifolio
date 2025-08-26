@@ -9,6 +9,7 @@ import {
 import useModalProject from "../../hooks/useModalProject";
 import type { IProject } from "../../provider/types";
 import { Shines } from "../Shines";
+import { useState } from "react";
 
 const ProjectCard: React.FC<IProject> = ({
   imageClass,
@@ -22,6 +23,8 @@ const ProjectCard: React.FC<IProject> = ({
 }) => {
   const { theme } = useTheme();
   const { openModal } = useModalProject();
+  const [isHover, setIsHover] = useState(false);
+
 
   const projectData = {
     id,
@@ -59,8 +62,10 @@ const ProjectCard: React.FC<IProject> = ({
         className={`btn-project ${buttonClass}`}
         style={buttomCardStyles(theme, themeObject)}
         onClick={() => openModal(projectData)}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setTimeout(() => setIsHover(false), 1000)}
       >
-        <Shines />
+        <Shines isHover={isHover} />
         Ver projeto <i className="bi bi-box-arrow-up-right"></i>
       </a>
     </div>

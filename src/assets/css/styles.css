@@ -59,13 +59,13 @@ body {
   height: 100%;
   width: 90%;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.177), rgba(255, 255, 255, 0.282));
-  filter: blur(8px);
+  filter: blur(7px);
 }
 .shines .secundary-shine {
   height: 100%;
   width: 20%;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.177), rgba(255, 255, 255, 0.282));
-  filter: blur(8px);
+  filter: blur(7px);
 }
 
 /* Estilo do options */
@@ -796,7 +796,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border 0.5s ease-in-out;
+  transition: border 0.5s ease-in-out !important;
   overflow: hidden;
 }
 
@@ -1051,7 +1051,8 @@ strong {
   background-color: #2e2e2e;
   font-weight: 800;
 }
-.btn-project:hover .shines {
+
+.shines-animed {
   animation: 1.3s shines ease-out 0s 1 normal forwards;
 }
 
