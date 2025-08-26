@@ -65,10 +65,9 @@ const Habilidades = () => {
             {textSkill}
           </p>
         </article>
-        <article className="groupSkills-secundary">
+        <article className="groupSkills-secundary" data-aos="zoom-in-up">
           {skillsList.map((skill) => (
             <article
-              data-aos="zoom-in-up"
               key={skill.tech}
               onMouseEnter={() => handleMouseEnter(skill.key)}
               onMouseLeave={handleMouseLeave}
