@@ -41,7 +41,55 @@
     "textDocker": "Con Docker, puedo contenerizar aplicaciones y garantizar la consistencia y portabilidad en diferentes entornos, simplificando el proceso de desarrollo, prueba y despliegue, y garantizando la escalabilidad y confiabilidad."
   },
   "project": {
-    "title": "Proyectos"
+    "title": "Proyectos",
+    "list": [
+      {
+        "title": "Menú Online",
+        "description": "Descripción del proyecto Menú Online",
+        "stack": "Stack: Vite | HTML | SASS | CSS | JavaScript | API ViaCep"
+      },
+      {
+        "title": "Hojas de Cálculo Jéssica",
+        "description": "Descripción del proyecto Hojas de Cálculo Jéssica",
+        "stack": "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons"
+      },
+      {
+        "title": "Tienda de Sushi",
+        "description": "Descripción del proyecto Tienda de Sushi",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer"
+      },
+      {
+        "title": "Cibercafé Infoccell",
+        "description": "Descripción del proyecto Cibercafé Infoccell",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+      },
+      {
+        "title": "Galletas Léo de Lita",
+        "description": "Descripción del proyecto Galletas Léo de Lita",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+      },
+      {
+        "title": "Calculadora de IMC",
+        "description": "Descripción del proyecto Calculadora de IMC",
+        "stack": "Stack: HTML | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Página de Venta de Hojas de Cálculo",
+        "description": "Descripción del proyecto Página de Venta de Hojas de Cálculo",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Promoción 3D",
+        "description": "Descripción del proyecto Promoción 3D",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Promoción 3D",
+        "description": "Descripción del proyecto Página Planner",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      }
+    ],
+    "textButton": "Ver proyecto"
   },
   "services": {
     "title": "Servicios",

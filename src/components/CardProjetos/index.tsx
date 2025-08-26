@@ -10,6 +10,7 @@ import useModalProject from "../../hooks/useModalProject";
 import type { IProject } from "../../provider/types";
 import { Shines } from "../Shines";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ProjectCard: React.FC<IProject> = ({
   imageClass,
@@ -24,7 +25,8 @@ const ProjectCard: React.FC<IProject> = ({
   const { theme } = useTheme();
   const { openModal } = useModalProject();
   const [isHover, setIsHover] = useState(false);
-
+  const [isImgHover, setIsImgHover] = useState(false);
+  const { t } = useTranslation();
 
   const projectData = {
     id,
@@ -47,7 +49,7 @@ const ProjectCard: React.FC<IProject> = ({
       style={cardStyles(theme, themeObject)}
     >
       <div className={`group-image-project ${imageClass}`}>
-        <img src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cardapio.png" alt="" />
+        <img onMouseEnter={() => setIsImgHover(true)} onMouseLeave={() => setIsImgHover(false)} style={isImgHover ? {transform: "scale(110%)"} : {transform: "scale(1)"}} src={imgUrl} alt="" />
       </div>
       <h3 className="title-project" style={titleCardStyles(theme, themeObject)}>
         {title}
@@ -60,7 +62,7 @@ const ProjectCard: React.FC<IProject> = ({
       </p>
       <a
         role="button"
-        aria-label="Ver projeto"
+        aria-label={t("project.textButton")}
         className={`btn-project ${buttonClass}`}
         style={buttomCardStyles(theme, themeObject)}
         onClick={() => openModal(projectData)}
@@ -68,7 +70,7 @@ const ProjectCard: React.FC<IProject> = ({
         onMouseLeave={() => setTimeout(() => setIsHover(false), 1000)}
       >
         <Shines isHover={isHover} />
-        Ver projeto <i className="bi bi-box-arrow-up-right"></i>
+        {t("project.textButton")} <i className="bi bi-box-arrow-up-right"></i>
       </a>
     </div>
   );

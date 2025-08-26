@@ -41,7 +41,55 @@
     "textDocker": "Avec Docker, je peux conteneuriser des applications et garantir la cohérence et la portabilité dans différents environnements, simplifiant le processus de développement, de test et de déploiement, et garantissant l'évolutivité et la fiabilité."
   },
   "project": {
-    "title": "Projets"
+    "title": "Projets",
+    "list": [
+      {
+        "title": "Menu en Ligne",
+        "description": "Description du projet Menu en Ligne",
+        "stack": "Stack: Vite | HTML | SASS | CSS | JavaScript | API ViaCep"
+      },
+      {
+        "title": "Tableurs Jéssica",
+        "description": "Description du projet Tableurs Jéssica",
+        "stack": "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons"
+      },
+      {
+        "title": "Boutique de Sushi",
+        "description": "Description du projet Boutique de Sushi",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer"
+      },
+      {
+        "title": "Cybercafé Infoccell",
+        "description": "Description du projet Cybercafé Infoccell",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+      },
+      {
+        "title": "Biscuits Léo de Lita",
+        "description": "Description du projet Biscuits Léo de Lita",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+      },
+      {
+        "title": "Calculateur d'IMC",
+        "description": "Description du projet Calculateur d'IMC",
+        "stack": "Stack: HTML | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Page de Vente de Tableurs",
+        "description": "Description du projet Page de Vente de Tableurs",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Promotion 3D",
+        "description": "Description du projet Promotion 3D",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Promotion 3D",
+        "description": "Description du projet Page Planner",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      }
+    ],
+    "textButton": "Voir le projet"
   },
   "services": {
     "title": "Services",

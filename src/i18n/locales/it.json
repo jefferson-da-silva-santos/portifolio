@@ -41,7 +41,55 @@
     "textDocker": "Con Docker, posso containerizzare applicazioni e garantire la coerenza e la portabilità in diversi ambienti, semplificando il processo di sviluppo, test e distribuzione, e garantendo la scalabilità e l'affidabilità."
   },
   "project": {
-    "title": "Progetti"
+    "title": "Progetti",
+    "list": [
+      {
+        "title": "Menu Online",
+        "description": "Descrizione del progetto Menu Online",
+        "stack": "Stack: Vite | HTML | SASS | CSS | JavaScript | API ViaCep"
+      },
+      {
+        "title": "Fogli di Calcolo Jéssica",
+        "description": "Descrizione del progetto Fogli di Calcolo Jéssica",
+        "stack": "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons"
+      },
+      {
+        "title": "Negozio di Sushi",
+        "description": "Descrizione del progetto Negozio di Sushi",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer"
+      },
+      {
+        "title": "Internet Cafe Infoccell",
+        "description": "Descrizione del progetto Internet Cafe Infoccell",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+      },
+      {
+        "title": "Biscotti Léo de Lita",
+        "description": "Descrizione del progetto Biscotti Léo de Lita",
+        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+      },
+      {
+        "title": "Calcolatrice IMC",
+        "description": "Descrizione del progetto Calcolatrice IMC",
+        "stack": "Stack: HTML | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Pagina di Vendita Fogli di Calcolo",
+        "description": "Descrizione del progetto Pagina di Vendita Fogli di Calcolo",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Promozione 3D",
+        "description": "Descrizione del progetto Promozione 3D",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      },
+      {
+        "title": "Promozione 3D",
+        "description": "Descrizione del progetto Pagina Planner",
+        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+      }
+    ],
+    "textButton": "Vedi progetto"
   },
   "services": {
     "title": "Servizi",

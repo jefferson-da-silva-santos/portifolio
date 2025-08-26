@@ -1,5 +1,5 @@
 import ProjectCard from "../../components/CardProjetos";
-import { projectsData } from "../../consts/dataConsts";
+import { useProjectsData } from "../../consts/dataConsts";
 import useTheme from "../../hooks/useTheme";
 import { containerStyles, titleStyles } from "./styles";
 import objectTheme from "../../assets/theme.json";
@@ -9,7 +9,7 @@ import { getFirstLetterTitle, getRestOfTitle } from "../../utils/textUtilites";
 const Projetos = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
-
+  const projectsData = useProjectsData();
   return (
     <div
       className="groupProjetos"
