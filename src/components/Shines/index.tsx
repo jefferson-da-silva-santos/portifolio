@@ -1,6 +1,4 @@
-interface IShinesProps {
-  isHover: boolean
-}
+import type { IShinesProps } from "./types";
 
 export const Shines = ({isHover}: IShinesProps) => {
   return (

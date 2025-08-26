@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { ModalProjectContext } from "../contexts/ModalProjectContext";
-import type { IProject } from "./types";
+import type { IProject, ModalProjectProviderProps } from "./types";
 
-interface ModalProjectProviderProps {
-  children: React.ReactNode;
-  setSelectedProject?: (project: IProject | null) => void;
-}
 
 export const ModalProjectProvider = ({ children, setSelectedProject }: ModalProjectProviderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

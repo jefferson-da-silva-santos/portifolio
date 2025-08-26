@@ -10,3 +10,9 @@ export interface IProject {
   gitHubUrl: string;
   deployUrl?: string;
 }
+
+
+export interface ModalProjectProviderProps {
+  children: React.ReactNode;
+  setSelectedProject?: (project: IProject | null) => void;
+}
