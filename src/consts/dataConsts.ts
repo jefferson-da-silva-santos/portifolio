@@ -56,6 +56,24 @@ export const ImageUrls = {
       "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/service_phone.webp",
     api: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/service_api.webp",
   },
+  projects: {
+    cardapio:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cardapio.png",
+    jessicaPlanilhas:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/projeto-jessica-planilhas.webp",
+    sushi:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/sushi.png",
+    infoccell:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/infoccell.png",
+    leoDeLita:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/leo-de-lita.png",
+    calculadoraImc:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/projeto-calculadora-de-imc.webp",
+    planner:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/planner.png",
+    promocao3d:
+      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/promocao3d.png",
+  },
 };
 
 export const projectImages: IProjectImages[] = [
@@ -251,8 +269,7 @@ export const useProjectsData = () => {
   return [
     {
       id: 1,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cardapio.png",
+      imgUrl: ImageUrls.projects.cardapio,
       title: t("project.list.0.title"),
       description: t("project.list.0.description"),
       stack: t("project.list.0.stack"),
@@ -264,8 +281,7 @@ export const useProjectsData = () => {
     },
     {
       id: 2,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/projeto-jessica-planilhas.webp",
+      imgUrl: ImageUrls.projects.jessicaPlanilhas,
       title: t("project.list.1.title"),
       description: t("project.list.1.description"),
       stack: t("project.list.1.stack"),
@@ -277,8 +293,7 @@ export const useProjectsData = () => {
     },
     {
       id: 3,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/sushi.png",
+      imgUrl: ImageUrls.projects.sushi,
       title: t("project.list.2.title"),
       description: t("project.list.2.description"),
       stack: t("project.list.2.stack"),
@@ -290,8 +305,7 @@ export const useProjectsData = () => {
     },
     {
       id: 4,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/infoccell.png",
+      imgUrl: ImageUrls.projects.infoccell,
       title: t("project.list.3.title"),
       description: t("project.list.3.description"),
       stack: t("project.list.3.stack"),
@@ -303,8 +317,7 @@ export const useProjectsData = () => {
     },
     {
       id: 5,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/leo-de-lita.png",
+      imgUrl: ImageUrls.projects.leoDeLita,
       title: t("project.list.4.title"),
       description: t("project.list.4.description"),
       stack: t("project.list.4.stack"),
@@ -316,8 +329,7 @@ export const useProjectsData = () => {
     },
     {
       id: 6,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/projeto-calculadora-de-imc.webp",
+      imgUrl: ImageUrls.projects.calculadoraImc,
       title: t("project.list.5.title"),
       description: t("project.list.5.description"),
       stack: t("project.list.5.stack"),
@@ -329,8 +341,7 @@ export const useProjectsData = () => {
     },
     {
       id: 7,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/planner.png",
+      imgUrl: ImageUrls.projects.planner,
       title: t("project.list.6.title"),
       description: t("project.list.6.description"),
       stack: t("project.list.6.stack"),
@@ -342,8 +353,7 @@ export const useProjectsData = () => {
     },
     {
       id: 8,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/promocao3d.png",
+      imgUrl: ImageUrls.projects.promocao3d,
       title: t("project.list.7.title"),
       description: t("project.list.7.description"),
       stack: t("project.list.7.stack"),
@@ -355,8 +365,7 @@ export const useProjectsData = () => {
     },
     {
       id: 9,
-      imgUrl:
-        "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/planner.png",
+      imgUrl: ImageUrls.projects.planner,
       title: t("project.list.8.title"),
       description: t("project.list.8.description"),
       stack: t("project.list.8.stack"),
