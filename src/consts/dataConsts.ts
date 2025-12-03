@@ -3,78 +3,111 @@ import type { INavLinks, IProjectImages, ISocialButton } from "./types";
 import "../i18n";
 import type { LanguageMap } from "../contexts/types";
 
+// =======================
+// IMPORTS DE LOGOS
+// =======================
+import react from '../assets/image/react.webp';
+import node from '../assets/image/skill_node.webp';
+import express from '../assets/image/skill_express.webp';
+import nest from '../assets/image/skill_nest.webp';
+import next from '../assets/image/skill_next.webp';
+import next_dark from '../assets/image/skill_next_black.webp';
+import sass from '../assets/image/skill_sass.webp';
+import flutter from '../assets/image/skill_flutter.webp';
+import java from '../assets/image/skill_java.webp';
+import postgresql from '../assets/image/skill_postgres.webp';
+import mysql from '../assets/image/skill_mysql.webp';
+import git from '../assets/image/skill_git.webp';
+import docker from '../assets/image/skill_docker.webp';
+import vite from '../assets/image/skill_vite.webp';
+import css from '../assets/image/skill_css.webp';
+import javascript from '../assets/image/skill_js.webp';
+import typescript from '../assets/image/skill_ts.webp';
+import html from '../assets/image/skill_html.webp';
+
+// =======================
+// IMPORTS DE ICONES
+// =======================
+import brazil from '../assets/image/brasil.png';
+import usa from '../assets/image/eua.webp';
+import spain from '../assets/image/es_1.webp';
+import italy from '../assets/image/it_1.webp';
+import france from '../assets/image/france_1.webp';
+import lightTheme from '../assets/image/modo-claro.webp';
+import darkTheme from '../assets/image/modo-escuro.webp';
+import coffee from '../assets/image/cafe_semfundo.png';
+
+// =======================
+// IMPORTS DE SERVICES
+// =======================
+import code from '../assets/image/service_code.webp';
+import phone from '../assets/image/service_phone.webp';
+import api from '../assets/image/service_api.webp';
+
+// =======================
+// IMPORTS DE PROJETOS
+// =======================
+import cardapio from '../assets/image/cardapio.png';
+import jessicaPlanilhas from '../assets/image/projeto-jessica-planilhas.webp';
+import sushi from '../assets/image/sushi.png';
+import infoccell from '../assets/image/infoccell.png';
+import leoDeLita from '../assets/image/leo-de-lita.png';
+import calculadoraImc from '../assets/image/projeto-calculadora-de-imc.webp';
+import planner from '../assets/image/planner.png';
+import promocao3d from '../assets/image/promocao3d.png';
+
+// ======================================
+// OBJETO FINAL, FIEL À SUA ESTRUTURA
+// ======================================
+
 export const ImageUrls = {
   logos: {
-    react:
-      "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
-    node: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_node.webp",
-    express:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_express.webp",
-    nest: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_nest.webp",
-    next: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_next.webp",
-    next_dark:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_next_black.webp",
-    sass: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_sass.webp",
-    flutter:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_flutter.webp",
-    java: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_java.webp",
-    postgresql:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_postgres.webp",
-    mysql:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_mysql.webp",
-    git: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_git.webp",
-    docker:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_docker.webp",
-    vite: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_vite.webp",
-    css: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_css.webp",
-    javascript:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_js.webp",
-    typescript:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_ts.webp",
-    html: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/skill_html.webp",
+    react,
+    node,
+    express,
+    nest,
+    next,
+    next_dark,
+    sass,
+    flutter,
+    java,
+    postgresql,
+    mysql,
+    git,
+    docker,
+    vite,
+    css,
+    javascript,
+    typescript,
+    html,
   },
   icons: {
-    brazil:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/brasil.png",
-    usa: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/eua.webp",
-    spain:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/es_1.webp",
-    italy:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/it_1.webp",
-    france:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/france_1.webp",
-    lightTheme:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/modo-claro.webp",
-    darkTheme:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/modo-escuro.webp",
-    coffee:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cafe_semfundo.png",
+    brazil,
+    usa,
+    spain,
+    italy,
+    france,
+    lightTheme,
+    darkTheme,
+    coffee,
   },
   services: {
-    code: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/service_code.webp",
-    phone:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/service_phone.webp",
-    api: "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/service_api.webp",
+    code,
+    phone,
+    api,
   },
   projects: {
-    cardapio:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/cardapio.png",
-    jessicaPlanilhas:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/projeto-jessica-planilhas.webp",
-    sushi:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/sushi.png",
-    infoccell:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/infoccell.png",
-    leoDeLita:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/leo-de-lita.png",
-    calculadoraImc:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/projeto-calculadora-de-imc.webp",
-    planner:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/planner.png",
-    promocao3d:
-      "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/promocao3d.png",
+    cardapio,
+    jessicaPlanilhas,
+    sushi,
+    infoccell,
+    leoDeLita,
+    calculadoraImc,
+    planner,
+    promocao3d,
   },
 };
+
 
 export const projectImages: IProjectImages[] = [
   { url: ImageUrls.logos.react, alt: "Logo do Framework React" },
@@ -135,8 +168,8 @@ export const socialButtonList: ISocialButton[] = [
     index: 1,
   },
   {
-    arialLAbel: "Abrir linkedin",
-    url: "https://wa.me/558195124550?text=Olá%2C%20Jefferson!%20Encontrei%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20programação.%20Poderíamos%20conversar%3F",
+    arialLAbel: "Abrir whatsapp",
+    url: "https://wa.me/558199367426?text=Olá%2C%20Jefferson!%20Encontrei%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20programação.%20Poderíamos%20conversar%3F",
     iconClass: "bx bxl-whatsapp",
     index: 2,
   },
@@ -276,8 +309,8 @@ export const useProjectsData = () => {
       technologies: ["vite", "html", "sass", "css", "javascript"],
       imageClass: "cardapio",
       buttonClass: "cardapio",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 2,
@@ -288,8 +321,8 @@ export const useProjectsData = () => {
       technologies: ["vite", "html", "css", "javascript"],
       imageClass: "planilhas",
       buttonClass: "planilhas",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 3,
@@ -300,8 +333,8 @@ export const useProjectsData = () => {
       technologies: ["vite", "html", "css", "sass", "javascript"],
       imageClass: "sushi",
       buttonClass: "sushi",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 4,
@@ -312,8 +345,8 @@ export const useProjectsData = () => {
       technologies: ["vite", "html", "css", "sass", "javascript"],
       imageClass: "infoccell",
       buttonClass: "infoccell",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 5,
@@ -324,8 +357,8 @@ export const useProjectsData = () => {
       technologies: ["vite", "html", "css", "sass", "javascript"],
       imageClass: "leoLita",
       buttonClass: "leoLita",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 6,
@@ -336,8 +369,8 @@ export const useProjectsData = () => {
       technologies: ["html", "css", "javascript"],
       imageClass: "calculadoraIMC",
       buttonClass: "calculadoraIMC",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 7,
@@ -348,8 +381,8 @@ export const useProjectsData = () => {
       technologies: ["html", "sass", "css", "javascript"],
       imageClass: "paginaVendasJessica",
       buttonClass: "paginaVendasJessica",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 8,
@@ -360,8 +393,8 @@ export const useProjectsData = () => {
       technologies: ["html", "sass", "css", "javascript"],
       imageClass: "promocao3D",
       buttonClass: "promocao3D",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
     {
       id: 9,
@@ -372,8 +405,8 @@ export const useProjectsData = () => {
       technologies: ["html", "sass", "css", "javascript"],
       imageClass: "paginaPlanner",
       buttonClass: "paginaPlanner",
-      gitHubUrl: "",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
+      deployUrl: "https://cardapioonlinee.netlify.app",
     },
   ];
 };

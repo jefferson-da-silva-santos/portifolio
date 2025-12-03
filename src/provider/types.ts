@@ -8,7 +8,7 @@ export interface IProject {
   imageClass: string;
   buttonClass: string;
   gitHubUrl: string;
-  deployUrl?: string;
+  deployUrl: string;
 }
 
 

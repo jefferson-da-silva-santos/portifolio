@@ -7,7 +7,8 @@ export const ModalProjectProvider = ({ children, setSelectedProject }: ModalProj
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = (project: IProject) => {
-    setIsModalOpen(true)
+    setIsModalOpen(true);
+    
     if (setSelectedProject) setSelectedProject(project);
   };
 

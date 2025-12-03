@@ -17,7 +17,6 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const { theme } = useTheme();
   const { icon, toggleLanguage } = useLanguage();
   const { isMenuMobileVisible, toggleMenuVisibility, classMenuList, iconMenu } = useMenu();
-  
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 896);
 
@@ -36,6 +35,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
         <a style={linkStyle(theme, themeObject)} className="logoNav" href="">
           &#8249; <span className="letraMonoton">J</span>eff &#8260; &#8250;
         </a>
+
         <ul
           style={listStyle(theme, isMobile, isMenuMobileVisible)}
           className={`listNav ${classMenuList}`}
@@ -50,12 +50,18 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
                 aria-controls={link.controls}
                 className="itemsMenu-header"
                 href={link.href}
-                onMouseEnter={() =>
-                  setIsHover({ ...isHover, [link.href]: true })
-                }
-                onMouseLeave={() =>
-                  setIsHover({ ...isHover, [link.href]: false })
-                }
+                onMouseEnter={() => {
+                  setIsHover({ ...isHover, [link.href]: true });
+                }}
+                onMouseLeave={(e) => {
+                  setIsHover({ ...isHover, [link.href]: false });
+
+                  // 🔥 Corrige problema do hover travado no mobile
+                  if (isMobile) {
+                    const defaultColor = theme === "dark" ? "white" : "black";
+                    e.currentTarget.style.color = defaultColor;
+                  }
+                }}
               >
                 {link.text}
               </a>
@@ -77,6 +83,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
               />
             </a>
           </li>
+
           <li>
             <a
               href="#"
@@ -98,6 +105,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
             </a>
           </li>
         </ul>
+
         <button
           className="select-menu-humburguer"
           id="menu"
@@ -105,10 +113,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           aria-label={t("navigation.ariaLabels.toggleMenu")}
           onClick={toggleMenuVisibility}
         >
-          <i
-            style={iconStyles(theme)}
-            className={iconMenu}
-          ></i>
+          <i style={iconStyles(theme)} className={iconMenu}></i>
         </button>
       </nav>
     </div>

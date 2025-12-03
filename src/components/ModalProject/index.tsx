@@ -23,7 +23,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({
   }
   const { title, description, gitHubUrl, deployUrl, technologies } =
     selectedProject;
-
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { closeModal } = useModalProject();
 
   const projectTechnologies: string[] = technologies || [];
@@ -49,7 +49,6 @@ const ModalProject: React.FC<ModalProjectProps> = ({
           <button
             className="close-options"
             onClick={() => {
-              console.log("Fechando modal");
               closeModal();
             }}
             type="button"
@@ -113,7 +112,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({
             role="button"
             aria-label="Ver o site"
           >
-            <i className="bx bx-link-external"></i> Visitar
+            <i className="bx bx-link-external"></i> Deploy
           </a>
         </article>
       </section>

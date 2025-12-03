@@ -1,6 +1,5 @@
-
 import { useTranslation } from 'react-i18next';
-import { Formik, Form, type FormikHelpers } from 'formik'; 
+import { Formik, Form, type FormikHelpers } from 'formik';
 import FormField from '../../components/FormField';
 import { contactFormSchema } from '../../utils/validationUtilities';
 import type { ContactFormValues } from './types';
@@ -8,10 +7,19 @@ import useTheme from '../../hooks/useTheme';
 import objectTheme from '../../assets/theme.json';
 import { containerStyle, inputStyle, titleStyle } from './styles';
 import { getFirstLetterTitle, getRestOfTitle } from '../../utils/textUtilites';
+import emailjs from "emailjs-com";
+import { showNotyf } from '../../utils/notyf';
+import { useState } from 'react';
+
+const SERVICE_ID = 'service_ykwz0ni';
+const TEMPLATE_ID = 'template_h37bm6s';
+const PUBLIC_KEY = 'LkWLwIyTgUZFuaPa1';
+const MY_EMAIL = "jefferson.santos.dev8051@gmail.com";
 
 const Contato = () => {
   const { t } = useTranslation();
-  const {theme} = useTheme();
+  const { theme } = useTheme();
+  const [loading, setLoading] = useState(false);
 
   const initialValues: ContactFormValues = {
     nome: '',
@@ -20,13 +28,35 @@ const Contato = () => {
     mensagem: '',
   };
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: ContactFormValues,
     { resetForm }: FormikHelpers<ContactFormValues>
   ) => {
-    console.log('Formulário submetido com os seguintes valores:', values);
-    alert('Formulário enviado com sucesso!');
-    resetForm();
+    setLoading(true);
+    try {
+      await emailjs.send(
+        SERVICE_ID,        
+        TEMPLATE_ID,     
+        {
+          from_name: values.nome,
+          reply_to: values.email,
+          subject: values.assunto,
+          message: values.mensagem,
+          to_email: MY_EMAIL,
+          time: new Date().toLocaleString("pt-BR")
+        },
+        PUBLIC_KEY      
+      );
+
+      showNotyf("success", "Email enviado com sucesso!");
+      resetForm();
+
+    } catch (error) {
+      console.error(error);
+      showNotyf("error", "Ocorreu um erro ao enviar o email.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,6 +71,7 @@ const Contato = () => {
             &#8250;
           </h2>
         </article>
+
         <article className="groupContact-secundary" data-aos="fade-right">
           <Formik
             initialValues={initialValues}
@@ -52,18 +83,21 @@ const Contato = () => {
               <FormField id="email" name="email" type="email" placeholder={t("contact.emailPlaceholder")} />
               <FormField id="assunto" name="assunto" placeholder={t("contact.subjectPlaceholder")} />
               <FormField id="mensagem" name="mensagem" type="textarea" placeholder={t("contact.messagePlaceholder")} />
-              
-              <input
-              style={inputStyle(theme, objectTheme)}
+
+              <button
+                style={inputStyle(theme, objectTheme)}
                 role="button"
                 aria-label={t("contact.sendButtonAria")}
                 type="submit"
-                value={t("contact.sendButton")}
                 id="enviar"
-              />
+              >
+                {!loading && t("contact.sendButton")}
+                {loading && <i className='bx bx-loader-alt bx-spin' ></i>}
+              </button>
             </Form>
           </Formik>
         </article>
+
         <div className="groupContact-terciary" data-aos="fade-left">
           <div className="circle-2"></div>
           <img

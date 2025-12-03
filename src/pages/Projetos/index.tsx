@@ -10,6 +10,7 @@ const Projetos = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const projectsData = useProjectsData();
+  
   return (
     <div
       className="groupProjetos"

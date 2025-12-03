@@ -13,14 +13,16 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const ProjectCard: React.FC<IProject> = ({
-  imageClass,
+  id,
+  technologies,
+  imgUrl,
   title,
   description,
   stack,
+  imageClass,
   buttonClass,
-  id,
-  imgUrl,
-  technologies,
+  gitHubUrl,
+  deployUrl
 }) => {
   const { theme } = useTheme();
   const { openModal } = useModalProject();
@@ -37,8 +39,9 @@ const ProjectCard: React.FC<IProject> = ({
     technologies,
     imageClass,
     buttonClass,
-    gitHubUrl: "",
-    deployUrl: "",
+    gitHubUrl,
+    deployUrl,
+    project: {},
   };
 
   return (
@@ -49,7 +52,17 @@ const ProjectCard: React.FC<IProject> = ({
       style={cardStyles(theme, themeObject)}
     >
       <div className={`group-image-project ${imageClass}`}>
-        <img onMouseEnter={() => setIsImgHover(true)} onMouseLeave={() => setIsImgHover(false)} style={isImgHover ? {transform: "scale(110%)"} : {transform: "scale(1)"}} src={imgUrl} alt="" />
+        <img
+          onMouseEnter={() => setIsImgHover(true)}
+          onMouseLeave={() => setIsImgHover(false)}
+          style={
+            isImgHover
+              ? { transform: "scale(110%)" }
+              : { transform: "scale(1)" }
+          }
+          src={imgUrl}
+          alt=""
+        />
       </div>
       <h3 className="title-project" style={titleCardStyles(theme, themeObject)}>
         {title}
