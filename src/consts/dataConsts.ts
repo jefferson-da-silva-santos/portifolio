@@ -51,11 +51,20 @@ import cardapio from '../assets/image/cardapio.png';
 import jessicaPlanilhas from '../assets/image/projeto-jessica-planilhas.webp';
 import sushi from '../assets/image/sushi.png';
 import infoccell from '../assets/image/infoccell.png';
-import leoDeLita from '../assets/image/leo-de-lita.png';
+import leoDeLita from '../assets/image/leo_de_lita.webp';
 import calculadoraImc from '../assets/image/projeto-calculadora-de-imc.webp';
 import planner from '../assets/image/planner.png';
 import promocao3d from '../assets/image/promocao3d.png';
-
+import jtecPlatform from '../assets/image/jtec_web.webp';
+import jtecApi from '../assets/image/api_jtec.png';
+import oticasLeal from '../assets/image/oticas_leal.webp';
+import idePlatform from '../assets/image/ide.webp';
+import ideApi from '../assets/image/api_ide.png';
+import lpPiano from '../assets/image/curso_teclado.webp';
+import lpReact from '../assets/image/curso_react.png';
+import lpEbook from '../assets/image/ebookReceitas.png';
+import lpMentoria from '../assets/image/mentoria.webp';
+import lpDentista from '../assets/image/dentista.webp';
 // ======================================
 // OBJETO FINAL, FIEL À SUA ESTRUTURA
 // ======================================
@@ -105,6 +114,16 @@ export const ImageUrls = {
     calculadoraImc,
     planner,
     promocao3d,
+    jtecPlatform,
+    jtecApi,
+    oticasLeal,
+    idePlatform,
+    ideApi,
+    lpPiano,
+    lpReact,
+    lpEbook,
+    lpMentoria,
+    lpDentista
   },
 };
 
@@ -302,114 +321,163 @@ export const useProjectsData = () => {
   return [
     {
       id: 1,
-      imgUrl: ImageUrls.projects.cardapio,
+      imgUrl: ImageUrls.projects.jtecPlatform,
       title: t("project.list.0.title"),
       description: t("project.list.0.description"),
       stack: t("project.list.0.stack"),
-      technologies: ["vite", "html", "sass", "css", "javascript"],
-      imageClass: "cardapio",
-      buttonClass: "cardapio",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["next", "chartjs", "javascript", "sass"],
+      imageClass: "jtecPlatform",
+      buttonClass: "jtecPlatform",
+      gitHubUrl: "https://github.com/seu-usuario/jtec-platform",
+      deployUrl: "https://jtec-platform.vercel.app",
+      isApi: false
     },
     {
       id: 2,
-      imgUrl: ImageUrls.projects.jessicaPlanilhas,
+      imgUrl: ImageUrls.projects.jtecApi,
       title: t("project.list.1.title"),
       description: t("project.list.1.description"),
       stack: t("project.list.1.stack"),
-      technologies: ["vite", "html", "css", "javascript"],
-      imageClass: "planilhas",
-      buttonClass: "planilhas",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["nodejs", "express", "postgresql", "docker", "swagger"],
+      imageClass: "jtecApi",
+      buttonClass: "jtecApi",
+      gitHubUrl: "https://github.com/seu-usuario/jtec-api",
+      deployUrl: "",
+      isApi: true
     },
     {
       id: 3,
-      imgUrl: ImageUrls.projects.sushi,
+      imgUrl: ImageUrls.projects.leoDeLita,
       title: t("project.list.2.title"),
       description: t("project.list.2.description"),
       stack: t("project.list.2.stack"),
-      technologies: ["vite", "html", "css", "sass", "javascript"],
-      imageClass: "sushi",
-      buttonClass: "sushi",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["react", "sass", "typescript"],
+      imageClass: "leoDeLita",
+      buttonClass: "leoDeLita",
+      gitHubUrl: "https://github.com/seu-usuario/leo-de-lita",
+      deployUrl: "https://leodelita.com.br",
+      isApi: false
     },
     {
       id: 4,
-      imgUrl: ImageUrls.projects.infoccell,
+      imgUrl: ImageUrls.projects.oticasLeal,
       title: t("project.list.3.title"),
       description: t("project.list.3.description"),
       stack: t("project.list.3.stack"),
-      technologies: ["vite", "html", "css", "sass", "javascript"],
-      imageClass: "infoccell",
-      buttonClass: "infoccell",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["react", "sass", "javascript"],
+      imageClass: "oticasLeal",
+      buttonClass: "oticasLeal",
+      gitHubUrl: "https://github.com/seu-usuario/oticas-leal",
+      deployUrl: "",
+      isApi: false
     },
     {
       id: 5,
-      imgUrl: ImageUrls.projects.leoDeLita,
+      imgUrl: ImageUrls.projects.jessicaPlanilhas,
       title: t("project.list.4.title"),
       description: t("project.list.4.description"),
       stack: t("project.list.4.stack"),
-      technologies: ["vite", "html", "css", "sass", "javascript"],
-      imageClass: "leoLita",
-      buttonClass: "leoLita",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["react", "sass", "typescript"],
+      imageClass: "jessicaPlanilhas",
+      buttonClass: "jessicaPlanilhas",
+      gitHubUrl: "https://github.com/seu-usuario/jessica-planilhas",
+      deployUrl: "",
+      isApi: false
     },
     {
       id: 6,
-      imgUrl: ImageUrls.projects.calculadoraImc,
+      imgUrl: ImageUrls.projects.idePlatform,
       title: t("project.list.5.title"),
       description: t("project.list.5.description"),
       stack: t("project.list.5.stack"),
-      technologies: ["html", "css", "javascript"],
-      imageClass: "calculadoraIMC",
-      buttonClass: "calculadoraIMC",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["react", "javascript", "sass"],
+      imageClass: "idePlatform",
+      buttonClass: "idePlatform",
+      gitHubUrl: "https://github.com/seu-usuario/ide-platform",
+      deployUrl: "",
+      isApi: false
     },
     {
       id: 7,
-      imgUrl: ImageUrls.projects.planner,
+      imgUrl: ImageUrls.projects.ideApi,
       title: t("project.list.6.title"),
       description: t("project.list.6.description"),
       stack: t("project.list.6.stack"),
-      technologies: ["html", "sass", "css", "javascript"],
-      imageClass: "paginaVendasJessica",
-      buttonClass: "paginaVendasJessica",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["nodejs", "express", "postgres"],
+      imageClass: "ideApi",
+      buttonClass: "ideApi",
+      gitHubUrl: "https://github.com/seu-usuario/ide-api",
+      deployUrl: "",
+      isApi: true
     },
     {
       id: 8,
-      imgUrl: ImageUrls.projects.promocao3d,
+      imgUrl: ImageUrls.projects.lpPiano,
       title: t("project.list.7.title"),
       description: t("project.list.7.description"),
       stack: t("project.list.7.stack"),
-      technologies: ["html", "sass", "css", "javascript"],
-      imageClass: "promocao3D",
-      buttonClass: "promocao3D",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "lpPiano",
+      buttonClass: "lpPiano",
+      gitHubUrl: "https://github.com/seu-usuario/lp-piano",
+      deployUrl: "",
+      isApi: false
     },
     {
       id: 9,
-      imgUrl: ImageUrls.projects.planner,
+      imgUrl: ImageUrls.projects.lpReact,
       title: t("project.list.8.title"),
       description: t("project.list.8.description"),
       stack: t("project.list.8.stack"),
-      technologies: ["html", "sass", "css", "javascript"],
-      imageClass: "paginaPlanner",
-      buttonClass: "paginaPlanner",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/cardapio-online",
-      deployUrl: "https://cardapioonlinee.netlify.app",
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "lpReact",
+      buttonClass: "lpReact",
+      gitHubUrl: "https://github.com/seu-usuario/lp-react",
+      deployUrl: "",
+      isApi: false
+    },
+    {
+      id: 10,
+      imgUrl: ImageUrls.projects.lpEbook,
+      title: t("project.list.9.title"),
+      description: t("project.list.9.description"),
+      stack: t("project.list.9.stack"),
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "lpEbook",
+      buttonClass: "lpEbook",
+      gitHubUrl: "https://github.com/seu-usuario/lp-ebook",
+      deployUrl: "",
+      isApi: false
+    },
+    {
+      id: 11,
+      imgUrl: ImageUrls.projects.lpMentoria,
+      title: t("project.list.10.title"),
+      description: t("project.list.10.description"),
+      stack: t("project.list.10.stack"),
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "lpMentoria",
+      buttonClass: "lpMentoria",
+      gitHubUrl: "https://github.com/seu-usuario/lp-mentoria",
+      deployUrl: "",
+      isApi: false
+    },
+    {
+      id: 12,
+      imgUrl: ImageUrls.projects.lpDentista,
+      title: t("project.list.11.title"),
+      description: t("project.list.11.description"),
+      stack: t("project.list.11.stack"),
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "lpDentista",
+      buttonClass: "lpDentista",
+      gitHubUrl: "https://github.com/seu-usuario/lp-dentista",
+      deployUrl: "",
+      isApi: false
     },
   ];
 };
+
 
 export const useServicesData = () => {
   const { t } = useTranslation();

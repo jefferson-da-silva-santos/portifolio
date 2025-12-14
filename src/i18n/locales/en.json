@@ -44,49 +44,64 @@
     "title": "Projects",
     "list": [
       {
-        "title": "Online Menu",
-        "description": "Description of the Online Menu project",
-        "stack": "Stack: Vite | HTML | SASS | CSS | JavaScript | ViaCep API"
+        "title": "JTec Platform",
+        "description": "Web platform focused on centralizing project and team management in a single environment. It allows tracking clients, companies, users, tasks, goals, and system access, providing strategic insight, operational control, and security for decision-making.",
+        "stack": "Stack: NextJs | ChartJs | JavaScript | SASS"
       },
       {
-        "title": "Jéssica Spreadsheets",
-        "description": "Description of the Jéssica Spreadsheets project",
-        "stack": "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons"
-      },
-      {
-        "title": "Sushi Shop",
-        "description": "Description of the Sushi Shop project",
-        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer"
-      },
-      {
-        "title": "Infoccell Internet Cafe",
-        "description": "Description of the Infoccell Internet Cafe project",
-        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+        "title": "JTec API",
+        "description": "API responsible for supporting the entire business logic of the JTec platform. It manages authentication, permissions, projects, users, tasks, and access logs, following best practices in architecture, documentation, and scalability.",
+        "stack": "Stack: NodeJs | Express | Postgres | Docker | Swagger"
       },
       {
         "title": "Léo de Lita Cookies",
-        "description": "Description of the Léo de Lita Cookies project",
-        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+        "description": "Institutional website developed to showcase the brand’s products in an attractive way, reinforce its visual identity, and create a digital communication channel with customers and partners.",
+        "stack": "Stack: React | SASS | TypeScript | Boxicons"
       },
       {
-        "title": "BMI Calculator",
-        "description": "Description of the BMI Calculator project",
-        "stack": "Stack: HTML | CSS | JavaScript | SEO"
+        "title": "Óticas Leal",
+        "description": "Institutional website created to highlight products, services, and the credibility of Óticas Leal, offering simple navigation aligned with the brand identity.",
+        "stack": "Stack: React | SASS | JavaScript | Boxicons"
       },
       {
-        "title": "Spreadsheet Sales Page",
-        "description": "Description of the Spreadsheet Sales Page project",
-        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+        "title": "Jéssica Spreadsheets",
+        "description": "Website focused on presenting customized spreadsheet solutions, emphasizing clarity, professionalism, and conversion of visitors into potential clients.",
+        "stack": "Stack: React | SASS | TypeScript | Boxicons"
       },
       {
-        "title": "3D Promotion",
-        "description": "Description of the 3D Promotion project",
-        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+        "title": "IDE Platform",
+        "description": "Web platform developed to centralize and simplify the management of IEADPE evangelization projects. The interface was designed to provide simple, organized, and accessible navigation, supporting church communication and activity tracking.",
+        "stack": "Stack: React | JavaScript | SASS | Boxicons"
       },
       {
-        "title": "3D Promotion",
-        "description": "Description of the Planner Page project",
-        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+        "title": "IDE API",
+        "description": "API responsible for business logic and data persistence of the IDE Platform. It implements rules, integrations, and data control, using an organized architecture and design patterns to ensure scalability and long-term maintainability.",
+        "stack": "Stack: NodeJs | Express | Postgres | Factory"
+      },
+      {
+        "title": "Landing Page – Piano Course",
+        "description": "Landing page created to promote piano courses, focusing on clear content presentation, lead generation, and encouraging visitor conversion.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – React Course",
+        "description": "Landing page developed to promote React courses, highlighting benefits, value proposition, and calls to action in a modern and objective way.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Recipe Ebook",
+        "description": "Landing page focused on promoting and selling recipe ebooks, prioritizing a pleasant visual experience and conversion strategies.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Mentorship",
+        "description": "Landing page created to present paid traffic mentorship services, with direct communication, persuasive structure, and focus on lead generation.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Dentist",
+        "description": "Landing page developed to promote dental services, conveying trust, professionalism, and facilitating contact with patients.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
       }
     ],
     "textButton": "View project"

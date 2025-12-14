@@ -21,8 +21,10 @@ const ModalProject: React.FC<ModalProjectProps> = ({
   if (!selectedProject || isVisible) {
     return null;
   }
-  const { title, description, gitHubUrl, deployUrl, technologies } =
+  const { title, description, gitHubUrl, deployUrl, technologies, isApi } =
     selectedProject;
+    console.log("É uma Api: ", isApi);
+    
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { closeModal } = useModalProject();
 
@@ -104,7 +106,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({
           >
             <i className="bx bxl-github"></i> GitHub
           </a>
-          <a
+          {!isApi && <a
             className="btn-options-deploy"
             href={deployUrl}
             target="_blank"
@@ -113,7 +115,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({
             aria-label="Ver o site"
           >
             <i className="bx bx-link-external"></i> Deploy
-          </a>
+          </a>}
         </article>
       </section>
     </aside>

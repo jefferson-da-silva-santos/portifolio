@@ -44,49 +44,64 @@
     "title": "Proyectos",
     "list": [
       {
-        "title": "Menú Online",
-        "description": "Descripción del proyecto Menú Online",
-        "stack": "Stack: Vite | HTML | SASS | CSS | JavaScript | API ViaCep"
+        "title": "Plataforma JTec",
+        "description": "Plataforma web enfocada en centralizar la gestión de proyectos y equipos en un solo entorno. Permite el seguimiento de clientes, empresas, usuarios, tareas, metas y accesos al sistema, ofreciendo visión estratégica, control operativo y seguridad para la toma de decisiones.",
+        "stack": "Stack: NextJs | ChartJs | JavaScript | SASS"
       },
       {
-        "title": "Hojas de Cálculo Jéssica",
-        "description": "Descripción del proyecto Hojas de Cálculo Jéssica",
-        "stack": "Stack: Vite | HTML | CSS | JavaScript | Bootstrap Icons"
-      },
-      {
-        "title": "Tienda de Sushi",
-        "description": "Descripción del proyecto Tienda de Sushi",
-        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript | autoprefixer"
-      },
-      {
-        "title": "Cibercafé Infoccell",
-        "description": "Descripción del proyecto Cibercafé Infoccell",
-        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+        "title": "JTec API",
+        "description": "API responsable de soportar toda la lógica de negocio de la plataforma JTec. Gestiona autenticación, permisos, proyectos, usuarios, tareas y registros de acceso, siguiendo buenas prácticas de arquitectura, documentación y escalabilidad.",
+        "stack": "Stack: NodeJs | Express | Postgres | Docker | Swagger"
       },
       {
         "title": "Galletas Léo de Lita",
-        "description": "Descripción del proyecto Galletas Léo de Lita",
-        "stack": "Stack: Vite | HTML | CSS | SASS | JavaScript"
+        "description": "Sitio web institucional desarrollado para presentar los productos de la marca de forma atractiva, reforzar su identidad visual y crear un canal digital de comunicación con clientes y socios.",
+        "stack": "Stack: React | SASS | TypeScript | Boxicons"
       },
       {
-        "title": "Calculadora de IMC",
-        "description": "Descripción del proyecto Calculadora de IMC",
-        "stack": "Stack: HTML | CSS | JavaScript | SEO"
+        "title": "Óticas Leal",
+        "description": "Sitio web institucional creado para destacar productos, servicios y la credibilidad de Óticas Leal, proporcionando una navegación sencilla y alineada con la identidad de la marca.",
+        "stack": "Stack: React | SASS | JavaScript | Boxicons"
       },
       {
-        "title": "Página de Venta de Hojas de Cálculo",
-        "description": "Descripción del proyecto Página de Venta de Hojas de Cálculo",
-        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+        "title": "Jéssica Hojas de Cálculo",
+        "description": "Sitio web orientado a la presentación de soluciones en hojas de cálculo personalizadas, con enfoque en claridad, profesionalismo y conversión de visitantes en clientes potenciales.",
+        "stack": "Stack: React | SASS | TypeScript | Boxicons"
       },
       {
-        "title": "Promoción 3D",
-        "description": "Descripción del proyecto Promoción 3D",
-        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+        "title": "Plataforma IDE",
+        "description": "Plataforma web desarrollada para centralizar y facilitar la gestión de proyectos de evangelización de la IEADPE. La interfaz fue diseñada para ofrecer una navegación simple, organizada y accesible.",
+        "stack": "Stack: React | JavaScript | SASS | Boxicons"
       },
       {
-        "title": "Promoción 3D",
-        "description": "Descripción del proyecto Página Planner",
-        "stack": "Stack: HTML | SASS | CSS | JavaScript | SEO"
+        "title": "IDE API",
+        "description": "API responsable de la lógica de negocio y la persistencia de datos de la Plataforma IDE. Implementa reglas, integraciones y control de información, utilizando una arquitectura organizada y patrones de diseño.",
+        "stack": "Stack: NodeJs | Express | Postgres | Factory"
+      },
+      {
+        "title": "Landing Page – Curso de Piano",
+        "description": "Landing page creada para promocionar cursos de piano, enfocada en la presentación clara del contenido, captación de leads y conversión de visitantes.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Curso de React",
+        "description": "Landing page desarrollada para promocionar cursos de React, destacando beneficios, propuesta de valor y llamadas a la acción de forma moderna y objetiva.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Ebook de Recetas",
+        "description": "Landing page enfocada en la promoción y venta de ebooks de recetas, priorizando una experiencia visual agradable y estrategias de conversión.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Mentoría",
+        "description": "Landing page creada para presentar servicios de mentoría en tráfico pago, con comunicación directa, estructura persuasiva y enfoque en la generación de contactos.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Dentista",
+        "description": "Landing page desarrollada para la promoción de servicios odontológicos, transmitiendo confianza, profesionalismo y facilitando el contacto con pacientes.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
       }
     ],
     "textButton": "Ver proyecto"

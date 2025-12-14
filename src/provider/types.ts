@@ -9,6 +9,7 @@ export interface IProject {
   buttonClass: string;
   gitHubUrl: string;
   deployUrl: string;
+  isApi: boolean
 }
 
 

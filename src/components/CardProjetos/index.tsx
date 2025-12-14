@@ -22,7 +22,8 @@ const ProjectCard: React.FC<IProject> = ({
   imageClass,
   buttonClass,
   gitHubUrl,
-  deployUrl
+  deployUrl,
+  isApi,
 }) => {
   const { theme } = useTheme();
   const { openModal } = useModalProject();
@@ -41,6 +42,7 @@ const ProjectCard: React.FC<IProject> = ({
     buttonClass,
     gitHubUrl,
     deployUrl,
+    isApi,
     project: {},
   };
 

@@ -46,6 +46,7 @@ const Projetos = () => {
               buttonClass={project.buttonClass}
               gitHubUrl={project.gitHubUrl}
               deployUrl={project.deployUrl}
+              isApi={project.isApi}
             />
           ))}
         </article>
