@@ -328,8 +328,8 @@ export const useProjectsData = () => {
       technologies: ["next", "chartjs", "javascript", "sass"],
       imageClass: "jtecPlatform",
       buttonClass: "jtecPlatform",
-      gitHubUrl: "https://github.com/seu-usuario/jtec-platform",
-      deployUrl: "https://jtec-platform.vercel.app",
+      gitHubUrl: "",
+      deployUrl: "https://track-you.vercel.app",
       isApi: false
     },
     {
@@ -341,7 +341,7 @@ export const useProjectsData = () => {
       technologies: ["nodejs", "express", "postgresql", "docker", "swagger"],
       imageClass: "jtecApi",
       buttonClass: "jtecApi",
-      gitHubUrl: "https://github.com/seu-usuario/jtec-api",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/TrackYouApi",
       deployUrl: "",
       isApi: true
     },
@@ -354,8 +354,8 @@ export const useProjectsData = () => {
       technologies: ["react", "sass", "typescript"],
       imageClass: "leoDeLita",
       buttonClass: "leoDeLita",
-      gitHubUrl: "https://github.com/seu-usuario/leo-de-lita",
-      deployUrl: "https://leodelita.com.br",
+      gitHubUrl: "",
+      deployUrl: "https://bolachasleodelita.com.br",
       isApi: false
     },
     {
@@ -367,8 +367,8 @@ export const useProjectsData = () => {
       technologies: ["react", "sass", "javascript"],
       imageClass: "oticasLeal",
       buttonClass: "oticasLeal",
-      gitHubUrl: "https://github.com/seu-usuario/oticas-leal",
-      deployUrl: "",
+      gitHubUrl: "",
+      deployUrl: "https://oticasleal.netlify.app",
       isApi: false
     },
     {
@@ -380,8 +380,8 @@ export const useProjectsData = () => {
       technologies: ["react", "sass", "typescript"],
       imageClass: "jessicaPlanilhas",
       buttonClass: "jessicaPlanilhas",
-      gitHubUrl: "https://github.com/seu-usuario/jessica-planilhas",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/website-jessica-planilhas",
+      deployUrl: "https://jessica-planilhas.netlify.app",
       isApi: false
     },
     {
@@ -393,8 +393,8 @@ export const useProjectsData = () => {
       technologies: ["react", "javascript", "sass"],
       imageClass: "idePlatform",
       buttonClass: "idePlatform",
-      gitHubUrl: "https://github.com/seu-usuario/ide-platform",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/ide",
+      deployUrl: "https://ide-e-pregai.netlify.app",
       isApi: false
     },
     {
@@ -406,7 +406,7 @@ export const useProjectsData = () => {
       technologies: ["nodejs", "express", "postgres"],
       imageClass: "ideApi",
       buttonClass: "ideApi",
-      gitHubUrl: "https://github.com/seu-usuario/ide-api",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/ide-api",
       deployUrl: "",
       isApi: true
     },
@@ -419,8 +419,8 @@ export const useProjectsData = () => {
       technologies: ["react", "typescript", "sass"],
       imageClass: "lpPiano",
       buttonClass: "lpPiano",
-      gitHubUrl: "https://github.com/seu-usuario/lp-piano",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/loading-page-curso-teclado",
+      deployUrl: "https://loading-page-curso-teclado.onrender.com",
       isApi: false
     },
     {
@@ -432,8 +432,8 @@ export const useProjectsData = () => {
       technologies: ["react", "typescript", "sass"],
       imageClass: "lpReact",
       buttonClass: "lpReact",
-      gitHubUrl: "https://github.com/seu-usuario/lp-react",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/loading-page-curso-react",
+      deployUrl: "https://loading-page-curso-react.onrender.com",
       isApi: false
     },
     {
@@ -445,8 +445,8 @@ export const useProjectsData = () => {
       technologies: ["react", "typescript", "sass"],
       imageClass: "lpEbook",
       buttonClass: "lpEbook",
-      gitHubUrl: "https://github.com/seu-usuario/lp-ebook",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/loading-page-ebook-receitas",
+      deployUrl: "https://loading-page-ebook-receitas.onrender.com",
       isApi: false
     },
     {
@@ -458,8 +458,8 @@ export const useProjectsData = () => {
       technologies: ["react", "typescript", "sass"],
       imageClass: "lpMentoria",
       buttonClass: "lpMentoria",
-      gitHubUrl: "https://github.com/seu-usuario/lp-mentoria",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/loading-page-mentoria",
+      deployUrl: "https://loading-page-mentoria.onrender.com",
       isApi: false
     },
     {
@@ -471,8 +471,21 @@ export const useProjectsData = () => {
       technologies: ["react", "typescript", "sass"],
       imageClass: "lpDentista",
       buttonClass: "lpDentista",
-      gitHubUrl: "https://github.com/seu-usuario/lp-dentista",
-      deployUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/loading-page-dentista",
+      deployUrl: "https://loading-page-dentista.onrender.com",
+      isApi: false
+    },
+     {
+      id: 13,
+      imgUrl: ImageUrls.projects.sushi,
+      title: t("project.list.12.title"),
+      description: t("project.list.12.description"),
+      stack: t("project.list.12.stack"),
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "sushi",
+      buttonClass: "sushi",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/website-sushi-store",
+      deployUrl: "https://website-sushi-store.onrender.com",
       isApi: false
     },
   ];

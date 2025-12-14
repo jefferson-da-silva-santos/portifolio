@@ -102,6 +102,11 @@
         "title": "Landing Page – Dentist",
         "description": "Landing page developed to promote dental services, conveying trust, professionalism, and facilitating contact with patients.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Sushi Restaurant",
+        "description": "Institutional website developed to showcase sushi products, focusing on clear presentation and lead generation.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
       }
     ],
     "textButton": "View project"

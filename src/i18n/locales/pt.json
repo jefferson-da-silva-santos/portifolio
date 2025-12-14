@@ -102,6 +102,11 @@
         "title": "Loading Page - Dentista",
         "description": "Landing page desenvolvida para divulgação de serviços odontológicos, transmitindo confiança, profissionalismo e facilitando o contato com pacientes.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Loja de Sushi",
+        "description": "Website institucional desenvolvido para divulgar produtos de sushi, com foco em apresentação clara e captação de leads.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
       }
     ],
     "textButton": "Ver projeto"

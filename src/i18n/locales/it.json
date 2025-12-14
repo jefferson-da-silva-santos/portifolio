@@ -43,67 +43,72 @@
   "project": {
     "title": "Progetti",
     "list": [
-    {
-      "title": "Piattaforma JTec",
-      "description": "Piattaforma web focalizzata sulla centralizzazione della gestione di progetti e team in un unico ambiente. Consente di monitorare clienti, aziende, utenti, attività, obiettivi e accessi al sistema, offrendo controllo operativo e visione strategica.",
-      "stack": "Stack: NextJs | ChartJs | JavaScript | SASS"
-    },
-    {
-      "title": "JTec API",
-      "description": "API responsabile dell’intera logica di business della piattaforma JTec. Gestisce autenticazione, permessi, progetti, utenti, attività e registri di accesso, seguendo le migliori pratiche di architettura e scalabilità.",
-      "stack": "Stack: NodeJs | Express | Postgres | Docker | Swagger"
-    },
-    {
-      "title": "Biscotti Léo de Lita",
-      "description": "Sito istituzionale sviluppato per presentare i prodotti del brand in modo accattivante, rafforzare l’identità visiva e creare un canale digitale di comunicazione.",
-      "stack": "Stack: React | SASS | TypeScript | Boxicons"
-    },
-    {
-      "title": "Óticas Leal",
-      "description": "Sito istituzionale creato per valorizzare prodotti, servizi e l’affidabilità di Óticas Leal, offrendo una navigazione semplice e coerente con il brand.",
-      "stack": "Stack: React | SASS | JavaScript | Boxicons"
-    },
-    {
-      "title": "Jéssica Fogli di Calcolo",
-      "description": "Sito web dedicato alla presentazione di soluzioni personalizzate in fogli di calcolo, con focus su chiarezza, professionalità e conversione dei visitatori.",
-      "stack": "Stack: React | SASS | TypeScript | Boxicons"
-    },
-    {
-      "title": "Piattaforma IDE",
-      "description": "Piattaforma web sviluppata per centralizzare e semplificare la gestione dei progetti di evangelizzazione dell’IEADPE, con un’interfaccia chiara e accessibile.",
-      "stack": "Stack: React | JavaScript | SASS | Boxicons"
-    },
-    {
-      "title": "IDE API",
-      "description": "API responsabile della logica di business e della persistenza dei dati della piattaforma IDE, basata su un’architettura organizzata e pattern di progettazione.",
-      "stack": "Stack: NodeJs | Express | Postgres | Factory"
-    },
-    {
-      "title": "Landing Page – Corso di Pianoforte",
-      "description": "Landing page creata per promuovere corsi di pianoforte, con presentazione chiara dei contenuti, acquisizione di lead e ottimizzazione della conversione.",
-      "stack": "Stack: React | TypeScript | SASS | Boxicons"
-    },
-    {
-      "title": "Landing Page – Corso di React",
-      "description": "Landing page sviluppata per promuovere corsi di React, evidenziando benefici, valore e call to action in modo moderno.",
-      "stack": "Stack: React | TypeScript | SASS | Boxicons"
-    },
-    {
-      "title": "Landing Page – Ebook di Ricette",
-      "description": "Landing page focalizzata sulla promozione e vendita di ebook di ricette, con un’esperienza visiva curata e strategie di conversione.",
-      "stack": "Stack: React | TypeScript | SASS | Boxicons"
-    },
-    {
-      "title": "Landing Page – Mentorship",
-      "description": "Landing page creata per presentare servizi di mentorship nel traffico a pagamento, con comunicazione diretta e struttura persuasiva.",
-      "stack": "Stack: React | TypeScript | SASS | Boxicons"
-    },
-    {
-      "title": "Landing Page – Dentista",
-      "description": "Landing page sviluppata per promuovere servizi odontoiatrici, trasmettendo fiducia, professionalità e facilitando il contatto con i pazienti.",
-      "stack": "Stack: React | TypeScript | SASS | Boxicons"
-    }
-  ],
+      {
+        "title": "Piattaforma JTec",
+        "description": "Piattaforma web focalizzata sulla centralizzazione della gestione di progetti e team in un unico ambiente. Consente di monitorare clienti, aziende, utenti, attività, obiettivi e accessi al sistema, offrendo controllo operativo e visione strategica.",
+        "stack": "Stack: NextJs | ChartJs | JavaScript | SASS"
+      },
+      {
+        "title": "JTec API",
+        "description": "API responsabile dell’intera logica di business della piattaforma JTec. Gestisce autenticazione, permessi, progetti, utenti, attività e registri di accesso, seguendo le migliori pratiche di architettura e scalabilità.",
+        "stack": "Stack: NodeJs | Express | Postgres | Docker | Swagger"
+      },
+      {
+        "title": "Biscotti Léo de Lita",
+        "description": "Sito istituzionale sviluppato per presentare i prodotti del brand in modo accattivante, rafforzare l’identità visiva e creare un canale digitale di comunicazione.",
+        "stack": "Stack: React | SASS | TypeScript | Boxicons"
+      },
+      {
+        "title": "Óticas Leal",
+        "description": "Sito istituzionale creato per valorizzare prodotti, servizi e l’affidabilità di Óticas Leal, offrendo una navigazione semplice e coerente con il brand.",
+        "stack": "Stack: React | SASS | JavaScript | Boxicons"
+      },
+      {
+        "title": "Jéssica Fogli di Calcolo",
+        "description": "Sito web dedicato alla presentazione di soluzioni personalizzate in fogli di calcolo, con focus su chiarezza, professionalità e conversione dei visitatori.",
+        "stack": "Stack: React | SASS | TypeScript | Boxicons"
+      },
+      {
+        "title": "Piattaforma IDE",
+        "description": "Piattaforma web sviluppata per centralizzare e semplificare la gestione dei progetti di evangelizzazione dell’IEADPE, con un’interfaccia chiara e accessibile.",
+        "stack": "Stack: React | JavaScript | SASS | Boxicons"
+      },
+      {
+        "title": "IDE API",
+        "description": "API responsabile della logica di business e della persistenza dei dati della piattaforma IDE, basata su un’architettura organizzata e pattern di progettazione.",
+        "stack": "Stack: NodeJs | Express | Postgres | Factory"
+      },
+      {
+        "title": "Landing Page – Corso di Pianoforte",
+        "description": "Landing page creata per promuovere corsi di pianoforte, con presentazione chiara dei contenuti, acquisizione di lead e ottimizzazione della conversione.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Corso di React",
+        "description": "Landing page sviluppata per promuovere corsi di React, evidenziando benefici, valore e call to action in modo moderno.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Ebook di Ricette",
+        "description": "Landing page focalizzata sulla promozione e vendita di ebook di ricette, con un’esperienza visiva curata e strategie di conversione.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Mentorship",
+        "description": "Landing page creata per presentare servizi di mentorship nel traffico a pagamento, con comunicazione diretta e struttura persuasiva.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Landing Page – Dentista",
+        "description": "Landing page sviluppata per promuovere servizi odontoiatrici, trasmettendo fiducia, professionalità e facilitando il contatto con i pazienti.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Negozio di Sushi",
+        "description": "Sito web istituzionale sviluppato per promuovere prodotti di sushi, con particolare attenzione a una presentazione chiara e alla generazione di contatti.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      }
+    ],
     "textButton": "Vedi progetto"
   },
   "services": {

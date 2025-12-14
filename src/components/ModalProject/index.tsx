@@ -11,6 +11,7 @@ import {
 
 import { technologiesData } from "../../consts/dataConsts";
 import useModalProject from "../../hooks/useModalProject";
+import { showNotyf } from "../../utils/notyf";
 
 const ModalProject: React.FC<ModalProjectProps> = ({
   isVisible,
@@ -21,13 +22,12 @@ const ModalProject: React.FC<ModalProjectProps> = ({
   if (!selectedProject || isVisible) {
     return null;
   }
+
   const { title, description, gitHubUrl, deployUrl, technologies, isApi } =
     selectedProject;
-    console.log("É uma Api: ", isApi);
-    
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { closeModal } = useModalProject();
-
   const projectTechnologies: string[] = technologies || [];
 
   return (
@@ -50,37 +50,35 @@ const ModalProject: React.FC<ModalProjectProps> = ({
           </h1>
           <button
             className="close-options"
-            onClick={() => {
-              closeModal();
-            }}
+            onClick={closeModal}
             type="button"
             aria-label="Fechar"
-            aria-description="Fechar opções de visualização do projeto"
           >
             <i className="bx bx-x"></i>
           </button>
         </article>
+
         <p
           className="description-option-project"
           style={textModalStyles(theme, themeObject)}
         >
           {description}
         </p>
+
         <p
           className="text-tecnologias-options"
           style={textModalStyles(theme, themeObject)}
         >
           Tecnologias:
         </p>
+
         <ul className="list-options-box-tec">
-          {projectTechnologies.map((techKey: string, index: number) => {
+          {projectTechnologies.map((techKey, index) => {
             const techKeyLower =
               techKey.toLowerCase() as keyof typeof technologiesData;
             const techInfo = technologiesData[techKeyLower];
 
-            if (!techInfo) {
-              return null;
-            }
+            if (!techInfo) return null;
 
             return (
               <li
@@ -88,34 +86,63 @@ const ModalProject: React.FC<ModalProjectProps> = ({
                 className={techInfo.className}
                 style={skillModalStyles(theme, themeObject)}
               >
-                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} />{" "}
+                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} />
                 {techInfo.text}
               </li>
             );
           })}
         </ul>
+
         <p className="text-see-in-options">Veja em:</p>
+
         <article className="groupBtn-options-box">
           <a
             className="btn-options-git"
-            href={gitHubUrl}
+            href={gitHubUrl || "#"}
             target="_blank"
             rel="noopener noreferrer"
             role="button"
-            aria-label="Ver projeto no github"
+            aria-label="Ver projeto no GitHub"
+            onClick={
+              !gitHubUrl
+                ? (e) => {
+                    e.preventDefault();
+                    closeModal();
+                    showNotyf(
+                      "success",
+                      "Esse repositório não tá disponível (por enquanto)!"
+                    );
+                  }
+                : undefined
+            }
           >
             <i className="bx bxl-github"></i> GitHub
           </a>
-          {!isApi && <a
-            className="btn-options-deploy"
-            href={deployUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            role="button"
-            aria-label="Ver o site"
-          >
-            <i className="bx bx-link-external"></i> Deploy
-          </a>}
+
+          {!isApi && (
+            <a
+              className="btn-options-deploy"
+              href={deployUrl || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              role="button"
+              aria-label="Ver o site"
+              onClick={
+                !deployUrl
+                  ? (e) => {
+                      e.preventDefault();
+                      closeModal();
+                      showNotyf(
+                        "success",
+                        "Esse deploy não tá disponível (por enquanto)!"
+                      );
+                    }
+                  : undefined
+              }
+            >
+              <i className="bx bx-link-external"></i> Deploy
+            </a>
+          )}
         </article>
       </section>
     </aside>
