@@ -445,7 +445,7 @@ body {
 }
 .aos-item-list {
   text-shadow: 0px 0px 14px #17a0f0;
-  color: #ffffff;
+  color: #1ce9ff;
   img {
     filter: drop-shadow(0px 0px 10px #17a0f0);
     width: 1.1rem;
@@ -501,6 +501,11 @@ body {
   flex-direction: column;
   row-gap: 1.2em;
   animation: optionsSurge 0.5s ease 0s 1 normal forwards;
+
+  .stack {
+    @include flex(column, flex-start, baseline, 0.5em);
+
+  }
 }
 
 @keyframes optionsSurge {

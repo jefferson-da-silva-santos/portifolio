@@ -70,34 +70,83 @@ const ModalProject: React.FC<ModalProjectProps> = ({
           {description}
         </p>
 
-        <p
-          className="text-tecnologias-options"
-          style={textModalStyles(theme, themeObject)}
-        >
-          Tecnologias:
-        </p>
-
-        <ul className="list-options-box-tec">
-          {projectTechnologies.map((techKey, index) => {
-            const techKeyLower =
-              techKey.toLowerCase() as keyof typeof technologiesData;
-            const techInfo = technologiesData[techKeyLower];
-
-            if (!techInfo) return null;
-
-            return (
-              <li
-                key={index}
-                className={techInfo.className}
-                style={skillModalStyles(theme, themeObject)}
-                data-aos="zoom-in"
-              >
-                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} className="animate-stack-logo"/>
-                {techInfo.text}
-              </li>
-            );
-          })}
-        </ul>
+        <div className="stack">
+          <p
+            className="text-tecnologias-options"
+            style={textModalStyles(theme, themeObject)}
+          >
+            Tecnologias:
+          </p>
+          <ul className="list-options-box-tec">
+            {projectTechnologies.map((techKey, index) => {
+              const techKeyLower =
+                techKey.toLowerCase() as keyof typeof technologiesData;
+              const techInfo = technologiesData[techKeyLower];
+              if (!techInfo) return null;
+              return (
+                <li
+                  key={index}
+                  className={techInfo.className}
+                  style={skillModalStyles(theme, themeObject)}
+                  data-aos="zoom-in"
+                >
+                  <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} className="animate-stack-logo"/>
+                  {techInfo.text}
+                </li>
+              );
+            })}
+          </ul>
+          <p
+            className="text-tecnologias-options"
+            style={textModalStyles(theme, themeObject)}
+          >
+            Libs:
+          </p>
+          <ul className="list-options-box-tec">
+            {projectLibs.map((libKey, index) => {
+              const libKeyLower =
+                libKey.toLowerCase() as keyof typeof technologiesData;
+              const libInfo = technologiesData[libKeyLower];
+              if (!libInfo) return null;
+              return (
+                <li
+                  key={index}
+                  className={libInfo.className}
+                  style={skillModalStyles(theme, themeObject)}
+                  data-aos="zoom-in"
+                >
+                  <img src={libInfo.imageSrc} alt={`${libInfo.text} logo`} className="animate-stack-logo"/>
+                  {libInfo.text}
+                </li>
+              );
+            })}
+          </ul>
+          <p
+            className="text-tecnologias-options"
+            style={textModalStyles(theme, themeObject)}
+          >
+            Infra:
+          </p>
+          <ul className="list-options-box-tec">
+            {projectInfra.map((infraKey, index) => {
+              const infraKeyLower =
+                infraKey.toLowerCase() as keyof typeof technologiesData;
+              const infraInfo = technologiesData[infraKeyLower];
+              if (!infraInfo) return null;
+              return (
+                <li
+                  key={index}
+                  className={infraInfo.className}
+                  style={skillModalStyles(theme, themeObject)}
+                  data-aos="zoom-in"
+                >
+                  <img src={infraInfo.imageSrc} alt={`${infraInfo.text} logo`} className="animate-stack-logo"/>
+                  {infraInfo.text}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
         <p className="text-see-in-options">Veja em:</p>
 

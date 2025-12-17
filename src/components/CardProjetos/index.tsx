@@ -15,6 +15,8 @@ import { useTranslation } from "react-i18next";
 const ProjectCard: React.FC<IProject> = ({
   id,
   technologies,
+  libs,
+  infra,
   imgUrl,
   title,
   description,
@@ -38,6 +40,8 @@ const ProjectCard: React.FC<IProject> = ({
     description,
     stack,
     technologies,
+    libs,
+    infra,
     imageClass,
     buttonClass,
     gitHubUrl,

@@ -12,7 +12,8 @@ export const ModalProjectProvider = ({ children, setSelectedProject }: ModalProj
     if (setSelectedProject) setSelectedProject(project);
   };
 
-  const closeModal = () => {
+  const closeModal = () =>
+     {
     setIsModalOpen(false);
     if (setSelectedProject) setSelectedProject(null);
   };

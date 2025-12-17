@@ -38,6 +38,8 @@ const Projetos = () => {
               key={index}
               id={project.id}
               technologies={project.technologies}
+              libs={project.libs}
+              infra={project.infra}
               imgUrl={project.imgUrl}
               title={project.title}
               description={project.description}
