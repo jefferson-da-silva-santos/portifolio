@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"npm run watch:sass\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -17,6 +17,7 @@
   "dependencies": {
     "aos": "^2.3.4",
     "boxicons": "^2.1.4",
+    "concurrently": "^9.2.1",
     "emailjs-com": "^3.2.0",
     "formik": "^2.4.6",
     "i18next": "^25.4.0",

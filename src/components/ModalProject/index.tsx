@@ -1,6 +1,7 @@
 import type { ModalProjectProps } from "./types";
 import useTheme from "../../hooks/useTheme";
 import themeObject from "../../assets/theme.json";
+import "../../i18n";
 import {
   containerModalStyles,
   sectionModalStyles,
@@ -12,12 +13,14 @@ import {
 import { technologiesData } from "../../consts/dataConsts";
 import useModalProject from "../../hooks/useModalProject";
 import { showNotyf } from "../../utils/notyf";
+import { useTranslation } from "react-i18next";
 
 const ModalProject: React.FC<ModalProjectProps> = ({
   isVisible,
   selectedProject,
 }) => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   if (!selectedProject || isVisible) {
     return null;
@@ -110,7 +113,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({
                     closeModal();
                     showNotyf(
                       "success",
-                      "Esse repositório não tá disponível (por enquanto)!"
+                      t("messages.repositoryNot")
                     );
                   }
                 : undefined
@@ -134,10 +137,17 @@ const ModalProject: React.FC<ModalProjectProps> = ({
                       closeModal();
                       showNotyf(
                         "success",
-                        "Esse deploy não tá disponível (por enquanto)!"
+                        t("messages.deployNot")
                       );
                     }
-                  : undefined
+                  : deployUrl === "here" ? (e) => {
+                    e.preventDefault();
+                    closeModal();
+                    showNotyf(
+                      "success",
+                      t("messages.here")
+                    )
+                  } : undefined
               }
             >
               <i className="bx bx-link-external"></i> Deploy

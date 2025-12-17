@@ -65,6 +65,7 @@ import lpReact from '../assets/image/curso_react.png';
 import lpEbook from '../assets/image/ebookReceitas.png';
 import lpMentoria from '../assets/image/mentoria.webp';
 import lpDentista from '../assets/image/dentista.webp';
+import portifolio from '../assets/image/portifolio.png';
 // ======================================
 // OBJETO FINAL, FIEL À SUA ESTRUTURA
 // ======================================
@@ -123,7 +124,8 @@ export const ImageUrls = {
     lpReact,
     lpEbook,
     lpMentoria,
-    lpDentista
+    lpDentista,
+    portifolio
   },
 };
 
@@ -486,6 +488,19 @@ export const useProjectsData = () => {
       buttonClass: "sushi",
       gitHubUrl: "https://github.com/jefferson-da-silva-santos/website-sushi-store",
       deployUrl: "https://website-sushi-store.onrender.com",
+      isApi: false
+    },
+    {
+      id: 14,
+      imgUrl: ImageUrls.projects.portifolio,
+      title: t("project.list.13.title"),
+      description: t("project.list.13.description"),
+      stack: t("project.list.13.stack"),
+      technologies: ["react", "typescript", "sass"],
+      imageClass: "portifolio",
+      buttonClass: "portifolio",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/portifolio",
+      deployUrl: "here",
       isApi: false
     },
   ];

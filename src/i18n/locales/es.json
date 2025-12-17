@@ -107,6 +107,11 @@
         "title": "Tienda de Sushi",
         "description": "Sitio web institucional desarrollado para promocionar productos de sushi, con enfoque en una presentación clara y captación de leads.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Portafolio Personal",
+        "description": "Mi portafolio personal, donde presento proyectos, experiencias y habilidades desarrolladas a lo largo de mi carrera como desarrollador web.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
       }
     ],
     "textButton": "Ver proyecto"
@@ -133,5 +138,10 @@
     "subjectPlaceholder": "Asunto del mensaje",
     "messagePlaceholder": "Tu mensaje...",
     "sendButton": "Enviar"
+  },
+  "messages": {
+    "here": "¡Es aquí mismo! 😎",
+    "repositoryNot": "¡Este repositorio no está disponible (por ahora)!",
+    "deployNot": "¡Este deploy no está disponible (por ahora)!"
   }
 }

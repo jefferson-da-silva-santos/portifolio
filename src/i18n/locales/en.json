@@ -107,6 +107,11 @@
         "title": "Sushi Restaurant",
         "description": "Institutional website developed to showcase sushi products, focusing on clear presentation and lead generation.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
+      },
+      {
+        "title": "Personal Portfolio",
+        "description": "My personal portfolio where I showcase projects, professional experience, and skills developed throughout my web development career.",
+        "stack": "Stack: React | TypeScript | SASS | Boxicons"
       }
     ],
     "textButton": "View project"
@@ -133,5 +138,10 @@
     "subjectPlaceholder": "Subject of the message",
     "messagePlaceholder": "Your message...",
     "sendButton": "Send"
+  },
+  "messages": {
+    "here": "This is the place! 😎",
+    "repositoryNot": "This repository isn’t available (for now)!",
+    "deployNot": "This deployment isn’t available (for now)!"
   }
 }
