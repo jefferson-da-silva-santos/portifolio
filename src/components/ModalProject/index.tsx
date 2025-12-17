@@ -26,12 +26,14 @@ const ModalProject: React.FC<ModalProjectProps> = ({
     return null;
   }
 
-  const { title, description, gitHubUrl, deployUrl, technologies, isApi } =
+  const { title, description, gitHubUrl, deployUrl, technologies, libs, infra, isApi } =
     selectedProject;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { closeModal } = useModalProject();
   const projectTechnologies: string[] = technologies || [];
+  const projectLibs: string[] = libs || [];
+  const projectInfra: string[] = infra || [];
 
   return (
     <aside

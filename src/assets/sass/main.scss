@@ -229,10 +229,10 @@ body {
   }
 }
 .boxicons-item-list {
-  text-shadow: 0px 0px 14px #8000ff;
-  color: #8000ff;
+  text-shadow: 0px 0px 14px #ff00d4;
+  color: #00fff2;
   img {
-    filter: drop-shadow(0px 0px 10px #8000ff);
+    filter: drop-shadow(0px 0px 10px #ff00d4);
     width: 1.5rem;
   }
 }
@@ -270,11 +270,11 @@ body {
   }
 }
 .i18next-item-list {
-  text-shadow: 0px 0px 14px #00776b;
-  color: #00776b;
+  text-shadow: 0px 0px 14px #007a6e;
+  color: #00c9b5;
   img {
     filter: drop-shadow(0px 0px 10px #00776b);
-    width: 1.5rem;
+    width: 1.3rem;
   }
 }
 .jest-item-list {
@@ -314,7 +314,7 @@ body {
   color: #0091ff;
   img {
     filter: drop-shadow(0px 0px 10px #0091ff);
-    width: 1.5rem;
+    width: 1.3rem;
   }
 }
 .render-item-list {
@@ -322,7 +322,8 @@ body {
   color: #fff;
   img {
     filter: drop-shadow(0px 0px 10px #fff);
-    width: 1.5rem;
+    width: 1.3rem;
+    border-radius: 5px;
   }
 }
 .sequelize-item-list {
@@ -434,11 +435,27 @@ body {
     width: 1.2rem;
   }
 }
-.html-item-list {
+.nodecache-item-list {
   text-shadow: 0px 0px 14px #f06317;
   color: #f06317;
   img {
     filter: drop-shadow(0px 0px 10px #f06317);
+    width: 1.1rem;
+  }
+}
+.aos-item-list {
+  text-shadow: 0px 0px 14px #17a0f0;
+  color: #ffffff;
+  img {
+    filter: drop-shadow(0px 0px 10px #17a0f0);
+    width: 1.1rem;
+  }
+}
+.emailjs-item-list {
+  text-shadow: 0px 0px 14px #f06717;
+  color: #ffffff;
+  img {
+    filter: drop-shadow(0px 0px 10px #f06717);
     width: 1.1rem;
   }
 }

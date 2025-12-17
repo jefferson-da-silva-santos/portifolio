@@ -5,11 +5,13 @@ export interface IProject {
   description: string;
   stack: string;
   technologies: string[];
+  libs: string[];
+  infra: string[];
   imageClass: string;
   buttonClass: string;
   gitHubUrl: string;
   deployUrl: string;
-  isApi: boolean
+  isApi: boolean;
 }
 
 
