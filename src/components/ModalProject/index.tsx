@@ -88,8 +88,9 @@ const ModalProject: React.FC<ModalProjectProps> = ({
                 key={index}
                 className={techInfo.className}
                 style={skillModalStyles(theme, themeObject)}
+                data-aos="zoom-in"
               >
-                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} />
+                <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} className="animate-stack-logo"/>
                 {techInfo.text}
               </li>
             );

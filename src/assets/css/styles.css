@@ -21,6 +21,27 @@ body {
   transition: all 0.5s ease;
 }
 
+@keyframes animate-stack-logo {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.animate-stack-logo {
+  animation: animate-stack-logo ease-in 1s infinite;
+}
+
 ::-webkit-scrollbar {
   width: 0.6em;
 }
@@ -192,6 +213,152 @@ body {
   width: 1.5rem;
 }
 
+.axios-item-list {
+  text-shadow: 0px 0px 14px #8000ff;
+  color: #8000ff;
+}
+.axios-item-list img {
+  filter: drop-shadow(0px 0px 10px #8000ff);
+  width: 1.5rem;
+}
+
+.boxicons-item-list {
+  text-shadow: 0px 0px 14px #8000ff;
+  color: #8000ff;
+}
+.boxicons-item-list img {
+  filter: drop-shadow(0px 0px 10px #8000ff);
+  width: 1.5rem;
+}
+
+.chartjs-item-list {
+  text-shadow: 0px 0px 14px #ff4d00;
+  color: #ff4d00;
+}
+.chartjs-item-list img {
+  filter: drop-shadow(0px 0px 10px #ff4d00);
+  width: 1.5rem;
+}
+
+.datafns-item-list {
+  text-shadow: 0px 0px 14px #af0086;
+  color: #fff;
+}
+.datafns-item-list img {
+  filter: drop-shadow(0px 0px 10px #af0086);
+  width: 1.1rem;
+}
+
+.formik-item-list {
+  text-shadow: 0px 0px 14px #002688;
+  color: #0048ff;
+}
+.formik-item-list img {
+  filter: drop-shadow(0px 0px 10px #002688);
+  width: 1.3rem;
+}
+
+.hostinger-item-list {
+  text-shadow: 0px 0px 14px #5f0077;
+  color: #5f0077;
+}
+.hostinger-item-list img {
+  filter: drop-shadow(0px 0px 10px #5f0077);
+  width: 1.5rem;
+}
+
+.i18next-item-list {
+  text-shadow: 0px 0px 14px #00776b;
+  color: #00776b;
+}
+.i18next-item-list img {
+  filter: drop-shadow(0px 0px 10px #00776b);
+  width: 1.5rem;
+}
+
+.jest-item-list {
+  text-shadow: 0px 0px 14px rgb(121, 0, 73);
+  color: pink;
+}
+.jest-item-list img {
+  filter: drop-shadow(0px 0px 10px #92007f);
+  width: 1.1rem;
+}
+
+.joi-item-list {
+  text-shadow: 0px 0px 14px #1f007c;
+  color: #0080ff;
+}
+.joi-item-list img {
+  filter: drop-shadow(0px 0px 10px #1100ff);
+  width: 1rem;
+}
+
+.jwt-item-list {
+  text-shadow: 0px 0px 14px #ee00ff;
+  color: #ee00ff;
+}
+.jwt-item-list img {
+  filter: drop-shadow(0px 0px 10px #ee00ff);
+  width: 1.3rem;
+}
+
+.materialui-item-list {
+  text-shadow: 0px 0px 14px #0091ff;
+  color: #0091ff;
+}
+.materialui-item-list img {
+  filter: drop-shadow(0px 0px 10px #0091ff);
+  width: 1.5rem;
+}
+
+.primereact-item-list {
+  text-shadow: 0px 0px 14px #0091ff;
+  color: #0091ff;
+}
+.primereact-item-list img {
+  filter: drop-shadow(0px 0px 10px #0091ff);
+  width: 1.5rem;
+}
+
+.render-item-list {
+  text-shadow: 0px 0px 14px #ffffff;
+  color: #fff;
+}
+.render-item-list img {
+  filter: drop-shadow(0px 0px 10px #fff);
+  width: 1.5rem;
+}
+
+.sequelize-item-list {
+  text-shadow: 0px 0px 14px #0047b2;
+  color: #3f8cff;
+}
+.sequelize-item-list img {
+  filter: drop-shadow(0px 0px 10px #0047b2);
+  width: 1.3rem;
+}
+
+.vercel-item-list {
+  text-shadow: 0px 0px 14px rgba(255, 255, 255, 0.6078431373);
+  color: #fff;
+}
+.vercel-item-list img {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.6392156863));
+  width: 1.5rem;
+  border-radius: 50%;
+}
+
+.winston-item-list {
+  text-shadow: 0px 0px 14px #7e7e7e;
+  color: #fff;
+}
+.winston-item-list img {
+  filter: drop-shadow(0px 0px 10px #7e7e7e);
+  width: 1.3rem;
+  border-radius: 8px;
+}
+
 .postgres-item-list {
   text-shadow: 0px 0px 14px #ff74b6;
   color: #ff74b6;
@@ -217,6 +384,15 @@ body {
 .docker-item-list img {
   filter: drop-shadow(0px 0px 10px #2ac5e1);
   width: 1.5rem;
+}
+
+.netlify-item-list {
+  text-shadow: 0px 0px 14px #2ac5e1;
+  color: #2ac5e1;
+}
+.netlify-item-list img {
+  filter: drop-shadow(0px 0px 10px #2ac5e1);
+  width: 1.3rem;
 }
 
 .flutter-item-list {

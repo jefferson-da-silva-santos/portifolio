@@ -66,6 +66,23 @@ import lpEbook from '../assets/image/ebookReceitas.png';
 import lpMentoria from '../assets/image/mentoria.webp';
 import lpDentista from '../assets/image/dentista.webp';
 import portifolio from '../assets/image/portifolio.png';
+import axios from '../assets/image/axios.png';
+import boxicons from '../assets/image/boxicons.png';
+import chartjs from '../assets/image/chartjs.svg';
+import datafns from '../assets/image/data.svg';
+import formik from '../assets/image/formik.png';
+import hostinger from '../assets/image/hostinger.png';
+import i18next from '../assets/image/i18next.png';
+import jest from '../assets/image/jest.png';
+import joi from '../assets/image/joi.png';
+import jwt from '../assets/image/jwt.webp';
+import materialui from '../assets/image/materialui.png';
+import render from '../assets/image/render.jpg';
+import sequelize from '../assets/image/sequelize.svg';
+import vercel from '../assets/image/vercel.png';
+import winston from '../assets/image/winston.png';
+import primereact from '../assets/image/primereact.webp';
+import netlify from '../assets/image/netlify.png';
 // ======================================
 // OBJETO FINAL, FIEL À SUA ESTRUTURA
 // ======================================
@@ -90,6 +107,23 @@ export const ImageUrls = {
     javascript,
     typescript,
     html,
+    axios,
+    boxicons,
+    chartjs,
+    datafns,
+    formik,
+    hostinger,
+    i18next,
+    jest,
+    joi,
+    jwt,
+    materialui,
+    render,
+    sequelize,
+    vercel,
+    winston,
+    primereact,
+    netlify
   },
   icons: {
     brazil,
@@ -315,6 +349,91 @@ export const technologiesData = {
     text: "HTML",
     className: "html-item-list",
   },
+  axios: {
+    imageSrc: ImageUrls.logos.axios,
+    text: "Axios",
+    className: "axios-item-list",
+  },
+  boxicons: {
+    imageSrc: ImageUrls.logos.boxicons,
+    text: "BoxIcons",
+    className: "boxicons-item-list",
+  },
+  chartjs: {
+    imageSrc: ImageUrls.logos.chartjs,
+    text: "ChartJs",
+    className: "chartjs-item-list",
+  },
+  datafns: {
+    imageSrc: ImageUrls.logos.datafns,
+    text: "DataFns",
+    className: "datafns-item-list",
+  },
+  formik: {
+    imageSrc: ImageUrls.logos.formik,
+    text: "Formik",
+    className: "formik-item-list",
+  },
+  hostinger: {
+    imageSrc: ImageUrls.logos.hostinger,
+    text: "Hostinger",
+    className: "hostinger-item-list",
+  },
+  i18next: {
+    ImageUrls: ImageUrls.logos.i18next,
+    text: "i18next",
+    className: "i18next-item-list",
+  },
+  jest: {
+    imageSrc: ImageUrls.logos.jest,
+    text: "Jest",
+    className: "jest-item-list",
+  },
+  joi: {
+    imageSrc: ImageUrls.logos.joi,
+    text: "Joi",
+    className: "joi-item-list",
+  },
+  jwt: {
+    imageSrc: ImageUrls.logos.jwt,
+    text: "JWT",
+    className: "jwt-item-list",
+  },
+  materialui: {
+    imageSrc: ImageUrls.logos.materialui,
+    text: "MaterialUI",
+    className: "materialui-item-list",
+  },
+  primereact: {
+    imageSrc: ImageUrls.logos.primereact,
+    text: "PrimeReact",
+    className: "primereact-item-list",
+  },
+  render: {
+    imageSrc: ImageUrls.logos.render,
+    text: "Render",
+    className: "render-item-list",
+  },
+  sequelize: {
+    imageSrc: ImageUrls.logos.sequelize,
+    text: "Sequelize",
+    className: "sequelize-item-list",
+  },
+  vercel: {
+    imageSrc: ImageUrls.logos.vercel,
+    text: "Vercel",
+    className: "vercel-item-list",
+  },
+  winston: {
+    imageSrc: ImageUrls.logos.winston,
+    text: "Winston",
+    className: "winston-item-list",
+  },
+  netlify: {
+    imageSrc: ImageUrls.logos.netlify,
+    text: "Netlify",
+    className: "netlify-item-list",
+  }
 };
 
 export const useProjectsData = () => {
@@ -340,7 +459,7 @@ export const useProjectsData = () => {
       title: t("project.list.1.title"),
       description: t("project.list.1.description"),
       stack: t("project.list.1.stack"),
-      technologies: ["nodejs", "express", "postgresql", "docker", "swagger"],
+      technologies: ["nodejs", "express", "postgresql", "sequelize", "docker", "swagger", "jwt", "datafns", "vercel", "jest", "joi", "winston"],
       imageClass: "jtecApi",
       buttonClass: "jtecApi",
       gitHubUrl: "https://github.com/jefferson-da-silva-santos/TrackYouApi",
@@ -353,7 +472,7 @@ export const useProjectsData = () => {
       title: t("project.list.2.title"),
       description: t("project.list.2.description"),
       stack: t("project.list.2.stack"),
-      technologies: ["react", "sass", "typescript"],
+      technologies: ["react", "sass", "typescript", "netlify", "formik"],
       imageClass: "leoDeLita",
       buttonClass: "leoDeLita",
       gitHubUrl: "",
