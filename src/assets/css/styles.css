@@ -147,6 +147,7 @@ body {
   border-radius: 15px;
   overflow: hidden;
   border: 1px solid rgb(32.75, 32.75, 32.75);
+  text-wrap: nowrap;
 }
 
 .react-item-list {
@@ -219,7 +220,7 @@ body {
 }
 .axios-item-list img {
   filter: drop-shadow(0px 0px 10px #8000ff);
-  width: 1.5rem;
+  width: 1.2rem;
 }
 
 .boxicons-item-list {
@@ -228,7 +229,7 @@ body {
 }
 .boxicons-item-list img {
   filter: drop-shadow(0px 0px 10px #ff00d4);
-  width: 1.5rem;
+  width: 1.3rem;
 }
 
 .chartjs-item-list {
@@ -259,12 +260,12 @@ body {
 }
 
 .hostinger-item-list {
-  text-shadow: 0px 0px 14px #5f0077;
-  color: #5f0077;
+  text-shadow: 0px 0px 14px #9900ff;
+  color: #b649ff;
 }
 .hostinger-item-list img {
-  filter: drop-shadow(0px 0px 10px #5f0077);
-  width: 1.5rem;
+  filter: drop-shadow(0px 0px 10px #9900ff);
+  width: 1.3rem;
 }
 
 .i18next-item-list {
@@ -470,7 +471,7 @@ body {
 
 .emailjs-item-list {
   text-shadow: 0px 0px 14px #f06717;
-  color: #ffffff;
+  color: #ff7336;
 }
 .emailjs-item-list img {
   filter: drop-shadow(0px 0px 10px #f06717);
