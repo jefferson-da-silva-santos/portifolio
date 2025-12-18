@@ -75,7 +75,9 @@ const ModalProject: React.FC<ModalProjectProps> = ({
             className="text-tecnologias-options"
             style={textModalStyles(theme, themeObject)}
           >
-            Tecnologias:
+            {
+              t("messages.tech")
+            }
           </p>
           <ul className="list-options-box-tec">
             {projectTechnologies.map((techKey, index) => {
@@ -100,7 +102,9 @@ const ModalProject: React.FC<ModalProjectProps> = ({
             className="text-tecnologias-options"
             style={textModalStyles(theme, themeObject)}
           >
-            Libs:
+           {
+            t("messages.lib")
+           }
           </p>
           <ul className="list-options-box-tec">
             {projectLibs.map((libKey, index) => {
@@ -125,7 +129,9 @@ const ModalProject: React.FC<ModalProjectProps> = ({
             className="text-tecnologias-options"
             style={textModalStyles(theme, themeObject)}
           >
-            Infra:
+            {
+              t("messages.infra")
+            }
           </p>
           <ul className="list-options-box-tec">
             {projectInfra.map((infraKey, index) => {
@@ -148,7 +154,9 @@ const ModalProject: React.FC<ModalProjectProps> = ({
           </ul>
         </div>
 
-        <p className="text-see-in-options">Veja em:</p>
+        <p className="text-see-in-options">{
+          t('messages.see_in')
+          }</p>
 
         <article className="groupBtn-options-box">
           <a

@@ -142,6 +142,10 @@
   "messages": {
     "here": "¡Es aquí mismo! 😎",
     "repositoryNot": "¡Este repositorio no está disponible (por ahora)!",
-    "deployNot": "¡Este deploy no está disponible (por ahora)!"
+    "deployNot": "¡Este deploy no está disponible (por ahora)!",
+    "see_in": "Ver en:",
+    "tech": "Stack:",
+    "lib": "Librerías:",
+    "infra": "Infraestructura:"
   }
 }

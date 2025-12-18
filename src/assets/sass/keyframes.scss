@@ -1,0 +1,150 @@
+@keyframes animate-stack-logo {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg)
+  }
+  50% {
+    transform: rotate(0deg)
+  }
+  75% {
+    transform: rotate(-3deg)
+  }
+  100% {
+    transform: rotate(0deg)
+  }
+}
+
+@keyframes shines {
+  0% {
+    transform: rotate(-4deg) translateX(26);
+  }
+  100% {
+    transform: rotate(-4deg) translateX(-26rem);
+  }
+}
+
+@keyframes animatedSkill {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes optionsSurge {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes palavrasAnimation {
+  0% {
+    content: "";
+  }
+  5% {
+    content: "F";
+  }
+  10% {
+    content: "Fu";
+  }
+  15% {
+    content: "Ful";
+  }
+  20% {
+    content: "Full";
+  }
+  25% {
+    content: "Full-";
+  }
+  30% {
+    content: "Full-S";
+  }
+  35% {
+    content: "Full-St";
+  }
+  40% {
+    content: "Full-Sta";
+  }
+  45% {
+    content: "Full-Stac";
+  }
+  50% {
+    content: "Full-Stack";
+  }
+  55% {
+    content: "Full-Stack ";
+  }
+  60% {
+    content: "Full-Stack D";
+  }
+  65% {
+    content: "Full-Stack De";
+  }
+  70% {
+    content: "Full-Stack Dev";
+  }
+  75% {
+    content: "Full-Stack Deve";
+  }
+  80% {
+    content: "Full-Stack Devel";
+  }
+  85% {
+    content: "Full-Stack Develo";
+  }
+  90% {
+    content: "Full-Stack Develop";
+  }
+  95% {
+    content: "Full-Stack Develope";
+  }
+  100% {
+    content: "Full-Stack Developer";
+  }
+}
+
+@keyframes flutuacaoImagem {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes chicaracRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
