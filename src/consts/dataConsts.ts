@@ -473,6 +473,7 @@ export const useProjectsData = () => {
       gitHubUrl: "",
       deployUrl: "https://track-you.vercel.app",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 2,
@@ -496,6 +497,7 @@ export const useProjectsData = () => {
       gitHubUrl: "https://github.com/jefferson-da-silva-santos/TrackYouApi",
       deployUrl: "",
       isApi: true,
+      category: categoryProjects[1],
     },
     {
       id: 3,
@@ -511,6 +513,7 @@ export const useProjectsData = () => {
       gitHubUrl: "",
       deployUrl: "https://bolachasleodelita.com.br",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 4,
@@ -526,6 +529,7 @@ export const useProjectsData = () => {
       gitHubUrl: "",
       deployUrl: "https://oticasleal.netlify.app",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 5,
@@ -542,6 +546,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/website-jessica-planilhas",
       deployUrl: "https://jessica-planilhas.netlify.app",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 6,
@@ -557,6 +562,7 @@ export const useProjectsData = () => {
       gitHubUrl: "https://github.com/jefferson-da-silva-santos/ide",
       deployUrl: "https://ide-e-pregai.netlify.app",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 7,
@@ -572,6 +578,7 @@ export const useProjectsData = () => {
       gitHubUrl: "https://github.com/jefferson-da-silva-santos/ide-api",
       deployUrl: "",
       isApi: true,
+      category: categoryProjects[1],
     },
     {
       id: 8,
@@ -588,6 +595,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/loading-page-curso-teclado",
       deployUrl: "https://loading-page-curso-teclado.onrender.com",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 9,
@@ -604,6 +612,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/loading-page-curso-react",
       deployUrl: "https://loading-page-curso-react.onrender.com",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 10,
@@ -620,6 +629,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/loading-page-ebook-receitas",
       deployUrl: "https://loading-page-ebook-receitas.onrender.com",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 11,
@@ -636,6 +646,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/loading-page-mentoria",
       deployUrl: "https://loading-page-mentoria.onrender.com",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 12,
@@ -652,6 +663,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/loading-page-dentista",
       deployUrl: "https://loading-page-dentista.onrender.com",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 13,
@@ -668,6 +680,7 @@ export const useProjectsData = () => {
         "https://github.com/jefferson-da-silva-santos/website-sushi-store",
       deployUrl: "https://website-sushi-store.onrender.com",
       isApi: false,
+      category: categoryProjects[0],
     },
     {
       id: 14,
@@ -683,9 +696,13 @@ export const useProjectsData = () => {
       gitHubUrl: "https://github.com/jefferson-da-silva-santos/portifolio",
       deployUrl: "here",
       isApi: false,
+      category: categoryProjects[0],
     },
   ];
 };
+
+
+export const categoryProjects = ["frontend", "backend"];
 
 export const useServicesData = () => {
   const { t } = useTranslation();
