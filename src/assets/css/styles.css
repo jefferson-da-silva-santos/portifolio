@@ -735,7 +735,7 @@ strong {
   left: 0;
   bottom: 0;
   right: 0;
-  top: 0;
+  top: 10px;
 }
 .groupProjetos-categorys__item:nth-child(1) {
   border-color: #00f7ff;
