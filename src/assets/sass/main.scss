@@ -433,48 +433,38 @@ body {
 
 @keyframes sombrasPiscando {
   0% {
-    filter:
-      drop-shadow(0px 0px 0px transparent)
-      drop-shadow(0px 0px 0px transparent)
-      drop-shadow(0px 0px 0px transparent);
+    filter: drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent) drop-shadow(0px 0px 0px transparent);
   }
 
   20% {
-    filter:
-      drop-shadow(-33px 7px 0px #33daad4f)
+    filter: drop-shadow(-33px 7px 0px #33daad4f)
       drop-shadow(-27px 14px 0px #ffffff69)
       drop-shadow(-47px 21px 0px #61b8ff70);
   }
 
   40% {
-    filter:
-      drop-shadow(0px 0px 0px transparent)
-      drop-shadow(0px 0px 0px transparent)
-      drop-shadow(0px 0px 0px transparent);
+    filter: drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent) drop-shadow(0px 0px 0px transparent);
   }
 
   60% {
-    filter:
-     drop-shadow(-33px 7px 0px #61b8ff70)
+    filter: drop-shadow(-33px 7px 0px #61b8ff70)
       drop-shadow(-27px 14px 0px #ffffff69)
       drop-shadow(-47px 21px 0px #33daad4f);
   }
 
   80% {
-    filter:
-      drop-shadow(-33px 7px 0px #ffffff69)
+    filter: drop-shadow(-33px 7px 0px #ffffff69)
       drop-shadow(-27px 14px 0px #33daad4f)
       drop-shadow(-47px 21px 0px #61b8ff70);
   }
 
   100% {
-    filter:
-      drop-shadow(0px 0px 0px transparent)
-      drop-shadow(0px 0px 0px transparent)
-      drop-shadow(0px 0px 0px transparent);
+    filter: drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent) drop-shadow(0px 0px 0px transparent);
   }
 }
-
 
 .groupHeader-img img {
   width: 86%;
@@ -720,9 +710,10 @@ strong {
       &:hover .effect {
         height: 1rem;
         width: 100%;
-        background-color: #00f7ff83;
+        background-color: #76868683;
       }
     }
+
     &:nth-child(2) {
       border-color: orange;
       color: orange;
@@ -738,9 +729,10 @@ strong {
       &:hover .effect {
         height: 1rem;
         width: 100%;
-        background-color: rgba(255, 166, 0, 0.596);
+        background-color: rgba(255, 166, 0, 0.404);
       }
     }
+
     &:nth-child(3) {
       border-color: #ff009d;
       color: #ff009d;
@@ -756,7 +748,7 @@ strong {
       &:hover .effect {
         height: 1rem;
         width: 100%;
-        background-color: #ff31b083;
+        background-color: #ff31b054;
       }
     }
   }
@@ -928,7 +920,16 @@ strong {
   padding: 2.5em 0;
 }
 
+.shinnee {
+  position: absolute;
+  width: 200%;
+  height: 20rem;
+  background-image: linear-gradient(45deg, #ffffff12, #ffffff00);
+  transform: rotate(134deg) translateY(-200%);
+  transition: all 0.5s ease;
+}
 .card-service {
+  position: relative;
   text-align: center;
   height: 26em;
   display: flex;
@@ -942,9 +943,14 @@ strong {
   padding: 2em;
   transition: border 1s ease;
   transition: all 0.5s ease;
+  overflow: hidden;
 
   &:hover {
     border: 1px solid white;
+
+    .shinnee {
+      transform: rotate(134deg) translateY(-93%);
+    }
   }
 
   .circle-externo-servico {

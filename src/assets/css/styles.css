@@ -828,7 +828,7 @@ strong {
 .groupProjetos-categorys__item:nth-child(1):hover .effect {
   height: 1rem;
   width: 100%;
-  background-color: rgba(0, 247, 255, 0.5137254902);
+  background-color: rgba(118, 134, 134, 0.5137254902);
 }
 .groupProjetos-categorys__item:nth-child(2) {
   border-color: orange;
@@ -844,7 +844,7 @@ strong {
 .groupProjetos-categorys__item:nth-child(2):hover .effect {
   height: 1rem;
   width: 100%;
-  background-color: rgba(255, 166, 0, 0.596);
+  background-color: rgba(255, 166, 0, 0.404);
 }
 .groupProjetos-categorys__item:nth-child(3) {
   border-color: #ff009d;
@@ -860,7 +860,7 @@ strong {
 .groupProjetos-categorys__item:nth-child(3):hover .effect {
   height: 1rem;
   width: 100%;
-  background-color: rgba(255, 49, 176, 0.5137254902);
+  background-color: rgba(255, 49, 176, 0.3294117647);
 }
 
 .groupProjetos-primary {
@@ -1024,7 +1024,17 @@ strong {
   padding: 2.5em 0;
 }
 
+.shinnee {
+  position: absolute;
+  width: 200%;
+  height: 20rem;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.0705882353), rgba(255, 255, 255, 0));
+  transform: rotate(134deg) translateY(-200%);
+  transition: all 0.5s ease;
+}
+
 .card-service {
+  position: relative;
   text-align: center;
   height: 26em;
   display: flex;
@@ -1038,9 +1048,13 @@ strong {
   padding: 2em;
   transition: border 1s ease;
   transition: all 0.5s ease;
+  overflow: hidden;
 }
 .card-service:hover {
   border: 1px solid white;
+}
+.card-service:hover .shinnee {
+  transform: rotate(134deg) translateY(-93%);
 }
 .card-service .circle-externo-servico {
   width: 11em;

@@ -34,6 +34,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       style={cardStyles(theme, objectTheme)}
       className={`card-service ${cardClass} ${classBorderCard}`}
     >
+      <div className="shinnee"></div>
       <div className={`circle-externo-servico ${circleClass}`}>
         <div
           className="circle-interno-servico"
