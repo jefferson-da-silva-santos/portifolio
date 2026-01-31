@@ -162,10 +162,8 @@ body {
 }
 
 .groupHeader {
-  min-height: 100vh;
   overflow: hidden;
   position: relative;
-
   .overlay {
     position: absolute;
     top: 0;
@@ -176,12 +174,12 @@ body {
   }
 }
 
-
 .groupHeader {
   background-color: var(--color-primary);
-  background-image: url('../image/background.png');
+  background-image: url("../image/background.png");
   background-size: cover;
   background-position: center right;
+  background-attachment: fixed;
 }
 
 .logoNav {
@@ -284,7 +282,7 @@ body {
   min-height: 100vh;
   width: 90%;
   margin: auto;
-  max-width: 1024px;
+  column-gap: 2rem;
 }
 
 .groupHeader-texts {
@@ -314,37 +312,43 @@ body {
   font-family: var(--font-primary);
   text-shadow: 0px 0px 15px #00ffff4f;
   font-weight: 400;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
-
 
 .button-header {
   margin: 1rem 0;
   text-decoration: none;
-    color: #000;
-    font-family: "Roboto Flex", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-transform: uppercase;
-    padding: 1rem 1.5rem;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    border-radius: 0 ;
-    border: none;
-    background: linear-gradient(90deg, #3DD598 0%, #2FD180 100%);
-    box-shadow: 0 4px 12px rgba(61, 213, 152, .4);
-    -webkit-transition: all 0.3s 
-ease-in-out;
-    transition: all 0.3s 
-ease-in-out;
-    font-size: 1.1rem;
-    letter-spacing: .05em;
+  color: #000;
+  font-family: "Roboto Flex", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 0;
+  border: none;
+  background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
+  box-shadow: -7px 7px 0px #ffffff;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: none;
+    background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
+    color: #fff;
+    transform: scale(103%);
+  }
 }
 
 .title-secundary-header::before {
@@ -424,14 +428,60 @@ ease-in-out;
   color: var(--white);
   font-weight: 200;
   font-size: 1.1rem;
+  max-width: 33rem;
 }
 
+@keyframes sombrasPiscando {
+  0% {
+    filter:
+      drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent);
+  }
+
+  20% {
+    filter:
+      drop-shadow(-33px 7px 0px #33daad4f)
+      drop-shadow(-27px 14px 0px #ffffff69)
+      drop-shadow(-47px 21px 0px #61b8ff70);
+  }
+
+  40% {
+    filter:
+      drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent);
+  }
+
+  60% {
+    filter:
+     drop-shadow(-33px 7px 0px #61b8ff70)
+      drop-shadow(-27px 14px 0px #ffffff69)
+      drop-shadow(-47px 21px 0px #33daad4f);
+  }
+
+  80% {
+    filter:
+      drop-shadow(-33px 7px 0px #ffffff69)
+      drop-shadow(-27px 14px 0px #33daad4f)
+      drop-shadow(-47px 21px 0px #61b8ff70);
+  }
+
+  100% {
+    filter:
+      drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent)
+      drop-shadow(0px 0px 0px transparent);
+  }
+}
+
+
 .groupHeader-img img {
-      width: 110%;
-    position: absolute;
-    left: -52%;
-    bottom: -54%;
-    filter:drop-shadow(-37px 18px 0px #33daad);
+  width: 86%;
+  position: absolute;
+  object-fit: cover;
+  bottom: 0;
+  animation: sombrasPiscando 5s ease-in-out infinite;
 }
 
 .groupSobre {
@@ -623,7 +673,7 @@ strong {
 .groupProjetos-categorys__item.active {
   transform: scale(1.1);
   /* Você pode adicionar um brilho para destacar mais */
-  filter: brightness(1.2); 
+  filter: brightness(1.2);
 }
 
 .groupProjetos-categorys {
