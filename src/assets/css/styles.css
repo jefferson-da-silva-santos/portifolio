@@ -301,12 +301,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(1, 2, 16, 0.66);
 }
 
 .groupHeader {
   background-color: var(--color-primary);
-  background-image: url("../image/background.png");
   background-size: cover;
   background-position: center right;
   background-attachment: fixed;
@@ -323,7 +321,7 @@ body {
 
 .letraMonoton {
   font-family: var(--font-secundary);
-  color: rgb(0, 255, 242);
+  color: #00a2ff;
 }
 
 .groupNav {
@@ -355,7 +353,7 @@ body {
 }
 
 .icon-theme {
-  color: var(--color-terciary);
+  color: rgb(0, 157, 255);
   border-radius: 50%;
 }
 
@@ -448,7 +446,6 @@ body {
 .button-header {
   margin: 1rem 0;
   text-decoration: none;
-  color: #000;
   font-family: "Roboto Flex", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -465,7 +462,6 @@ body {
   border-radius: 0;
   border: none;
   background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
-  box-shadow: -7px 7px 0px #ffffff;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -473,10 +469,26 @@ body {
   letter-spacing: 0.05em;
   cursor: pointer;
 }
-.button-header:hover {
+
+.button-header.dark {
+  box-shadow: -7px 7px 0px #ffffff;
+  color: #000;
+}
+.button-header.dark:hover {
   box-shadow: none;
   background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
   color: #fff;
+  transform: scale(103%);
+}
+
+.button-header.light {
+  box-shadow: -7px 7px 0px #000000;
+  color: #ffffff;
+}
+.button-header.light:hover {
+  box-shadow: none;
+  background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
+  color: #000000;
   transform: scale(103%);
 }
 
@@ -649,13 +661,41 @@ body {
 }
 
 .minha-img {
-  animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
-  width: 70%;
-  filter: drop-shadow(0px 0px 80px rgba(0, 119, 113, 0.603));
-  animation: chicaracRotate 30s ease 0s infinite normal;
+  width: 100%;
+  filter: drop-shadow(0px 0px 80px rgba(8, 0, 255, 0.603));
+  z-index: 1;
 }
 
-.circle {
+@keyframes img2 {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.minha-img-2 {
+  top: 95px;
+  position: absolute;
+  z-index: 2;
+  left: -16px;
+  width: 100%;
+  max-width: 20rem;
+  transform: translateY(0px);
+  animation: img2 10s ease-in-out 0s infinite alternate-reverse;
+  filter: drop-shadow(0px 0px 30px rgba(8, 0, 255, 0.603));
+}
+
+c:Usersjeffr\d ownloads஬kground_light.png .circle {
   position: absolute;
   width: 15em;
   height: 15em;
@@ -803,9 +843,10 @@ strong {
   font-weight: 600;
   position: relative;
   cursor: pointer;
-  border-width: 3px;
+  border-width: 2px;
   border-style: solid;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 .groupProjetos-categorys__item .effect {
   transition: all 0.5s ease;
@@ -823,12 +864,12 @@ strong {
   width: 0%;
   height: 0rem;
   filter: blur(10px);
-  background-color: rgba(0, 247, 255, 0);
+  background-color: rgba(0, 247, 255, 0.4470588235);
 }
 .groupProjetos-categorys__item:nth-child(1):hover .effect {
   height: 1rem;
   width: 100%;
-  background-color: rgba(118, 134, 134, 0.5137254902);
+  background-color: rgba(0, 247, 255, 0.3882352941);
 }
 .groupProjetos-categorys__item:nth-child(2) {
   border-color: orange;
@@ -889,7 +930,7 @@ strong {
 
 .linhas {
   width: 4px;
-  background-image: linear-gradient(to top, transparent 20%, var(--color-terciary));
+  background-image: linear-gradient(to top, transparent 20%, #0091ff);
   height: 65px;
   transition: all 0.5s ease;
 }
@@ -1255,7 +1296,7 @@ textarea:focus {
   position: absolute;
   width: 15em;
   height: 25em;
-  background-color: rgba(73, 199, 172, 0.764);
+  background-color: rgba(0, 140, 255, 0.76);
   filter: blur(40px);
   animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
 }
@@ -1263,7 +1304,7 @@ textarea:focus {
 .groupContact-terciary img {
   width: 65%;
   clip-path: polygon(0 0, 80% 0%, 100% 20%, 81% 81%, 100% 100%, 20% 100%, 0% 80%, 18% 23%);
-  filter: drop-shadow(0px 0px 200px rgba(0, 255, 242, 0.603));
+  filter: drop-shadow(0px 0px 200px rgba(0, 157, 255, 0.603));
   animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
   z-index: 0;
 }
@@ -1766,6 +1807,14 @@ textarea:focus {
       opacity: 1;
     }
   }
+  .minha-img-2 {
+    top: 10px;
+    left: auto;
+  }
+  .groupHeader-img img {
+    width: 100%;
+    max-width: 29rem;
+  }
   .header {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -1795,14 +1844,15 @@ textarea:focus {
     z-index: 9999;
     transform: translateX(-100%);
   }
+  .groupHeader-img {
+    grid-row: 2/2;
+    min-height: 34rem;
+  }
   .open-menu {
     animation: menuOpen 0.5s ease-in-out 0s 1 normal forwards;
   }
   .close-menu {
     animation: closeMenu 0.5s ease-in-out 0s 1 normal forwards;
-  }
-  .groupHeader-img img {
-    max-width: 20em;
   }
   .minha-img {
     max-width: 20em;
@@ -1827,7 +1877,11 @@ textarea:focus {
     text-align: center;
     align-items: center;
     justify-content: end;
-    padding: 1rem 1rem 4rem 1rem;
+  }
+  .groupHeader-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .groupSobre {
     padding: 3em 0 0em 0;
@@ -1933,6 +1987,12 @@ textarea:focus {
     width: 26em;
     height: 26em;
   }
+  .groupHeader-img img {
+    min-width: 27rem;
+  }
+  .groupHeader-img {
+    min-height: 28rem;
+  }
 }
 @media screen and (max-width: 528px) {
   .groupHeader-texts {
@@ -2000,6 +2060,16 @@ textarea:focus {
   .listNav > li {
     padding: 0.5em;
   }
+  .title-secundary-header {
+    margin: 0;
+  }
+  .button-header {
+    padding: 1rem 1rem;
+    font-size: 0.9rem;
+  }
+  .groupHeader-socialMedia {
+    margin-top: 1rem;
+  }
   .groupHeader-texts {
     row-gap: 0;
   }
@@ -2037,12 +2107,22 @@ textarea:focus {
     width: 20em;
   }
 }
+@media screen and (max-width: 428px) {
+  .groupHeader-img img {
+    left: -19%;
+  }
+}
 @media screen and (max-width: 408px) {
   .groupHeader-texts h1 {
     font-size: 2.8em;
   }
   .title-secundary-header {
     font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 395px) {
+  .groupHeader-img img {
+    left: -34%;
   }
 }
 @media screen and (max-width: 386px) {
@@ -2060,6 +2140,9 @@ textarea:focus {
   }
 }
 @media screen and (max-width: 340px) {
+  .groupHeader-img img {
+    min-width: 25rem;
+  }
   .listNav > li {
     padding: 0.2em;
   }

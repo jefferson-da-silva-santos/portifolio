@@ -270,7 +270,7 @@
         },
         "form": {
           "input": {
-            "borderColor": "#00ffff",
+            "borderColor": "#0091ff",
             "background": "#161616",
             "color": "#FFF"
           }

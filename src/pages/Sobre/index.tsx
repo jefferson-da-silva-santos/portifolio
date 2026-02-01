@@ -4,6 +4,8 @@ import useTheme from "../../hooks/useTheme";
 import { styleContainer, styleText, styleTitle } from "./styles";
 import { useEffect, useState } from "react";
 import { getFirstLetterTitle, getRestOfTitle, toggleClassInText } from "../../utils/textUtilites";
+import coffe from "../../assets/image/coffe.png";
+import coffe_coffe from "../../assets/image/coffe_coffe.png";
 
 const Sobre = () => {
   const { theme } = useTheme();
@@ -37,10 +39,11 @@ const Sobre = () => {
         </article>
         <article className="groupSobre-secundary" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
           <div className="circle"></div>
+          <img className="minha-img-2" src={coffe_coffe} alt="" />
           <img
             loading="lazy"
             className="minha-img"
-            src={projectImages[3].url}
+            src={coffe}
             alt={projectImages[3].alt}
           />
         </article>

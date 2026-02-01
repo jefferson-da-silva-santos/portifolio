@@ -1,4 +1,3 @@
-
 @media screen and (min-width: 896px) {
   .itemsMenu-header:hover::before {
     position: absolute;
@@ -36,6 +35,15 @@
       opacity: 1;
     }
   }
+  .minha-img-2 {
+    top: 10px;
+    left: auto;
+}
+
+  .groupHeader-img img {
+    width: 100%;
+    max-width: 29rem;
+  }
 
   .header {
     grid-template-columns: 1fr;
@@ -69,16 +77,17 @@
     transform: translateX(-100%);
   }
 
+  .groupHeader-img {
+    grid-row: 2 / 2;
+    min-height: 34rem;
+  }
+
   .open-menu {
     animation: menuOpen 0.5s ease-in-out 0s 1 normal forwards;
   }
 
   .close-menu {
     animation: closeMenu 0.5s ease-in-out 0s 1 normal forwards;
-  }
-
-  .groupHeader-img img {
-    max-width: 20em;
   }
 
   .minha-img {
@@ -99,8 +108,6 @@
     font-size: 23px;
   }
 
-
-
   .hero {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -111,10 +118,13 @@
     text-align: center;
     align-items: center;
     justify-content: end;
-    padding: 1rem 1rem 4rem 1rem;
   }
 
-
+  .groupHeader-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .groupSobre {
     padding: 3em 0 0em 0;
@@ -140,8 +150,6 @@
     width: 80%;
   }
 
-
-
   .skills {
     grid-template-columns: 1fr;
     grid-template-rows: 8em 2fr;
@@ -156,8 +164,6 @@
     padding: 1em;
   }
 
-
-
   .groupProjetos-primary {
     justify-content: center;
   }
@@ -166,8 +172,6 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
-
-
 
   .groupService-primary {
     justify-content: center;
@@ -184,8 +188,6 @@
   .description-card-service {
     width: 25em;
   }
-
-
 
   .contato {
     display: grid;
@@ -221,15 +223,11 @@
 }
 
 @media screen and (max-width: 767px) {
-
-
   .groupSkills-secundary {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     padding-bottom: 1em;
   }
-
-
 
   .groupProjetos-secundary {
     grid-template-columns: 1fr;
@@ -254,6 +252,14 @@
     width: 26em;
     height: 26em;
   }
+
+  .groupHeader-img img {
+    min-width: 27rem;
+  }
+
+  .groupHeader-img {
+    min-height: 28rem;
+  }
 }
 
 @media screen and (max-width: 528px) {
@@ -263,7 +269,6 @@
 }
 
 @media screen and (max-width: 545px) {
-
   .groupHeader-texts h1 {
     font-size: 3.5em;
     width: 100%;
@@ -273,8 +278,6 @@
     font-size: 2em;
   }
 
-
-
   .titleSobre {
     font-size: 2em;
   }
@@ -282,8 +285,6 @@
   .groupSobre-primary p {
     font-size: 1.15em;
   }
-
-
 
   .titleSkills {
     font-size: 2em;
@@ -299,8 +300,6 @@
     width: 5em;
   }
 
-
-
   .groupProjetos-primary .titleProjetos {
     font-size: 2em;
   }
@@ -308,8 +307,6 @@
   .linhas {
     height: 53px;
   }
-
-
 
   .titleService {
     font-size: 2em;
@@ -340,21 +337,28 @@
     width: 90%;
   }
 
-
-
   .titleContact {
     font-size: 2em;
   }
 }
 
 @media screen and (max-width: 480px) {
-
-
   .listNav > li {
     padding: 0.5em;
   }
 
+   .title-secundary-header {
+    margin: 0;
+   }
 
+.button-header {
+    padding: 1rem 1rem;
+    font-size: .9rem;
+}
+
+.groupHeader-socialMedia {
+    margin-top: 1rem;
+}
 
   .groupHeader-texts {
     row-gap: 0;
@@ -368,15 +372,12 @@
     font-size: 1.5em;
   }
 
-
   .card-item {
     margin: auto;
     height: auto;
     width: 22em;
     row-gap: 7px;
   }
-
-
 
   .groupSobre-primary p {
     font-size: 1em;
@@ -405,6 +406,12 @@
   }
 }
 
+@media screen and (max-width: 428px) {
+  .groupHeader-img img {
+    left: -19%;
+  }
+}
+
 @media screen and (max-width: 408px) {
   .groupHeader-texts h1 {
     font-size: 2.8em;
@@ -412,6 +419,12 @@
 
   .title-secundary-header {
     font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 395px) {
+  .groupHeader-img img {
+    left: -34%;
   }
 }
 
@@ -433,7 +446,9 @@
 }
 
 @media screen and (max-width: 340px) {
-
+      .groupHeader-img img {
+        min-width: 25rem;
+    }
 
   .listNav > li {
     padding: 0.2em;
@@ -443,8 +458,6 @@
     font-size: 1.2em;
   }
 
-
-
   .groupHeader-texts h1 {
     font-size: 2.3em;
   }
@@ -452,8 +465,6 @@
   .title-secundary-header {
     font-size: 1.15em;
   }
-
-
 
   .groupSobre {
     padding-top: 2em;
@@ -467,8 +478,6 @@
     font-size: 1.05em;
   }
 
-
-
   .titleSkills {
     font-size: 1.6em;
   }
@@ -477,8 +486,6 @@
     width: 3.2em;
   }
 
-
-
   .groupProjetos-primary .titleProjetos {
     font-size: 1.6em;
   }
@@ -486,8 +493,6 @@
   .linhas {
     height: 53px;
   }
-
-
 
   .titleService {
     font-size: 1.6em;
@@ -501,8 +506,6 @@
     width: 17em;
     height: 23em;
   }
-
-
 
   .titleContact {
     font-size: 1.6em;

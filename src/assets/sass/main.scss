@@ -170,13 +170,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(1 2 16 / 66%);
   }
 }
 
 .groupHeader {
   background-color: var(--color-primary);
-  background-image: url("../image/background.png");
   background-size: cover;
   background-position: center right;
   background-attachment: fixed;
@@ -193,7 +191,7 @@ body {
 
 .letraMonoton {
   font-family: var(--font-secundary);
-  color: rgb(0, 255, 242);
+  color: #00a2ff;
 }
 
 .groupNav {
@@ -225,7 +223,7 @@ body {
 }
 
 .icon-theme {
-  color: var(--color-terciary);
+  color: rgb(0, 157, 255);
   border-radius: 50%;
 }
 
@@ -318,7 +316,6 @@ body {
 .button-header {
   margin: 1rem 0;
   text-decoration: none;
-  color: #000;
   font-family: "Roboto Flex", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -335,18 +332,33 @@ body {
   border-radius: 0;
   border: none;
   background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
-  box-shadow: -7px 7px 0px #ffffff;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
   cursor: pointer;
+}
 
-  &:hover {
+.button-header.dark {
+  box-shadow: -7px 7px 0px #ffffff;
+  color: #000;
+
+   &:hover {
     box-shadow: none;
     background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
     color: #fff;
+    transform: scale(103%);
+  }
+}
+.button-header.light {
+  box-shadow: -7px 7px 0px #000000;
+  color: #ffffff;
+
+   &:hover {
+    box-shadow: none;
+    background: linear-gradient(90deg, #3dd598 0%, #2fd180 100%);
+    color: #000000;
     transform: scale(103%);
   }
 }
@@ -536,12 +548,43 @@ body {
 }
 
 .minha-img {
-  animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
-  width: 70%;
-  filter: drop-shadow(0px 0px 80px rgba(0, 119, 113, 0.603));
-  animation: chicaracRotate 30s ease 0s infinite normal;
+  // animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
+  width: 100%;
+  filter: drop-shadow(0px 0px 80px rgba(8, 0, 255, 0.603));
+  // animation: chicaracRotate 30s ease 0s infinite normal;
+  z-index: 1;
 }
 
+@keyframes img2 {
+  0% {
+      transform: translateY(0px);
+  }
+  25% {
+      transform: translateY(-10px);
+  }
+  50% {
+      transform: translateY(0px);
+  }
+  75% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0px);
+  }
+}
+
+.minha-img-2 {
+  top: 95px;
+  position: absolute;
+  z-index: 2;
+  left: -16px;
+  width: 100%;
+  max-width: 20rem;
+  transform: translateY(0px);
+  animation: img2 10s ease-in-out 0s infinite alternate-reverse;
+  filter: drop-shadow(0px 0px 30px rgba(8, 0, 255, 0.603));
+}
+c:\Users\jeffr\Downloads\background_light.png
 .circle {
   position: absolute;
   width: 15em;
@@ -683,9 +726,10 @@ strong {
     font-weight: 600;
     position: relative;
     cursor: pointer;
-    border-width: 3px;
+    border-width: 2px;
     border-style: solid;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 
     .effect {
       transition: all 0.5s ease;
@@ -704,13 +748,13 @@ strong {
         width: 0%;
         height: 0rem;
         filter: blur(10px);
-        background-color: #00f7ff00;
+        background-color: #00f7ff72;
       }
 
       &:hover .effect {
         height: 1rem;
         width: 100%;
-        background-color: #76868683;
+        background-color: #00f7ff63;
       }
     }
 
@@ -783,7 +827,7 @@ strong {
   background-image: linear-gradient(
     to top,
     transparent 20%,
-    var(--color-terciary)
+    #0091ff
   );
   height: 65px;
   transition: all 0.5s ease;
@@ -1167,7 +1211,7 @@ textarea:focus {
   position: absolute;
   width: 15em;
   height: 25em;
-  background-color: rgba(73, 199, 172, 0.764);
+  background-color: rgba(0, 140, 255, 0.76);
   filter: blur(40px);
   animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
 }
@@ -1184,7 +1228,7 @@ textarea:focus {
     0% 80%,
     18% 23%
   );
-  filter: drop-shadow(0px 0px 200px rgba(0, 255, 242, 0.603));
+  filter: drop-shadow(0px 0px 200px rgba(0, 157, 255, 0.603));
   animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
   z-index: 0;
 }

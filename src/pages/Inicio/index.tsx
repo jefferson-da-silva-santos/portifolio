@@ -8,6 +8,9 @@ import { handleSetHoverButtonIcon, styleContainer, styleTitle } from "./styles";
 import { stylesButton } from "./styles";
 import eu from '../../assets/image/jeff.png';
 
+import background_dark from '../../assets/image/background.png';
+import background_light from '../../assets/image/background_light.png';
+
 const Inicio = () => {
   const { theme, toggleTheme } = useTheme();
   const [isHoverButton, setIsHoverButton] = useState<boolean[]>([]);
@@ -22,9 +25,15 @@ const Inicio = () => {
   return (
     <div
       className="groupHeader"
-      style={styleContainer(theme, themeObject)}
+
+      style={{
+        ...styleContainer(theme, themeObject),
+        backgroundImage: `url(${theme === 'dark' ? background_dark : background_light})`
+      }}
     >
-      <div className="overlay"></div>
+      <div className="overlay" style={{
+        backgroundColor: theme === 'dark' ? '#010210a8' : 'transparent'
+      }}></div>
       <Navegacao toggleTheme={toggleTheme} />
       <header className="header" id="home">
         <section data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine" className="groupHeader-img">
@@ -42,10 +51,13 @@ const Inicio = () => {
               Jefferson Santos
             </h1>
             <p className="title-secundary-header"></p>
-            <p className="text-header">Desenvolvedor web especializado em criar experiências modernas e eficientes.</p>
-            <div>
+            <p className="text-header" style={{
+              color: theme === 'dark' ? '#fff' : '#474a54',
+              fontWeight: theme === 'dark' ? '100' : '400'
+            }}>Desenvolvedor web especializado em criar experiências modernas e eficientes.</p>
+            <div className="groupHeader-button">
               <div className="bottom-button"></div>
-              <button className="button-header">
+              <button className={`button-header ${theme}`}>
                 Veja meu trabalho
               </button>
             </div>
