@@ -6,7 +6,7 @@ import SocialButton from "./Link";
 import { projectImages, socialButtonList } from "../../consts/dataConsts";
 import { handleSetHoverButtonIcon, styleContainer, styleTitle } from "./styles";
 import { stylesButton } from "./styles";
-import eu from '../../assets/image/jeff.png';
+import eu from '../../assets/image/jeff1.png';
 
 import background_dark from '../../assets/image/background.png';
 import background_light from '../../assets/image/background_light.png';
