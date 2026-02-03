@@ -38,18 +38,23 @@
   .minha-img-2 {
     top: -10px;
     left: auto;
-}
+  }
+
+  .groupHeader-img {
+    align-items: end;
+  }
 
   .groupHeader-img img {
-    width: 100%;
-    max-width: 25rem;
-    min-width: auto;
+    width: 38rem;
+    position: static;
+    bottom: -2px;
   }
 
   .header {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 32rem 1fr;
     padding-top: 0;
+    min-height: auto;
   }
 
   @keyframes closeMenu {
@@ -241,6 +246,12 @@
     width: 25em;
   }
 }
+@media screen and (max-width: 658px) {
+  .groupHeader-img img {
+    min-width: 26rem;
+    width: 100%;
+  }
+}
 
 @media screen and (max-width: 574px) {
   .groupContact-terciary {
@@ -344,18 +355,18 @@
     padding: 0.5em;
   }
 
-   .title-secundary-header {
+  .title-secundary-header {
     margin: 0;
-   }
+  }
 
-.button-header {
+  .button-header {
     padding: 1rem 1rem;
-    font-size: .9rem;
-}
+    font-size: 0.9rem;
+  }
 
-.groupHeader-socialMedia {
+  .groupHeader-socialMedia {
     margin-top: 1rem;
-}
+  }
 
   .groupHeader-texts {
     row-gap: 0;
@@ -401,11 +412,17 @@
   .card-item {
     width: 20em;
   }
+
+  .groupHeader-img img {
+    min-width: 24rem;
+    width: 100%;
+    margin-left: -5rem;
+  }
 }
 
 @media screen and (max-width: 428px) {
   .groupHeader-img img {
-    left: -19%;
+    left: -9%;
   }
 }
 
@@ -416,12 +433,6 @@
 
   .title-secundary-header {
     font-size: 1.5em;
-  }
-}
-
-@media screen and (max-width: 395px) {
-  .groupHeader-img img {
-    left: -34%;
   }
 }
 
@@ -443,8 +454,12 @@
 }
 
 @media screen and (max-width: 340px) {
-      .groupHeader-img img {
-        min-width: 25rem;
+  .groupHeader-img img {
+    min-width: 25rem;
+  }
+
+  .groupHeader-img img {
+        min-width: 23rem;
     }
 
   .listNav > li {
