@@ -596,7 +596,7 @@ body {
   object-fit: cover;
   bottom: 0;
   animation: sombrasPiscando 5s ease-in-out infinite;
-  min-width: 27rem;
+  min-width: 36rem;
 }
 
 .groupSobre {
@@ -846,7 +846,6 @@ strong {
   border-width: 2px;
   border-style: solid;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
 }
 .groupProjetos-categorys__item .effect {
   transition: all 0.5s ease;
@@ -1304,8 +1303,7 @@ textarea:focus {
 .groupContact-terciary img {
   width: 65%;
   clip-path: polygon(0 0, 80% 0%, 100% 20%, 81% 81%, 100% 100%, 20% 100%, 0% 80%, 18% 23%);
-  filter: drop-shadow(0px 0px 200px rgba(0, 157, 255, 0.603));
-  animation: flutuacaoImagem 2s ease-in-out 0s infinite alternate-reverse;
+  filter: drop-shadow(0px 0px 30px rgba(8, 0, 255, 0.418));
   z-index: 0;
 }
 
@@ -1811,15 +1809,19 @@ textarea:focus {
     top: -10px;
     left: auto;
   }
+  .groupHeader-img {
+    align-items: end;
+  }
   .groupHeader-img img {
-    width: 100%;
-    max-width: 25rem;
-    min-width: auto;
+    width: 38rem;
+    position: static;
+    bottom: -2px;
   }
   .header {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 32rem 1fr;
     padding-top: 0;
+    min-height: auto;
   }
   @keyframes closeMenu {
     0% {
@@ -1977,6 +1979,12 @@ textarea:focus {
     width: 25em;
   }
 }
+@media screen and (max-width: 658px) {
+  .groupHeader-img img {
+    min-width: 26rem;
+    width: 100%;
+  }
+}
 @media screen and (max-width: 574px) {
   .groupContact-terciary {
     height: 42em;
@@ -1989,7 +1997,7 @@ textarea:focus {
     height: 26em;
   }
   .groupHeader-img {
-    min-height: 32rem;
+    min-height: 29rem;
     bottom: -2px;
   }
 }
@@ -2105,10 +2113,15 @@ textarea:focus {
   .card-item {
     width: 20em;
   }
+  .groupHeader-img img {
+    min-width: 24rem;
+    width: 100%;
+    margin-left: -5rem;
+  }
 }
 @media screen and (max-width: 428px) {
   .groupHeader-img img {
-    left: -19%;
+    left: -9%;
   }
 }
 @media screen and (max-width: 408px) {
@@ -2117,11 +2130,6 @@ textarea:focus {
   }
   .title-secundary-header {
     font-size: 1.5em;
-  }
-}
-@media screen and (max-width: 395px) {
-  .groupHeader-img img {
-    left: -34%;
   }
 }
 @media screen and (max-width: 386px) {
@@ -2141,6 +2149,9 @@ textarea:focus {
 @media screen and (max-width: 340px) {
   .groupHeader-img img {
     min-width: 25rem;
+  }
+  .groupHeader-img img {
+    min-width: 23rem;
   }
   .listNav > li {
     padding: 0.2em;
