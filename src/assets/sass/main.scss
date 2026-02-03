@@ -298,8 +298,7 @@ body {
   line-height: 50px;
   letter-spacing: -3px;
   font-family: var(--font-primary);
-  color: var(--white);
-  width: 8em;
+  color: var(--white);  
   transition: all 0.5s ease;
 }
 
@@ -484,6 +483,7 @@ body {
   object-fit: cover;
   bottom: 0;
   animation: sombrasPiscando 5s ease-in-out infinite;
+  min-width: 27rem;
 }
 
 .groupSobre {

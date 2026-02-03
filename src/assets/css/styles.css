@@ -429,7 +429,6 @@ body {
   letter-spacing: -3px;
   font-family: var(--font-primary);
   color: var(--white);
-  width: 8em;
   transition: all 0.5s ease;
 }
 
@@ -597,6 +596,7 @@ body {
   object-fit: cover;
   bottom: 0;
   animation: sombrasPiscando 5s ease-in-out infinite;
+  min-width: 27rem;
 }
 
 .groupSobre {
@@ -1808,12 +1808,13 @@ textarea:focus {
     }
   }
   .minha-img-2 {
-    top: 10px;
+    top: -10px;
     left: auto;
   }
   .groupHeader-img img {
     width: 100%;
     max-width: 29rem;
+    min-width: auto;
   }
   .header {
     grid-template-columns: 1fr;
