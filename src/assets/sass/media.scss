@@ -253,13 +253,9 @@
     width: 26em;
     height: 26em;
   }
-
-  .groupHeader-img img {
-    min-width: 27rem;
-  }
-
   .groupHeader-img {
-    min-height: 28rem;
+    min-height: 32rem;
+    bottom: -2px;
   }
 }
 
