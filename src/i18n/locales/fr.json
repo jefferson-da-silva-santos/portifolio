@@ -18,7 +18,10 @@
       "themeIcon": "icône du thème"
     }
   },
-  "init": {},
+  "init": {
+    "text": "Développeur web spécialisé dans la création d’expériences modernes et efficaces.",
+    "textButton": "Voir mon travail"
+  },
   "about": {
     "title": "À propos",
     "description1": "Je m'appelle <strong className='strong-light'>Jefferson Santos</strong> et je suis un passionné de technologie qui a décidé de faire carrière dans la programmation. Au cours des <strong className='strong-light'>quatre dernières années</strong>, je me suis consacré à la compréhension des principales technologies du marché et à l'application de <strong className='strong-light'>méthodologies de développement agiles</strong> (je suis un amateur de café).",

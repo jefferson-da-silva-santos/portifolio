@@ -10,6 +10,7 @@ import eu from '../../assets/image/jeff.png';
 
 import background_dark from '../../assets/image/background.png';
 import background_light from '../../assets/image/background_light.png';
+import { useTranslation } from "react-i18next";
 
 const Inicio = () => {
   const { theme, toggleTheme } = useTheme();
@@ -21,6 +22,8 @@ const Inicio = () => {
       [index]: state,
     }));
   };
+
+  const { t } = useTranslation();
 
   return (
     <div
@@ -54,11 +57,11 @@ const Inicio = () => {
             <p className="text-header" style={{
               color: theme === 'dark' ? '#fff' : '#474a54',
               fontWeight: theme === 'dark' ? '100' : '400'
-            }}>Desenvolvedor web especializado em criar experiências modernas e eficientes.</p>
+            }}>{t('init.text')}</p>
             <div className="groupHeader-button">
               <div className="bottom-button"></div>
               <button className={`button-header ${theme}`}>
-                Veja meu trabalho
+                {t('init.textButton')}
               </button>
             </div>
           </div>

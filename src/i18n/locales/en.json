@@ -18,7 +18,10 @@
       "themeIcon": "theme icon"
     }
   },
-  "init": {},
+  "init": {
+    "text": "Web developer specialized in creating modern and efficient experiences.",
+    "textButton": "See my work"
+  },
   "about": {
     "title": "About",
     "description1": "My name is <strong className='strong-light'>Jefferson Santos</strong> and I am a technology enthusiast who decided to pursue a career in programming. Over the last <strong className='strong-light'>four years</strong>, I have dedicated myself to understanding the main technologies on the market and applying  <strong className='strong-light'> agile development methodologies</strong> (I&#8217;m a coffee lover).",
