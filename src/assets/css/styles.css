@@ -1811,12 +1811,12 @@ textarea:focus {
   }
   .groupHeader-img img {
     width: 100%;
-    max-width: 25rem;
+    max-width: 27rem;
     min-width: auto;
   }
   .header {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 30rem 32rem;
     padding-top: 0;
   }
   @keyframes closeMenu {
