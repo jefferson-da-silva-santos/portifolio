@@ -24,8 +24,8 @@
   },
   "about": {
     "title": "Sobre",
-    "description1": "Meu nome é <strong className='strong-light'>Jefferson Santos</strong> e sou um entusiasta de tecnologia que decidiu seguir carreira em programação. Nos últimos <strong className='strong-light'>quatro anos</strong>, dediquei-me a compreender as principais tecnologias do mercado e a aplicar <strong className='strong-light'>metodologias ágeis de desenvolvimento</strong> (sou um amante de café).",
-    "description2": "Concluí um curso técnico em <strong className='strong-light'> Desenvolvimento de Sistemas (DS)</strong> com foco em <strong className='strong-light'> desenvolvimento Full Stack</strong>. Desde então, tenho trabalhado em projetos como freelancer e contribuído para projetos de código aberto, aprimorando continuamente minhas habilidades e experiência na área."
+    "description1": "Meu nome é <strong className='strong-light'>Jefferson Santos</strong>, sou <strong className='strong-light'>Dev Full-Stack com 4 anos de experiência</strong> e formação técnica em Desenvolvimento de Sistemas. Há um ano atuo como <strong className='strong-light'>Dev Júnior em uma software house de automação comercial</strong>, criando soluções eficientes e bem estruturadas. Gosto de escrever código pensando em <strong className='strong-light'>qualidade e durabilidade</strong> — não apenas em fazer funcionar.",
+    "description2": "Fora do profissional, coloco <strong className='strong-light'>Deus como base da minha vida</strong>, participo da igreja e busco cuidar da saúde. Toco alguns instrumentos e gosto de ler sobre religião, desenvolvimento pessoal, finanças e tecnologia. Pretendo <strong className='strong-light'>iniciar uma graduação</strong> para aprofundar minha formação. Estou sempre pensando em <strong className='strong-light'>ideias para empreender e crescer — como dev e como pessoa</strong>."
   },
   "skills": {
     "title": "Habilidades",
@@ -143,7 +143,7 @@
     "sendButton": "Enviar"
   },
   "messages": {
-    "here":"É aqui mesmo! 😎",
+    "here": "É aqui mesmo! 😎",
     "repositoryNot": "Esse repositório não tá disponível (por enquanto)!",
     "deployNot": "Esse deploy não tá disponível (por enquanto)!",
     "see_in": "Veja em:",

@@ -24,8 +24,8 @@
   },
   "about": {
     "title": "Chi sono",
-    "description1": "Mi chiamo <strong className='strong-light'>Jefferson Santos</strong> e sono un appassionato di tecnologia che ha deciso di intraprendere una carriera nella programmazione. Negli ultimi <strong className='strong-light'>quattro anni</strong>, mi sono dedicato a comprendere le principali tecnologie sul mercato e ad applicare <strong className='strong-light'>metodologie di sviluppo agili</strong> (sono un amante del caffè).",
-    "description2": "Ho completato un corso tecnico in <strong className='strong-light'> Sviluppo di Sistemi (DS)</strong> con un focus sullo <strong className='strong-light'> sviluppo Full Stack</strong>. Da allora, ho lavorato su progetti come freelance e ho contribuito a progetti open source, migliorando continuamente le mie competenze ed esperienza nel settore."
+    "description1": "Mi chiamo <strong className='strong-light'>Jefferson Santos</strong>, sono uno <strong className='strong-light'>Sviluppatore Full-Stack con 4 anni di esperienza</strong> e formazione tecnica in Sviluppo di Sistemi. Da un anno lavoro come <strong className='strong-light'>Sviluppatore Junior in una software house di automazione commerciale</strong>, creando soluzioni efficienti e ben strutturate. Mi piace scrivere codice con attenzione alla <strong className='strong-light'>qualità e durabilità</strong> — non solo per farlo funzionare.",
+    "description2": "Al di fuori dell’ambito professionale, metto <strong className='strong-light'>Dio come base della mia vita</strong>, partecipo alla chiesa e cerco di prendermi cura della mia salute. Suono alcuni strumenti e mi piace leggere di religione, crescita personale, finanza e tecnologia. Intendo <strong className='strong-light'>iniziare un percorso universitario</strong> per approfondire la mia formazione e penso sempre a <strong className='strong-light'>nuove idee per crescere — come sviluppatore e come persona</strong>."
   },
   "skills": {
     "title": "Competenze",

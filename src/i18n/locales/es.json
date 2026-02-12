@@ -24,8 +24,8 @@
   },
   "about": {
     "title": "Acerca de",
-    "description1": "Mi nombre es <strong className='strong-light'>Jefferson Santos</strong> y soy un entusiasta de la tecnología que decidió seguir una carrera en programación. Durante los últimos <strong className='strong-light'>cuatro años</strong>, me he dedicado a comprender las principales tecnologías del mercado y a aplicar <strong className='strong-light'>metodologías de desarrollo ágiles</strong> (soy unamante del café).",
-    "description2": "Completé un curso técnico en <strong className='strong-light'> Desarrollo de Sistemas (DS)</strong> con un enfoque en <strong className='strong-light'> desarrollo Full Stack</strong>. Desde entonces, he trabajado en proyectos como freelancer y he contribuido a proyectos de código abierto, mejorando continuamente mis habilidades y experiencia en el campo."
+    "description1": "Mi nombre es <strong className='strong-light'>Jefferson Santos</strong>, soy <strong className='strong-light'>Desarrollador Full-Stack con 4 años de experiencia</strong> y formación técnica en Desarrollo de Sistemas. Desde hace un año trabajo como <strong className='strong-light'>Desarrollador Junior en una empresa de software de automatización comercial</strong>, creando soluciones eficientes y bien estructuradas. Me gusta escribir código enfocándome en la <strong className='strong-light'>calidad y durabilidad</strong> — no solo en que funcione.",
+    "description2": "Fuera del ámbito profesional, coloco a <strong className='strong-light'>Dios como base de mi vida</strong>, participo en la iglesia y procuro cuidar mi salud. Toco algunos instrumentos y me gusta leer sobre religión, desarrollo personal, finanzas y tecnología. Tengo la intención de <strong className='strong-light'>iniciar una carrera universitaria</strong> para profundizar mi formación y siempre estoy pensando en <strong className='strong-light'>nuevas ideas para crecer — como desarrollador y como persona</strong>."
   },
   "skills": {
     "title": "Habilidades",
