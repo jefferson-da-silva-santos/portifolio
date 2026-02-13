@@ -4,6 +4,15 @@
 @import "mixins.scss";
 @import "keyframes.scss";
 
+// scroll suave
+html {
+  scroll-behavior: smooth;
+}
+
+.link-header {
+  text-decoration: none;
+}
+
 :root {
   --color-primary: #0f0f0f;
   --color-secundary: #0b0b0b;

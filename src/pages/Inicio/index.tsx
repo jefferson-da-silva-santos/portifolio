@@ -58,12 +58,14 @@ const Inicio = () => {
               color: theme === 'dark' ? '#fff' : '#474a54',
               fontWeight: theme === 'dark' ? '100' : '400'
             }}>{t('init.text')}</p>
-            <div className="groupHeader-button">
-              <div className="bottom-button"></div>
-              <button className={`button-header ${theme}`}>
-                {t('init.textButton')}
-              </button>
-            </div>
+            <a className="link-header" href="#project">
+              <div className="groupHeader-button">
+                <div className="bottom-button"></div>
+                <button className={`button-header ${theme}`}>
+                  {t('init.textButton')}
+                </button>
+              </div>
+            </a>
           </div>
           <div className="groupHeader-socialMedia">
             {socialButtonList.map((socialButton, index) => (
