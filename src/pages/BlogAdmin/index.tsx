@@ -3,6 +3,7 @@
 // Imagens: converte arquivo para base64 ou aceita URL externa
 
 import { useState, useRef } from "react";
+import { BASE_API } from "../Blog";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -42,8 +43,8 @@ const ALL_TAGS = [
 
 const ALL_CATEGORIES = ["Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros"];
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "jefferson2026";
-const API_BASE = import.meta.env.VITE_API_URL || "/api";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
+const API_BASE = `${BASE_API}/api`;
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 

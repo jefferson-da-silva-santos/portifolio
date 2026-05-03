@@ -33,6 +33,8 @@ interface Post {
   category?: string;
 }
 
+export const BASE_API = 'https://blog-server-tawny-ten.vercel.app';
+
 // ─── TAG REGISTRY ─────────────────────────────────────────────────────────────
 
 const TAG_REGISTRY: Record<string, Tag> = {
@@ -274,7 +276,7 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch(`/api/posts/${post.id}/comments`)
+    fetch(`${BASE_API}/api/posts/${post.id}/comments`)
       .then((r) => r.json())
       .then((d) => setComments(d.data ?? []))
       .catch(() => {});
@@ -289,7 +291,7 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
     if (!author.trim() || !commentText.trim()) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/posts/${post.id}/comments`, {
+      const res = await fetch(`${BASE_API}/api/posts/${post.id}/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ author: author.trim(), text: commentText.trim() }),
@@ -412,9 +414,9 @@ export default function Blog() {
   const [visibleCount, setVisibleCount] = useState(6);
 
   // Produção: busca da API
-  // useEffect(() => {
-  //   fetch("/api/posts").then(r => r.json()).then(d => setPosts(d.data ?? []));
-  // }, []);
+  useEffect(() => {
+    fetch(`${BASE_API}/api/posts`).then(r => r.json()).then(d => setPosts(d.data ?? []));
+  }, []);
 
   const filtered = filterByCategory(
     posts.filter((p) =>
