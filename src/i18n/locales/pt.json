@@ -6,7 +6,8 @@
       "skills": "habilidades",
       "services": "serviços",
       "projects": "projetos",
-      "contact": "contato"
+      "contact": "contato",
+      "blog": "blog"
     },
     "ariaLabels": {
       "changeLanguage": "Mudar idioma",

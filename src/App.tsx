@@ -17,7 +17,7 @@ import useModalProject from "./hooks/useModalProject";
 import type { IProject } from "./provider/types"; 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import useAccessLogger from "./hooks/useAccessLogger";
+// import useAccessLogger from "./hooks/useAccessLogger";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Componente para organizar a página inicial (raiz)
@@ -38,7 +38,7 @@ function HomeLayout() {
 }
 
 function App() {
-  useAccessLogger('portifolio_jefferson_dev');
+  // useAccessLogger('portifolio_jefferson_dev');
   const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
   const { isModalOpen } = useModalProject();
   
