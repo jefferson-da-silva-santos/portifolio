@@ -1,0 +1,1594 @@
+// ============================================================
+//  _blog.scss — Blog + BlogAdmin
+//  Segue o padrão visual de Jeff Portfolio
+//  Fontes: Saira (body) + Monoton (destaques)
+//  Accent: #00ffff | Bg primário: #0f0f0f | Bg secundário: #0b0b0b
+// ============================================================
+
+// ── Mixins locais (caso mixins.scss não esteja em escopo) ──
+@mixin flex($dir: row, $justify: flex-start, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// ── Variáveis do blog (herdam as do projeto) ──
+$blog-accent:    #00ffff;
+$blog-accent2:   #0091ff;
+$blog-bg:        #0f0f0f;
+$blog-surface:   #141414;
+$blog-surface2:  #1d1d1d;
+$blog-border:    #2e2e2e;
+$blog-border-accent: rgba(0, 255, 255, 0.18);
+$blog-text:      #ffffff;
+$blog-muted:     #9ca3af;
+$blog-radius:    5px;
+$blog-radius-lg: 10px;
+$blog-transition: all 0.5s ease;
+
+// ── Keyframes exclusivos do blog ──
+@keyframes blog-surge {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes blog-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes blog-shine {
+  0% { left: -120%; }
+  100% { left: 160%; }
+}
+
+@keyframes blog-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes blog-glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 255, 255, 0.15); }
+  50%       { box-shadow: 0 0 22px rgba(0, 255, 255, 0.4); }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+// ============================================================
+//  SEÇÃO BLOG — Público
+// ============================================================
+
+.groupBlog {
+  background-color: $blog-bg;
+  min-height: 100vh;
+  padding: 2em 0 4em;
+  transition: $blog-transition;
+  overflow: hidden;
+}
+
+.blog {
+  width: 90%;
+  margin: auto;
+  max-width: 1024px;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  row-gap: 2.5em;
+}
+
+// ── Cabeçalho da seção ──
+.groupBlog-primary {
+  @include flex(row, flex-start, center, 2px);
+}
+
+.titleBlog {
+  color: $blog-text;
+  font-size: 2.5em;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  margin-left: 10px;
+  transition: $blog-transition;
+}
+
+.blog-subtitle {
+  color: $blog-muted;
+  font-size: 1em;
+  font-weight: 200;
+  margin-left: 12px;
+  margin-top: 0.5em;
+  transition: $blog-transition;
+}
+
+// ── Linha decorativa (mesmo padrão de .linhas) ──
+.linhas-blog {
+  width: 4px;
+  background-image: linear-gradient(to top, transparent 20%, $blog-accent2);
+  height: 65px;
+  transition: $blog-transition;
+}
+
+// ── Barra de controles: busca + categorias ──
+.blog-controls {
+  @include flex(column, flex-start, stretch, 1rem);
+}
+
+.blog-search {
+  @include flex(row, flex-start, center, 0.75rem);
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: 50px;
+  padding: 0.6rem 1.2rem;
+  transition: $blog-transition;
+
+  &:focus-within {
+    border-color: $blog-accent;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  }
+
+  > i {
+    color: $blog-muted;
+    font-size: 1.2rem;
+    pointer-events: none;
+  }
+
+  input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: $blog-text;
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+
+    &::placeholder {
+      color: $blog-muted;
+    }
+  }
+
+  &__clear {
+    background: none;
+    border: none;
+    color: $blog-muted;
+    cursor: pointer;
+    @include flex(row, center, center, 0);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    padding: 0;
+
+    &:hover {
+      color: $blog-text;
+    }
+  }
+}
+
+.blog-categories {
+  @include flex(row, flex-start, center, 0.5rem);
+  flex-wrap: wrap;
+
+  &__btn {
+    background-color: $blog-surface;
+    border: 1px solid $blog-border;
+    border-radius: 50px;
+    color: $blog-muted;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.35rem 1rem;
+    transition: $blog-transition;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $blog-accent;
+      color: $blog-accent;
+    }
+
+    &--active {
+      background-color: rgba(0, 255, 255, 0.1);
+      border-color: $blog-accent;
+      color: $blog-accent;
+      font-weight: 600;
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+    }
+  }
+}
+
+// ── Grid de posts em destaque ──
+.blog-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5em;
+}
+
+// ── Grid de posts regulares ──
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+}
+
+// ── Divider "Mais artigos" ──
+.blog-divider {
+  @include flex(row, center, center, 1rem);
+  color: $blog-muted;
+  font-size: 0.8rem;
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: $blog-border;
+  }
+}
+
+// ── Estado vazio ──
+.blog-empty {
+  @include flex(column, center, center, 1rem);
+  padding: 4rem 1rem;
+  color: $blog-muted;
+  text-align: center;
+
+  i {
+    font-size: 3rem;
+    opacity: 0.35;
+  }
+
+  p {
+    font-size: 1rem;
+    font-family: var(--font-primary);
+  }
+
+  strong {
+    color: $blog-text;
+  }
+}
+
+// ── Load more ──
+.blog-load-more {
+  @include flex(row, center, center, 0);
+  margin-top: 1rem;
+}
+
+// ============================================================
+//  CARD DE POST
+// ============================================================
+
+.blog-card {
+  background-color: $blog-surface2;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius;
+  overflow: hidden;
+  cursor: pointer;
+  @include flex(column, flex-start, stretch, 0);
+  transition: $blog-transition;
+  outline: none;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-4px);
+    border-color: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(0, 255, 255, 0.08);
+  }
+
+  // Destaque visual para featured
+  &--featured {
+    border-color: rgba(0, 255, 255, 0.15);
+    background-color: #141414;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        140deg,
+        rgba(0, 255, 255, 0.03) 0%,
+        transparent 60%
+      );
+      pointer-events: none;
+      border-radius: $blog-radius;
+    }
+  }
+
+  // Thumb
+  &__thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7) 100%);
+    }
+  }
+
+  &:hover &__thumb img {
+    transform: scale(1.06);
+  }
+
+  // Badge featured
+  &__featured-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 2;
+    background: linear-gradient(90deg, $blog-accent, $blog-accent2);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: var(--font-primary);
+    padding: 0.22rem 0.65rem;
+    border-radius: 50px;
+    @include flex(row, center, center, 0.3rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  // Body
+  &__body {
+    padding: 1.3rem;
+    @include flex(column, flex-start, flex-start, 0.7rem);
+    flex: 1;
+  }
+
+  // Meta: data + tempo
+  &__meta {
+    @include flex(row, flex-start, center, 1rem);
+    color: $blog-muted;
+    font-size: 0.78rem;
+
+    span {
+      @include flex(row, center, center, 0.3rem);
+    }
+  }
+
+  // Título
+  &__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: $blog-text;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  &:hover &__title {
+    color: $blog-accent;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+  }
+
+  // Excerpt
+  &__excerpt {
+    font-size: 0.875rem;
+    color: $blog-muted;
+    line-height: 1.65;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 200;
+  }
+
+  // Tags
+  &__tags {
+    @include flex(row, flex-start, center, 0.4rem);
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 0.25rem;
+  }
+
+  // CTA
+  &__cta {
+    background: none;
+    border: none;
+    color: $blog-accent;
+    cursor: pointer;
+    @include flex(row, flex-start, center, 0.4rem);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    transition: gap 0.3s ease;
+
+    &:hover {
+      gap: 0.8rem;
+    }
+  }
+}
+
+// ============================================================
+//  TAG BADGE
+// ============================================================
+
+.blog-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  padding: 0.22rem 0.55rem;
+  border: 1px solid currentColor;
+  color: var(--tag-color, #9ca3af);
+  background: var(--tag-bg, rgba(156, 163, 175, 0.08));
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: $blog-transition;
+
+  i {
+    font-size: 0.82rem;
+  }
+
+  &--small {
+    font-size: 0.7rem;
+    padding: 0.16rem 0.45rem;
+  }
+
+  &--more {
+    --tag-color: #5b5b5b;
+    --tag-bg: rgba(91, 91, 91, 0.1);
+    font-style: italic;
+    border-style: dashed;
+  }
+}
+
+// ============================================================
+//  MODAL DE LEITURA
+// ============================================================
+
+.blog-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  @include flex(row, center, flex-start, 0);
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.blog-modal {
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius-lg;
+  max-width: 780px;
+  width: 100%;
+  position: relative;
+  animation: blog-modal-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+
+  // Linha accent no topo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $blog-accent, $blog-accent2, transparent);
+    z-index: 2;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid $blog-border;
+    border-radius: 50%;
+    color: $blog-text;
+    cursor: pointer;
+    @include flex(row, center, center, 0);
+    font-size: 1.5rem;
+    height: 2.25rem;
+    width: 2.25rem;
+    transition: $blog-transition;
+
+    &:hover {
+      border-color: $blog-accent;
+      color: $blog-accent;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.25);
+    }
+  }
+
+  &__hero {
+    position: relative;
+    aspect-ratio: 16 / 7;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Fade para o conteúdo abaixo
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, $blog-surface 100%);
+    }
+  }
+
+  &__content {
+    padding: 2rem;
+  }
+
+  &__meta {
+    @include flex(row, flex-start, center, 1.5rem);
+    color: $blog-muted;
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+
+    span {
+      @include flex(row, center, center, 0.35rem);
+    }
+  }
+
+  &__title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: $blog-text;
+    margin: 0 0 1.25rem;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
+  }
+
+  &__tags {
+    @include flex(row, flex-start, center, 0.5rem);
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  &__body {
+    color: $blog-muted;
+    font-size: 1rem;
+    line-height: 1.85;
+    font-weight: 200;
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    strong {
+      color: $blog-text;
+      font-weight: 500;
+    }
+
+    h2, h3 {
+      color: $blog-text;
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 500;
+    }
+
+    code {
+      background: rgba(0, 255, 255, 0.07);
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      border-radius: 4px;
+      color: $blog-accent;
+      font-size: 0.875em;
+      padding: 0.1em 0.4em;
+    }
+
+    pre {
+      background: #0a0a0a;
+      border: 1px solid $blog-border;
+      border-radius: $blog-radius;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+
+      code {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+// ── Comentários ──
+.blog-comments {
+  margin-top: 2.5rem;
+  border-top: 1px solid $blog-border;
+  padding-top: 2rem;
+
+  &__title {
+    @include flex(row, flex-start, center, 0.5rem);
+    color: $blog-text;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+  }
+
+  &__empty {
+    color: $blog-muted;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+    font-weight: 200;
+  }
+
+  &__list {
+    @include flex(column, flex-start, stretch, 1rem);
+    margin-bottom: 1.75rem;
+  }
+}
+
+.blog-comment {
+  @include flex(row, flex-start, flex-start, 0.875rem);
+
+  &__avatar {
+    background: linear-gradient(135deg, $blog-accent, $blog-accent2);
+    border-radius: 50%;
+    color: #000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    @include flex(row, center, center, 0);
+    min-width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    background-color: $blog-bg;
+    border: 1px solid $blog-border;
+    border-radius: $blog-radius;
+    padding: 0.875rem;
+    flex: 1;
+    transition: $blog-transition;
+
+    &:hover {
+      border-color: rgba(0, 255, 255, 0.15);
+    }
+  }
+
+  &__author {
+    font-weight: 600;
+    color: $blog-text;
+    font-size: 0.88rem;
+    margin-right: 0.5rem;
+  }
+
+  &__date {
+    color: $blog-muted;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  &__text {
+    color: $blog-muted;
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 200;
+  }
+}
+
+.blog-comment-form {
+  @include flex(column, flex-start, stretch, 0.75rem);
+}
+
+// ============================================================
+//  BOTÕES — padrão do projeto
+// ============================================================
+
+.btn-blog {
+  background-color: transparent;
+  border: 1px solid $blog-accent;
+  border-radius: $blog-radius;
+  color: $blog-accent;
+  cursor: pointer;
+  @include flex(row, center, center, 0.45rem);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  transition: $blog-transition;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  // Shine animado no hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 255, 0.12),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: none;
+  }
+
+  &:hover {
+    background-color: rgba(0, 255, 255, 0.08);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+    transform: translateY(-1px);
+
+    &::before {
+      animation: blog-shine 0.55s ease forwards;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &--ghost {
+    border-color: $blog-border;
+    color: $blog-muted;
+    text-shadow: none;
+
+    &:hover {
+      border-color: $blog-text;
+      color: $blog-text;
+      background-color: rgba(255, 255, 255, 0.04);
+      box-shadow: none;
+    }
+  }
+
+  &--danger {
+    border-color: #ef4444;
+    color: #ef4444;
+    text-shadow: none;
+
+    &:hover {
+      background-color: rgba(239, 68, 68, 0.1);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+    }
+  }
+
+  &--full {
+    width: 100%;
+    justify-content: center;
+  }
+
+  &--sm {
+    font-size: 0.82rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+
+    &:hover {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+// ── Inputs padrão do projeto ──
+.input-blog,
+.textarea-blog {
+  background-color: #161616;
+  border: 1px solid $blog-accent;
+  border-radius: $blog-radius;
+  color: $blog-text;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 200;
+  outline: none;
+  padding: 0.7em 5px;
+  transition: $blog-transition;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $blog-muted;
+  }
+
+  &:focus {
+    padding-left: 1em;
+    box-shadow: 0 0 8px $blog-accent;
+  }
+}
+
+.textarea-blog {
+  resize: vertical;
+  padding: 0.7em;
+
+  &:focus {
+    padding-left: 0.7em;
+  }
+}
+
+// ============================================================
+//  SEÇÃO BLOG ADMIN
+// ============================================================
+
+.groupBlogAdmin {
+  background-color: $blog-bg;
+  min-height: 100vh;
+  padding: 2em 0 4em;
+  transition: $blog-transition;
+  overflow: hidden;
+}
+
+.blog-admin {
+  width: 90%;
+  margin: auto;
+  max-width: 1024px;
+  padding: 1em;
+}
+
+// ── Tela de login ──
+.admin-login-wrapper {
+  @include flex(row, center, center, 0);
+  min-height: 80vh;
+}
+
+.admin-login-card {
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius-lg;
+  padding: 2.5rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  animation: blog-surge 0.4s ease;
+  position: relative;
+  overflow: hidden;
+
+  // Linha accent no topo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $blog-accent, $blog-accent2, transparent);
+  }
+
+  &__logo {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $blog-text;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+
+    .slash {
+      color: $blog-accent;
+      font-family: var(--font-secundary);
+    }
+  }
+
+  h2 {
+    color: $blog-text;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    color: $blog-muted;
+    font-size: 0.88rem;
+    font-weight: 200;
+    margin: 0 0 2rem;
+  }
+
+  &__form {
+    @include flex(column, flex-start, stretch, 0.75rem);
+  }
+
+  &__field {
+    @include flex(row, flex-start, center, 0.75rem);
+    background-color: $blog-bg;
+    border: 1px solid $blog-accent;
+    border-radius: $blog-radius;
+    padding: 0.65rem 1rem;
+    transition: $blog-transition;
+
+    &:focus-within {
+      box-shadow: 0 0 8px $blog-accent;
+    }
+
+    &--error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.3) !important;
+    }
+
+    i { color: $blog-muted; }
+
+    input {
+      background: none;
+      border: none;
+      color: $blog-text;
+      flex: 1;
+      font-family: var(--font-primary);
+      font-size: 0.9rem;
+      outline: none;
+    }
+  }
+
+  &__error {
+    @include flex(row, center, center, 0.35rem);
+    color: #ef4444;
+    font-size: 0.8rem;
+  }
+}
+
+// ── Header do painel ──
+.admin-header {
+  @include flex(row, space-between, center, 1rem);
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+
+  &__left {
+    @include flex(row, flex-start, center, 0.75rem);
+  }
+
+  &__right {
+    @include flex(row, flex-end, center, 0.75rem);
+  }
+}
+
+.titleBlogAdmin {
+  color: $blog-text;
+  font-size: 2.5em;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  margin: 0;
+  transition: $blog-transition;
+}
+
+.admin-badge {
+  background-color: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 50px;
+  color: $blog-accent;
+  @include flex(row, center, center, 0.3rem);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.22rem 0.75rem;
+  animation: blog-glow-pulse 3s ease-in-out infinite;
+}
+
+// ── Painel / Seção ──
+.admin-panel {
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius-lg;
+  padding: 2rem;
+  transition: $blog-transition;
+}
+
+.admin-panel-title {
+  @include flex(row, flex-start, center, 0.5rem);
+  color: $blog-text;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $blog-border;
+
+  i { color: $blog-accent; }
+}
+
+// ── Formulário admin ──
+.admin-form {
+  @include flex(column, flex-start, stretch, 1.25rem);
+}
+
+.admin-form-grid {
+  @include flex(column, flex-start, stretch, 1.25rem);
+}
+
+.admin-form-field {
+  @include flex(column, flex-start, flex-start, 0.4rem);
+
+  &--full { width: 100%; }
+}
+
+.admin-label {
+  color: $blog-muted;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.admin-hint {
+  color: $blog-muted;
+  font-size: 0.75rem;
+  font-weight: 200;
+}
+
+// ── Área de imagem ──
+.admin-image-area {
+  @include flex(column, flex-start, stretch, 0.75rem);
+  width: 100%;
+}
+
+.admin-image-preview {
+  position: relative;
+  border-radius: $blog-radius;
+  overflow: hidden;
+  max-height: 200px;
+  border: 1px solid $blog-border;
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.admin-image-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(239, 68, 68, 0.9);
+  border: none;
+  border-radius: $blog-radius;
+  color: #fff;
+  cursor: pointer;
+  @include flex(row, center, center, 0.3rem);
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  transition: $blog-transition;
+
+  &:hover {
+    background-color: #dc2626;
+  }
+}
+
+.admin-image-inputs {
+  @include flex(row, flex-start, center, 0.75rem);
+  flex-wrap: wrap;
+
+  .input-blog {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+.admin-image-separator {
+  color: $blog-muted;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+// ── Toggle ──
+.admin-toggle {
+  @include flex(row, flex-start, center, 0.75rem);
+  cursor: pointer;
+  user-select: none;
+
+  input { display: none; }
+
+  &__track {
+    width: 44px;
+    height: 24px;
+    background-color: $blog-border;
+    border: 1px solid $blog-border;
+    border-radius: 50px;
+    position: relative;
+    transition: $blog-transition;
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      background-color: $blog-muted;
+      border-radius: 50%;
+      transition: $blog-transition;
+    }
+  }
+
+  input:checked ~ &__track {
+    background-color: rgba(0, 255, 255, 0.12);
+    border-color: $blog-accent;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+
+    &::after {
+      transform: translateX(20px);
+      background-color: $blog-accent;
+    }
+  }
+
+  &__label {
+    @include flex(row, flex-start, center, 0.35rem);
+    color: $blog-muted;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  input:checked ~ * &__label,
+  input:checked + * + &__label {
+    color: $blog-text;
+  }
+}
+
+// ── Ações do form ──
+.admin-form-actions {
+  @include flex(row, flex-end, center, 0.75rem);
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $blog-border;
+}
+
+// ── Seletor de tags ──
+.admin-tag-selector {
+  @include flex(column, flex-start, flex-start, 0.5rem);
+  position: relative;
+  width: 100%;
+
+  &__selected {
+    @include flex(row, flex-start, center, 0.4rem);
+    flex-wrap: wrap;
+    min-height: 28px;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: $blog-surface;
+    border: 1px solid $blog-border;
+    border-radius: $blog-radius;
+    @include flex(row, flex-start, center, 0.35rem);
+    flex-wrap: wrap;
+    padding: 0.75rem;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    animation: blog-surge 0.15s ease;
+  }
+
+  &__option {
+    background-color: $blog-bg;
+    border: 1px solid $blog-border;
+    border-radius: 4px;
+    color: $blog-muted;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    transition: $blog-transition;
+
+    &:hover {
+      border-color: $blog-accent;
+      color: $blog-accent;
+    }
+  }
+
+  &__empty {
+    color: $blog-muted;
+    font-size: 0.82rem;
+  }
+}
+
+.admin-tag-chip {
+  background-color: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 4px;
+  color: $blog-accent;
+  @include flex(row, center, center, 0.25rem);
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    @include flex(row, center, center, 0);
+    padding: 0;
+    opacity: 0.7;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+
+    &:hover { opacity: 1; }
+  }
+}
+
+// ── Lista de posts admin ──
+.admin-posts-list {
+  @include flex(column, flex-start, stretch, 1rem);
+}
+
+.admin-post-row {
+  background-color: $blog-bg;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius;
+  @include flex(row, flex-start, flex-start, 1rem);
+  padding: 1rem;
+  transition: $blog-transition;
+
+  &:hover {
+    border-color: rgba(0, 255, 255, 0.2);
+  }
+
+  &__thumb {
+    border-radius: $blog-radius;
+    flex-shrink: 0;
+    height: 72px;
+    overflow: hidden;
+    width: 108px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $blog-transition;
+    }
+  }
+
+  &:hover &__thumb img {
+    transform: scale(1.05);
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+    @include flex(column, flex-start, flex-start, 0.4rem);
+  }
+
+  &__title-row {
+    @include flex(row, flex-start, center, 0.5rem);
+    flex-wrap: wrap;
+
+    h4 {
+      color: $blog-text;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0;
+      transition: $blog-transition;
+    }
+  }
+
+  &:hover &__title-row h4 {
+    color: $blog-accent;
+  }
+
+  &__excerpt {
+    color: $blog-muted;
+    font-size: 0.8rem;
+    font-weight: 200;
+    line-height: 1.5;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__meta {
+    @include flex(row, flex-start, center, 0.75rem);
+    flex-wrap: wrap;
+    color: $blog-muted;
+    font-size: 0.75rem;
+
+    span {
+      @include flex(row, center, center, 0.25rem);
+    }
+  }
+
+  &__tags {
+    @include flex(row, flex-start, center, 0.3rem);
+    flex-wrap: wrap;
+  }
+
+  &__actions {
+    @include flex(column, flex-start, flex-end, 0.5rem);
+    flex-shrink: 0;
+  }
+}
+
+.admin-featured-badge {
+  background: linear-gradient(90deg, $blog-accent, $blog-accent2);
+  border-radius: 50px;
+  color: #000;
+  @include flex(row, center, center, 0.2rem);
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  padding: 0.15rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-tag-sm {
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: 4px;
+  color: $blog-muted;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  padding: 0.08rem 0.42rem;
+
+  &--more {
+    font-style: italic;
+    border-style: dashed;
+  }
+}
+
+// ── Botões de ação (ícone) ──
+.admin-icon-btn {
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius;
+  color: $blog-muted;
+  cursor: pointer;
+  @include flex(row, center, center, 0);
+  font-size: 1.1rem;
+  height: 2rem;
+  width: 2rem;
+  transition: $blog-transition;
+
+  &--edit:hover {
+    border-color: $blog-accent;
+    color: $blog-accent;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  }
+
+  &--delete:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.2);
+  }
+}
+
+// ── Estado vazio admin ──
+.admin-empty {
+  @include flex(column, center, center, 0.75rem);
+  padding: 3rem 1rem;
+  color: $blog-muted;
+  text-align: center;
+
+  i {
+    font-size: 2.5rem;
+    opacity: 0.3;
+  }
+
+  p {
+    font-size: 0.9rem;
+    font-weight: 200;
+  }
+}
+
+// ── Toast notifications ──
+.admin-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 99999;
+  background-color: $blog-surface;
+  border: 1px solid $blog-border;
+  border-radius: $blog-radius-lg;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  @include flex(row, flex-start, center, 0.75rem);
+  padding: 0.875rem 1.25rem;
+  min-width: 220px;
+  animation: toast-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &--success {
+    border-color: rgba(34, 197, 94, 0.35);
+
+    i { color: #22c55e; }
+  }
+
+  &--error {
+    border-color: rgba(239, 68, 68, 0.35);
+
+    i { color: #ef4444; }
+  }
+
+  i { font-size: 1.25rem; }
+
+  span {
+    flex: 1;
+    color: $blog-text;
+    font-size: 0.875rem;
+    font-family: var(--font-primary);
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $blog-muted;
+    cursor: pointer;
+    @include flex(row, center, center, 0);
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+
+    &:hover { color: $blog-text; }
+  }
+}
+
+// ── Confirm Dialog ──
+.admin-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  @include flex(row, center, center, 0);
+  padding: 1rem;
+}
+
+.admin-dialog {
+  background-color: $blog-surface;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: $blog-radius-lg;
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+  animation: blog-modal-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &__icon {
+    color: #ef4444;
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: $blog-text;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    color: $blog-muted;
+    font-size: 0.88rem;
+    font-weight: 200;
+    margin: 0 0 1.5rem;
+  }
+
+  &__actions {
+    @include flex(row, center, center, 0.75rem);
+  }
+}
+
+// ============================================================
+//  RESPONSIVIDADE
+// ============================================================
+
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .groupBlog,
+  .groupBlogAdmin {
+    padding: 3em 0;
+  }
+
+  .blog-grid,
+  .blog-featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-categories {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  // Modal vira bottom sheet
+  .blog-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .blog-modal {
+    border-radius: $blog-radius-lg $blog-radius-lg 0 0;
+    max-height: 92vh;
+    overflow-y: auto;
+
+    &__content { padding: 1.5rem; }
+    &__meta { flex-direction: column; gap: 0.4rem; }
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-post-row {
+    flex-wrap: wrap;
+
+    &__thumb {
+      width: 100%;
+      height: 140px;
+    }
+
+    &__actions {
+      flex-direction: row;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+
+  .admin-form-actions {
+    flex-direction: column-reverse;
+
+    .btn-blog { width: 100%; justify-content: center; }
+  }
+
+  .admin-image-inputs {
+    flex-direction: column;
+  }
+
+  .admin-toast {
+    left: 1rem;
+    right: 1rem;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-card__meta { flex-wrap: wrap; gap: 0.4rem; }
+  .admin-login-card { padding: 2rem 1.25rem; }
+  .admin-panel { padding: 1.25rem; }
+  .admin-dialog { padding: 2rem 1.5rem; }
+}

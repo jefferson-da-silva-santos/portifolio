@@ -7,6 +7,8 @@ import Inicio from "./pages/Inicio";
 import Projetos from "./pages/Projetos";
 import Servicos from "./pages/Servicos";
 import Sobre from "./pages/Sobre";
+import Blog from "./pages/Blog";
+import BlogAdmin from "./pages/BlogAdmin";
 import ModalProject from "./components/ModalProject";
 import { useEffect, useState } from "react";
 import { MenuProvider } from "./provider/MenuProvider";
@@ -16,6 +18,24 @@ import type { IProject } from "./provider/types";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import useAccessLogger from "./hooks/useAccessLogger";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Componente para organizar a página inicial (raiz)
+function HomeLayout() {
+  return (
+    <>
+      <Inicio />
+      <main>
+        <Sobre />
+        <Habilidades />
+        <Projetos />
+        <Servicos />
+        <Contato />
+      </main>
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   useAccessLogger('portifolio_jefferson_dev');
@@ -30,31 +50,29 @@ function App() {
   }, []);
 
   return (
-    <>
-      <ThemeProvider>
-        <LanguageProvider>
-          <MenuProvider>
-            <ModalProjectProvider setSelectedProject={setSelectedProject}>
-              {selectedProject && (
-                <ModalProject
-                  isVisible={isModalOpen}
-                  selectedProject={selectedProject}
-                />
-              )}
-              <Inicio />
-              <main>
-                <Sobre />
-                <Habilidades />
-                <Projetos />
-                <Servicos />
-                <Contato />
-              </main>
-              <Footer />
-            </ModalProjectProvider>
-          </MenuProvider>
-        </LanguageProvider>
-      </ThemeProvider>
-    </>
+    <ThemeProvider>
+      <LanguageProvider>
+        <MenuProvider>
+          <ModalProjectProvider setSelectedProject={setSelectedProject}>
+            {selectedProject && (
+              <ModalProject
+                isVisible={isModalOpen}
+                selectedProject={selectedProject}
+              />
+            )}
+            
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<HomeLayout />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/admin" element={<BlogAdmin />} />
+              </Routes>
+            </BrowserRouter>
+
+          </ModalProjectProvider>
+        </MenuProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 
