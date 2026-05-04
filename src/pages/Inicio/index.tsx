@@ -6,10 +6,10 @@ import SocialButton from "./Link";
 import { projectImages, socialButtonList } from "../../consts/dataConsts";
 import { handleSetHoverButtonIcon, styleContainer, styleTitle } from "./styles";
 import { stylesButton } from "./styles";
-import eu from '../../assets/image/jeff.png';
+import eu from '../../assets/image/jeff.webp';
 
-import background_dark from '../../assets/image/background.png';
-import background_light from '../../assets/image/background_light.png';
+import background_dark from '../../assets/image/background.webp';
+import background_light from '../../assets/image/background_light.webp';
 import { useTranslation } from "react-i18next";
 
 const Inicio = () => {
