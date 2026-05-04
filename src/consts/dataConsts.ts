@@ -49,9 +49,9 @@ import api from "../assets/image/service_api.webp";
 // =======================
 // IMPORTS DE PROJETOS
 // =======================
-import cardapio from "../assets/image/cardapio.png";
+import cardapio from "../assets/image/cardapio.webp";
 import jessicaPlanilhas from "../assets/image/projeto-jessica-planilhas.webp";
-import sushi from "../assets/image/sushi.png";
+import sushi from "../assets/image/sushi.webp";
 import infoccell from "../assets/image/infoccell.png";
 import leoDeLita from "../assets/image/leo_de_lita.webp";
 import calculadoraImc from "../assets/image/projeto-calculadora-de-imc.webp";
