@@ -15,11 +15,13 @@
     "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },
   "dependencies": {
+    "@uiw/react-md-editor": "^4.1.0",
     "aos": "^2.3.4",
     "boxicons": "^2.1.4",
     "concurrently": "^9.2.1",
     "emailjs-com": "^3.2.0",
     "formik": "^2.4.6",
+    "highlight.js": "^11.11.1",
     "i18next": "^25.4.0",
     "i18next-browser-languagedetector": "^8.2.0",
     "notyf": "^3.10.0",
@@ -27,7 +29,10 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.7.1",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.14.2",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
     "ua-parser-js": "^2.0.6",
     "yup": "^1.7.0"
   },

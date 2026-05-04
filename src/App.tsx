@@ -19,6 +19,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import useAccessLogger from "./hooks/useAccessLogger";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ViewPost from "./pages/ViewPost";
 
 // Componente para organizar a página inicial (raiz)
 function HomeLayout() {
@@ -65,6 +66,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomeLayout />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<ViewPost />} />
                 <Route path="/admin" element={<BlogAdmin />} />
               </Routes>
             </BrowserRouter>
