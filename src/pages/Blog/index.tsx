@@ -1,10 +1,18 @@
 // Blog.tsx — Jefferson Santos Portfolio
 // Estilização em _blog.scss (sem CSS-in-JS)
 // Suporta posts técnicos e pessoais
+// Markdown: react-markdown + remark-gfm + rehype-highlight
 
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { TAG_REGISTRY } from "../../consts/dataConsts";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+
+// Importe o tema do highlight.js no seu arquivo de estilos global ou aqui:
+// import "highlight.js/styles/github-dark.css";
+// (ou qualquer outro tema disponível em highlight.js/styles/)
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -27,6 +35,7 @@ interface Post {
   title: string;
   excerpt: string;
   content: string;
+  imageBase64?: string | null;
   imageUrl?: string | null;
   tags: string[];
   featured: boolean;
@@ -35,9 +44,9 @@ interface Post {
   category?: string;
 }
 
-export const BASE_API = 'https://blog-server-tawny-ten.vercel.app';
+export const BASE_API = "https://blog-server-tawny-ten.vercel.app";
 
-// ─── TAG REGISTRY ─────────────────────────────────────────────────────────────
+// ─── CATEGORIAS ──────────────────────────────────────────────────────────────
 
 const ALL_CATEGORIES = ["Todos", "Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros"];
 
@@ -45,7 +54,8 @@ const MOCK_POSTS: Post[] = [
   {
     id: "1",
     title: "Construindo APIs Modernas com Node.js + Fastify",
-    excerpt: "Descubra como o Fastify supera o Express em performance e como estruturar APIs de produção com TypeScript, validação de schemas e muito mais.",
+    excerpt:
+      "Descubra como o Fastify supera o Express em performance e como estruturar APIs de produção com TypeScript, validação de schemas e muito mais.",
     content: "",
     imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
     tags: ["Node.js", "Fastify", "TypeScript", "PostgreSQL"],
@@ -57,7 +67,8 @@ const MOCK_POSTS: Post[] = [
   {
     id: "2",
     title: "React 19 na Prática: Server Components e Actions",
-    excerpt: "Uma análise profunda das mudanças do React 19, como Server Components mudam a arquitetura das aplicações e quando usar Server Actions.",
+    excerpt:
+      "Uma análise profunda das mudanças do React 19, como Server Components mudam a arquitetura das aplicações e quando usar Server Actions.",
     content: "",
     imageUrl: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=80",
     tags: ["React", "Next.js", "TypeScript"],
@@ -69,7 +80,8 @@ const MOCK_POSTS: Post[] = [
   {
     id: "3",
     title: "Aquela vez que meu deploy foi pro saco em produção",
-    excerpt: "Uma sexta-feira tranquila que virou pesadelo. O que aprendi depois de derrubar um sistema em horário de pico e como sobrevivi pra contar.",
+    excerpt:
+      "Uma sexta-feira tranquila que virou pesadelo. O que aprendi depois de derrubar um sistema em horário de pico e como sobrevivi pra contar.",
     content: "",
     imageUrl: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
     tags: ["Docker", "AWS"],
@@ -81,7 +93,8 @@ const MOCK_POSTS: Post[] = [
   {
     id: "4",
     title: "PostgreSQL Avançado: Performance e Indexação",
-    excerpt: "Técnicas avançadas de otimização: índices parciais, EXPLAIN ANALYZE, particionamento e query planning.",
+    excerpt:
+      "Técnicas avançadas de otimização: índices parciais, EXPLAIN ANALYZE, particionamento e query planning.",
     content: "",
     imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
     tags: ["PostgreSQL"],
@@ -93,7 +106,8 @@ const MOCK_POSTS: Post[] = [
   {
     id: "5",
     title: "Integrando LLMs com LangChain e Python",
-    excerpt: "Como construir aplicações inteligentes usando LangChain, conectar modelos a dados externos e criar agentes autônomos.",
+    excerpt:
+      "Como construir aplicações inteligentes usando LangChain, conectar modelos a dados externos e criar agentes autônomos.",
     content: "",
     imageUrl: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
     tags: ["Python", "LangChain", "Hugging Face", "FastAPI"],
@@ -105,7 +119,8 @@ const MOCK_POSTS: Post[] = [
   {
     id: "6",
     title: "Minha rotina de dev: o que funcionou (e o que não funcionou)",
-    excerpt: "Tentei de tudo — Pomodoro, deep work, headphones com lofi. Aqui está o que realmente funciona no meu dia a dia.",
+    excerpt:
+      "Tentei de tudo — Pomodoro, deep work, headphones com lofi. Aqui está o que realmente funciona no meu dia a dia.",
     content: "",
     imageUrl: null,
     tags: [],
@@ -119,24 +134,42 @@ const MOCK_POSTS: Post[] = [
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 
 function getTag(name: string): Tag {
-  return TAG_REGISTRY[name] ?? { name, color: "#9ca3af", bg: "rgba(156,163,175,0.08)", icon: "bx-hash" };
+  return (
+    TAG_REGISTRY[name] ?? {
+      name,
+      color: "#9ca3af",
+      bg: "rgba(156,163,175,0.08)",
+      icon: "bx-hash",
+    }
+  );
 }
 
 function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+  return new Date(iso).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 function filterByCategory(posts: Post[], cat: string): Post[] {
   if (cat === "Todos") return posts;
   const techMap: Record<string, string[]> = {
-    Frontend: ["React","Vue","Angular","Svelte","Next.js","Nuxt.js","Astro","Tailwind","Vite","JavaScript","TypeScript","Sass","Material UI","Bootstrap"],
-    Backend:  ["Node.js","Express","NestJS","Fastify","Django","Flask","FastAPI","Laravel","Spring Boot","PostgreSQL","MySQL","MongoDB","Redis","SQLite"],
-    DevOps:   ["Docker","Kubernetes","AWS","GCP","Azure","Terraform","GitHub Actions","Git","Linux"],
-    "IA / ML":["TensorFlow","PyTorch","Hugging Face","LangChain"],
+    Frontend: [
+      "React","Vue","Angular","Svelte","Next.js","Nuxt.js","Astro","Tailwind",
+      "Vite","JavaScript","TypeScript","Sass","Material UI","Bootstrap",
+    ],
+    Backend: [
+      "Node.js","Express","NestJS","Fastify","Django","Flask","FastAPI",
+      "Laravel","Spring Boot","PostgreSQL","MySQL","MongoDB","Redis","SQLite",
+    ],
+    DevOps: ["Docker","Kubernetes","AWS","GCP","Azure","Terraform","GitHub Actions","Git","Linux"],
+    "IA / ML": ["TensorFlow","PyTorch","Hugging Face","LangChain"],
   };
-  return posts.filter((p) =>
-    p.category === cat ||
-    (techMap[cat] && p.tags.some((t) => techMap[cat].includes(t)))
+  return posts.filter(
+    (p) =>
+      p.category === cat ||
+      (techMap[cat] && p.tags.some((t) => techMap[cat].includes(t)))
   );
 }
 
@@ -158,6 +191,7 @@ function TagBadge({ name, small = false }: { name: string; small?: boolean }) {
 // ─── POST CARD ────────────────────────────────────────────────────────────────
 
 function PostCard({ post, onClick }: { post: Post; onClick: () => void }) {
+  const thumb = post.imageBase64 || post.imageUrl;
   return (
     <article
       className={`blog-card${post.featured ? " blog-card--featured" : ""}`}
@@ -167,9 +201,9 @@ function PostCard({ post, onClick }: { post: Post; onClick: () => void }) {
       role="button"
       aria-label={`Ler: ${post.title}`}
     >
-      {post.imageUrl && (
+      {thumb && (
         <div className="blog-card__thumb">
-          <img src={post.imageUrl} alt={post.title} loading="lazy" />
+          <img src={thumb} alt={post.title} loading="lazy" />
           {post.featured && (
             <span className="blog-card__featured-badge">
               <i className="bx bxs-star" /> Destaque
@@ -179,17 +213,32 @@ function PostCard({ post, onClick }: { post: Post; onClick: () => void }) {
       )}
       <div className="blog-card__body">
         <div className="blog-card__meta">
-          <span><i className="bx bx-calendar" />{formatDate(post.createdAt)}</span>
-          <span><i className="bx bx-time-five" />{post.readTime} min</span>
-          {post.category && <span><i className="bx bx-category" />{post.category}</span>}
+          <span>
+            <i className="bx bx-calendar" />
+            {formatDate(post.createdAt)}
+          </span>
+          <span>
+            <i className="bx bx-time-five" />
+            {post.readTime} min
+          </span>
+          {post.category && (
+            <span>
+              <i className="bx bx-category" />
+              {post.category}
+            </span>
+          )}
         </div>
         <h3 className="blog-card__title">{post.title}</h3>
         <p className="blog-card__excerpt">{post.excerpt}</p>
         {post.tags.length > 0 && (
           <div className="blog-card__tags">
-            {post.tags.slice(0, 3).map((t) => <TagBadge key={t} name={t} small />)}
+            {post.tags.slice(0, 3).map((t) => (
+              <TagBadge key={t} name={t} small />
+            ))}
             {post.tags.length > 3 && (
-              <span className="blog-tag blog-tag--small blog-tag--more">+{post.tags.length - 3}</span>
+              <span className="blog-tag blog-tag--small blog-tag--more">
+                +{post.tags.length - 3}
+              </span>
             )}
           </div>
         )}
@@ -201,6 +250,52 @@ function PostCard({ post, onClick }: { post: Post; onClick: () => void }) {
   );
 }
 
+// ─── MARKDOWN RENDERER ───────────────────────────────────────────────────────
+// Componente isolado para renderização de Markdown com GFM + syntax highlight
+
+function MarkdownContent({ content }: { content: string }) {
+  if (!content?.trim()) return null;
+
+  return (
+    <div className="blog-markdown">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeHighlight]}
+        components={{
+          // Abre links externos em nova aba com segurança
+          a({ href, children, ...props }) {
+            const isExternal = href?.startsWith("http");
+            return (
+              <a
+                href={href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                {...props}
+              >
+                {children}
+              </a>
+            );
+          },
+          // Imagens responsivas
+          img({ src, alt, ...props }) {
+            return (
+              <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                style={{ maxWidth: "100%", borderRadius: "8px" }}
+                {...props}
+              />
+            );
+          },
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
+  );
+}
+
 // ─── POST MODAL ───────────────────────────────────────────────────────────────
 
 function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
@@ -208,8 +303,28 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(false);
+  // Estado para controlar carregamento do conteúdo completo via API
+  const [fullPost, setFullPost] = useState<Post>(post);
+  const [loadingContent, setLoadingContent] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
+  // Busca conteúdo completo do post (caso o card não tenha o content completo)
+  useEffect(() => {
+    // Se o post já tem conteúdo, não precisa buscar
+    if (post.content?.trim()) {
+      setFullPost(post);
+      return;
+    }
+
+    setLoadingContent(true);
+    fetch(`${BASE_API}/api/posts/${post.id}`)
+      .then((r) => r.json())
+      .then((d) => setFullPost(d))
+      .catch(() => setFullPost(post))
+      .finally(() => setLoadingContent(false));
+  }, [post.id]);
+
+  // Busca comentários
   useEffect(() => {
     fetch(`${BASE_API}/api/posts/${post.id}/comments`)
       .then((r) => r.json())
@@ -217,9 +332,12 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
       .catch(() => {});
   }, [post.id]);
 
+  // Bloqueia scroll do body enquanto modal está aberto
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   async function submitComment() {
@@ -235,15 +353,22 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
       setComments((prev) => [c, ...prev]);
       setCommentText("");
     } catch {
-      setComments((prev) => [{
-        id: String(Date.now()), author: author.trim(),
-        text: commentText.trim(), createdAt: new Date().toISOString(),
-      }, ...prev]);
+      setComments((prev) => [
+        {
+          id: String(Date.now()),
+          author: author.trim(),
+          text: commentText.trim(),
+          createdAt: new Date().toISOString(),
+        },
+        ...prev,
+      ]);
       setCommentText("");
     } finally {
       setLoading(false);
     }
   }
+
+  const heroImage = fullPost.imageBase64 || fullPost.imageUrl;
 
   return (
     <div
@@ -256,39 +381,56 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
           <i className="bx bx-x" />
         </button>
 
-        {post.imageUrl && (
+        {heroImage && (
           <div className="blog-modal__hero">
-            <img src={post.imageUrl} alt={post.title} />
+            <img src={heroImage} alt={fullPost.title} />
           </div>
         )}
 
         <div className="blog-modal__content">
           <div className="blog-modal__meta">
-            <span><i className="bx bx-calendar" />{formatDate(post.createdAt)}</span>
-            <span><i className="bx bx-time-five" />{post.readTime} min de leitura</span>
-            {post.category && <span><i className="bx bx-category" />{post.category}</span>}
+            <span>
+              <i className="bx bx-calendar" />
+              {formatDate(fullPost.createdAt)}
+            </span>
+            <span>
+              <i className="bx bx-time-five" />
+              {fullPost.readTime} min de leitura
+            </span>
+            {fullPost.category && (
+              <span>
+                <i className="bx bx-category" />
+                {fullPost.category}
+              </span>
+            )}
           </div>
 
-          <h2 className="blog-modal__title">{post.title}</h2>
+          <h2 className="blog-modal__title">{fullPost.title}</h2>
 
-          {post.tags.length > 0 && (
+          {fullPost.tags.length > 0 && (
             <div className="blog-modal__tags">
-              {post.tags.map((t) => <TagBadge key={t} name={t} />)}
+              {fullPost.tags.map((t) => (
+                <TagBadge key={t} name={t} />
+              ))}
             </div>
           )}
 
+          {/* ── Corpo do post com Markdown ── */}
           <div className="blog-modal__body">
-            <p>{post.excerpt}</p>
-            <p>
-              O conteúdo completo é carregado via API.{" "}
-              {post.tags.length > 0 && (
-                <>Tecnologias: {post.tags.slice(0, 2).map((t, i) => (
-                  <span key={t}><TagBadge name={t} small />{i < 1 ? " e " : ""}</span>
-                ))}.</>
-              )}
-            </p>
+            {loadingContent ? (
+              <div className="blog-modal__loading">
+                <i className="bx bx-loader-alt bx-spin" />
+                <span>Carregando conteúdo...</span>
+              </div>
+            ) : fullPost.content?.trim() ? (
+              <MarkdownContent content={fullPost.content} />
+            ) : (
+              /* Fallback caso não haja conteúdo */
+              <p className="blog-modal__excerpt-fallback">{fullPost.excerpt}</p>
+            )}
           </div>
 
+          {/* ── Comentários ── */}
           <div className="blog-comments">
             <h4 className="blog-comments__title">
               <i className="bx bx-comment-dots" /> Comentários ({comments.length})
@@ -302,7 +444,9 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
                   <div className="blog-comment__avatar">{c.author[0]?.toUpperCase()}</div>
                   <div className="blog-comment__body">
                     <span className="blog-comment__author">{c.author}</span>
-                    <span className="blog-comment__date">{formatDate(c.createdAt.slice(0, 10))}</span>
+                    <span className="blog-comment__date">
+                      {formatDate(c.createdAt.slice(0, 10))}
+                    </span>
                     <p className="blog-comment__text">{c.text}</p>
                   </div>
                 </div>
@@ -350,31 +494,31 @@ export default function Blog() {
 
   useEffect(() => {
     fetch(`${BASE_API}/api/posts`)
-      .then(r => r.json())
-      .then(d => setPosts(d.data ?? []))
+      .then((r) => r.json())
+      .then((d) => setPosts(d.data ?? []))
       .catch(() => {});
   }, []);
 
   const filtered = filterByCategory(
-    posts.filter((p) =>
-      !search ||
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.excerpt.toLowerCase().includes(search.toLowerCase()) ||
-      p.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
-      (p.category ?? "").toLowerCase().includes(search.toLowerCase())
+    posts.filter(
+      (p) =>
+        !search ||
+        p.title.toLowerCase().includes(search.toLowerCase()) ||
+        p.excerpt.toLowerCase().includes(search.toLowerCase()) ||
+        p.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
+        (p.category ?? "").toLowerCase().includes(search.toLowerCase())
     ),
     activeCategory
   );
 
   const featured = filtered.filter((p) => p.featured);
-  const regular  = filtered.filter((p) => !p.featured);
+  const regular = filtered.filter((p) => !p.featured);
 
   return (
     <section className="groupBlog" id="blog">
       <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
 
       <div className="blog">
-
         {/* Botões de navegação */}
         <nav className="blog-nav" aria-label="Navegação do blog">
           <Link to="/" className="blog-nav__btn">
@@ -420,7 +564,9 @@ export default function Blog() {
             {ALL_CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                className={`blog-categories__btn${activeCategory === cat ? " blog-categories__btn--active" : ""}`}
+                className={`blog-categories__btn${
+                  activeCategory === cat ? " blog-categories__btn--active" : ""
+                }`}
                 onClick={() => setActiveCategory(cat)}
               >
                 {cat}
@@ -439,17 +585,24 @@ export default function Blog() {
         )}
 
         {featured.length > 0 && regular.length > 0 && (
-          <div className="blog-divider"><span>Mais posts</span></div>
+          <div className="blog-divider">
+            <span>Mais posts</span>
+          </div>
         )}
 
         {/* Grid regular */}
         {filtered.length === 0 ? (
           <div className="blog-empty">
             <i className="bx bx-search-alt" />
-            <p>Nenhum post encontrado para <strong>"{search}"</strong></p>
+            <p>
+              Nenhum post encontrado para <strong>"{search}"</strong>
+            </p>
             <button
               className="btn-blog btn-blog--sm"
-              onClick={() => { setSearch(""); setActiveCategory("Todos"); }}
+              onClick={() => {
+                setSearch("");
+                setActiveCategory("Todos");
+              }}
             >
               Limpar filtros
             </button>

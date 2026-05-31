@@ -1,9 +1,12 @@
 // BlogAdmin.tsx — Jefferson Santos Portfolio
-// Estilização em _blog.scss — sem CSS-in-JS
-// Imagens: converte arquivo para base64 ou aceita URL externa
+// Editor de Markdown com preview em tempo real
+// Libs: react-markdown + remark-gfm + rehype-highlight
 
 import { useState, useRef } from "react";
 import { BASE_API } from "../Blog";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -12,8 +15,8 @@ interface Post {
   title: string;
   excerpt: string;
   content: string;
-  imageBase64?: string | null; // imagem enviada como arquivo
-  imageUrl?: string | null;    // imagem via URL
+  imageBase64?: string | null;
+  imageUrl?: string | null;
   tags: string[];
   featured: boolean;
   createdAt: string;
@@ -46,11 +49,31 @@ const ALL_CATEGORIES = ["Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Aco
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 const API_BASE = `${BASE_API}/api`;
 
+// ─── MARKDOWN SNIPPETS ────────────────────────────────────────────────────────
+// Atalhos rápidos para o editor
+
+const MD_SNIPPETS = [
+  { label: "H2",     icon: "bx-heading",       value: "\n## Título da seção\n" },
+  { label: "H3",     icon: "bx-text",           value: "\n### Subtítulo\n" },
+  { label: "Bold",   icon: "bx-bold",           value: "**texto em negrito**" },
+  { label: "Italic", icon: "bx-italic",         value: "*texto em itálico*" },
+  { label: "Code",   icon: "bx-code",           value: "`código inline`" },
+  { label: "Block",  icon: "bx-code-block",     value: "\n```js\n// seu código aqui\n```\n" },
+  { label: "Link",   icon: "bx-link",           value: "[texto](https://url)" },
+  { label: "Image",  icon: "bx-image",          value: "![alt](https://url-da-imagem)" },
+  { label: "List",   icon: "bx-list-ul",        value: "\n- item 1\n- item 2\n- item 3\n" },
+  { label: "Quote",  icon: "bx-quote-alt-left", value: "\n> Citação aqui\n" },
+  { label: "Table",  icon: "bx-table",          value: "\n| Col 1 | Col 2 | Col 3 |\n|-------|-------|-------|\n| A     | B     | C     |\n" },
+  { label: "HR",     icon: "bx-minus",          value: "\n---\n" },
+];
+
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR", {
-    day: "2-digit", month: "short", year: "numeric",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
   });
 }
 
@@ -58,7 +81,6 @@ function estimateReadTime(text: string) {
   return Math.max(1, Math.ceil(text.split(/\s+/).filter(Boolean).length / 200));
 }
 
-/** Converte File para base64 string (data:image/...) */
 async function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -70,19 +92,35 @@ async function fileToBase64(file: File): Promise<string> {
 
 // ─── TOAST ───────────────────────────────────────────────────────────────────
 
-function Toast({ message, type, onClose }: { message: string; type: ToastType; onClose: () => void }) {
+function Toast({
+  message,
+  type,
+  onClose,
+}: {
+  message: string;
+  type: ToastType;
+  onClose: () => void;
+}) {
   return (
     <div className={`admin-toast admin-toast--${type}`}>
       <i className={`bx ${type === "success" ? "bx-check-circle" : "bx-x-circle"}`} />
       <span>{message}</span>
-      <button onClick={onClose}><i className="bx bx-x" /></button>
+      <button onClick={onClose}>
+        <i className="bx bx-x" />
+      </button>
     </div>
   );
 }
 
 // ─── CONFIRM DIALOG ───────────────────────────────────────────────────────────
 
-function ConfirmDialog({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () => void }) {
+function ConfirmDialog({
+  onConfirm,
+  onCancel,
+}: {
+  onConfirm: () => void;
+  onCancel: () => void;
+}) {
   return (
     <div className="admin-dialog-overlay">
       <div className="admin-dialog">
@@ -90,7 +128,9 @@ function ConfirmDialog({ onConfirm, onCancel }: { onConfirm: () => void; onCance
         <h3>Deletar post?</h3>
         <p>Esta ação não pode ser desfeita.</p>
         <div className="admin-dialog__actions">
-          <button className="btn-blog btn-blog--ghost" onClick={onCancel}>Cancelar</button>
+          <button className="btn-blog btn-blog--ghost" onClick={onCancel}>
+            Cancelar
+          </button>
           <button className="btn-blog btn-blog--danger" onClick={onConfirm}>
             <i className="bx bx-trash" /> Deletar
           </button>
@@ -102,7 +142,13 @@ function ConfirmDialog({ onConfirm, onCancel }: { onConfirm: () => void; onCance
 
 // ─── TAG SELECTOR ─────────────────────────────────────────────────────────────
 
-function TagSelector({ selected, onChange }: { selected: string[]; onChange: (t: string[]) => void }) {
+function TagSelector({
+  selected,
+  onChange,
+}: {
+  selected: string[];
+  onChange: (t: string[]) => void;
+}) {
   const [search, setSearch] = useState("");
 
   const options = ALL_TAGS.filter(
@@ -115,7 +161,10 @@ function TagSelector({ selected, onChange }: { selected: string[]; onChange: (t:
         {selected.map((t) => (
           <span key={t} className="admin-tag-chip">
             {t}
-            <button type="button" onClick={() => onChange(selected.filter((s) => s !== t))}>
+            <button
+              type="button"
+              onClick={() => onChange(selected.filter((s) => s !== t))}
+            >
               <i className="bx bx-x" />
             </button>
           </span>
@@ -130,19 +179,23 @@ function TagSelector({ selected, onChange }: { selected: string[]; onChange: (t:
       />
       {search && (
         <div className="admin-tag-selector__dropdown">
-          {options.length === 0
-            ? <span className="admin-tag-selector__empty">Nenhuma tag encontrada</span>
-            : options.map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  className="admin-tag-selector__option"
-                  onClick={() => { onChange([...selected, t]); setSearch(""); }}
-                >
-                  {t}
-                </button>
-              ))
-          }
+          {options.length === 0 ? (
+            <span className="admin-tag-selector__empty">Nenhuma tag encontrada</span>
+          ) : (
+            options.map((t) => (
+              <button
+                key={t}
+                type="button"
+                className="admin-tag-selector__option"
+                onClick={() => {
+                  onChange([...selected, t]);
+                  setSearch("");
+                }}
+              >
+                {t}
+              </button>
+            ))
+          )}
         </div>
       )}
     </div>
@@ -150,7 +203,6 @@ function TagSelector({ selected, onChange }: { selected: string[]; onChange: (t:
 }
 
 // ─── IMAGE FIELD ──────────────────────────────────────────────────────────────
-// Trata upload (→ base64) e URL separadamente
 
 interface ImageFieldProps {
   base64: string;
@@ -172,12 +224,12 @@ function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProp
     }
     const b64 = await fileToBase64(file);
     onBase64Change(b64);
-    onUrlChange("");           // limpa URL se havia
+    onUrlChange("");
   }
 
   function handleUrl(e: React.ChangeEvent<HTMLInputElement>) {
     onUrlChange(e.target.value);
-    onBase64Change("");        // limpa base64 se havia
+    onBase64Change("");
   }
 
   function remove() {
@@ -224,14 +276,151 @@ function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProp
       </div>
       {base64 && (
         <small className="admin-hint">
-          <i className="bx bx-check-circle" style={{ color: "#22c55e" }} /> Imagem carregada como arquivo — será salva como base64 no banco.
+          <i className="bx bx-check-circle" style={{ color: "#22c55e" }} /> Imagem como
+          base64.
         </small>
       )}
       {url && (
         <small className="admin-hint">
-          <i className="bx bx-link" style={{ color: "#00ffff" }} /> URL externa — salva diretamente no banco.
+          <i className="bx bx-link" style={{ color: "#00ffff" }} /> URL externa.
         </small>
       )}
+    </div>
+  );
+}
+
+// ─── MARKDOWN EDITOR ──────────────────────────────────────────────────────────
+// Editor com toolbar de snippets + preview ao lado (split view)
+
+interface MarkdownEditorProps {
+  value: string;
+  onChange: (v: string) => void;
+}
+
+function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
+  const [showPreview, setShowPreview] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  /** Insere snippet na posição atual do cursor */
+  function insertSnippet(snippet: string) {
+    const el = textareaRef.current;
+    if (!el) return;
+
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const before = value.substring(0, start);
+    const after = value.substring(end);
+    const newValue = before + snippet + after;
+
+    onChange(newValue);
+
+    // Reposiciona o cursor depois do snippet inserido
+    requestAnimationFrame(() => {
+      el.focus();
+      const newCursor = start + snippet.length;
+      el.setSelectionRange(newCursor, newCursor);
+    });
+  }
+
+  return (
+    <div className="admin-md-editor">
+      {/* Toolbar */}
+      <div className="admin-md-toolbar">
+        <div className="admin-md-toolbar__snippets">
+          {MD_SNIPPETS.map((s) => (
+            <button
+              key={s.label}
+              type="button"
+              className="admin-md-toolbar__btn"
+              title={s.label}
+              onClick={() => insertSnippet(s.value)}
+            >
+              <i className={`bx ${s.icon}`} />
+              <span>{s.label}</span>
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          className={`admin-md-toolbar__preview-toggle${showPreview ? " active" : ""}`}
+          onClick={() => setShowPreview((v) => !v)}
+          title={showPreview ? "Fechar preview" : "Ver preview"}
+        >
+          <i className={`bx ${showPreview ? "bx-code-alt" : "bx-show"}`} />
+          {showPreview ? "Editor" : "Preview"}
+        </button>
+      </div>
+
+      {/* Área principal: editor OU split */}
+      <div className={`admin-md-body${showPreview ? " admin-md-body--split" : ""}`}>
+        {/* Textarea */}
+        <div className="admin-md-pane admin-md-pane--editor">
+          <div className="admin-md-pane__label">
+            <i className="bx bx-edit" /> Markdown
+          </div>
+          <textarea
+            ref={textareaRef}
+            className="textarea-blog admin-md-textarea"
+            placeholder={`Escreva o conteúdo em Markdown...\n\n## Exemplo de título\n\nParágrafo com **negrito** e *itálico*.\n\n\`\`\`js\nconsole.log('Hello!');\n\`\`\``}
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            rows={20}
+            spellCheck={false}
+          />
+          <small className="admin-hint">
+            ~{estimateReadTime(value)} min de leitura estimados
+          </small>
+        </div>
+
+        {/* Preview */}
+        {showPreview && (
+          <div className="admin-md-pane admin-md-pane--preview">
+            <div className="admin-md-pane__label">
+              <i className="bx bx-show" /> Preview
+            </div>
+            <div className="admin-md-pane__content blog-markdown">
+              {value.trim() ? (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeHighlight]}
+                  components={{
+                    a({ href, children, ...props }) {
+                      const isExternal = href?.startsWith("http");
+                      return (
+                        <a
+                          href={href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noopener noreferrer" : undefined}
+                          {...props}
+                        >
+                          {children}
+                        </a>
+                      );
+                    },
+                    img({ src, alt, ...props }) {
+                      return (
+                        <img
+                          src={src}
+                          alt={alt}
+                          loading="lazy"
+                          style={{ maxWidth: "100%", borderRadius: "8px" }}
+                          {...props}
+                        />
+                      );
+                    },
+                  }}
+                >
+                  {value}
+                </ReactMarkdown>
+              ) : (
+                <p className="admin-md-pane__empty">
+                  <i className="bx bx-pencil" /> Comece a escrever para ver o preview...
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -246,27 +435,27 @@ interface PostFormProps {
 }
 
 function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
-  const [title,    setTitle]    = useState(initial?.title    ?? "");
-  const [excerpt,  setExcerpt]  = useState(initial?.excerpt  ?? "");
-  const [content,  setContent]  = useState(initial?.content  ?? "");
-  const [base64,   setBase64]   = useState(initial?.imageBase64 ?? "");
-  const [imgUrl,   setImgUrl]   = useState(initial?.imageUrl ?? "");
-  const [tags,     setTags]     = useState<string[]>(initial?.tags ?? []);
+  const [title, setTitle] = useState(initial?.title ?? "");
+  const [excerpt, setExcerpt] = useState(initial?.excerpt ?? "");
+  const [content, setContent] = useState(initial?.content ?? "");
+  const [base64, setBase64] = useState(initial?.imageBase64 ?? "");
+  const [imgUrl, setImgUrl] = useState(initial?.imageUrl ?? "");
+  const [tags, setTags] = useState<string[]>(initial?.tags ?? []);
   const [featured, setFeatured] = useState(initial?.featured ?? false);
   const [category, setCategory] = useState(initial?.category ?? ALL_CATEGORIES[0]);
 
   async function handleSubmit() {
     if (!title.trim()) return;
     await onSave({
-      title:       title.trim(),
-      excerpt:     excerpt.trim(),
-      content:     content.trim(),
+      title: title.trim(),
+      excerpt: excerpt.trim(),
+      content: content.trim(),
       imageBase64: base64 || null,
-      imageUrl:    imgUrl.trim() || null,
+      imageUrl: imgUrl.trim() || null,
       tags,
       featured,
       category,
-      readTime:    estimateReadTime(content || excerpt),
+      readTime: estimateReadTime(content || excerpt),
     });
   }
 
@@ -295,7 +484,11 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
             onChange={(e) => setCategory(e.target.value)}
             style={{ cursor: "pointer" }}
           >
-            {ALL_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+            {ALL_CATEGORIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -311,20 +504,15 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
           />
         </div>
 
-        {/* Conteúdo */}
+        {/* Conteúdo com editor Markdown */}
         <div className="admin-form-field admin-form-field--full">
-          <label className="admin-label">Conteúdo (Markdown)</label>
-          <textarea
-            className="textarea-blog"
-            placeholder="Escreva o conteúdo completo aqui. Suporta Markdown."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            rows={12}
-            style={{ fontFamily: "monospace", fontSize: "0.88rem" }}
-          />
-          <small className="admin-hint">
-            ~{estimateReadTime(content || excerpt)} min de leitura estimados
-          </small>
+          <label className="admin-label">
+            Conteúdo{" "}
+            <span className="admin-label__badge">
+              <i className="bx bxl-markdown" /> Markdown
+            </span>
+          </label>
+          <MarkdownEditor value={content} onChange={setContent} />
         </div>
 
         {/* Imagem */}
@@ -359,7 +547,6 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
             </span>
           </label>
         </div>
-
       </div>
 
       <div className="admin-form-actions">
@@ -384,16 +571,16 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
 
 export default function BlogAdmin() {
   // Auth
-  const [authed,    setAuthed]    = useState(false);
+  const [authed, setAuthed] = useState(false);
   const [passInput, setPassInput] = useState("");
   const [passError, setPassError] = useState(false);
 
   // Posts
-  const [posts,       setPosts]       = useState<Post[]>([]);
-  const [view,        setView]        = useState<"list" | "create" | "edit">("list");
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [view, setView] = useState<"list" | "create" | "edit">("list");
   const [editingPost, setEditingPost] = useState<Post | null>(null);
-  const [deletingId,  setDeletingId]  = useState<string | null>(null);
-  const [saving,      setSaving]      = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   // Toast
   const [toast, setToast] = useState<{ message: string; type: ToastType } | null>(null);
@@ -411,7 +598,6 @@ export default function BlogAdmin() {
       setPassError(false);
       await loadPosts();
     } else {
-      // Tenta verificar na API
       try {
         const res = await fetch(`${API_BASE}/admin/login`, {
           method: "POST",
@@ -439,7 +625,7 @@ export default function BlogAdmin() {
       const d = await res.json();
       setPosts(d.data ?? []);
     } catch {
-      showToast("Erro ao carregar posts. Usando dados locais.", "error");
+      showToast("Erro ao carregar posts.", "error");
     }
   }
 
@@ -467,7 +653,7 @@ export default function BlogAdmin() {
           body: JSON.stringify(data),
         });
         const updated = await res.json();
-        setPosts((prev) => prev.map((p) => p.id === editingPost.id ? updated : p));
+        setPosts((prev) => prev.map((p) => (p.id === editingPost.id ? updated : p)));
         showToast("Post atualizado!");
       }
     } catch {
@@ -510,13 +696,20 @@ export default function BlogAdmin() {
               <p>Acesso restrito ao gerenciamento do blog.</p>
 
               <div className="admin-login-card__form">
-                <div className={`admin-login-card__field${passError ? " admin-login-card__field--error" : ""}`}>
+                <div
+                  className={`admin-login-card__field${
+                    passError ? " admin-login-card__field--error" : ""
+                  }`}
+                >
                   <i className="bx bx-lock" />
                   <input
                     type="password"
                     placeholder="Senha de acesso"
                     value={passInput}
-                    onChange={(e) => { setPassInput(e.target.value); setPassError(false); }}
+                    onChange={(e) => {
+                      setPassInput(e.target.value);
+                      setPassError(false);
+                    }}
                     onKeyDown={(e) => e.key === "Enter" && handleLogin()}
                     autoFocus
                   />
@@ -543,7 +736,9 @@ export default function BlogAdmin() {
     <section className="groupBlogAdmin" id="blog-admin">
       <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
 
-      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+      {toast && (
+        <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />
+      )}
       {deletingId && (
         <ConfirmDialog
           onConfirm={() => handleDelete(deletingId)}
@@ -566,13 +761,22 @@ export default function BlogAdmin() {
                 <i className="bx bx-plus" /> Novo post
               </button>
             ) : (
-              <button className="btn-blog btn-blog--ghost" onClick={() => { setView("list"); setEditingPost(null); }}>
+              <button
+                className="btn-blog btn-blog--ghost"
+                onClick={() => {
+                  setView("list");
+                  setEditingPost(null);
+                }}
+              >
                 <i className="bx bx-arrow-back" /> Voltar
               </button>
             )}
             <button
               className="btn-blog btn-blog--ghost"
-              onClick={() => { setAuthed(false); setPosts([]); }}
+              onClick={() => {
+                setAuthed(false);
+                setPosts([]);
+              }}
               title="Sair"
             >
               <i className="bx bx-log-out" />
@@ -590,7 +794,10 @@ export default function BlogAdmin() {
             <PostForm
               initial={editingPost ?? undefined}
               onSave={handleSave}
-              onCancel={() => { setView("list"); setEditingPost(null); }}
+              onCancel={() => {
+                setView("list");
+                setEditingPost(null);
+              }}
               saving={saving}
             />
           </div>
@@ -632,8 +839,14 @@ export default function BlogAdmin() {
                         </div>
                         <p className="admin-post-row__excerpt">{post.excerpt}</p>
                         <div className="admin-post-row__meta">
-                          <span><i className="bx bx-calendar" />{formatDate(post.createdAt)}</span>
-                          <span><i className="bx bx-time-five" />{post.readTime} min</span>
+                          <span>
+                            <i className="bx bx-calendar" />
+                            {formatDate(post.createdAt)}
+                          </span>
+                          <span>
+                            <i className="bx bx-time-five" />
+                            {post.readTime} min
+                          </span>
                           <span>
                             <i className="bx bx-image" />
                             {post.imageBase64 ? "Base64" : post.imageUrl ? "URL" : "Sem imagem"}
@@ -642,10 +855,14 @@ export default function BlogAdmin() {
                         {post.tags.length > 0 && (
                           <div className="admin-post-row__tags">
                             {post.tags.slice(0, 5).map((t) => (
-                              <span key={t} className="admin-tag-sm">{t}</span>
+                              <span key={t} className="admin-tag-sm">
+                                {t}
+                              </span>
                             ))}
                             {post.tags.length > 5 && (
-                              <span className="admin-tag-sm admin-tag-sm--more">+{post.tags.length - 5}</span>
+                              <span className="admin-tag-sm admin-tag-sm--more">
+                                +{post.tags.length - 5}
+                              </span>
                             )}
                           </div>
                         )}
@@ -654,7 +871,10 @@ export default function BlogAdmin() {
                         <button
                           className="admin-icon-btn admin-icon-btn--edit"
                           title="Editar"
-                          onClick={() => { setEditingPost(post); setView("edit"); }}
+                          onClick={() => {
+                            setEditingPost(post);
+                            setView("edit");
+                          }}
                         >
                           <i className="bx bx-edit" />
                         </button>

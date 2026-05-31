@@ -1817,3 +1817,371 @@ $blog-transition: all 0.5s ease;
     padding: 0.28rem 0.75rem;
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// _blog-markdown.scss
+// Adicione este arquivo ao seu projeto e importe em _blog.scss:
+//   @use 'blog-markdown';
+//
+// OU copie as seções diretamente dentro do seu _blog.scss existente.
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// Também importe o tema do highlight.js no seu main.tsx / index.tsx:
+//   import "highlight.js/styles/github-dark.css";
+//   (outros temas: atom-one-dark, monokai, tokyo-night-dark, etc.)
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── 1. RENDERIZAÇÃO DE MARKDOWN NO MODAL (blog-markdown) ─────────────────────
+
+.blog-markdown {
+  color: var(--text, #e2e8f0);
+  font-size: 1rem;
+  line-height: 1.75;
+  word-break: break-word;
+
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading, #f8fafc);
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+  }
+  h1 { font-size: 1.75rem; }
+  h2 {
+    font-size: 1.375rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.3em;
+  }
+  h3 { font-size: 1.15rem; }
+  h4 { font-size: 1rem; }
+
+  // Parágrafos
+  p {
+    margin: 0 0 1em;
+  }
+
+  // Links
+  a {
+    color: #00ffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.15s;
+
+    &:hover { opacity: 0.8; }
+  }
+
+  // Negrito e itálico
+  strong { color: var(--text-heading, #f8fafc); font-weight: 700; }
+  em { font-style: italic; }
+
+  // Código inline
+  code:not(pre code) {
+    background: rgba(0, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    font-family: "Fira Code", "Cascadia Code", "JetBrains Mono", monospace;
+    font-size: 0.88em;
+    color: #00ffff;
+  }
+
+  // Blocos de código (rehype-highlight adiciona classes hljs)
+  pre {
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.5em 0;
+
+    code {
+      font-family: "Fira Code", "Cascadia Code", "JetBrains Mono", monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      background: transparent;
+      border: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    // Scrollbar discreta
+    &::-webkit-scrollbar { height: 5px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+    }
+  }
+
+  // Blockquote
+  blockquote {
+    border-left: 3px solid #00ffff;
+    margin: 1.5em 0;
+    padding: 0.5em 0 0.5em 1.25em;
+    background: rgba(0, 255, 255, 0.04);
+    border-radius: 0 6px 6px 0;
+    color: var(--text-muted, #94a3b8);
+    font-style: italic;
+
+    p { margin: 0; }
+  }
+
+  // Listas
+  ul, ol {
+    padding-left: 1.75em;
+    margin: 0.75em 0 1em;
+  }
+  li {
+    margin-bottom: 0.35em;
+
+    // GFM task lists
+    input[type="checkbox"] {
+      margin-right: 0.4em;
+      accent-color: #00ffff;
+    }
+  }
+
+  // Tabelas (GFM)
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.9rem;
+    overflow: hidden;
+    border-radius: 8px;
+
+    th {
+      background: rgba(0, 255, 255, 0.07);
+      color: var(--text-heading, #f8fafc);
+      font-weight: 600;
+      padding: 0.65em 1em;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    td {
+      padding: 0.6em 1em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+  }
+
+  // Linha horizontal
+  hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 2em 0;
+  }
+
+  // Imagens
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1em 0;
+    display: block;
+  }
+
+  // Strikethrough (GFM)
+  del { opacity: 0.5; }
+
+  // Primeiro elemento não precisa de margin-top
+  > *:first-child { margin-top: 0; }
+  > *:last-child  { margin-bottom: 0; }
+}
+
+// Loading do conteúdo no modal
+.blog-modal__loading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem 0;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.95rem;
+
+  i { font-size: 1.25rem; }
+}
+
+// Fallback quando não há conteúdo
+.blog-modal__excerpt-fallback {
+  color: var(--text-muted, #94a3b8);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+
+// ── 2. EDITOR MARKDOWN NO ADMIN (admin-md-editor) ────────────────────────────
+
+.admin-label__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  color: #00ffff;
+  padding: 0.15em 0.55em;
+  border-radius: 4px;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.admin-md-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+// Toolbar
+.admin-md-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-wrap: wrap;
+
+  &__snippets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    flex: 1;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: var(--text-muted, #94a3b8);
+    cursor: pointer;
+    font-size: 0.72rem;
+    padding: 0.3em 0.55em;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+
+    i { font-size: 0.95rem; }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #f8fafc;
+    }
+  }
+
+  &__preview-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #00ffff;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35em 0.85em;
+    transition: background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    i { font-size: 1rem; }
+
+    &:hover, &.active {
+      background: rgba(0, 255, 255, 0.12);
+    }
+  }
+}
+
+// Corpo do editor
+.admin-md-body {
+  display: flex;
+  min-height: 420px;
+
+  &--split {
+    .admin-md-pane { width: 50%; }
+  }
+}
+
+// Painel (editor ou preview)
+.admin-md-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+
+  &--preview {
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted, #94a3b8);
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    i { font-size: 0.9rem; }
+  }
+
+  // Conteúdo do painel de preview
+  &__content {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    overflow-y: auto;
+    font-size: 0.9rem;
+
+    // Scrollbar discreta
+    &::-webkit-scrollbar { width: 5px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+  }
+
+  &__empty {
+    color: var(--text-muted, #94a3b8);
+    font-style: italic;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+
+    i { margin-right: 0.4em; }
+  }
+}
+
+// Textarea do editor (estende o textarea-blog existente)
+.admin-md-textarea {
+  flex: 1;
+  resize: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-family: "Fira Code", "Cascadia Code", "JetBrains Mono", monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.65 !important;
+  padding: 1.25rem 1.5rem !important;
+  min-height: 380px;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
