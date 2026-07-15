@@ -3,6 +3,8 @@
 // Libs: react-markdown + remark-gfm + rehype-highlight
 
 import { useState, useRef } from "react";
+import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-md-editor/markdown-editor.css";
 import { BASE_API } from "../Blog";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -29,24 +31,46 @@ type ToastType = "success" | "error";
 // ─── CONSTANTES ───────────────────────────────────────────────────────────────
 
 const ALL_TAGS = [
-  "JavaScript","TypeScript","Python","Java","C++","C#","Go","Rust","Kotlin","Swift",
-  "PHP","Ruby","Dart","Bash","Solidity","Elixir",
-  "React","Vue","Angular","Svelte","Next.js","Nuxt.js","Astro","Vite","Tailwind",
-  "Material UI","Bootstrap","Sass",
-  "Node.js","Express","NestJS","Fastify","Django","Flask","FastAPI","Laravel","Spring Boot",
-  "ASP.NET Core",
-  "PostgreSQL","MySQL","MongoDB","Redis","SQLite","Firebase",
-  "Docker","Kubernetes","AWS","GCP","Azure","Terraform","GitHub Actions","Git","Linux",
-  "TensorFlow","PyTorch","Hugging Face","LangChain",
-  "React Native","Flutter","Electron","Tauri",
-  "Jest","Cypress","Vitest","Playwright",
-  "JWT","OAuth2","Kafka","RabbitMQ","Prometheus","Grafana",
-  "Figma","Unity","Unreal Engine",
+  "JavaScript", "TypeScript", "Python", "Java", "C++", "C#", "Go", "Rust", "Kotlin", "Swift",
+  "PHP", "Ruby", "Dart", "Bash", "Solidity", "Elixir",
+  "React", "Vue", "Angular", "Svelte", "Next.js", "Nuxt.js", "Astro", "Vite", "Tailwind",
+  "Material UI", "Bootstrap", "Sass",
+  "Node.js", "Express", "NestJS", "Fastify", "Django", "Flask", "FastAPI", "Laravel",
+  "Spring Boot", "ASP.NET Core",
+  "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "Firebase",
+  "Docker", "Kubernetes", "AWS", "GCP", "Azure", "Terraform", "GitHub Actions", "Git", "Linux", "GitHub",
+  "TensorFlow", "PyTorch", "Hugging Face", "LangChain",
+  "React Native", "Flutter", "Electron", "Tauri", "Expo",
+  "Jest", "Cypress", "Vitest", "Playwright", "Mocha", "Chai",
+  "JWT", "OAuth2", "Kafka", "RabbitMQ", "Prometheus", "Grafana",
+  "Figma", "Unity", "Unreal Engine",
+  "HTML", "CSS", "GraphQL", "Apollo", "Prisma", "Supabase", "Strapi",
+  "Socket.IO", "WebSockets",
+  "Nginx", "Apache", "Jenkins", "CircleCI", "GitLab CI", "Ansible",
+  "DigitalOcean", "Vercel", "Netlify", "Railway",
+  "PlanetScale", "CockroachDB", "MariaDB", "Neo4j", "Cassandra",
+  "Hadoop", "Spark", "Pandas", "NumPy", "ScikitLearn",
+  "OpenAI", "Claude AI", "Gemini AI", "Mistral AI", "LLaMA", "Ollama",
+  "Stable Diffusion", "Midjourney",
+  "Three.js", "WebGL", "PWA",
+  "ESLint", "Prettier", "Zod", "Joi",
+  "Webpack", "Parcel", "Rollup",
+  "MVC", "MVVM", "Clean Architecture", "Hexagonal", "Onion Architecture",
+  "SOLID", "DRY", "KISS", "YAGNI",
+  "Design Patterns", "Singleton", "Factory", "Factory Method", "Observer",
+  "Strategy", "Adapter", "Decorator", "Facade",
+  "Repository", "ServiceLayer", "CQRS", "EventDriven", "Domain Driven Design",
+  "MERN", "MEAN", "MEVN", "PERN", "JAMstack", "T3", "LAMP",
+  "Serverless", "Microservices", "Monolith", "BFF",
+  "Fullstack", "SSR", "CSR", "SSG", "Edge",
 ].sort();
 
-const ALL_CATEGORIES = ["Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros"];
+const ALL_CATEGORIES = [
+  "Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros",
+];
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
+const ADMIN_PASSWORD =
+  (import.meta as any).env?.VITE_ADMIN_PASSWORD ?? "#NaoPrecisamosDeArmas00#";
 const API_BASE = `${BASE_API}/api`;
 
 // ─── MARKDOWN SNIPPETS ────────────────────────────────────────────────────────
@@ -78,7 +102,10 @@ function formatDate(iso: string) {
 }
 
 function estimateReadTime(text: string) {
-  return Math.max(1, Math.ceil(text.split(/\s+/).filter(Boolean).length / 200));
+  return Math.max(
+    1,
+    Math.ceil(text.split(/\s+/).filter(Boolean).length / 200)
+  );
 }
 
 async function fileToBase64(file: File): Promise<string> {
@@ -103,7 +130,10 @@ function Toast({
 }) {
   return (
     <div className={`admin-toast admin-toast--${type}`}>
-      <i className={`bx ${type === "success" ? "bx-check-circle" : "bx-x-circle"}`} />
+      <i
+        className={`bx ${type === "success" ? "bx-check-circle" : "bx-x-circle"
+          }`}
+      />
       <span>{message}</span>
       <button onClick={onClose}>
         <i className="bx bx-x" />
@@ -152,7 +182,9 @@ function TagSelector({
   const [search, setSearch] = useState("");
 
   const options = ALL_TAGS.filter(
-    (t) => t.toLowerCase().includes(search.toLowerCase()) && !selected.includes(t)
+    (t) =>
+      t.toLowerCase().includes(search.toLowerCase()) &&
+      !selected.includes(t)
   ).slice(0, 14);
 
   return (
@@ -211,7 +243,12 @@ interface ImageFieldProps {
   onUrlChange: (v: string) => void;
 }
 
-function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProps) {
+function ImageField({
+  base64,
+  url,
+  onBase64Change,
+  onUrlChange,
+}: ImageFieldProps) {
   const fileRef = useRef<HTMLInputElement>(null);
   const preview = base64 || url;
 
@@ -243,7 +280,11 @@ function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProp
       {preview && (
         <div className="admin-image-preview">
           <img src={preview} alt="Preview da capa" />
-          <button type="button" className="admin-image-remove" onClick={remove}>
+          <button
+            type="button"
+            className="admin-image-remove"
+            onClick={remove}
+          >
             <i className="bx bx-trash" /> Remover
           </button>
         </div>
@@ -442,7 +483,16 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
   const [imgUrl, setImgUrl] = useState(initial?.imageUrl ?? "");
   const [tags, setTags] = useState<string[]>(initial?.tags ?? []);
   const [featured, setFeatured] = useState(initial?.featured ?? false);
-  const [category, setCategory] = useState(initial?.category ?? ALL_CATEGORIES[0]);
+  const [category, setCategory] = useState(
+    initial?.category ?? ALL_CATEGORIES[0]
+  );
+
+  // Controla qual seção está aberta no accordion mobile
+  const [openSection, setOpenSection] = useState<string>("conteudo");
+
+  function toggleSection(s: string) {
+    setOpenSection((prev) => (prev === s ? "" : s));
+  }
 
   async function handleSubmit() {
     if (!title.trim()) return;
@@ -461,19 +511,20 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
 
   return (
     <div className="admin-form">
-      <div className="admin-form-grid">
-
-        {/* Título */}
-        <div className="admin-form-field admin-form-field--full">
-          <label className="admin-label">Título *</label>
-          <input
-            type="text"
-            className="input-blog"
-            placeholder="Título do post"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+      {/* ── Seção: Informações básicas ── */}
+      <div className="admin-form-section">
+        <button
+          type="button"
+          className="admin-form-section__toggle"
+          onClick={() => toggleSection("info")}
+        >
+          <span>
+            <i className="bx bx-info-circle" /> Informações básicas
+          </span>
+          <i
+            className={`bx bx-chevron-${openSection === "info" ? "up" : "down"}`}
           />
-        </div>
+        </button>
 
         {/* Categoria */}
         <div className="admin-form-field admin-form-field--full">
@@ -492,17 +543,21 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
           </select>
         </div>
 
-        {/* Resumo */}
-        <div className="admin-form-field admin-form-field--full">
-          <label className="admin-label">Resumo (excerpt)</label>
-          <textarea
-            className="textarea-blog"
-            placeholder="Breve descrição do post para os cards..."
-            value={excerpt}
-            onChange={(e) => setExcerpt(e.target.value)}
-            rows={3}
-          />
-        </div>
+            {/* Categoria */}
+            <div className="admin-form-field admin-form-field--full">
+              <label className="admin-label">Categoria</label>
+              <select
+                className="input-blog"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                {ALL_CATEGORIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </div>
 
         {/* Conteúdo com editor Markdown */}
         <div className="admin-form-field admin-form-field--full">
@@ -549,8 +604,93 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
         </div>
       </div>
 
+      {/* ── Seção: Conteúdo Markdown ── */}
+      <div className="admin-form-section admin-form-section--highlight">
+        <button
+          type="button"
+          className="admin-form-section__toggle"
+          onClick={() => toggleSection("conteudo")}
+        >
+          <span>
+            <i className="bx bx-code-block" /> Conteúdo (Markdown)
+          </span>
+          <i
+            className={`bx bx-chevron-${openSection === "conteudo" ? "up" : "down"
+              }`}
+          />
+        </button>
+
+        {openSection === "conteudo" && (
+          <div className="admin-form-section__body">
+            <MarkdownEditorField value={content} onChange={setContent} />
+          </div>
+        )}
+      </div>
+
+      {/* ── Seção: Imagem ── */}
+      <div className="admin-form-section">
+        <button
+          type="button"
+          className="admin-form-section__toggle"
+          onClick={() => toggleSection("imagem")}
+        >
+          <span>
+            <i className="bx bx-image" /> Imagem de capa
+          </span>
+          <i
+            className={`bx bx-chevron-${openSection === "imagem" ? "up" : "down"
+              }`}
+          />
+        </button>
+
+        {openSection === "imagem" && (
+          <div className="admin-form-section__body">
+            <ImageField
+              base64={base64}
+              url={imgUrl}
+              onBase64Change={setBase64}
+              onUrlChange={setImgUrl}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* ── Seção: Tags ── */}
+      <div className="admin-form-section">
+        <button
+          type="button"
+          className="admin-form-section__toggle"
+          onClick={() => toggleSection("tags")}
+        >
+          <span>
+            <i className="bx bx-purchase-tag-alt" /> Tags de tecnologia
+            {tags.length > 0 && (
+              <span className="admin-section-badge">{tags.length}</span>
+            )}
+          </span>
+          <i
+            className={`bx bx-chevron-${openSection === "tags" ? "up" : "down"
+              }`}
+          />
+        </button>
+
+        {openSection === "tags" && (
+          <div className="admin-form-section__body">
+            <TagSelector selected={tags} onChange={setTags} />
+            <small className="admin-hint">
+              Deixe vazio para posts não-técnicos (Vida, Acontecimentos...).
+            </small>
+          </div>
+        )}
+      </div>
+
+      {/* Actions */}
       <div className="admin-form-actions">
-        <button type="button" className="btn-blog btn-blog--ghost" onClick={onCancel}>
+        <button
+          type="button"
+          className="btn-blog btn-blog--ghost"
+          onClick={onCancel}
+        >
           <i className="bx bx-x" /> Cancelar
         </button>
         <button
@@ -559,7 +699,9 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
           onClick={handleSubmit}
           disabled={saving || !title.trim()}
         >
-          <i className={`bx ${saving ? "bx-loader-alt" : "bx-save"}`} />
+          <i
+            className={`bx ${saving ? "bx-loader-alt bx-spin" : "bx-save"}`}
+          />
           {saving ? "Salvando..." : "Salvar post"}
         </button>
       </div>
@@ -617,7 +759,7 @@ export default function BlogAdmin() {
     }
   }
 
-  // ── API calls ──
+  // ── API ──
 
   async function loadPosts() {
     try {
@@ -685,7 +827,10 @@ export default function BlogAdmin() {
   if (!authed) {
     return (
       <section className="groupBlogAdmin" id="blog-admin">
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        />
         <div className="blog-admin">
           <div className="admin-login-wrapper">
             <div className="admin-login-card">
@@ -734,7 +879,10 @@ export default function BlogAdmin() {
 
   return (
     <section className="groupBlogAdmin" id="blog-admin">
-      <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      />
 
       {toast && (
         <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />
@@ -834,10 +982,14 @@ export default function BlogAdmin() {
                             </span>
                           )}
                           {post.category && (
-                            <span className="admin-tag-sm">{post.category}</span>
+                            <span className="admin-tag-sm">
+                              {post.category}
+                            </span>
                           )}
                         </div>
-                        <p className="admin-post-row__excerpt">{post.excerpt}</p>
+                        <p className="admin-post-row__excerpt">
+                          {post.excerpt}
+                        </p>
                         <div className="admin-post-row__meta">
                           <span>
                             <i className="bx bx-calendar" />
@@ -849,7 +1001,17 @@ export default function BlogAdmin() {
                           </span>
                           <span>
                             <i className="bx bx-image" />
-                            {post.imageBase64 ? "Base64" : post.imageUrl ? "URL" : "Sem imagem"}
+                            {post.imageBase64
+                              ? "Base64"
+                              : post.imageUrl
+                                ? "URL"
+                                : "Sem imagem"}
+                          </span>
+                          <span>
+                            <i className="bx bx-text" />
+                            {post.content
+                              ? `${post.content.split(/\s+/).filter(Boolean).length} palavras`
+                              : "Sem conteúdo"}
                           </span>
                         </div>
                         {post.tags.length > 0 && (

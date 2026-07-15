@@ -3,8 +3,8 @@
 // Suporta posts técnicos e pessoais
 // Markdown: react-markdown + remark-gfm + rehype-highlight
 
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { TAG_REGISTRY } from "../../consts/dataConsts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -21,13 +21,6 @@ export interface Tag {
   color: string;
   bg: string;
   icon: string;
-}
-
-interface Comment {
-  id: string;
-  author: string;
-  text: string;
-  createdAt: string;
 }
 
 interface Post {
@@ -48,7 +41,16 @@ export const BASE_API = "https://blog-server-tawny-ten.vercel.app";
 
 // ─── CATEGORIAS ──────────────────────────────────────────────────────────────
 
-const ALL_CATEGORIES = ["Todos", "Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros"];
+const ALL_CATEGORIES = [
+  "Todos",
+  "Frontend",
+  "Backend",
+  "DevOps",
+  "IA / ML",
+  "Vida",
+  "Acontecimentos",
+  "Outros",
+];
 
 const MOCK_POSTS: Post[] = [
   {
@@ -57,7 +59,8 @@ const MOCK_POSTS: Post[] = [
     excerpt:
       "Descubra como o Fastify supera o Express em performance e como estruturar APIs de produção com TypeScript, validação de schemas e muito mais.",
     content: "",
-    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
     tags: ["Node.js", "Fastify", "TypeScript", "PostgreSQL"],
     featured: true,
     createdAt: "2026-04-15",
@@ -70,7 +73,8 @@ const MOCK_POSTS: Post[] = [
     excerpt:
       "Uma análise profunda das mudanças do React 19, como Server Components mudam a arquitetura das aplicações e quando usar Server Actions.",
     content: "",
-    imageUrl: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=80",
     tags: ["React", "Next.js", "TypeScript"],
     featured: true,
     createdAt: "2026-03-28",
@@ -83,7 +87,8 @@ const MOCK_POSTS: Post[] = [
     excerpt:
       "Uma sexta-feira tranquila que virou pesadelo. O que aprendi depois de derrubar um sistema em horário de pico e como sobrevivi pra contar.",
     content: "",
-    imageUrl: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
     tags: ["Docker", "AWS"],
     featured: false,
     createdAt: "2026-03-10",
@@ -96,7 +101,8 @@ const MOCK_POSTS: Post[] = [
     excerpt:
       "Técnicas avançadas de otimização: índices parciais, EXPLAIN ANALYZE, particionamento e query planning.",
     content: "",
-    imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
     tags: ["PostgreSQL"],
     featured: false,
     createdAt: "2026-02-20",
@@ -109,7 +115,8 @@ const MOCK_POSTS: Post[] = [
     excerpt:
       "Como construir aplicações inteligentes usando LangChain, conectar modelos a dados externos e criar agentes autônomos.",
     content: "",
-    imageUrl: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
     tags: ["Python", "LangChain", "Hugging Face", "FastAPI"],
     featured: false,
     createdAt: "2026-02-05",
@@ -180,7 +187,9 @@ function TagBadge({ name, small = false }: { name: string; small?: boolean }) {
   return (
     <span
       className={`blog-tag${small ? " blog-tag--small" : ""}`}
-      style={{ "--tag-color": tag.color, "--tag-bg": tag.bg } as React.CSSProperties}
+      style={
+        { "--tag-color": tag.color, "--tag-bg": tag.bg } as React.CSSProperties
+      }
     >
       <i className={`bx ${tag.icon}`} />
       {name}
@@ -486,10 +495,10 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
 // ─── BLOG PRINCIPAL ───────────────────────────────────────────────────────────
 
 export default function Blog() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState<Post[]>(MOCK_POSTS);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("Todos");
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
@@ -516,7 +525,10 @@ export default function Blog() {
 
   return (
     <section className="groupBlog" id="blog">
-      <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      />
 
       <div className="blog">
         {/* Botões de navegação */}
@@ -541,7 +553,8 @@ export default function Blog() {
         </div>
 
         <p className="blog-subtitle">
-          Artigos técnicos, causos do dia a dia e o que mais me der vontade de escrever.
+          Artigos técnicos, causos do dia a dia e o que mais me der vontade de
+          escrever.
         </p>
 
         {/* Controles */}
@@ -555,7 +568,10 @@ export default function Blog() {
               onChange={(e) => setSearch(e.target.value)}
             />
             {search && (
-              <button className="blog-search__clear" onClick={() => setSearch("")}>
+              <button
+                className="blog-search__clear"
+                onClick={() => setSearch("")}
+              >
                 <i className="bx bx-x" />
               </button>
             )}
@@ -579,7 +595,7 @@ export default function Blog() {
         {featured.length > 0 && (
           <div className="blog-featured-grid">
             {featured.map((p) => (
-              <PostCard key={p.id} post={p} onClick={() => setSelectedPost(p)} />
+              <PostCard key={p.id} post={p} onClick={() => openPost(p.id)} />
             ))}
           </div>
         )}
@@ -610,7 +626,11 @@ export default function Blog() {
         ) : (
           <div className="blog-grid">
             {regular.slice(0, visibleCount).map((p) => (
-              <PostCard key={p.id} post={p} onClick={() => setSelectedPost(p)} />
+              <PostCard
+                key={p.id}
+                post={p}
+                onClick={() => openPost(p.id)}
+              />
             ))}
           </div>
         )}
@@ -626,10 +646,6 @@ export default function Blog() {
           </div>
         )}
       </div>
-
-      {selectedPost && (
-        <PostModal post={selectedPost} onClose={() => setSelectedPost(null)} />
-      )}
     </section>
   );
 }
