@@ -13,13 +13,15 @@ import Financas from "./pages/Financas";
 import ModalProject from "./components/ModalProject";
 import { useEffect, useState } from "react";
 import { MenuProvider } from "./provider/MenuProvider";
+
 import { ModalProjectProvider } from "./provider/ModalProjectProvider";
 import useModalProject from "./hooks/useModalProject";
-import type { IProject } from "./provider/types"; 
+import type { IProject } from "./provider/types";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import useAccessLogger from "./hooks/useAccessLogger";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./pages/auth/AuthContext";
 
 // Componente para organizar a página inicial (raiz)
 function HomeLayout() {
@@ -42,7 +44,7 @@ function App() {
   // useAccessLogger('portifolio_jefferson_dev');
   const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
   const { isModalOpen } = useModalProject();
-  
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -51,30 +53,33 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <MenuProvider>
-          <ModalProjectProvider setSelectedProject={setSelectedProject}>
-            {selectedProject && (
-              <ModalProject
-                isVisible={isModalOpen}
-                selectedProject={selectedProject}
-              />
-            )}
-            
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<HomeLayout />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/admin" element={<BlogAdmin />} />
-                <Route path="/financas" element={<Financas />} />
-              </Routes>
-            </BrowserRouter>
+    <AuthProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <MenuProvider>
+            <ModalProjectProvider setSelectedProject={setSelectedProject}>
+              {selectedProject && (
+                <ModalProject
+                  isVisible={isModalOpen}
+                  selectedProject={selectedProject}
+                />
+              )}
 
-          </ModalProjectProvider>
-        </MenuProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<HomeLayout />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/admin" element={<BlogAdmin />} />
+                  <Route path="/financas" element={<Financas />} />
+                </Routes>
+              </BrowserRouter>
+
+            </ModalProjectProvider>
+          </MenuProvider>
+        </LanguageProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
