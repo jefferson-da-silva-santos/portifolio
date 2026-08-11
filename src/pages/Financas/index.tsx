@@ -11,11 +11,12 @@ import { ContactsView } from "./views/ContactsView";
 import { CategoriesView } from "./views/CategoriesView";
 import { HistoryView } from "./views/HistoryView";
 import { NotesView } from "./views/NotesView";
+import { ConsorcioView } from "./views/ConsorcioView";
 import "./financas.scss";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 
-type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas";
+type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas" | "consorcio";
 
 const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "dashboard", label: "Início", icon: "bx-home" },
@@ -26,6 +27,7 @@ const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "categorias", label: "Categorias", icon: "bx-purchase-tag-alt" },
   { key: "historico", label: "Histórico", icon: "bx-history" },
   { key: "notas", label: "Notas", icon: "bx-note" },
+  { key: "consorcio", label: "Consórcio", icon: "bx-motorcycle" },
 ];
 
 export default function Financas() {
@@ -161,6 +163,7 @@ export default function Financas() {
           {tab === "categorias" && <CategoriesView store={store} />}
           {tab === "historico" && <HistoryView store={store} />}
           {tab === "notas" && <NotesView store={store} />}
+          {tab === "consorcio" && <ConsorcioView />}
         </div>
       </div>
     </section>

@@ -587,3 +587,110 @@ $fin-radius-lg: 10px;
   .financas-tabs__btn span { display: none; }
   .fin-fab { bottom: 1.25rem; right: 1.25rem; }
 }
+
+// pages/Financas/financas.scss — adicionar ao final
+
+.fin-video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // proporção 16:9
+  border-radius: $fin-radius-lg;
+  overflow: hidden;
+  border: 1px solid $fin-border;
+  margin-bottom: 1.5rem;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+// pages/Financas/financas.scss — adicionar ao final do arquivo
+
+// ── Consórcio: estado inicial (antes do seed) ──
+.fin-empty {
+  i.bx-motorcycle {
+    color: $fin-accent;
+    opacity: 0.5;
+  }
+}
+
+// ── Consórcio: barra de progresso dentro do summary card ──
+.fin-progress-bar {
+  background: $fin-border;
+  border-radius: 50px;
+  height: 6px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+    background: linear-gradient(90deg, $fin-accent, $fin-accent2);
+    transition: width 0.4s ease;
+  }
+}
+
+// ── Consórcio: ficha técnica do plano ──
+.fin-plano-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+
+.fin-plano-field {
+  &__label {
+    color: $fin-muted;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__value {
+    color: $fin-text;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+}
+
+// ── Consórcio: linha de parcela com botão de ação rápida ──
+.fin-row--consorcio {
+  .fin-row__quick-toggle {
+    background: none;
+    border: 1px solid $fin-border;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: currentColor;
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+}
+
+// ── Consórcio: header com badge da administradora ──
+.fin-consorcio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 50px;
+  color: #f87171;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+
+  i { font-size: 1rem; }
+}
+
