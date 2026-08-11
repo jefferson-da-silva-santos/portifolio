@@ -29,6 +29,7 @@ function toInputDate(iso?: string | null) {
   return iso ? iso.slice(0, 10) : "";
 }
 
+
 export function ParcelaEditModal({ parcela, totalParcelas, onClose, onSaved }: Props) {
   const [valorDevido, setValorDevido] = useState(parcela.valorDevido.toLocaleString("pt-BR", { minimumFractionDigits: 2 }));
   const [dataPagamento, setDataPagamento] = useState(toInputDate(parcela.dataPagamento));

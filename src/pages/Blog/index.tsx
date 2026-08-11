@@ -44,7 +44,8 @@ interface Post {
   category?: string;
 }
 
-export const BASE_API = "https://blog-server-tawny-ten.vercel.app";
+// pages/Blog/index.tsx
+export const BASE_API = "https://blog-server-8my7.onrender.com";
 
 // ─── CATEGORIAS ──────────────────────────────────────────────────────────────
 
