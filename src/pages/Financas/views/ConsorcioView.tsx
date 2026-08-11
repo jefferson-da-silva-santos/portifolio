@@ -1,15 +1,10 @@
 // pages/Financas/views/ConsorcioView.tsx
-// Área específica de gestão de consórcio. Mostra o vídeo do bem, indicadores
-// (total pago, % concluído, projeção do custo final, data estimada de quitação)
-// e a tabela editável das 60 parcelas.
 
 import { useEffect, useMemo, useState } from "react";
 import { consorcioApi } from "../consorcioApi";
 import type { Consorcio, ConsorcioParcela, ConsorcioState } from "../consorcioTypes";
 import { YouTubeEmbed } from "../components/YouTubeEmbed";
 import { ParcelaEditModal } from "../components/ParcelaEditModal";
-
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 
 const formatBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const formatDate = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString("pt-BR") : "-");
@@ -22,7 +17,7 @@ function statusInfo(status: ConsorcioParcela["status"]) {
       : { color: "#f59e0b", label: "Pendente" };
 }
 
-export function ConsorcioView() {
+export function ConsorcioView({ password }: { password: string }) {
   const [state, setState] = useState<ConsorcioState>({ consorcios: [], parcelas: [], reajustes: [] });
   const [loading, setLoading] = useState(true);
   const [seeding, setSeeding] = useState(false);
@@ -34,7 +29,7 @@ export function ConsorcioView() {
     setLoading(true);
     setError(null);
     try {
-      const data = await consorcioApi.getState(ADMIN_PASSWORD);
+      const data = await consorcioApi.getState(password);
       setState(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao carregar consórcio.");
@@ -45,13 +40,14 @@ export function ConsorcioView() {
 
   useEffect(() => {
     load();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [password]);
 
   async function runSeed() {
     setSeeding(true);
     setError(null);
     try {
-      await consorcioApi.seedHondaBross(ADMIN_PASSWORD);
+      await consorcioApi.seedHondaBross(password);
       await load();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao cadastrar consórcio.");
@@ -61,7 +57,7 @@ export function ConsorcioView() {
   }
 
   async function toggleParcela(id: string) {
-    const updated = await consorcioApi.toggleParcela(ADMIN_PASSWORD, id);
+    const updated = await consorcioApi.toggleParcela(password, id);
     setState((s) => ({ ...s, parcelas: s.parcelas.map((p) => (p.id === id ? updated : p)) }));
   }
 
@@ -149,7 +145,6 @@ export function ConsorcioView() {
         </div>
       )}
 
-      {/* Indicadores */}
       <div className="fin-summary-grid">
         <div className="fin-summary-card fin-summary-card--accent">
           <div className="fin-summary-card__label">
@@ -166,8 +161,8 @@ export function ConsorcioView() {
             <i className="bx bx-pie-chart-alt" />
           </div>
           <div className="fin-summary-card__value">{indicators.percentualConcluido.toFixed(1)}%</div>
-          <div style={{ background: "#2e2e2e", borderRadius: 50, height: 6, marginTop: "0.4rem", overflow: "hidden" }}>
-            <div style={{ width: `${indicators.percentualConcluido}%`, height: "100%", background: "linear-gradient(90deg, #00ffff, #0091ff)" }} />
+          <div className="fin-progress-bar">
+            <div className="fin-progress-bar__fill" style={{ width: `${indicators.percentualConcluido}%` }} />
           </div>
         </div>
 
@@ -227,12 +222,12 @@ export function ConsorcioView() {
         </div>
       )}
 
-      {/* Ficha técnica do plano */}
       <div className="fin-section-head">
         <h3>Sobre o plano</h3>
       </div>
       <div className="admin-panel" style={{ padding: "1rem 1.25rem", marginBottom: "1.5rem" }}>
-        <div className="fin-plano-grid">          <PlanoField label="Prazo do plano" value={`${consorcio.prazoMeses} meses`} />
+        <div className="fin-plano-grid">
+          <PlanoField label="Prazo do plano" value={`${consorcio.prazoMeses} meses`} />
           <PlanoField label="% mensal" value={consorcio.percentualMensal ? `${consorcio.percentualMensal.toFixed(4)}%` : "-"} />
           <PlanoField label="Taxa de administração" value={consorcio.taxaAdministracaoPct ? `${consorcio.taxaAdministracaoPct}%` : "-"} />
           <PlanoField label="Fundo de reserva" value={consorcio.fundoReservaPct ? `${consorcio.fundoReservaPct}%` : "-"} />
@@ -244,7 +239,6 @@ export function ConsorcioView() {
         </div>
       </div>
 
-      {/* Tabela de parcelas */}
       <div className="fin-section-head">
         <h3>Parcelas ({parcelas.length})</h3>
       </div>
@@ -276,7 +270,10 @@ export function ConsorcioView() {
               </div>
               <button
                 className="fin-row__quick-toggle"
-                onClick={(e) => { e.stopPropagation(); toggleParcela(p.id); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleParcela(p.id);
+                }}
                 title={p.status === "PAID" ? "Desfazer pagamento" : "Marcar como paga"}
                 style={{ color: st.color }}
               >
@@ -290,9 +287,10 @@ export function ConsorcioView() {
       {editingParcela && (
         <ParcelaEditModal
           parcela={editingParcela}
+          password={password}
           totalParcelas={parcelas.length}
           onClose={() => setEditingParcela(null)}
-          onSaved={(updated: any) => {
+          onSaved={(updated) => {
             setState((s) => ({ ...s, parcelas: s.parcelas.map((p) => (p.id === updated.id ? updated : p)) }));
             setEditingParcela(null);
           }}

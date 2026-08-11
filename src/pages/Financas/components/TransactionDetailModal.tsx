@@ -8,11 +8,10 @@ import type { Installment, Transaction } from "../types";
 
 type Props = {
   store: FinanceStore;
+  password: string;
   transactionId: string;
   onClose: () => void;
 };
-
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 
 const statusInfo = (status: Installment["status"]) =>
   status === "PAID"
@@ -23,7 +22,7 @@ const statusInfo = (status: Installment["status"]) =>
         ? { color: "#5b5b5b", label: "Cancelada" }
         : { color: "#f59e0b", label: "Pendente" };
 
-export function TransactionDetailModal({ store, transactionId, onClose }: Props) {
+export function TransactionDetailModal({ store, password, transactionId, onClose }: Props) {
   const [transaction, setTransaction] = useState<Transaction | null>(null);
   const [installments, setInstallments] = useState<Installment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,7 +35,7 @@ export function TransactionDetailModal({ store, transactionId, onClose }: Props)
     setLoading(true);
     setError(null);
     try {
-      const data = await financeApi.getTransactionDetail(ADMIN_PASSWORD, transactionId);
+      const data = await financeApi.getTransactionDetail(password, transactionId);
       setTransaction(data.transaction);
       setInstallments(data.installments);
     } catch (err) {

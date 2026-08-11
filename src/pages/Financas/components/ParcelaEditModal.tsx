@@ -1,15 +1,12 @@
 // pages/Financas/components/ParcelaEditModal.tsx
-// Edição manual de uma parcela do consórcio: útil para registrar o valor real
-// de cada assembleia (que varia mês a mês) conforme os boletos forem chegando.
 
 import { useState } from "react";
 import { consorcioApi } from "../consorcioApi";
 import type { ConsorcioParcela } from "../consorcioTypes";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
-
 type Props = {
   parcela: ConsorcioParcela;
+  password: string;
   totalParcelas: number;
   onClose: () => void;
   onSaved: (p: ConsorcioParcela) => void;
@@ -29,8 +26,7 @@ function toInputDate(iso?: string | null) {
   return iso ? iso.slice(0, 10) : "";
 }
 
-
-export function ParcelaEditModal({ parcela, totalParcelas, onClose, onSaved }: Props) {
+export function ParcelaEditModal({ parcela, password, totalParcelas, onClose, onSaved }: Props) {
   const [valorDevido, setValorDevido] = useState(parcela.valorDevido.toLocaleString("pt-BR", { minimumFractionDigits: 2 }));
   const [dataPagamento, setDataPagamento] = useState(toInputDate(parcela.dataPagamento));
   const [valorPago, setValorPago] = useState(parcela.valorPago ? parcela.valorPago.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) : "");
@@ -41,7 +37,7 @@ export function ParcelaEditModal({ parcela, totalParcelas, onClose, onSaved }: P
     setSaving(true);
     setError(null);
     try {
-      const updated = await consorcioApi.updateParcela(ADMIN_PASSWORD, parcela.id, {
+      const updated = await consorcioApi.updateParcela(password, parcela.id, {
         valorDevido: parseCurrency(valorDevido),
         dataPagamento: dataPagamento || null,
         valorPago: valorPago ? parseCurrency(valorPago) : null,

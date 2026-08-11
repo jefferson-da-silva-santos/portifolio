@@ -30,7 +30,7 @@ function groupByDay(rows: ListRow[], installments: { id: string; dueDate: string
     }));
 }
 
-export function HistoryView({ store }: { store: FinanceStore }) {
+export function HistoryView({ store, password }: { store: FinanceStore; password: string }) {
   const { transactions, installments, contacts } = store.state;
   const [typeFilter, setTypeFilter] = useState<(typeof TYPE_FILTERS)[number]>("Todos");
   const [statusFilter, setStatusFilter] = useState<(typeof STATUS_FILTERS)[number]>("Todos");
@@ -104,7 +104,7 @@ export function HistoryView({ store }: { store: FinanceStore }) {
         ))
       )}
 
-      {openId && <TransactionDetailModal store={store} transactionId={openId} onClose={() => setOpenId(null)} />}
+      {openId && <TransactionDetailModal store={store} password={password} transactionId={openId} onClose={() => setOpenId(null)} />}
     </div>
   );
 }

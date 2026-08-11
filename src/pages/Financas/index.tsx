@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_API } from "../Blog";
 import { useFinance } from "./useFinance";
 import { DashboardView } from "./views/DashboardView";
 import { ReceivablesView } from "./views/ReceivablesView";
@@ -12,12 +13,19 @@ import { CategoriesView } from "./views/CategoriesView";
 import { HistoryView } from "./views/HistoryView";
 import { NotesView } from "./views/NotesView";
 import { ConsorcioView } from "./views/ConsorcioView";
+import { TransactionFormModal } from "./components/TransactionFormModal";
+import { ContactFormModal } from "./components/ContactFormModal";
+import { NoteFormModal } from "./components/NoteFormModal";
 import "./financas.scss";
-import { BASE_API } from "../Blog";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+// Fallback usado SOMENTE se o usuário não digitar nada e a env var existir.
+// A fonte de verdade real, usada em todas as chamadas de API, é sempre
+// `passInput` — a senha que o usuário efetivamente digitou e que foi
+// validada contra o backend no login.
+const FALLBACK_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 
 type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas" | "consorcio";
+type QuickAction = "income" | "expense" | "contact" | "note" | null;
 
 const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "dashboard", label: "Início", icon: "bx-home" },
@@ -26,9 +34,9 @@ const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "agenda", label: "Agenda", icon: "bx-calendar" },
   { key: "pessoas", label: "Pessoas", icon: "bx-group" },
   { key: "categorias", label: "Categorias", icon: "bx-purchase-tag-alt" },
+  { key: "consorcio", label: "Consórcio", icon: "bx-motorcycle" },
   { key: "historico", label: "Histórico", icon: "bx-history" },
   { key: "notas", label: "Notas", icon: "bx-note" },
-  { key: "consorcio", label: "Consórcio", icon: "bx-motorcycle" },
 ];
 
 export default function Financas() {
@@ -36,13 +44,15 @@ export default function Financas() {
   const [passInput, setPassInput] = useState("");
   const [passError, setPassError] = useState(false);
   const [tab, setTab] = useState<Tab>("dashboard");
+  const [quickAction, setQuickAction] = useState<QuickAction>(null);
+  const [showActionMenu, setShowActionMenu] = useState(false);
 
-  const store = useFinance(ADMIN_PASSWORD);
-
-  // pages/Financas/index.tsx — trecho a substituir
+  // Toda chamada de API do módulo usa `passInput` — a senha real digitada
+  // e validada, nunca a constante fixa do build.
+  const store = useFinance(passInput);
 
   async function handleLogin() {
-    if (passInput === ADMIN_PASSWORD) {
+    if (passInput === FALLBACK_PASSWORD) {
       setAuthed(true);
       setPassError(false);
       return;
@@ -118,7 +128,6 @@ export default function Financas() {
       <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
 
       <div className="blog-admin financas">
-        {/* Header */}
         <div className="admin-header">
           <div className="admin-header__left">
             <h2 className="titleBlogAdmin">Finanças</h2>
@@ -129,12 +138,7 @@ export default function Financas() {
             )}
           </div>
           <div className="admin-header__right">
-            <button
-              className="btn-blog btn-blog--ghost"
-              onClick={() => store.refresh()}
-              disabled={store.loading}
-              title="Atualizar"
-            >
+            <button className="btn-blog btn-blog--ghost" onClick={() => store.refresh()} disabled={store.loading} title="Atualizar">
               <i className="bx bx-refresh" />
             </button>
             <Link to="/" className="btn-blog btn-blog--ghost">
@@ -142,7 +146,10 @@ export default function Financas() {
             </Link>
             <button
               className="btn-blog btn-blog--ghost"
-              onClick={() => setAuthed(false)}
+              onClick={() => {
+                setAuthed(false);
+                setPassInput("");
+              }}
               title="Sair"
             >
               <i className="bx bx-log-out" />
@@ -156,33 +163,91 @@ export default function Financas() {
           </div>
         )}
 
-        {/* Navegação por abas */}
         <nav className="financas-tabs">
           {TABS.map((t) => (
-            <button
-              key={t.key}
-              className={`financas-tabs__btn${tab === t.key ? " financas-tabs__btn--active" : ""}`}
-              onClick={() => setTab(t.key)}
-            >
+            <button key={t.key} className={`financas-tabs__btn${tab === t.key ? " financas-tabs__btn--active" : ""}`} onClick={() => setTab(t.key)}>
               <i className={`bx ${t.icon}`} />
               <span>{t.label}</span>
             </button>
           ))}
         </nav>
 
-        {/* Conteúdo da aba ativa */}
         <div className="admin-panel financas-panel">
           {tab === "dashboard" && <DashboardView store={store} />}
-          {tab === "receber" && <ReceivablesView store={store} />}
-          {tab === "pagar" && <PayablesView store={store} />}
-          {tab === "agenda" && <AgendaView store={store} />}
+          {tab === "receber" && <ReceivablesView store={store} password={passInput} />}
+          {tab === "pagar" && <PayablesView store={store} password={passInput} />}
+          {tab === "agenda" && <AgendaView store={store} password={passInput} />}
           {tab === "pessoas" && <ContactsView store={store} />}
           {tab === "categorias" && <CategoriesView store={store} />}
-          {tab === "historico" && <HistoryView store={store} />}
+          {tab === "consorcio" && <ConsorcioView password={passInput} />}
+          {tab === "historico" && <HistoryView store={store} password={passInput} />}
           {tab === "notas" && <NotesView store={store} />}
-          {tab === "consorcio" && <ConsorcioView />}
         </div>
       </div>
+
+      <button className="fin-fab" onClick={() => setShowActionMenu(true)} aria-label="Novo lançamento">
+        <i className="bx bx-plus" />
+      </button>
+
+      {showActionMenu && (
+        <div className="fin-modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowActionMenu(false)}>
+          <div className="fin-modal" style={{ maxWidth: 360 }}>
+            <div className="fin-modal__head">
+              <h3>O que deseja cadastrar?</h3>
+              <button onClick={() => setShowActionMenu(false)}>
+                <i className="bx bx-x" />
+              </button>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+              <button
+                className="btn-blog btn-blog--ghost"
+                style={{ justifyContent: "flex-start" }}
+                onClick={() => {
+                  setShowActionMenu(false);
+                  setQuickAction("income");
+                }}
+              >
+                <i className="bx bx-up-arrow-circle" style={{ color: "#22c55e" }} /> Dinheiro a receber
+              </button>
+              <button
+                className="btn-blog btn-blog--ghost"
+                style={{ justifyContent: "flex-start" }}
+                onClick={() => {
+                  setShowActionMenu(false);
+                  setQuickAction("expense");
+                }}
+              >
+                <i className="bx bx-down-arrow-circle" style={{ color: "#ef4444" }} /> Conta a pagar
+              </button>
+              <button
+                className="btn-blog btn-blog--ghost"
+                style={{ justifyContent: "flex-start" }}
+                onClick={() => {
+                  setShowActionMenu(false);
+                  setQuickAction("contact");
+                }}
+              >
+                <i className="bx bx-user" /> Pessoa
+              </button>
+              <button
+                className="btn-blog btn-blog--ghost"
+                style={{ justifyContent: "flex-start" }}
+                onClick={() => {
+                  setShowActionMenu(false);
+                  setQuickAction("note");
+                }}
+              >
+                <i className="bx bx-note" /> Nota
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {quickAction === "income" && <TransactionFormModal store={store} mode="INCOME" onClose={() => setQuickAction(null)} />}
+      {quickAction === "expense" && <TransactionFormModal store={store} mode="EXPENSE" onClose={() => setQuickAction(null)} />}
+      {quickAction === "contact" && <ContactFormModal store={store} contact={null} onClose={() => setQuickAction(null)} />}
+      {quickAction === "note" && <NoteFormModal store={store} note={null} onClose={() => setQuickAction(null)} />}
     </section>
   );
 }
