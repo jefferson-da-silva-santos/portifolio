@@ -13,8 +13,9 @@ import { HistoryView } from "./views/HistoryView";
 import { NotesView } from "./views/NotesView";
 import { ConsorcioView } from "./views/ConsorcioView";
 import "./financas.scss";
+import { BASE_API } from "../Blog";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas" | "consorcio";
 
@@ -38,11 +39,27 @@ export default function Financas() {
 
   const store = useFinance(ADMIN_PASSWORD);
 
-  function handleLogin() {
+  // pages/Financas/index.tsx — trecho a substituir
+
+  async function handleLogin() {
     if (passInput === ADMIN_PASSWORD) {
       setAuthed(true);
       setPassError(false);
-    } else {
+      return;
+    }
+    try {
+      const res = await fetch(`${BASE_API}/api/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: passInput }),
+      });
+      if (res.ok) {
+        setAuthed(true);
+        setPassError(false);
+      } else {
+        setPassError(true);
+      }
+    } catch {
       setPassError(true);
     }
   }

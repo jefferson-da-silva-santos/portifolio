@@ -46,7 +46,7 @@ const ALL_TAGS = [
 
 const ALL_CATEGORIES = ["Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros"];
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 const API_BASE = `${BASE_API}/api`;
 
 // ─── MARKDOWN SNIPPETS ────────────────────────────────────────────────────────
