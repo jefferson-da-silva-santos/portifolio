@@ -4,6 +4,9 @@
 
 import { useState, useRef } from "react";
 import { BASE_API } from "../Blog";
+import { useAuth } from "../auth/AuthContext";
+import { LoginPage } from "../auth/LoginPage";
+import { ChangePasswordModal } from "../auth/ChangePasswordModal";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -29,42 +32,40 @@ type ToastType = "success" | "error";
 // ─── CONSTANTES ───────────────────────────────────────────────────────────────
 
 const ALL_TAGS = [
-  "JavaScript","TypeScript","Python","Java","C++","C#","Go","Rust","Kotlin","Swift",
-  "PHP","Ruby","Dart","Bash","Solidity","Elixir",
-  "React","Vue","Angular","Svelte","Next.js","Nuxt.js","Astro","Vite","Tailwind",
-  "Material UI","Bootstrap","Sass",
-  "Node.js","Express","NestJS","Fastify","Django","Flask","FastAPI","Laravel","Spring Boot",
+  "JavaScript", "TypeScript", "Python", "Java", "C++", "C#", "Go", "Rust", "Kotlin", "Swift",
+  "PHP", "Ruby", "Dart", "Bash", "Solidity", "Elixir",
+  "React", "Vue", "Angular", "Svelte", "Next.js", "Nuxt.js", "Astro", "Vite", "Tailwind",
+  "Material UI", "Bootstrap", "Sass",
+  "Node.js", "Express", "NestJS", "Fastify", "Django", "Flask", "FastAPI", "Laravel", "Spring Boot",
   "ASP.NET Core",
-  "PostgreSQL","MySQL","MongoDB","Redis","SQLite","Firebase",
-  "Docker","Kubernetes","AWS","GCP","Azure","Terraform","GitHub Actions","Git","Linux",
-  "TensorFlow","PyTorch","Hugging Face","LangChain",
-  "React Native","Flutter","Electron","Tauri",
-  "Jest","Cypress","Vitest","Playwright",
-  "JWT","OAuth2","Kafka","RabbitMQ","Prometheus","Grafana",
-  "Figma","Unity","Unreal Engine",
+  "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "Firebase",
+  "Docker", "Kubernetes", "AWS", "GCP", "Azure", "Terraform", "GitHub Actions", "Git", "Linux",
+  "TensorFlow", "PyTorch", "Hugging Face", "LangChain",
+  "React Native", "Flutter", "Electron", "Tauri",
+  "Jest", "Cypress", "Vitest", "Playwright",
+  "JWT", "OAuth2", "Kafka", "RabbitMQ", "Prometheus", "Grafana",
+  "Figma", "Unity", "Unreal Engine",
 ].sort();
 
 const ALL_CATEGORIES = ["Frontend", "Backend", "DevOps", "IA / ML", "Vida", "Acontecimentos", "Outros"];
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 const API_BASE = `${BASE_API}/api`;
 
 // ─── MARKDOWN SNIPPETS ────────────────────────────────────────────────────────
-// Atalhos rápidos para o editor
 
 const MD_SNIPPETS = [
-  { label: "H2",     icon: "bx-heading",       value: "\n## Título da seção\n" },
-  { label: "H3",     icon: "bx-text",           value: "\n### Subtítulo\n" },
-  { label: "Bold",   icon: "bx-bold",           value: "**texto em negrito**" },
-  { label: "Italic", icon: "bx-italic",         value: "*texto em itálico*" },
-  { label: "Code",   icon: "bx-code",           value: "`código inline`" },
-  { label: "Block",  icon: "bx-code-block",     value: "\n```js\n// seu código aqui\n```\n" },
-  { label: "Link",   icon: "bx-link",           value: "[texto](https://url)" },
-  { label: "Image",  icon: "bx-image",          value: "![alt](https://url-da-imagem)" },
-  { label: "List",   icon: "bx-list-ul",        value: "\n- item 1\n- item 2\n- item 3\n" },
-  { label: "Quote",  icon: "bx-quote-alt-left", value: "\n> Citação aqui\n" },
-  { label: "Table",  icon: "bx-table",          value: "\n| Col 1 | Col 2 | Col 3 |\n|-------|-------|-------|\n| A     | B     | C     |\n" },
-  { label: "HR",     icon: "bx-minus",          value: "\n---\n" },
+  { label: "H2", icon: "bx-heading", value: "\n## Título da seção\n" },
+  { label: "H3", icon: "bx-text", value: "\n### Subtítulo\n" },
+  { label: "Bold", icon: "bx-bold", value: "**texto em negrito**" },
+  { label: "Italic", icon: "bx-italic", value: "*texto em itálico*" },
+  { label: "Code", icon: "bx-code", value: "`código inline`" },
+  { label: "Block", icon: "bx-code-block", value: "\n```js\n// seu código aqui\n```\n" },
+  { label: "Link", icon: "bx-link", value: "[texto](https://url)" },
+  { label: "Image", icon: "bx-image", value: "![alt](https://url-da-imagem)" },
+  { label: "List", icon: "bx-list-ul", value: "\n- item 1\n- item 2\n- item 3\n" },
+  { label: "Quote", icon: "bx-quote-alt-left", value: "\n> Citação aqui\n" },
+  { label: "Table", icon: "bx-table", value: "\n| Col 1 | Col 2 | Col 3 |\n|-------|-------|-------|\n| A     | B     | C     |\n" },
+  { label: "HR", icon: "bx-minus", value: "\n---\n" },
 ];
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
@@ -92,15 +93,7 @@ async function fileToBase64(file: File): Promise<string> {
 
 // ─── TOAST ───────────────────────────────────────────────────────────────────
 
-function Toast({
-  message,
-  type,
-  onClose,
-}: {
-  message: string;
-  type: ToastType;
-  onClose: () => void;
-}) {
+function Toast({ message, type, onClose }: { message: string; type: ToastType; onClose: () => void }) {
   return (
     <div className={`admin-toast admin-toast--${type}`}>
       <i className={`bx ${type === "success" ? "bx-check-circle" : "bx-x-circle"}`} />
@@ -114,13 +107,7 @@ function Toast({
 
 // ─── CONFIRM DIALOG ───────────────────────────────────────────────────────────
 
-function ConfirmDialog({
-  onConfirm,
-  onCancel,
-}: {
-  onConfirm: () => void;
-  onCancel: () => void;
-}) {
+function ConfirmDialog({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () => void }) {
   return (
     <div className="admin-dialog-overlay">
       <div className="admin-dialog">
@@ -142,13 +129,7 @@ function ConfirmDialog({
 
 // ─── TAG SELECTOR ─────────────────────────────────────────────────────────────
 
-function TagSelector({
-  selected,
-  onChange,
-}: {
-  selected: string[];
-  onChange: (t: string[]) => void;
-}) {
+function TagSelector({ selected, onChange }: { selected: string[]; onChange: (t: string[]) => void }) {
   const [search, setSearch] = useState("");
 
   const options = ALL_TAGS.filter(
@@ -161,10 +142,7 @@ function TagSelector({
         {selected.map((t) => (
           <span key={t} className="admin-tag-chip">
             {t}
-            <button
-              type="button"
-              onClick={() => onChange(selected.filter((s) => s !== t))}
-            >
+            <button type="button" onClick={() => onChange(selected.filter((s) => s !== t))}>
               <i className="bx bx-x" />
             </button>
           </span>
@@ -258,12 +236,7 @@ function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProp
           disabled={!!base64}
         />
         <span className="admin-image-separator">ou</span>
-        <button
-          type="button"
-          className="btn-blog btn-blog--sm btn-blog--ghost"
-          onClick={() => fileRef.current?.click()}
-          disabled={!!url}
-        >
+        <button type="button" className="btn-blog btn-blog--sm btn-blog--ghost" onClick={() => fileRef.current?.click()} disabled={!!url}>
           <i className="bx bx-upload" /> Upload
         </button>
         <input
@@ -276,8 +249,7 @@ function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProp
       </div>
       {base64 && (
         <small className="admin-hint">
-          <i className="bx bx-check-circle" style={{ color: "#22c55e" }} /> Imagem como
-          base64.
+          <i className="bx bx-check-circle" style={{ color: "#22c55e" }} /> Imagem como base64.
         </small>
       )}
       {url && (
@@ -290,7 +262,6 @@ function ImageField({ base64, url, onBase64Change, onUrlChange }: ImageFieldProp
 }
 
 // ─── MARKDOWN EDITOR ──────────────────────────────────────────────────────────
-// Editor com toolbar de snippets + preview ao lado (split view)
 
 interface MarkdownEditorProps {
   value: string;
@@ -301,7 +272,6 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
   const [showPreview, setShowPreview] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  /** Insere snippet na posição atual do cursor */
   function insertSnippet(snippet: string) {
     const el = textareaRef.current;
     if (!el) return;
@@ -314,7 +284,6 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
 
     onChange(newValue);
 
-    // Reposiciona o cursor depois do snippet inserido
     requestAnimationFrame(() => {
       el.focus();
       const newCursor = start + snippet.length;
@@ -324,7 +293,6 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
 
   return (
     <div className="admin-md-editor">
-      {/* Toolbar */}
       <div className="admin-md-toolbar">
         <div className="admin-md-toolbar__snippets">
           {MD_SNIPPETS.map((s) => (
@@ -351,9 +319,7 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
         </button>
       </div>
 
-      {/* Área principal: editor OU split */}
       <div className={`admin-md-body${showPreview ? " admin-md-body--split" : ""}`}>
-        {/* Textarea */}
         <div className="admin-md-pane admin-md-pane--editor">
           <div className="admin-md-pane__label">
             <i className="bx bx-edit" /> Markdown
@@ -367,12 +333,9 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
             rows={20}
             spellCheck={false}
           />
-          <small className="admin-hint">
-            ~{estimateReadTime(value)} min de leitura estimados
-          </small>
+          <small className="admin-hint">~{estimateReadTime(value)} min de leitura estimados</small>
         </div>
 
-        {/* Preview */}
         {showPreview && (
           <div className="admin-md-pane admin-md-pane--preview">
             <div className="admin-md-pane__label">
@@ -387,26 +350,13 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
                     a({ href, children, ...props }) {
                       const isExternal = href?.startsWith("http");
                       return (
-                        <a
-                          href={href}
-                          target={isExternal ? "_blank" : undefined}
-                          rel={isExternal ? "noopener noreferrer" : undefined}
-                          {...props}
-                        >
+                        <a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} {...props}>
                           {children}
                         </a>
                       );
                     },
                     img({ src, alt, ...props }) {
-                      return (
-                        <img
-                          src={src}
-                          alt={alt}
-                          loading="lazy"
-                          style={{ maxWidth: "100%", borderRadius: "8px" }}
-                          {...props}
-                        />
-                      );
+                      return <img src={src} alt={alt} loading="lazy" style={{ maxWidth: "100%", borderRadius: "8px" }} {...props} />;
                     },
                   }}
                 >
@@ -462,28 +412,14 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
   return (
     <div className="admin-form">
       <div className="admin-form-grid">
-
-        {/* Título */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-label">Título *</label>
-          <input
-            type="text"
-            className="input-blog"
-            placeholder="Título do post"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <input type="text" className="input-blog" placeholder="Título do post" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
 
-        {/* Categoria */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-label">Categoria</label>
-          <select
-            className="input-blog"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            style={{ cursor: "pointer" }}
-          >
+          <select className="input-blog" value={category} onChange={(e) => setCategory(e.target.value)} style={{ cursor: "pointer" }}>
             {ALL_CATEGORIES.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -492,19 +428,11 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
           </select>
         </div>
 
-        {/* Resumo */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-label">Resumo (excerpt)</label>
-          <textarea
-            className="textarea-blog"
-            placeholder="Breve descrição do post para os cards..."
-            value={excerpt}
-            onChange={(e) => setExcerpt(e.target.value)}
-            rows={3}
-          />
+          <textarea className="textarea-blog" placeholder="Breve descrição do post para os cards..." value={excerpt} onChange={(e) => setExcerpt(e.target.value)} rows={3} />
         </div>
 
-        {/* Conteúdo com editor Markdown */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-label">
             Conteúdo{" "}
@@ -515,32 +443,20 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
           <MarkdownEditor value={content} onChange={setContent} />
         </div>
 
-        {/* Imagem */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-label">Imagem de capa</label>
-          <ImageField
-            base64={base64}
-            url={imgUrl}
-            onBase64Change={setBase64}
-            onUrlChange={setImgUrl}
-          />
+          <ImageField base64={base64} url={imgUrl} onBase64Change={setBase64} onUrlChange={setImgUrl} />
         </div>
 
-        {/* Tags */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-label">Tags de tecnologia</label>
           <TagSelector selected={tags} onChange={setTags} />
           <small className="admin-hint">Deixe vazio para posts não-técnicos.</small>
         </div>
 
-        {/* Featured toggle */}
         <div className="admin-form-field admin-form-field--full">
           <label className="admin-toggle">
-            <input
-              type="checkbox"
-              checked={featured}
-              onChange={(e) => setFeatured(e.target.checked)}
-            />
+            <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} />
             <span className="admin-toggle__track" />
             <span className="admin-toggle__label">
               <i className="bx bxs-star" /> Destacar este post
@@ -553,12 +469,7 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
         <button type="button" className="btn-blog btn-blog--ghost" onClick={onCancel}>
           <i className="bx bx-x" /> Cancelar
         </button>
-        <button
-          type="button"
-          className="btn-blog"
-          onClick={handleSubmit}
-          disabled={saving || !title.trim()}
-        >
+        <button type="button" className="btn-blog" onClick={handleSubmit} disabled={saving || !title.trim()}>
           <i className={`bx ${saving ? "bx-loader-alt" : "bx-save"}`} />
           {saving ? "Salvando..." : "Salvar post"}
         </button>
@@ -570,10 +481,7 @@ function PostForm({ initial, onSave, onCancel, saving }: PostFormProps) {
 // ─── BLOG ADMIN MAIN ──────────────────────────────────────────────────────────
 
 export default function BlogAdmin() {
-  // Auth
-  const [authed, setAuthed] = useState(false);
-  const [passInput, setPassInput] = useState("");
-  const [passError, setPassError] = useState(false);
+  const { user, ready, authFetch, logout } = useAuth();
 
   // Posts
   const [posts, setPosts] = useState<Post[]>([]);
@@ -581,6 +489,8 @@ export default function BlogAdmin() {
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   // Toast
   const [toast, setToast] = useState<{ message: string; type: ToastType } | null>(null);
@@ -590,34 +500,7 @@ export default function BlogAdmin() {
     setTimeout(() => setToast(null), 3500);
   }
 
-  // ── Auth ──
-
-  async function handleLogin() {
-    if (passInput === ADMIN_PASSWORD) {
-      setAuthed(true);
-      setPassError(false);
-      await loadPosts();
-    } else {
-      try {
-        const res = await fetch(`${API_BASE}/admin/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ password: passInput }),
-        });
-        if (res.ok) {
-          setAuthed(true);
-          setPassError(false);
-          await loadPosts();
-        } else {
-          setPassError(true);
-        }
-      } catch {
-        setPassError(true);
-      }
-    }
-  }
-
-  // ── API calls ──
+  // ── API calls (todas via authFetch, que injeta o Bearer token e renova a sessão sozinho) ──
 
   async function loadPosts() {
     try {
@@ -629,27 +512,27 @@ export default function BlogAdmin() {
     }
   }
 
+  if (user && !loaded) {
+    setLoaded(true);
+    loadPosts();
+  }
+
   async function handleSave(data: Omit<Post, "id" | "createdAt">) {
     setSaving(true);
     try {
-      const headers: Record<string, string> = {
-        "Content-Type": "application/json",
-        "X-Admin-Password": passInput,
-      };
-
       if (view === "create") {
-        const res = await fetch(`${API_BASE}/posts`, {
+        const res = await authFetch(`${API_BASE}/posts`, {
           method: "POST",
-          headers,
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
         const newPost = await res.json();
         setPosts((prev) => [newPost, ...prev]);
         showToast("Post criado com sucesso!");
       } else if (view === "edit" && editingPost) {
-        const res = await fetch(`${API_BASE}/posts/${editingPost.id}`, {
+        const res = await authFetch(`${API_BASE}/posts/${editingPost.id}`, {
           method: "PUT",
-          headers,
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
         const updated = await res.json();
@@ -667,10 +550,7 @@ export default function BlogAdmin() {
 
   async function handleDelete(id: string) {
     try {
-      await fetch(`${API_BASE}/posts/${id}`, {
-        method: "DELETE",
-        headers: { "X-Admin-Password": passInput },
-      });
+      await authFetch(`${API_BASE}/posts/${id}`, { method: "DELETE" });
       setPosts((prev) => prev.filter((p) => p.id !== id));
       showToast("Post deletado.", "error");
     } catch {
@@ -680,54 +560,19 @@ export default function BlogAdmin() {
     }
   }
 
-  // ── Tela de login ──
+  // ── Sessão ──
 
-  if (!authed) {
+  if (!ready) {
     return (
-      <section className="groupBlogAdmin" id="blog-admin">
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
-        <div className="blog-admin">
-          <div className="admin-login-wrapper">
-            <div className="admin-login-card">
-              <div className="admin-login-card__logo">
-                ‹ Jeff <span className="slash">⁄</span> Admin ›
-              </div>
-              <h2>Área administrativa</h2>
-              <p>Acesso restrito ao gerenciamento do blog.</p>
-
-              <div className="admin-login-card__form">
-                <div
-                  className={`admin-login-card__field${
-                    passError ? " admin-login-card__field--error" : ""
-                  }`}
-                >
-                  <i className="bx bx-lock" />
-                  <input
-                    type="password"
-                    placeholder="Senha de acesso"
-                    value={passInput}
-                    onChange={(e) => {
-                      setPassInput(e.target.value);
-                      setPassError(false);
-                    }}
-                    onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                    autoFocus
-                  />
-                </div>
-                {passError && (
-                  <span className="admin-login-card__error">
-                    <i className="bx bx-error-circle" /> Senha incorreta.
-                  </span>
-                )}
-                <button className="btn-blog btn-blog--full" onClick={handleLogin}>
-                  <i className="bx bx-log-in" /> Entrar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="fin-empty" style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <i className="bx bx-loader-alt bx-spin" />
+        <p>Verificando sessão...</p>
+      </div>
     );
+  }
+
+  if (!user) {
+    return <LoginPage title="Admin" subtitle="Acesso restrito ao gerenciamento do blog." onSuccess={() => setLoaded(false)} />;
   }
 
   // ── Painel principal ──
@@ -736,18 +581,11 @@ export default function BlogAdmin() {
     <section className="groupBlogAdmin" id="blog-admin">
       <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
 
-      {toast && (
-        <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />
-      )}
-      {deletingId && (
-        <ConfirmDialog
-          onConfirm={() => handleDelete(deletingId)}
-          onCancel={() => setDeletingId(null)}
-        />
-      )}
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+      {deletingId && <ConfirmDialog onConfirm={() => handleDelete(deletingId)} onCancel={() => setDeletingId(null)} />}
+      {showChangePassword && <ChangePasswordModal onClose={() => setShowChangePassword(false)} />}
 
       <div className="blog-admin">
-        {/* Header */}
         <div className="admin-header">
           <div className="admin-header__left">
             <h2 className="titleBlogAdmin">Blog Admin</h2>
@@ -771,20 +609,15 @@ export default function BlogAdmin() {
                 <i className="bx bx-arrow-back" /> Voltar
               </button>
             )}
-            <button
-              className="btn-blog btn-blog--ghost"
-              onClick={() => {
-                setAuthed(false);
-                setPosts([]);
-              }}
-              title="Sair"
-            >
+            <button className="btn-blog btn-blog--ghost" onClick={() => setShowChangePassword(true)} title="Trocar senha">
+              <i className="bx bx-key" />
+            </button>
+            <button className="btn-blog btn-blog--ghost" onClick={logout} title="Sair">
               <i className="bx bx-log-out" />
             </button>
           </div>
         </div>
 
-        {/* Formulário */}
         {(view === "create" || view === "edit") && (
           <div className="admin-panel">
             <h3 className="admin-panel-title">
@@ -803,7 +636,6 @@ export default function BlogAdmin() {
           </div>
         )}
 
-        {/* Lista */}
         {view === "list" && (
           <div className="admin-panel">
             {posts.length === 0 ? (
@@ -833,9 +665,7 @@ export default function BlogAdmin() {
                               <i className="bx bxs-star" /> Destaque
                             </span>
                           )}
-                          {post.category && (
-                            <span className="admin-tag-sm">{post.category}</span>
-                          )}
+                          {post.category && <span className="admin-tag-sm">{post.category}</span>}
                         </div>
                         <p className="admin-post-row__excerpt">{post.excerpt}</p>
                         <div className="admin-post-row__meta">
@@ -859,11 +689,7 @@ export default function BlogAdmin() {
                                 {t}
                               </span>
                             ))}
-                            {post.tags.length > 5 && (
-                              <span className="admin-tag-sm admin-tag-sm--more">
-                                +{post.tags.length - 5}
-                              </span>
-                            )}
+                            {post.tags.length > 5 && <span className="admin-tag-sm admin-tag-sm--more">+{post.tags.length - 5}</span>}
                           </div>
                         )}
                       </div>
@@ -878,11 +704,7 @@ export default function BlogAdmin() {
                         >
                           <i className="bx bx-edit" />
                         </button>
-                        <button
-                          className="admin-icon-btn admin-icon-btn--delete"
-                          title="Deletar"
-                          onClick={() => setDeletingId(post.id)}
-                        >
+                        <button className="admin-icon-btn admin-icon-btn--delete" title="Deletar" onClick={() => setDeletingId(post.id)}>
                           <i className="bx bx-trash" />
                         </button>
                       </div>
