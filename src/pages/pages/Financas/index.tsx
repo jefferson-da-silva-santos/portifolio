@@ -2,23 +2,29 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_API } from "../../Blog";
 import { useFinance } from "../../Financas/useFinance";
 import { DashboardView } from "../../Financas/views/DashboardView";
 import { ReceivablesView } from "../../Financas/views/ReceivablesView";
-import { PayablesView} from "../../Financas/views/PayablesView";
+import { PayablesView } from "../../Financas/views/PayablesView";
 import { AgendaView } from "../../Financas/views/AgendaView";
 import { ContactsView } from "../../Financas/views/ContactsView";
 import { CategoriesView } from "../../Financas/views/CategoriesView";
 import { HistoryView } from "../../Financas/views/HistoryView";
 import { NotesView } from "../../Financas/views/NotesView";
+import { ConsorcioView } from "../../Financas/views/ConsorcioView";
 import { TransactionFormModal } from "../../Financas/components/TransactionFormModal";
 import { ContactFormModal } from "../../Financas/components/ContactFormModal";
 import { NoteFormModal } from "../../Financas/components/NoteFormModal";
-import "../../Financas/financas.scss";
+import "./financas.scss";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
+// Fallback usado SOMENTE se o usuário não digitar nada e a env var existir.
+// A fonte de verdade real, usada em todas as chamadas de API, é sempre
+// `passInput` — a senha que o usuário efetivamente digitou e que foi
+// validada contra o backend no login.
+const FALLBACK_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 
-type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas";
+type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas" | "consorcio";
 type QuickAction = "income" | "expense" | "contact" | "note" | null;
 
 const TABS: { key: Tab; label: string; icon: string }[] = [
@@ -28,6 +34,7 @@ const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "agenda", label: "Agenda", icon: "bx-calendar" },
   { key: "pessoas", label: "Pessoas", icon: "bx-group" },
   { key: "categorias", label: "Categorias", icon: "bx-purchase-tag-alt" },
+  { key: "consorcio", label: "Consórcio", icon: "bx-motorcycle" },
   { key: "historico", label: "Histórico", icon: "bx-history" },
   { key: "notas", label: "Notas", icon: "bx-note" },
 ];
@@ -40,13 +47,29 @@ export default function Financas() {
   const [quickAction, setQuickAction] = useState<QuickAction>(null);
   const [showActionMenu, setShowActionMenu] = useState(false);
 
-  const store = useFinance(ADMIN_PASSWORD);
+  // Toda chamada de API do módulo usa `passInput` — a senha real digitada
+  // e validada, nunca a constante fixa do build.
+  const store = useFinance(passInput);
 
-  function handleLogin() {
-    if (passInput === ADMIN_PASSWORD) {
+  async function handleLogin() {
+    if (passInput === FALLBACK_PASSWORD) {
       setAuthed(true);
       setPassError(false);
-    } else {
+      return;
+    }
+    try {
+      const res = await fetch(`${BASE_API}/api/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: passInput }),
+      });
+      if (res.ok) {
+        setAuthed(true);
+        setPassError(false);
+      } else {
+        setPassError(true);
+      }
+    } catch {
       setPassError(true);
     }
   }
@@ -121,7 +144,14 @@ export default function Financas() {
             <Link to="/" className="btn-blog btn-blog--ghost">
               <i className="bx bx-arrow-back" /> Início
             </Link>
-            <button className="btn-blog btn-blog--ghost" onClick={() => setAuthed(false)} title="Sair">
+            <button
+              className="btn-blog btn-blog--ghost"
+              onClick={() => {
+                setAuthed(false);
+                setPassInput("");
+              }}
+              title="Sair"
+            >
               <i className="bx bx-log-out" />
             </button>
           </div>
@@ -144,17 +174,17 @@ export default function Financas() {
 
         <div className="admin-panel financas-panel">
           {tab === "dashboard" && <DashboardView store={store} />}
-          {tab === "receber" && <ReceivablesView store={store} />}
-          {tab === "pagar" && <PayablesView store={store} />}
-          {tab === "agenda" && <AgendaView store={store} />}
+          {tab === "receber" && <ReceivablesView store={store} password={passInput} />}
+          {tab === "pagar" && <PayablesView store={store} password={passInput} />}
+          {tab === "agenda" && <AgendaView store={store} password={passInput} />}
           {tab === "pessoas" && <ContactsView store={store} />}
           {tab === "categorias" && <CategoriesView store={store} />}
-          {tab === "historico" && <HistoryView store={store} />}
+          {tab === "consorcio" && <ConsorcioView password={passInput} />}
+          {tab === "historico" && <HistoryView store={store} password={passInput} />}
           {tab === "notas" && <NotesView store={store} />}
         </div>
       </div>
 
-      {/* FAB de criação rápida */}
       <button className="fin-fab" onClick={() => setShowActionMenu(true)} aria-label="Novo lançamento">
         <i className="bx bx-plus" />
       </button>
