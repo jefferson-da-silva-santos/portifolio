@@ -1,10 +1,11 @@
 // pages/Financas/views/ConsorcioView.tsx
-
 import { useEffect, useMemo, useState } from "react";
-import { consorcioApi } from "../consorcioApi";
+import { createConsorcioApi } from "../consorcioApi";
 import type { Consorcio, ConsorcioParcela, ConsorcioState } from "../consorcioTypes";
 import { YouTubeEmbed } from "../components/YouTubeEmbed";
 import { ParcelaEditModal } from "../components/ParcelaEditModal";
+
+type AuthFetch = (input: string, init?: RequestInit) => Promise<Response>;
 
 const formatBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const formatDate = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString("pt-BR") : "-");
@@ -17,7 +18,9 @@ function statusInfo(status: ConsorcioParcela["status"]) {
       : { color: "#f59e0b", label: "Pendente" };
 }
 
-export function ConsorcioView({ password }: { password: string }) {
+export function ConsorcioView({ authFetch }: { authFetch: AuthFetch }) {
+  const api = useMemo(() => createConsorcioApi(authFetch), [authFetch]);
+
   const [state, setState] = useState<ConsorcioState>({ consorcios: [], parcelas: [], reajustes: [] });
   const [loading, setLoading] = useState(true);
   const [seeding, setSeeding] = useState(false);
@@ -29,8 +32,7 @@ export function ConsorcioView({ password }: { password: string }) {
     setLoading(true);
     setError(null);
     try {
-      const data = await consorcioApi.getState(password);
-      setState(data);
+      setState(await api.getState());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao carregar consórcio.");
     } finally {
@@ -41,13 +43,13 @@ export function ConsorcioView({ password }: { password: string }) {
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [password]);
+  }, [api]);
 
   async function runSeed() {
     setSeeding(true);
     setError(null);
     try {
-      await consorcioApi.seedHondaBross(password);
+      await api.seedHondaBross();
       await load();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao cadastrar consórcio.");
@@ -57,7 +59,7 @@ export function ConsorcioView({ password }: { password: string }) {
   }
 
   async function toggleParcela(id: string) {
-    const updated = await consorcioApi.toggleParcela(password, id);
+    const updated = await api.toggleParcela(id);
     setState((s) => ({ ...s, parcelas: s.parcelas.map((p) => (p.id === id ? updated : p)) }));
   }
 
@@ -287,7 +289,7 @@ export function ConsorcioView({ password }: { password: string }) {
       {editingParcela && (
         <ParcelaEditModal
           parcela={editingParcela}
-          password={password}
+          authFetch={authFetch}
           totalParcelas={parcelas.length}
           onClose={() => setEditingParcela(null)}
           onSaved={(updated) => {

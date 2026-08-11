@@ -1,5 +1,4 @@
 // pages/Financas/views/HistoryView.tsx
-
 import { useMemo, useState } from "react";
 import type { FinanceStore } from "../useFinance";
 import { buildRows, formatBRL } from "../selectors";
@@ -30,7 +29,7 @@ function groupByDay(rows: ListRow[], installments: { id: string; dueDate: string
     }));
 }
 
-export function HistoryView({ store, password }: { store: FinanceStore; password: string }) {
+export function HistoryView({ store }: { store: FinanceStore }) {
   const { transactions, installments, contacts } = store.state;
   const [typeFilter, setTypeFilter] = useState<(typeof TYPE_FILTERS)[number]>("Todos");
   const [statusFilter, setStatusFilter] = useState<(typeof STATUS_FILTERS)[number]>("Todos");
@@ -104,7 +103,7 @@ export function HistoryView({ store, password }: { store: FinanceStore; password
         ))
       )}
 
-      {openId && <TransactionDetailModal store={store} password={password} transactionId={openId} onClose={() => setOpenId(null)} />}
+      {openId && <TransactionDetailModal store={store} transactionId={openId} onClose={() => setOpenId(null)} />}
     </div>
   );
 }

@@ -1,7 +1,4 @@
 // pages/Financas/api.ts
-// Cliente HTTP do módulo financeiro. Segue o mesmo padrão do BlogAdmin:
-// senha em memória, reenviada a cada request via header X-Admin-Password.
-
 import { BASE_API } from "../Blog";
 import type { FinanceState, Contact, Category, Note, Transaction, Installment } from "./types";
 
@@ -15,91 +12,64 @@ export class FinanceApiError extends Error {
   }
 }
 
-async function request<T>(path: string, password: string, options: RequestInit = {}): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      "X-Admin-Password": password,
-      ...(options.headers || {}),
-    },
-  });
+type AuthFetch = (input: string, init?: RequestInit) => Promise<Response>;
 
+async function request<T>(authFetch: AuthFetch, path: string, options: RequestInit = {}): Promise<T> {
+  const res = await authFetch(`${API_BASE}${path}`, {
+    ...options,
+    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
+  });
   if (!res.ok) {
     let message = `Erro ${res.status}`;
     try {
       const data = await res.json();
       message = data.error || message;
-    } catch {
-      /* corpo não é JSON */
-    }
+    } catch { /* corpo não é JSON */ }
     throw new FinanceApiError(message, res.status);
   }
-
-  // 204 ou corpo vazio
   const text = await res.text();
   return text ? JSON.parse(text) : (undefined as T);
 }
 
-export const financeApi = {
-  getState: (password: string) => request<FinanceState>("/state", password),
-  refresh: (password: string) => request<FinanceState>("/refresh", password, { method: "POST" }),
+export function createFinanceApi(authFetch: AuthFetch) {
+  return {
+    getState: () => request<FinanceState>(authFetch, "/state"),
+    refresh: () => request<FinanceState>(authFetch, "/refresh", { method: "POST" }),
 
-  createContact: (password: string, input: Partial<Contact>) =>
-    request<Contact>("/contacts", password, { method: "POST", body: JSON.stringify(input) }),
-  updateContact: (password: string, id: string, patch: Partial<Contact>) =>
-    request<Contact>(`/contacts/${id}`, password, { method: "PUT", body: JSON.stringify(patch) }),
-  deleteContact: (password: string, id: string) =>
-    request<{ message: string }>(`/contacts/${id}`, password, { method: "DELETE" }),
-  getContactDetail: (password: string, id: string) =>
-    request<{ contact: Contact; transactions: Transaction[]; installments: Installment[] }>(
-      `/contacts/${id}`,
-      password
-    ),
+    createContact: (input: Partial<Contact>) =>
+      request<Contact>(authFetch, "/contacts", { method: "POST", body: JSON.stringify(input) }),
+    updateContact: (id: string, patch: Partial<Contact>) =>
+      request<Contact>(authFetch, `/contacts/${id}`, { method: "PUT", body: JSON.stringify(patch) }),
+    deleteContact: (id: string) => request<{ message: string }>(authFetch, `/contacts/${id}`, { method: "DELETE" }),
+    getContactDetail: (id: string) =>
+      request<{ contact: Contact; transactions: Transaction[]; installments: Installment[] }>(authFetch, `/contacts/${id}`),
 
-  createCategory: (password: string, input: { name: string; type: Category["type"] }) =>
-    request<Category>("/categories", password, { method: "POST", body: JSON.stringify(input) }),
-  deleteCategory: (password: string, id: string) =>
-    request<{ message: string }>(`/categories/${id}`, password, { method: "DELETE" }),
+    createCategory: (input: { name: string; type: Category["type"] }) =>
+      request<Category>(authFetch, "/categories", { method: "POST", body: JSON.stringify(input) }),
+    deleteCategory: (id: string) => request<{ message: string }>(authFetch, `/categories/${id}`, { method: "DELETE" }),
 
-  createTransaction: (
-    password: string,
-    input: {
-      type: Transaction["type"];
-      title: string;
-      description?: string;
-      categoryId?: string;
-      contactName?: string;
-      totalAmount: number;
-      frequency: Transaction["frequency"];
-      installments: number;
-      startDate: string;
-    }
-  ) => request<{ transactionId: string }>("/transactions", password, { method: "POST", body: JSON.stringify(input) }),
+    createTransaction: (input: {
+      type: Transaction["type"]; title: string; description?: string; categoryId?: string;
+      contactName?: string; totalAmount: number; frequency: Transaction["frequency"];
+      installments: number; startDate: string;
+    }) => request<{ transactionId: string }>(authFetch, "/transactions", { method: "POST", body: JSON.stringify(input) }),
 
-  getTransactionDetail: (password: string, id: string) =>
-    request<{ transaction: Transaction; installments: Installment[] }>(`/transactions/${id}`, password),
+    getTransactionDetail: (id: string) =>
+      request<{ transaction: Transaction; installments: Installment[] }>(authFetch, `/transactions/${id}`),
+    updateTransaction: (id: string, patch: Record<string, unknown>) =>
+      request<{ transaction: Transaction; installments: Installment[] }>(authFetch, `/transactions/${id}`, { method: "PUT", body: JSON.stringify(patch) }),
+    deleteTransaction: (id: string) => request<{ message: string }>(authFetch, `/transactions/${id}`, { method: "DELETE" }),
 
-  updateTransaction: (password: string, id: string, patch: Record<string, unknown>) =>
-    request<{ transaction: Transaction; installments: Installment[] }>(`/transactions/${id}`, password, {
-      method: "PUT",
-      body: JSON.stringify(patch),
-    }),
+    toggleInstallment: (id: string) => request<Installment>(authFetch, `/installments/${id}/toggle`, { method: "PATCH" }),
+    cancelInstallment: (id: string) => request<Installment>(authFetch, `/installments/${id}/cancel`, { method: "PATCH" }),
 
-  deleteTransaction: (password: string, id: string) =>
-    request<{ message: string }>(`/transactions/${id}`, password, { method: "DELETE" }),
+    createNote: (input: { title: string; content: string; pinned?: boolean }) =>
+      request<Note>(authFetch, "/notes", { method: "POST", body: JSON.stringify(input) }),
+    updateNote: (id: string, patch: Partial<Note>) =>
+      request<Note>(authFetch, `/notes/${id}`, { method: "PUT", body: JSON.stringify(patch) }),
+    togglePinNote: (id: string) => request<Note>(authFetch, `/notes/${id}/pin`, { method: "PATCH" }),
+    deleteNote: (id: string) => request<{ message: string }>(authFetch, `/notes/${id}`, { method: "DELETE" }),
+  };
+}
 
-  toggleInstallment: (password: string, id: string) =>
-    request<Installment>(`/installments/${id}/toggle`, password, { method: "PATCH" }),
-  cancelInstallment: (password: string, id: string) =>
-    request<Installment>(`/installments/${id}/cancel`, password, { method: "PATCH" }),
-
-  createNote: (password: string, input: { title: string; content: string; pinned?: boolean }) =>
-    request<Note>("/notes", password, { method: "POST", body: JSON.stringify(input) }),
-  updateNote: (password: string, id: string, patch: Partial<Note>) =>
-    request<Note>(`/notes/${id}`, password, { method: "PUT", body: JSON.stringify(patch) }),
-  togglePinNote: (password: string, id: string) =>
-    request<Note>(`/notes/${id}/pin`, password, { method: "PATCH" }),
-  deleteNote: (password: string, id: string) =>
-    request<{ message: string }>(`/notes/${id}`, password, { method: "DELETE" }),
-};
+export type FinanceApi = ReturnType<typeof createFinanceApi>;

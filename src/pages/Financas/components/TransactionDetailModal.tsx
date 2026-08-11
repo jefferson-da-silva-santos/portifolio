@@ -1,14 +1,12 @@
 // pages/Financas/components/TransactionDetailModal.tsx
-
 import { useEffect, useState } from "react";
-import { financeApi, FinanceApiError } from "../api";
+import { FinanceApiError } from "../api";
 import type { FinanceStore } from "../useFinance";
 import { formatBRL } from "../selectors";
 import type { Installment, Transaction } from "../types";
 
 type Props = {
   store: FinanceStore;
-  password: string;
   transactionId: string;
   onClose: () => void;
 };
@@ -22,7 +20,7 @@ const statusInfo = (status: Installment["status"]) =>
         ? { color: "#5b5b5b", label: "Cancelada" }
         : { color: "#f59e0b", label: "Pendente" };
 
-export function TransactionDetailModal({ store, password, transactionId, onClose }: Props) {
+export function TransactionDetailModal({ store, transactionId, onClose }: Props) {
   const [transaction, setTransaction] = useState<Transaction | null>(null);
   const [installments, setInstallments] = useState<Installment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,7 +33,7 @@ export function TransactionDetailModal({ store, password, transactionId, onClose
     setLoading(true);
     setError(null);
     try {
-      const data = await financeApi.getTransactionDetail(password, transactionId);
+      const data = await store.api.getTransactionDetail(transactionId);
       setTransaction(data.transaction);
       setInstallments(data.installments);
     } catch (err) {
@@ -84,8 +82,9 @@ export function TransactionDetailModal({ store, password, transactionId, onClose
   }
 
   return (
-    <div className="fin-modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="fin-modal">
+    <div className="fin-modal-overlay fin-modal-overlay--sheet" onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="fin-modal fin-modal--sheet">
+        <div className="fin-modal__grabber" />
         <div className="fin-modal__head">
           <h3>Detalhes da cobrança</h3>
           <button onClick={onClose}>

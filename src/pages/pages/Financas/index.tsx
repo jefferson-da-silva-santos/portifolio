@@ -1,8 +1,10 @@
-// pages/Financas/index.tsx
+// pages/Financas/index.tsx (dentro de pages/pages/Financas/ — versão corrigida)
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BASE_API } from "../../Blog";
+import { useAuth } from "../../auth/AuthContext";
+import { LoginPage } from "../../auth/LoginPage";
+import { ChangePasswordModal } from "../../auth/ChangePasswordModal";
 import { useFinance } from "../../Financas/useFinance";
 import { DashboardView } from "../../Financas/views/DashboardView";
 import { ReceivablesView } from "../../Financas/views/ReceivablesView";
@@ -17,12 +19,6 @@ import { TransactionFormModal } from "../../Financas/components/TransactionFormM
 import { ContactFormModal } from "../../Financas/components/ContactFormModal";
 import { NoteFormModal } from "../../Financas/components/NoteFormModal";
 import "./financas.scss";
-
-// Fallback usado SOMENTE se o usuário não digitar nada e a env var existir.
-// A fonte de verdade real, usada em todas as chamadas de API, é sempre
-// `passInput` — a senha que o usuário efetivamente digitou e que foi
-// validada contra o backend no login.
-const FALLBACK_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "#NaoPrecisamosDeArmas00#";
 
 type Tab = "dashboard" | "receber" | "pagar" | "agenda" | "pessoas" | "categorias" | "historico" | "notas" | "consorcio";
 type QuickAction = "income" | "expense" | "contact" | "note" | null;
@@ -40,87 +36,30 @@ const TABS: { key: Tab; label: string; icon: string }[] = [
 ];
 
 export default function Financas() {
-  const [authed, setAuthed] = useState(false);
-  const [passInput, setPassInput] = useState("");
-  const [passError, setPassError] = useState(false);
+  const { user, ready, authFetch, logout } = useAuth();
   const [tab, setTab] = useState<Tab>("dashboard");
   const [quickAction, setQuickAction] = useState<QuickAction>(null);
   const [showActionMenu, setShowActionMenu] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
-  // Toda chamada de API do módulo usa `passInput` — a senha real digitada
-  // e validada, nunca a constante fixa do build.
-  const store = useFinance(passInput);
-
-  async function handleLogin() {
-    if (passInput === FALLBACK_PASSWORD) {
-      setAuthed(true);
-      setPassError(false);
-      return;
-    }
-    try {
-      const res = await fetch(`${BASE_API}/api/admin/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: passInput }),
-      });
-      if (res.ok) {
-        setAuthed(true);
-        setPassError(false);
-      } else {
-        setPassError(true);
-      }
-    } catch {
-      setPassError(true);
-    }
-  }
+  const store = useFinance(authFetch);
 
   useEffect(() => {
-    if (authed) store.load();
+    if (user) store.load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authed]);
+  }, [user]);
 
-  if (!authed) {
+  if (!ready) {
     return (
-      <section className="groupBlogAdmin" id="financas">
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
-        <div className="blog-admin">
-          <div className="admin-login-wrapper">
-            <div className="admin-login-card">
-              <div className="admin-login-card__logo">
-                ‹ Jeff <span className="slash">⁄</span> Finanças ›
-              </div>
-              <h2>Área financeira</h2>
-              <p>Acesso restrito ao controle de entradas e saídas.</p>
-
-              <div className="admin-login-card__form">
-                <div className={`admin-login-card__field${passError ? " admin-login-card__field--error" : ""}`}>
-                  <i className="bx bx-lock" />
-                  <input
-                    type="password"
-                    placeholder="Senha de acesso"
-                    value={passInput}
-                    onChange={(e) => {
-                      setPassInput(e.target.value);
-                      setPassError(false);
-                    }}
-                    onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                    autoFocus
-                  />
-                </div>
-                {passError && (
-                  <span className="admin-login-card__error">
-                    <i className="bx bx-error-circle" /> Senha incorreta.
-                  </span>
-                )}
-                <button className="btn-blog btn-blog--full" onClick={handleLogin}>
-                  <i className="bx bx-log-in" /> Entrar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="fin-empty" style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <i className="bx bx-loader-alt bx-spin" />
+        <p>Verificando sessão...</p>
+      </div>
     );
+  }
+
+  if (!user) {
+    return <LoginPage title="Finanças" subtitle="Acesso restrito ao controle de entradas e saídas." onSuccess={() => { }} />;
   }
 
   return (
@@ -141,17 +80,13 @@ export default function Financas() {
             <button className="btn-blog btn-blog--ghost" onClick={() => store.refresh()} disabled={store.loading} title="Atualizar">
               <i className="bx bx-refresh" />
             </button>
+            <button className="btn-blog btn-blog--ghost" onClick={() => setShowChangePassword(true)} title="Trocar senha">
+              <i className="bx bx-key" />
+            </button>
             <Link to="/" className="btn-blog btn-blog--ghost">
               <i className="bx bx-arrow-back" /> Início
             </Link>
-            <button
-              className="btn-blog btn-blog--ghost"
-              onClick={() => {
-                setAuthed(false);
-                setPassInput("");
-              }}
-              title="Sair"
-            >
+            <button className="btn-blog btn-blog--ghost" onClick={logout} title="Sair">
               <i className="bx bx-log-out" />
             </button>
           </div>
@@ -174,13 +109,13 @@ export default function Financas() {
 
         <div className="admin-panel financas-panel">
           {tab === "dashboard" && <DashboardView store={store} />}
-          {tab === "receber" && <ReceivablesView store={store} password={passInput} />}
-          {tab === "pagar" && <PayablesView store={store} password={passInput} />}
-          {tab === "agenda" && <AgendaView store={store} password={passInput} />}
+          {tab === "receber" && <ReceivablesView store={store} />}
+          {tab === "pagar" && <PayablesView store={store} />}
+          {tab === "agenda" && <AgendaView store={store} />}
           {tab === "pessoas" && <ContactsView store={store} />}
           {tab === "categorias" && <CategoriesView store={store} />}
-          {tab === "consorcio" && <ConsorcioView password={passInput} />}
-          {tab === "historico" && <HistoryView store={store} password={passInput} />}
+          {tab === "consorcio" && <ConsorcioView authFetch={authFetch} />}
+          {tab === "historico" && <HistoryView store={store} />}
           {tab === "notas" && <NotesView store={store} />}
         </div>
       </div>
@@ -190,53 +125,26 @@ export default function Financas() {
       </button>
 
       {showActionMenu && (
-        <div className="fin-modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowActionMenu(false)}>
-          <div className="fin-modal" style={{ maxWidth: 360 }}>
+        <div className="fin-modal-overlay fin-modal-overlay--sheet" onClick={(e) => e.target === e.currentTarget && setShowActionMenu(false)}>
+          <div className="fin-modal fin-modal--sheet" style={{ maxWidth: 360 }}>
+            <div className="fin-modal__grabber" />
             <div className="fin-modal__head">
               <h3>O que deseja cadastrar?</h3>
               <button onClick={() => setShowActionMenu(false)}>
                 <i className="bx bx-x" />
               </button>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              <button
-                className="btn-blog btn-blog--ghost"
-                style={{ justifyContent: "flex-start" }}
-                onClick={() => {
-                  setShowActionMenu(false);
-                  setQuickAction("income");
-                }}
-              >
+            <div className="fin-action-list">
+              <button className="fin-action-item" onClick={() => { setShowActionMenu(false); setQuickAction("income"); }}>
                 <i className="bx bx-up-arrow-circle" style={{ color: "#22c55e" }} /> Dinheiro a receber
               </button>
-              <button
-                className="btn-blog btn-blog--ghost"
-                style={{ justifyContent: "flex-start" }}
-                onClick={() => {
-                  setShowActionMenu(false);
-                  setQuickAction("expense");
-                }}
-              >
+              <button className="fin-action-item" onClick={() => { setShowActionMenu(false); setQuickAction("expense"); }}>
                 <i className="bx bx-down-arrow-circle" style={{ color: "#ef4444" }} /> Conta a pagar
               </button>
-              <button
-                className="btn-blog btn-blog--ghost"
-                style={{ justifyContent: "flex-start" }}
-                onClick={() => {
-                  setShowActionMenu(false);
-                  setQuickAction("contact");
-                }}
-              >
+              <button className="fin-action-item" onClick={() => { setShowActionMenu(false); setQuickAction("contact"); }}>
                 <i className="bx bx-user" /> Pessoa
               </button>
-              <button
-                className="btn-blog btn-blog--ghost"
-                style={{ justifyContent: "flex-start" }}
-                onClick={() => {
-                  setShowActionMenu(false);
-                  setQuickAction("note");
-                }}
-              >
+              <button className="fin-action-item" onClick={() => { setShowActionMenu(false); setQuickAction("note"); }}>
                 <i className="bx bx-note" /> Nota
               </button>
             </div>
@@ -248,6 +156,7 @@ export default function Financas() {
       {quickAction === "expense" && <TransactionFormModal store={store} mode="EXPENSE" onClose={() => setQuickAction(null)} />}
       {quickAction === "contact" && <ContactFormModal store={store} contact={null} onClose={() => setQuickAction(null)} />}
       {quickAction === "note" && <NoteFormModal store={store} note={null} onClose={() => setQuickAction(null)} />}
+      {showChangePassword && <ChangePasswordModal onClose={() => setShowChangePassword(false)} />}
     </section>
   );
 }

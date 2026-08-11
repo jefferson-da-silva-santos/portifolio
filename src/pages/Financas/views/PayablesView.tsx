@@ -1,11 +1,10 @@
 // pages/Financas/views/PayablesView.tsx
-
 import { useState } from "react";
 import type { FinanceStore } from "../useFinance";
 import { TransactionListView } from "../components/TransactionListView";
 import { TransactionDetailModal } from "../components/TransactionDetailModal";
 
-export function PayablesView({ store, password }: { store: FinanceStore; password: string }) {
+export function PayablesView({ store }: { store: FinanceStore }) {
   const [openId, setOpenId] = useState<string | null>(null);
   return (
     <>
@@ -17,7 +16,7 @@ export function PayablesView({ store, password }: { store: FinanceStore; passwor
         filters={["Todos", "Pendentes", "Atrasados", "Pagos"]}
         onOpenTransaction={setOpenId}
       />
-      {openId && <TransactionDetailModal store={store} password={password} transactionId={openId} onClose={() => setOpenId(null)} />}
+      {openId && <TransactionDetailModal store={store} transactionId={openId} onClose={() => setOpenId(null)} />}
     </>
   );
 }

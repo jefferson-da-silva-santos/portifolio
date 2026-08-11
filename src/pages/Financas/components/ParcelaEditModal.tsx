@@ -1,12 +1,13 @@
 // pages/Financas/components/ParcelaEditModal.tsx
-
-import { useState } from "react";
-import { consorcioApi } from "../consorcioApi";
+import { useMemo, useState } from "react";
+import { createConsorcioApi } from "../consorcioApi";
 import type { ConsorcioParcela } from "../consorcioTypes";
+
+type AuthFetch = (input: string, init?: RequestInit) => Promise<Response>;
 
 type Props = {
   parcela: ConsorcioParcela;
-  password: string;
+  authFetch: AuthFetch;
   totalParcelas: number;
   onClose: () => void;
   onSaved: (p: ConsorcioParcela) => void;
@@ -26,7 +27,9 @@ function toInputDate(iso?: string | null) {
   return iso ? iso.slice(0, 10) : "";
 }
 
-export function ParcelaEditModal({ parcela, password, totalParcelas, onClose, onSaved }: Props) {
+export function ParcelaEditModal({ parcela, authFetch, totalParcelas, onClose, onSaved }: Props) {
+  const api = useMemo(() => createConsorcioApi(authFetch), [authFetch]);
+
   const [valorDevido, setValorDevido] = useState(parcela.valorDevido.toLocaleString("pt-BR", { minimumFractionDigits: 2 }));
   const [dataPagamento, setDataPagamento] = useState(toInputDate(parcela.dataPagamento));
   const [valorPago, setValorPago] = useState(parcela.valorPago ? parcela.valorPago.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) : "");
@@ -37,7 +40,7 @@ export function ParcelaEditModal({ parcela, password, totalParcelas, onClose, on
     setSaving(true);
     setError(null);
     try {
-      const updated = await consorcioApi.updateParcela(password, parcela.id, {
+      const updated = await api.updateParcela(parcela.id, {
         valorDevido: parseCurrency(valorDevido),
         dataPagamento: dataPagamento || null,
         valorPago: valorPago ? parseCurrency(valorPago) : null,
@@ -51,8 +54,9 @@ export function ParcelaEditModal({ parcela, password, totalParcelas, onClose, on
   }
 
   return (
-    <div className="fin-modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="fin-modal" style={{ maxWidth: 420 }}>
+    <div className="fin-modal-overlay fin-modal-overlay--sheet" onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="fin-modal fin-modal--sheet" style={{ maxWidth: 420 }}>
+        <div className="fin-modal__grabber" />
         <div className="fin-modal__head">
           <h3>Parcela {parcela.numero}/{totalParcelas}</h3>
           <button onClick={onClose}>

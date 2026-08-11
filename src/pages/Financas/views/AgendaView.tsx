@@ -1,11 +1,10 @@
 // pages/Financas/views/AgendaView.tsx
-
 import { useMemo, useState } from "react";
 import type { FinanceStore } from "../useFinance";
 import { buildAgenda, formatSigned } from "../selectors";
 import { TransactionDetailModal } from "../components/TransactionDetailModal";
 
-export function AgendaView({ store, password }: { store: FinanceStore; password: string }) {
+export function AgendaView({ store }: { store: FinanceStore }) {
   const { transactions, installments, contacts } = store.state;
   const [openId, setOpenId] = useState<string | null>(null);
 
@@ -50,7 +49,7 @@ export function AgendaView({ store, password }: { store: FinanceStore; password:
         </div>
       ))}
 
-      {openId && <TransactionDetailModal store={store} password={password} transactionId={openId} onClose={() => setOpenId(null)} />}
+      {openId && <TransactionDetailModal store={store} transactionId={openId} onClose={() => setOpenId(null)} />}
     </div>
   );
 }

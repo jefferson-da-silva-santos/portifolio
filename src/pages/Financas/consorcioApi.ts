@@ -1,18 +1,15 @@
 // pages/Financas/consorcioApi.ts
-
 import { BASE_API } from "../Blog";
 import type { ConsorcioState, ConsorcioParcela } from "./consorcioTypes";
 
 const API_BASE = `${BASE_API}/api/finance/consorcio`;
 
-async function request<T>(path: string, password: string, options: RequestInit = {}): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
+type AuthFetch = (input: string, init?: RequestInit) => Promise<Response>;
+
+async function request<T>(authFetch: AuthFetch, path: string, options: RequestInit = {}): Promise<T> {
+  const res = await authFetch(`${API_BASE}${path}`, {
     ...options,
-    headers: {
-      "Content-Type": "application/json",
-      "X-Admin-Password": password,
-      ...(options.headers || {}),
-    },
+    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
   });
 
   if (!res.ok) {
@@ -30,15 +27,16 @@ async function request<T>(path: string, password: string, options: RequestInit =
   return text ? JSON.parse(text) : (undefined as T);
 }
 
-export const consorcioApi = {
-  getState: (password: string) => request<ConsorcioState>("/", password),
+export function createConsorcioApi(authFetch: AuthFetch) {
+  return {
+    getState: () => request<ConsorcioState>(authFetch, "/"),
+    seedHondaBross: () =>
+      request<{ consorcioId: string; message: string }>(authFetch, "/seed-honda-bross", { method: "POST" }),
+    updateParcela: (id: string, patch: Partial<ConsorcioParcela>) =>
+      request<ConsorcioParcela>(authFetch, `/parcelas/${id}`, { method: "PUT", body: JSON.stringify(patch) }),
+    toggleParcela: (id: string) =>
+      request<ConsorcioParcela>(authFetch, `/parcelas/${id}/toggle`, { method: "PATCH" }),
+  };
+}
 
-  seedHondaBross: (password: string) =>
-    request<{ consorcioId: string; message: string }>("/seed-honda-bross", password, { method: "POST" }),
-
-  updateParcela: (password: string, id: string, patch: Partial<ConsorcioParcela>) =>
-    request<ConsorcioParcela>(`/parcelas/${id}`, password, { method: "PUT", body: JSON.stringify(patch) }),
-
-  toggleParcela: (password: string, id: string) =>
-    request<ConsorcioParcela>(`/parcelas/${id}/toggle`, password, { method: "PATCH" }),
-};
+export type ConsorcioApi = ReturnType<typeof createConsorcioApi>;
