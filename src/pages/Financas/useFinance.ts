@@ -4,7 +4,7 @@
 
 import { useCallback, useState } from "react";
 import { financeApi, FinanceApiError } from "./api";
-import { Contact, FinanceState, Note, Transaction } from "./types";
+import type { Contact, FinanceState, Note } from "./types";
 
 const EMPTY_STATE: FinanceState = {
   contacts: [],
