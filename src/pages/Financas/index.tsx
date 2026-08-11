@@ -34,7 +34,7 @@ const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "agenda", label: "Agenda", icon: "bx-calendar" },
   { key: "pessoas", label: "Pessoas", icon: "bx-group" },
   { key: "categorias", label: "Categorias", icon: "bx-purchase-tag-alt" },
-  { key: "consorcio", label: "Consórcio", icon: "bx-motorcycle" },
+  { key: "consorcio", label: "Consórcio", icon: "bx-cycling" },
   { key: "historico", label: "Histórico", icon: "bx-history" },
   { key: "notas", label: "Notas", icon: "bx-note" },
 ];
