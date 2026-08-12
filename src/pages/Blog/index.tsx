@@ -4,9 +4,11 @@
 // Markdown: react-markdown + remark-gfm + rehype-highlight
 
 import { useState, useEffect, useRef } from "react";
+import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { TAG_REGISTRY } from "../../consts/dataConsts";
 import ReactMarkdown from "react-markdown";
+import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 
@@ -78,15 +80,15 @@ function filterByCategory(posts: Post[], cat: string): Post[] {
   if (cat === "Todos") return posts;
   const techMap: Record<string, string[]> = {
     Frontend: [
-      "React","Vue","Angular","Svelte","Next.js","Nuxt.js","Astro","Tailwind",
-      "Vite","JavaScript","TypeScript","Sass","Material UI","Bootstrap",
+      "React", "Vue", "Angular", "Svelte", "Next.js", "Nuxt.js", "Astro", "Tailwind",
+      "Vite", "JavaScript", "TypeScript", "Sass", "Material UI", "Bootstrap",
     ],
     Backend: [
-      "Node.js","Express","NestJS","Fastify","Django","Flask","FastAPI",
-      "Laravel","Spring Boot","PostgreSQL","MySQL","MongoDB","Redis","SQLite",
+      "Node.js", "Express", "NestJS", "Fastify", "Django", "Flask", "FastAPI",
+      "Laravel", "Spring Boot", "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite",
     ],
-    DevOps: ["Docker","Kubernetes","AWS","GCP","Azure","Terraform","GitHub Actions","Git","Linux"],
-    "IA / ML": ["TensorFlow","PyTorch","Hugging Face","LangChain"],
+    DevOps: ["Docker", "Kubernetes", "AWS", "GCP", "Azure", "Terraform", "GitHub Actions", "Git", "Linux"],
+    "IA / ML": ["TensorFlow", "PyTorch", "Hugging Face", "LangChain"],
   };
   return posts.filter(
     (p) =>
@@ -99,11 +101,13 @@ function filterByCategory(posts: Post[], cat: string): Post[] {
 
 function TagBadge({ name, small = false }: { name: string; small?: boolean }) {
   const tag = getTag(name);
+  const tagStyle: CSSProperties & { "--tag-color"?: string; "--tag-bg"?: string } = {
+    "--tag-color": tag.color,
+    "--tag-bg": tag.bg,
+  };
+
   return (
-    <span
-      className={`blog-tag${small ? " blog-tag--small" : ""}`}
-      style={{ "--tag-color": tag.color, "--tag-bg": tag.bg } as React.CSSProperties}
-    >
+    <span className={`blog-tag${small ? " blog-tag--small" : ""}`} style={tagStyle}>
       <i className={`bx ${tag.icon}`} />
       {name}
     </span>
@@ -172,8 +176,6 @@ function PostCard({ post, onClick }: { post: Post; onClick: () => void }) {
   );
 }
 
-// Blog.tsx — adicionar após os outros componentes (PostCard, MarkdownContent...), antes de PostModal
-
 // ─── SKELETON LOADING ─────────────────────────────────────────────────────────
 
 function PostCardSkeleton({ featured = false }: { featured?: boolean }) {
@@ -232,44 +234,40 @@ function PostModalSkeleton() {
 
 // ─── MARKDOWN RENDERER ───────────────────────────────────────────────────────
 // Componente isolado para renderização de Markdown com GFM + syntax highlight
+const markdownComponents: Components = {
+  // Abre links externos em nova aba com segurança
+  a: (props) => {
+    const isExternal = typeof props.href === "string" && props.href.startsWith("http");
+    return (
+      <a
+        href={props.href}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
+        {props.children}
+      </a >
+    );
+  },
+  // Imagens responsivas
+  img: (props) => {
+    return (
+      <img
+        src={props.src}
+        alt={props.alt}
+        loading="lazy"
+        style={{ maxWidth: "100%", borderRadius: "8px" }}
+      />
+    );
+  },
+};
+
 
 function MarkdownContent({ content }: { content: string }) {
   if (!content?.trim()) return null;
 
   return (
     <div className="blog-markdown">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
-        components={{
-          // Abre links externos em nova aba com segurança
-          a({ href, children, ...props }) {
-            const isExternal = href?.startsWith("http");
-            return (
-              <a
-                href={href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                {...props}
-              >
-                {children}
-              </a>
-            );
-          },
-          // Imagens responsivas
-          img({ src, alt, ...props }) {
-            return (
-              <img
-                src={src}
-                alt={alt}
-                loading="lazy"
-                style={{ maxWidth: "100%", borderRadius: "8px" }}
-                {...props}
-              />
-            );
-          },
-        }}
-      >
+      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]} components={markdownComponents}>
         {content}
       </ReactMarkdown>
     </div>
@@ -282,7 +280,7 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
   const [author, setAuthor] = useState("");
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [sending, setSending] = useState(false);
   // Estado para controlar carregamento do conteúdo completo via API
   const [fullPost, setFullPost] = useState<Post>(post);
   const [loadingContent, setLoadingContent] = useState(false);
@@ -296,20 +294,40 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
       return;
     }
 
+    let cancelled = false;
     setLoadingContent(true);
+
     fetch(`${BASE_API}/api/posts/${post.id}`)
       .then((r) => r.json())
-      .then((d) => setFullPost(d))
-      .catch(() => setFullPost(post))
-      .finally(() => setLoadingContent(false));
-  }, [post.id]);
+      .then((d: Post) => {
+        if (!cancelled) setFullPost(d);
+      })
+      .catch(() => {
+        if (!cancelled) setFullPost(post);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingContent(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [post]);
 
   // Busca comentários
   useEffect(() => {
+    let cancelled = false;
+
     fetch(`${BASE_API}/api/posts/${post.id}/comments`)
       .then((r) => r.json())
-      .then((d) => setComments(d.data ?? []))
-      .catch(() => {});
+      .then((d: { data?: Comment[] }) => {
+        if (!cancelled) setComments(d.data ?? []);
+      })
+      .catch(() => { });
+
+    return () => {
+      cancelled = true;
+    };
   }, [post.id]);
 
   // Bloqueia scroll do body enquanto modal está aberto
@@ -322,14 +340,14 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
 
   async function submitComment() {
     if (!author.trim() || !commentText.trim()) return;
-    setLoading(true);
+    setSending(true);
     try {
       const res = await fetch(`${BASE_API}/api/posts/${post.id}/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ author: author.trim(), text: commentText.trim() }),
       });
-      const c = await res.json();
+      const c: Comment = await res.json();
       setComments((prev) => [c, ...prev]);
       setCommentText("");
     } catch {
@@ -344,20 +362,22 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
       ]);
       setCommentText("");
     } finally {
-      setLoading(false);
+      setSending(false);
     }
   }
 
   const heroImage = fullPost.imageBase64 || fullPost.imageUrl;
 
-  // Blog.tsx — dentro de PostModal, trecho do return
-
   return (
-    <div className="blog-modal-overlay" ref={overlayRef} onClick={(e) => e.target === overlayRef.current && onClose()}>
+    <div
+      className="blog-modal-overlay"
+      ref={overlayRef}
+      onClick={(e) => e.target === overlayRef.current && onClose()}
+    >
       {loadingContent ? (
         <PostModalSkeleton />
       ) : (
-        <>
+        <div className="blog-modal" role="dialog" aria-modal="true">
           <button className="blog-modal__close" onClick={onClose} aria-label="Fechar">
             <i className="bx bx-x" />
           </button>
@@ -396,26 +416,33 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
               </div>
             )}
 
+            {/* ── Corpo do post com Markdown ── */}
             <div className="blog-modal__body">
               {fullPost.content?.trim() ? (
                 <MarkdownContent content={fullPost.content} />
               ) : (
+                /* Fallback caso não haja conteúdo */
                 <p className="blog-modal__excerpt-fallback">{fullPost.excerpt}</p>
               )}
             </div>
 
+            {/* ── Comentários ── */}
             <div className="blog-comments">
               <h4 className="blog-comments__title">
                 <i className="bx bx-comment-dots" /> Comentários ({comments.length})
               </h4>
-              {comments.length === 0 && <p className="blog-comments__empty">Nenhum comentário ainda. Seja o primeiro!</p>}
+              {comments.length === 0 && (
+                <p className="blog-comments__empty">Nenhum comentário ainda. Seja o primeiro!</p>
+              )}
               <div className="blog-comments__list">
                 {comments.map((c) => (
                   <div key={c.id} className="blog-comment">
                     <div className="blog-comment__avatar">{c.author[0]?.toUpperCase()}</div>
                     <div className="blog-comment__body">
                       <span className="blog-comment__author">{c.author}</span>
-                      <span className="blog-comment__date">{formatDate(c.createdAt.slice(0, 10))}</span>
+                      <span className="blog-comment__date">
+                        {formatDate(c.createdAt.slice(0, 10))}
+                      </span>
                       <p className="blog-comment__text">{c.text}</p>
                     </div>
                   </div>
@@ -436,14 +463,18 @@ function PostModal({ post, onClose }: { post: Post; onClose: () => void }) {
                   className="textarea-blog"
                   rows={3}
                 />
-                <button className="btn-blog btn-blog--sm" onClick={submitComment} disabled={loading || !author.trim() || !commentText.trim()}>
-                  <i className={`bx ${loading ? "bx-loader-alt" : "bx-send"}`} />
-                  {loading ? "Enviando..." : "Comentar"}
+                <button
+                  className="btn-blog btn-blog--sm"
+                  onClick={submitComment}
+                  disabled={sending || !author.trim() || !commentText.trim()}
+                >
+                  <i className={`bx ${sending ? "bx-loader-alt" : "bx-send"}`} />
+                  {sending ? "Enviando..." : "Comentar"}
                 </button>
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
@@ -460,12 +491,22 @@ export default function Blog() {
   const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+
     fetch(`${BASE_API}/api/posts`)
       .then((r) => r.json())
-      .then((d) => setPosts(d.data ?? []))
+      .then((d: { data?: Post[] }) => {
+        if (!cancelled) setPosts(d.data ?? []);
+      })
       .catch(() => { })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const filtered = filterByCategory(
@@ -488,6 +529,7 @@ export default function Blog() {
       <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
 
       <div className="blog">
+        {/* Botões de navegação */}
         <nav className="blog-nav" aria-label="Navegação do blog">
           <Link to="/" className="blog-nav__btn">
             <i className="bx bx-arrow-back" />
@@ -503,6 +545,7 @@ export default function Blog() {
           </Link>
         </nav>
 
+        {/* Título */}
         <div className="groupBlog-primary">
           <div className="dividir-titulo-linha">
             <div className="linhas-blog" />
@@ -515,6 +558,7 @@ export default function Blog() {
           Artigos técnicos, causos do dia a dia e o que mais me der vontade de escrever.
         </p>
 
+        {/* Controles */}
         <div className="blog-controls">
           <div className="blog-search">
             <i className="bx bx-search" />
@@ -535,7 +579,8 @@ export default function Blog() {
             {ALL_CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                className={`blog-categories__btn${activeCategory === cat ? " blog-categories__btn--active" : ""}`}
+                className={`blog-categories__btn${activeCategory === cat ? " blog-categories__btn--active" : ""
+                  }`}
                 onClick={() => setActiveCategory(cat)}
                 disabled={loading}
               >
@@ -549,6 +594,7 @@ export default function Blog() {
           <BlogGridSkeleton />
         ) : (
           <>
+            {/* Destaques */}
             {featured.length > 0 && (
               <div className="blog-featured-grid">
                 {featured.map((p) => (
@@ -563,6 +609,7 @@ export default function Blog() {
               </div>
             )}
 
+            {/* Grid regular */}
             {filtered.length === 0 ? (
               <div className="blog-empty">
                 <i className="bx bx-search-alt" />
@@ -589,7 +636,10 @@ export default function Blog() {
 
             {visibleCount < regular.length && (
               <div className="blog-load-more">
-                <button className="btn-blog btn-blog--ghost" onClick={() => setVisibleCount((v) => v + 3)}>
+                <button
+                  className="btn-blog btn-blog--ghost"
+                  onClick={() => setVisibleCount((v) => v + 3)}
+                >
                   <i className="bx bx-chevron-down" /> Carregar mais
                 </button>
               </div>
@@ -598,7 +648,9 @@ export default function Blog() {
         )}
       </div>
 
-      {selectedPost && <PostModal post={selectedPost} onClose={() => setSelectedPost(null)} />}
+      {selectedPost && (
+        <PostModal post={selectedPost} onClose={() => setSelectedPost(null)} />
+      )}
     </section>
   );
 }
