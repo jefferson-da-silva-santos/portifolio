@@ -2185,3 +2185,108 @@ $blog-transition: all 0.5s ease;
     border: none !important;
   }
 }
+
+// _blog.scss — adicionar ao final do arquivo
+
+// ============================================================
+//  SKELETON LOADING
+// ============================================================
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -450px 0; }
+  100% { background-position: 450px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    $blog-surface2 0%,
+    rgba(0, 255, 255, 0.06) 20%,
+    $blog-surface2 40%
+  );
+  background-size: 900px 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+  border-radius: 4px;
+
+  &--thumb {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+  }
+
+  &--title {
+    height: 1.1rem;
+    width: 85%;
+    margin: 0.2rem 0;
+    border-radius: 4px;
+  }
+
+  &--line {
+    height: 0.8rem;
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  &--pill {
+    height: 0.75rem;
+    width: 4.5rem;
+    border-radius: 50px;
+  }
+
+  &--tag {
+    height: 1.2rem;
+    width: 3.5rem;
+    border-radius: 4px;
+  }
+
+  &--hero {
+    aspect-ratio: 16 / 7;
+    border-radius: $blog-radius-lg $blog-radius-lg 0 0;
+  }
+
+  &--modal-title {
+    height: 1.8rem;
+    width: 75%;
+    margin: 0 0 1.25rem;
+    border-radius: 6px;
+  }
+
+  &--paragraph {
+    height: 0.95rem;
+    width: 100%;
+    margin-bottom: 0.85rem;
+    border-radius: 3px;
+  }
+}
+
+.skeleton-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+// Card no modo skeleton: desativa hover e cursor
+.blog-card--skeleton {
+  cursor: default;
+  pointer-events: none;
+
+  &:hover {
+    transform: none;
+    border-color: $blog-border;
+    box-shadow: none;
+  }
+}
+
+// Modal skeleton: mesmo container visual do blog-modal, sem precisar do overlay padrão duplicado
+.blog-modal:has(.skeleton--hero) {
+  animation: blog-modal-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+// _blog.scss — adicionar logo após o bloco de skeleton acima
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: $blog-surface2;
+  }
+}
