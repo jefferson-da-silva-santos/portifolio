@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "baseline-browser-mapping": "^2.11.13",
     "boxicons": "^2.1.4",
+    "caniuse-lite": "^1.0.30001809",
     "concurrently": "^9.2.1",
     "emailjs-com": "^3.2.0",
     "formik": "^2.4.6",
