@@ -10,6 +10,7 @@ import Sobre from "./pages/Sobre";
 import Blog from "./pages/Blog";
 import BlogAdmin from "./pages/BlogAdmin";
 import Financas from "./pages/Financas";
+import CobrancaPage from "./pages/Cobranca";
 import ModalProject from "./components/ModalProject";
 import { useEffect, useState } from "react";
 import { MenuProvider } from "./provider/MenuProvider";
@@ -72,6 +73,7 @@ function App() {
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/admin" element={<BlogAdmin />} />
                   <Route path="/financas" element={<Financas />} />
+                  <Route path="/cobranca" element={<CobrancaPage />} />
                 </Routes>
               </BrowserRouter>
 

@@ -143,7 +143,8 @@ const CobrancaPage = () => {
               description={`Mensalidade - ${monthLabel(invoice.referenceMonth)}`}
               externalReference={token}
               methods={["PIX", "CREDIT_CARD"]}
-              theme="light"
+              theme="dark"
+              accentColor="#00ffff"
               onPaymentApproved={handleApproved}
               onError={(err) => console.error("Erro no pagamento:", err)}
             />

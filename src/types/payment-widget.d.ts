@@ -3,7 +3,7 @@
 // O pacote @payment-system-mp/react-widget é JS puro (não publica
 // .d.ts) - essa declaração dá tipagem pra ele dentro de um projeto
 // TypeScript, seguindo exatamente as props documentadas no README
-// da lib. Sem isso, o `import` daria erro de tipo no build.
+// da lib. Sem isso, o aaz`import` daria erro de tipo no build.
 // ==========================================================
 declare module "@payment-system-mp/react-widget" {
   import type { ComponentType } from "react";

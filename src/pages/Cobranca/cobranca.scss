@@ -1,50 +1,122 @@
-// ARQUIVO: src/pages/Cobranca/cobranca.scss
+// ============================================================
+//  cobranca.scss — Página de Cobrança
+//  Segue o mesmo padrão visual do blog (_blog.scss):
+//  Accent: #00ffff | Accent2: #0091ff | Bg: #0f0f0f
+//  Fontes: var(--font-primary) (Saira)
+// ============================================================
+
+$cb-accent: #00ffff;
+$cb-accent2: #0091ff;
+$cb-bg: #0f0f0f;
+$cb-surface: #141414;
+$cb-surface2: #1d1d1d;
+$cb-border: #2e2e2e;
+$cb-text: #ffffff;
+$cb-muted: #9ca3af;
+$cb-radius: 5px;
+$cb-radius-lg: 10px;
+$cb-transition: all 0.5s ease;
+$cb-danger: #ef4444;
+$cb-success: #22c55e;
+
+@keyframes cobranca-surge {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cobranca-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cobranca-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(0, 255, 255, 0.4);
+  }
+}
 
 .cobranca-page {
+  background-color: $cb-bg;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 16px;
-  background: #f4f4f7;
+  padding: 2rem 1rem;
+  transition: $cb-transition;
 
   &__card {
     width: 100%;
-    max-width: 460px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
-    padding: 32px;
+    max-width: 440px;
+    background-color: $cb-surface;
+    border: 1px solid $cb-border;
+    border-radius: $cb-radius-lg;
+    padding: 2.25rem;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    animation: cobranca-surge 0.4s ease;
+
+    // Mesma linha de destaque no topo que o blog-modal/admin-login-card usam
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $cb-accent, $cb-accent2, transparent);
+    }
   }
 
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-bottom: 4px;
+    gap: 0.35rem;
 
     h1 {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: $cb-text;
       margin: 0;
+      font-family: var(--font-primary);
     }
 
     p {
-      font-size: 14px;
-      color: #666;
+      font-size: 0.88rem;
+      color: $cb-muted;
       margin: 0;
+      font-weight: 200;
     }
   }
 
   &__eyebrow {
-    font-size: 11px;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: var(--font-primary);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #6d5ef8;
+    letter-spacing: 0.07em;
+    color: $cb-accent;
+    background-color: rgba(0, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 0.25rem 0.75rem;
+    width: fit-content;
   }
 
   &__message {
@@ -52,44 +124,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 24px 8px;
+    gap: 0.75rem;
+    padding: 1.5rem 0.5rem;
 
     i {
-      font-size: 40px;
-      color: #999;
+      font-size: 2.5rem;
+      color: $cb-muted;
+      opacity: 0.6;
     }
 
     h1 {
-      font-size: 19px;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $cb-text;
       margin: 0;
+      font-family: var(--font-primary);
     }
 
     p {
-      font-size: 14px;
-      color: #666;
+      font-size: 0.88rem;
+      color: $cb-muted;
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.6;
+      font-weight: 200;
     }
 
     &--success i {
-      color: #16a34a;
+      color: $cb-success;
+      opacity: 1;
+      animation: cobranca-glow-pulse 2.5s ease-in-out infinite;
     }
   }
 
   &__spinner {
     width: 32px;
     height: 32px;
-    border: 3px solid #e5e5ec;
-    border-top-color: #6d5ef8;
+    border: 3px solid $cb-border;
+    border-top-color: $cb-accent;
     border-radius: 50%;
     animation: cobranca-spin 0.7s linear infinite;
   }
 }
 
-@keyframes cobranca-spin {
-  to {
-    transform: rotate(360deg);
+@media (max-width: 480px) {
+  .cobranca-page__card {
+    padding: 1.5rem;
   }
 }
