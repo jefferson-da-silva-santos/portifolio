@@ -1,0 +1,95 @@
+// ARQUIVO: src/pages/Cobranca/cobranca.scss
+
+.cobranca-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: #f4f4f7;
+
+  &__card {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 4px;
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  &__eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6d5ef8;
+  }
+
+  &__message {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 8px;
+
+    i {
+      font-size: 40px;
+      color: #999;
+    }
+
+    h1 {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    &--success i {
+      color: #16a34a;
+    }
+  }
+
+  &__spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e5e5ec;
+    border-top-color: #6d5ef8;
+    border-radius: 50%;
+    animation: cobranca-spin 0.7s linear infinite;
+  }
+}
+
+@keyframes cobranca-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
