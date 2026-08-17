@@ -539,6 +539,10 @@ export default function Blog() {
             <i className="bx bx-shield-quarter" />
             <span>Admin</span>
           </Link>
+          <Link to="/admin-cobrancas" className="blog-nav__btn blog-nav__btn--admin">
+            <i className="bx bx-shield-quarter" />
+            <span>Cobrança</span>
+          </Link>
           <Link to="/financas" className="blog-nav__btn blog-nav__btn--admin">
             <i className="bx bx-wallet" />
             <span>Finanças</span>

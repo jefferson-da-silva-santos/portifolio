@@ -11,6 +11,7 @@ import Blog from "./pages/Blog";
 import BlogAdmin from "./pages/BlogAdmin";
 import Financas from "./pages/Financas";
 import CobrancaPage from "./pages/Cobranca";
+import CobrancaAdminPage from "./pages/CobrancaAdmin";
 import ModalProject from "./components/ModalProject";
 import { useEffect, useState } from "react";
 import { MenuProvider } from "./provider/MenuProvider";
@@ -74,6 +75,7 @@ function App() {
                   <Route path="/admin" element={<BlogAdmin />} />
                   <Route path="/financas" element={<Financas />} />
                   <Route path="/cobranca" element={<CobrancaPage />} />
+                  <Route path="/admin-cobrancas" element={<CobrancaAdminPage />} />
                 </Routes>
               </BrowserRouter>
 
