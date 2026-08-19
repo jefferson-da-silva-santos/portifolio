@@ -7,7 +7,7 @@
 // ==========================================================
 import type { InvoiceData } from "./types";
 
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
+const API_URL = "https://blog-server-8my7.onrender.com";
 
 // Base do módulo de cobranças - é ISSO que vai direto na prop
 // apiBaseUrl do <PaymentWidget> (ele mesmo monta /config, /payments,
