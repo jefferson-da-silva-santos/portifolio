@@ -18,3 +18,9 @@
     @content;
   }
 }
+
+@mixin mediaMax($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}

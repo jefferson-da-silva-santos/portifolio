@@ -1,0 +1,137 @@
+{
+  "pt": {
+    "filtersAriaLabel": "Filtros de categoria dos projetos",
+    "emptyState": "Nenhum projeto encontrado com essa combinação de filtros.",
+    "groups": {
+      "curadoria": "Curadoria",
+      "trajetoria": "Trajetória",
+      "plataforma": "Plataforma"
+    },
+    "categories": {
+      "todos": "Todos",
+      "destaques": "Destaques",
+      "primeirosPassos": "Primeiros Passos",
+      "desafiosTecnicos": "Desafios Técnicos",
+      "experienciaProfissional": "Experiência Profissional",
+      "freelancer": "Freelancer",
+      "projetosIndependentes": "Projetos Independentes",
+      "projetosProposito": "Projetos de Propósito",
+      "projetosExperimentais": "Projetos Experimentais",
+      "emDesenvolvimento": "Em Desenvolvimento",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "fullstack": "Full Stack",
+      "landingPages": "Landing Pages"
+    }
+  },
+  "en": {
+    "filtersAriaLabel": "Project category filters",
+    "emptyState": "No projects found for this filter combination.",
+    "groups": {
+      "curadoria": "Curation",
+      "trajetoria": "Timeline",
+      "plataforma": "Platform"
+    },
+    "categories": {
+      "todos": "All",
+      "destaques": "Highlights",
+      "primeirosPassos": "First Steps",
+      "desafiosTecnicos": "Technical Challenges",
+      "experienciaProfissional": "Professional Experience",
+      "freelancer": "Freelance",
+      "projetosIndependentes": "Independent Projects",
+      "projetosProposito": "Purpose Projects",
+      "projetosExperimentais": "Experimental Projects",
+      "emDesenvolvimento": "In Development",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "fullstack": "Full Stack",
+      "landingPages": "Landing Pages"
+    }
+  },
+  "es": {
+    "filtersAriaLabel": "Filtros de categoría de proyectos",
+    "emptyState": "No se encontraron proyectos con esta combinación de filtros.",
+    "groups": {
+      "curadoria": "Curaduría",
+      "trajetoria": "Trayectoria",
+      "plataforma": "Plataforma"
+    },
+    "categories": {
+      "todos": "Todos",
+      "destaques": "Destacados",
+      "primeirosPassos": "Primeros Pasos",
+      "desafiosTecnicos": "Desafíos Técnicos",
+      "experienciaProfissional": "Experiencia Profesional",
+      "freelancer": "Freelance",
+      "projetosIndependentes": "Proyectos Independientes",
+      "projetosProposito": "Proyectos con Propósito",
+      "projetosExperimentais": "Proyectos Experimentales",
+      "emDesenvolvimento": "En Desarrollo",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Móvil",
+      "desktop": "Escritorio",
+      "fullstack": "Full Stack",
+      "landingPages": "Landing Pages"
+    }
+  },
+  "it": {
+    "filtersAriaLabel": "Filtri per categoria dei progetti",
+    "emptyState": "Nessun progetto trovato con questa combinazione di filtri.",
+    "groups": {
+      "curadoria": "Curatela",
+      "trajetoria": "Percorso",
+      "plataforma": "Piattaforma"
+    },
+    "categories": {
+      "todos": "Tutti",
+      "destaques": "In Evidenza",
+      "primeirosPassos": "Primi Passi",
+      "desafiosTecnicos": "Sfide Tecniche",
+      "experienciaProfissional": "Esperienza Professionale",
+      "freelancer": "Freelance",
+      "projetosIndependentes": "Progetti Indipendenti",
+      "projetosProposito": "Progetti con uno Scopo",
+      "projetosExperimentais": "Progetti Sperimentali",
+      "emDesenvolvimento": "In Sviluppo",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "fullstack": "Full Stack",
+      "landingPages": "Landing Page"
+    }
+  },
+  "fr": {
+    "filtersAriaLabel": "Filtres de catégorie des projets",
+    "emptyState": "Aucun projet trouvé pour cette combinaison de filtres.",
+    "groups": {
+      "curadoria": "Sélection",
+      "trajetoria": "Parcours",
+      "plataforma": "Plateforme"
+    },
+    "categories": {
+      "todos": "Tous",
+      "destaques": "À la Une",
+      "primeirosPassos": "Premiers Pas",
+      "desafiosTecnicos": "Défis Techniques",
+      "experienciaProfissional": "Expérience Professionnelle",
+      "freelancer": "Freelance",
+      "projetosIndependentes": "Projets Indépendants",
+      "projetosProposito": "Projets à But",
+      "projetosExperimentais": "Projets Expérimentaux",
+      "emDesenvolvimento": "En Développement",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "desktop": "Bureau",
+      "fullstack": "Full Stack",
+      "landingPages": "Landing Pages"
+    }
+  }
+}

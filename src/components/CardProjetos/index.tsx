@@ -26,6 +26,7 @@ const ProjectCard: React.FC<IProject> = ({
   gitHubUrl,
   deployUrl,
   isApi,
+  categories,
 }) => {
   const { theme } = useTheme();
   const { openModal } = useModalProject();
@@ -33,7 +34,7 @@ const ProjectCard: React.FC<IProject> = ({
   const [isImgHover, setIsImgHover] = useState(false);
   const { t } = useTranslation();
 
-  const projectData = {
+  const projectData: IProject = {
     id,
     imgUrl,
     title,
@@ -47,7 +48,7 @@ const ProjectCard: React.FC<IProject> = ({
     gitHubUrl,
     deployUrl,
     isApi,
-    project: {},
+    categories,
   };
 
   return (

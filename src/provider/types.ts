@@ -1,3 +1,5 @@
+import type { CategoryKey } from "../consts/categoryTaxonomy";
+
 export interface IProject {
   id: number;
   imgUrl: string;
@@ -12,8 +14,11 @@ export interface IProject {
   gitHubUrl: string;
   deployUrl: string;
   isApi: boolean;
+  // NOVO: substitui o antigo `category: string` único.
+  // Um projeto agora pode pertencer a várias categorias ao mesmo tempo
+  // (ex: um desafio técnico que também é destaque e é frontend).
+  categories: CategoryKey[];
 }
-
 
 export interface ModalProjectProviderProps {
   children: React.ReactNode;
