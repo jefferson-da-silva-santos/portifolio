@@ -28,6 +28,7 @@ import html from "../assets/image/skill_html.webp";
 import nodecache from "../assets/image/nodecache.png";
 import aos from "../assets/image/aos.png";
 import emailjs from "../assets/image/emailjs.png";
+import notyf from "../assets/image/notyf.svg";
 // =======================
 // IMPORTS DE ICONES
 // =======================
@@ -50,6 +51,12 @@ import api from "../assets/image/service_api.webp";
 // =======================
 // IMPORTS DE PROJETOS
 // =======================
+import jogoVelha from "../assets/image/jogo-da-velha.webp";
+import calculadoraWeb from '../assets/image/calculadora-web.webp';
+import calculadoraIMC from '../assets/image/calculadora-imc.webp';
+import loginSpotify from '../assets/image/login-spotify.webp';
+import favFlix from '../assets/image/favflix.webp';
+import codePass from '../assets/image/codePass.webp';
 import cardapio from "../assets/image/cardapio.webp";
 import jessicaPlanilhas from "../assets/image/projeto-jessica-planilhas.webp";
 import sushi from "../assets/image/sushi.webp";
@@ -131,6 +138,7 @@ export const ImageUrls = {
     nodecache,
     aos,
     emailjs,
+    notyf
   },
   icons: {
     brazil,
@@ -167,6 +175,12 @@ export const ImageUrls = {
     lpMentoria,
     lpDentista,
     portifolio,
+    jogoVelha,
+    calculadoraWeb,
+    calculadoraIMC,
+    loginSpotify,
+    favFlix,
+    codePass
   },
 };
 
@@ -507,7 +521,7 @@ export const technologiesData = {
     className: "sqlite-item-list",
   },
   notyf: {
-    imageSrc: "/tech-logos/notyf.svg",
+    imageSrc: ImageUrls.logos.notyf,
     text: "Notyf",
     className: "notyf-item-list",
   },
@@ -524,11 +538,6 @@ export const technologiesData = {
 };
 const PLACEHOLDER_IMG = "/project-placeholder.webp";
 
-// Substitua TODO o corpo de `export const useProjectsData = () => { ... }`
-// por este. Requer no topo do arquivo:
-//   import type { CategoryKey } from "./categoryTaxonomy";
-// e a constante (declare uma vez, fora da função):
-//   const PLACEHOLDER_IMG = "/project-placeholder.webp";
 
 export const useProjectsData = () => {
   const { t } = useTranslation();
@@ -536,6 +545,7 @@ export const useProjectsData = () => {
   return [
     {
       id: 1,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.jtecPlatform,
       title: t("project.list.0.title"),
       description: t("project.list.0.description"),
@@ -552,6 +562,7 @@ export const useProjectsData = () => {
     },
     {
       id: 2,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.jtecApi,
       title: t("project.list.1.title"),
       description: t("project.list.1.description"),
@@ -568,6 +579,7 @@ export const useProjectsData = () => {
     },
     {
       id: 3,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.leoDeLita,
       title: t("project.list.2.title"),
       description: t("project.list.2.description"),
@@ -578,12 +590,13 @@ export const useProjectsData = () => {
       imageClass: "leoDeLita",
       buttonClass: "leoDeLita",
       gitHubUrl: "",
-      deployUrl: "https://bolachasleodelita.com.br",
+      deployUrl: "https://produtosleodelita.com.br",
       isApi: false,
       categories: ["destaques", "freelancer", "frontend"] as CategoryKey[],
     },
     {
       id: 4,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.oticasLeal,
       title: t("project.list.3.title"),
       description: t("project.list.3.description"),
@@ -600,6 +613,7 @@ export const useProjectsData = () => {
     },
     {
       id: 5,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.jessicaPlanilhas,
       title: t("project.list.4.title"),
       description: t("project.list.4.description"),
@@ -616,6 +630,7 @@ export const useProjectsData = () => {
     },
     {
       id: 6,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.idePlatform,
       title: t("project.list.5.title"),
       description: t("project.list.5.description"),
@@ -632,6 +647,7 @@ export const useProjectsData = () => {
     },
     {
       id: 7,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.ideApi,
       title: t("project.list.6.title"),
       description: t("project.list.6.description"),
@@ -648,6 +664,7 @@ export const useProjectsData = () => {
     },
     {
       id: 8,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.lpPiano,
       title: t("project.list.7.title"),
       description: t("project.list.7.description"),
@@ -664,6 +681,7 @@ export const useProjectsData = () => {
     },
     {
       id: 9,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.lpReact,
       title: t("project.list.8.title"),
       description: t("project.list.8.description"),
@@ -680,6 +698,7 @@ export const useProjectsData = () => {
     },
     {
       id: 10,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.lpEbook,
       title: t("project.list.9.title"),
       description: t("project.list.9.description"),
@@ -696,6 +715,7 @@ export const useProjectsData = () => {
     },
     {
       id: 11,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.lpMentoria,
       title: t("project.list.10.title"),
       description: t("project.list.10.description"),
@@ -712,6 +732,7 @@ export const useProjectsData = () => {
     },
     {
       id: 12,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.lpDentista,
       title: t("project.list.11.title"),
       description: t("project.list.11.description"),
@@ -728,6 +749,7 @@ export const useProjectsData = () => {
     },
     {
       id: 13,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.sushi,
       title: t("project.list.12.title"),
       description: t("project.list.12.description"),
@@ -744,6 +766,7 @@ export const useProjectsData = () => {
     },
     {
       id: 14,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: ImageUrls.projects.portifolio,
       title: t("project.list.13.title"),
       description: t("project.list.13.description"),
@@ -753,14 +776,15 @@ export const useProjectsData = () => {
       infra: ["netlify", "vite"],
       imageClass: "portifolio",
       buttonClass: "portifolio",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/portifolio",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/jogo-da-velha-java",
       deployUrl: "here",
       isApi: false,
       categories: ["projetos-independentes", "frontend", "fullstack"] as CategoryKey[],
     },
     {
       id: 15,
-      imgUrl: PLACEHOLDER_IMG,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
+      imgUrl: ImageUrls.projects.jogoVelha,
       title: t("project.list.14.title"),
       description: t("project.list.14.description"),
       stack: t("project.list.14.stack"),
@@ -776,7 +800,8 @@ export const useProjectsData = () => {
     },
     {
       id: 16,
-      imgUrl: PLACEHOLDER_IMG,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
+      imgUrl: ImageUrls.projects.calculadoraWeb,
       title: t("project.list.15.title"),
       description: t("project.list.15.description"),
       stack: t("project.list.15.stack"),
@@ -785,14 +810,15 @@ export const useProjectsData = () => {
       infra: [],
       imageClass: "calculadoraWeb",
       buttonClass: "calculadoraWeb",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/calculadora",
       deployUrl: "",
       isApi: false,
       categories: ["primeiros-passos", "frontend"] as CategoryKey[],
     },
     {
       id: 17,
-      imgUrl: PLACEHOLDER_IMG,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
+      imgUrl: ImageUrls.projects.calculadoraIMC,
       title: t("project.list.16.title"),
       description: t("project.list.16.description"),
       stack: t("project.list.16.stack"),
@@ -801,14 +827,15 @@ export const useProjectsData = () => {
       infra: [],
       imageClass: "calculadoraImc",
       buttonClass: "calculadoraImc",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/calculadora-de-imc",
       deployUrl: "",
       isApi: false,
       categories: ["primeiros-passos", "frontend"] as CategoryKey[],
     },
     {
       id: 18,
-      imgUrl: PLACEHOLDER_IMG,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
+      imgUrl: ImageUrls.projects.loginSpotify,
       title: t("project.list.17.title"),
       description: t("project.list.17.description"),
       stack: t("project.list.17.stack"),
@@ -817,14 +844,15 @@ export const useProjectsData = () => {
       infra: [],
       imageClass: "cloneSpotify",
       buttonClass: "cloneSpotify",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/projeto-login-spotify",
       deployUrl: "",
       isApi: false,
       categories: ["primeiros-passos", "frontend"] as CategoryKey[],
     },
     {
       id: 19,
-      imgUrl: PLACEHOLDER_IMG,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
+      imgUrl: ImageUrls.projects.favFlix,
       title: t("project.list.18.title"),
       description: t("project.list.18.description"),
       stack: t("project.list.18.stack"),
@@ -833,14 +861,15 @@ export const useProjectsData = () => {
       infra: [],
       imageClass: "favFlix",
       buttonClass: "favFlix",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/FavFlix",
       deployUrl: "",
       isApi: false,
       categories: ["primeiros-passos", "frontend"] as CategoryKey[],
     },
     {
       id: 20,
-      imgUrl: PLACEHOLDER_IMG,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
+      imgUrl: ImageUrls.projects.codePass,
       title: t("project.list.19.title"),
       description: t("project.list.19.description"),
       stack: t("project.list.19.stack"),
@@ -849,13 +878,14 @@ export const useProjectsData = () => {
       infra: ["postgresql"],
       imageClass: "codePass",
       buttonClass: "codePass",
-      gitHubUrl: "https://github.com/jefferson-da-silva-santos/API-password-generator",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/CodePass",
       deployUrl: "",
       isApi: true,
       categories: ["primeiros-passos", "fullstack"] as CategoryKey[],
     },
     {
       id: 21,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.20.title"),
       description: t("project.list.20.description"),
@@ -872,6 +902,7 @@ export const useProjectsData = () => {
     },
     {
       id: 22,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.21.title"),
       description: t("project.list.21.description"),
@@ -888,6 +919,7 @@ export const useProjectsData = () => {
     },
     {
       id: 23,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.22.title"),
       description: t("project.list.22.description"),
@@ -904,6 +936,7 @@ export const useProjectsData = () => {
     },
     {
       id: 24,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.23.title"),
       description: t("project.list.23.description"),
@@ -920,6 +953,7 @@ export const useProjectsData = () => {
     },
     {
       id: 25,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.24.title"),
       description: t("project.list.24.description"),
@@ -936,6 +970,7 @@ export const useProjectsData = () => {
     },
     {
       id: 26,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.25.title"),
       description: t("project.list.25.description"),
@@ -952,6 +987,7 @@ export const useProjectsData = () => {
     },
     {
       id: 27,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.26.title"),
       description: t("project.list.26.description"),
@@ -968,6 +1004,7 @@ export const useProjectsData = () => {
     },
     {
       id: 28,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.27.title"),
       description: t("project.list.27.description"),
@@ -984,6 +1021,7 @@ export const useProjectsData = () => {
     },
     {
       id: 29,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.28.title"),
       description: t("project.list.28.description"),
@@ -1000,6 +1038,7 @@ export const useProjectsData = () => {
     },
     {
       id: 30,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.29.title"),
       description: t("project.list.29.description"),
@@ -1016,6 +1055,7 @@ export const useProjectsData = () => {
     },
     {
       id: 31,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.30.title"),
       description: t("project.list.30.description"),
@@ -1032,6 +1072,7 @@ export const useProjectsData = () => {
     },
     {
       id: 32,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.31.title"),
       description: t("project.list.31.description"),
@@ -1048,6 +1089,7 @@ export const useProjectsData = () => {
     },
     {
       id: 33,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.32.title"),
       description: t("project.list.32.description"),
@@ -1064,6 +1106,7 @@ export const useProjectsData = () => {
     },
     {
       id: 34,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.33.title"),
       description: t("project.list.33.description"),
@@ -1080,6 +1123,7 @@ export const useProjectsData = () => {
     },
     {
       id: 35,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.34.title"),
       description: t("project.list.34.description"),
@@ -1096,6 +1140,7 @@ export const useProjectsData = () => {
     },
     {
       id: 36,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.35.title"),
       description: t("project.list.35.description"),
@@ -1112,6 +1157,7 @@ export const useProjectsData = () => {
     },
     {
       id: 37,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.36.title"),
       description: t("project.list.36.description"),
@@ -1128,6 +1174,7 @@ export const useProjectsData = () => {
     },
     {
       id: 38,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.37.title"),
       description: t("project.list.37.description"),
@@ -1144,6 +1191,7 @@ export const useProjectsData = () => {
     },
     {
       id: 39,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.38.title"),
       description: t("project.list.38.description"),
@@ -1160,6 +1208,7 @@ export const useProjectsData = () => {
     },
     {
       id: 40,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.39.title"),
       description: t("project.list.39.description"),
@@ -1176,6 +1225,7 @@ export const useProjectsData = () => {
     },
     {
       id: 41,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.40.title"),
       description: t("project.list.40.description"),
@@ -1192,6 +1242,7 @@ export const useProjectsData = () => {
     },
     {
       id: 42,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.41.title"),
       description: t("project.list.41.description"),
@@ -1208,6 +1259,7 @@ export const useProjectsData = () => {
     },
     {
       id: 43,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.42.title"),
       description: t("project.list.42.description"),
@@ -1224,6 +1276,7 @@ export const useProjectsData = () => {
     },
     {
       id: 44,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.43.title"),
       description: t("project.list.43.description"),
@@ -1240,6 +1293,7 @@ export const useProjectsData = () => {
     },
     {
       id: 45,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.44.title"),
       description: t("project.list.44.description"),
@@ -1256,6 +1310,7 @@ export const useProjectsData = () => {
     },
     {
       id: 46,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.45.title"),
       description: t("project.list.45.description"),
@@ -1272,6 +1327,7 @@ export const useProjectsData = () => {
     },
     {
       id: 47,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.46.title"),
       description: t("project.list.46.description"),
@@ -1288,6 +1344,7 @@ export const useProjectsData = () => {
     },
     {
       id: 48,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.47.title"),
       description: t("project.list.47.description"),
@@ -1304,6 +1361,7 @@ export const useProjectsData = () => {
     },
     {
       id: 49,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.48.title"),
       description: t("project.list.48.description"),
@@ -1320,6 +1378,7 @@ export const useProjectsData = () => {
     },
     {
       id: 50,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.49.title"),
       description: t("project.list.49.description"),
@@ -1336,6 +1395,7 @@ export const useProjectsData = () => {
     },
     {
       id: 51,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.50.title"),
       description: t("project.list.50.description"),
@@ -1352,6 +1412,7 @@ export const useProjectsData = () => {
     },
     {
       id: 52,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.51.title"),
       description: t("project.list.51.description"),
@@ -1368,6 +1429,7 @@ export const useProjectsData = () => {
     },
     {
       id: 53,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.52.title"),
       description: t("project.list.52.description"),
@@ -1384,6 +1446,7 @@ export const useProjectsData = () => {
     },
     {
       id: 54,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.53.title"),
       description: t("project.list.53.description"),
@@ -1400,6 +1463,7 @@ export const useProjectsData = () => {
     },
     {
       id: 55,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.54.title"),
       description: t("project.list.54.description"),
@@ -1416,6 +1480,7 @@ export const useProjectsData = () => {
     },
     {
       id: 56,
+      videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
       imgUrl: PLACEHOLDER_IMG,
       title: t("project.list.55.title"),
       description: t("project.list.55.description"),

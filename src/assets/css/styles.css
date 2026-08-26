@@ -1325,6 +1325,23 @@ textarea:focus {
   box-shadow: 0px 0px 8px rgb(49, 49, 49);
 }
 
+.video-wrapper-project-modal {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.video-wrapper-project-modal iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .skill-element-border-light {
   border: 1px solid #e4e4e4;
 }
@@ -1778,6 +1795,162 @@ textarea:focus {
 .emailjs-item-list img {
   filter: drop-shadow(0px 0px 10px #f06717);
   width: 1.1rem;
+}
+
+.list-options-box-tec li {
+  background-color: #141414;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 1rem 2px 0.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgb(32.75, 32.75, 32.75);
+  text-wrap: nowrap;
+}
+.list-options-box-tec li img {
+  width: 1.3rem;
+  height: 1.3rem;
+  object-fit: contain;
+}
+
+.react-item-list {
+  text-shadow: 0px 0px 21px #0dd9fd;
+  color: #00e5ff;
+}
+.react-item-list img {
+  animation: animatedSkill 1s ease 0s infinite normal forwards;
+  width: 1.5rem;
+  filter: drop-shadow(0px 0px 9px #2ac5e1);
+}
+
+/* ... todas as classes existentes continuam iguais ... */
+.emailjs-item-list {
+  text-shadow: 0px 0px 14px #f06717;
+  color: #ff7336;
+}
+.emailjs-item-list img {
+  filter: drop-shadow(0px 0px 10px #f06717);
+  width: 1.1rem;
+}
+
+.html-item-list {
+  text-shadow: 0px 0px 14px #e34f26;
+  color: #ff6b3d;
+}
+.html-item-list img {
+  filter: drop-shadow(0px 0px 10px #e34f26);
+  width: 1.2rem;
+}
+
+.reactnative-item-list {
+  text-shadow: 0px 0px 21px #0dd9fd;
+  color: #00e5ff;
+}
+.reactnative-item-list img {
+  width: 1.3rem;
+  filter: drop-shadow(0px 0px 9px #2ac5e1);
+}
+
+.expo-item-list {
+  text-shadow: 0px 0px 14px rgba(255, 255, 255, 0.6078431373);
+  color: #fff;
+}
+.expo-item-list img {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.6392156863));
+  width: 1.3rem;
+}
+
+.tauri-item-list {
+  text-shadow: 0px 0px 14px #ffc131;
+  color: #ffc131;
+}
+.tauri-item-list img {
+  filter: drop-shadow(0px 0px 10px #ffc131);
+  width: 1.3rem;
+}
+
+.prisma-item-list {
+  text-shadow: 0px 0px 14px #2d3748;
+  color: #a3b8ff;
+}
+.prisma-item-list img {
+  filter: drop-shadow(0px 0px 10px #2d3748);
+  width: 1.2rem;
+}
+
+.whatsapp-item-list {
+  text-shadow: 0px 0px 14px #25d366;
+  color: #25d366;
+}
+.whatsapp-item-list img {
+  filter: drop-shadow(0px 0px 10px #25d366);
+  width: 1.3rem;
+}
+
+.cloudinary-item-list {
+  text-shadow: 0px 0px 14px #3448c5;
+  color: #6c92ff;
+}
+.cloudinary-item-list img {
+  filter: drop-shadow(0px 0px 10px #3448c5);
+  width: 1.3rem;
+}
+
+.tiptap-item-list {
+  text-shadow: 0px 0px 14px #000000;
+  color: #fff;
+}
+.tiptap-item-list img {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.3607843137));
+  width: 1.2rem;
+}
+
+.mercadopago-item-list {
+  text-shadow: 0px 0px 14px #009ee3;
+  color: #00c1ff;
+}
+.mercadopago-item-list img {
+  filter: drop-shadow(0px 0px 10px #009ee3);
+  width: 1.3rem;
+}
+
+.sqlite-item-list {
+  text-shadow: 0px 0px 14px #5599aa;
+  color: #7fd1e6;
+}
+.sqlite-item-list img {
+  filter: drop-shadow(0px 0px 10px #5599aa);
+  width: 1.2rem;
+}
+
+.notyf-item-list {
+  text-shadow: 0px 0px 14px rgba(184, 77, 255, 0.6078431373);
+  color: #cb5bff;
+}
+.notyf-item-list img {
+  filter: drop-shadow(0px 0px 10px rgba(198, 74, 255, 0.6392156863));
+  width: 1.2rem;
+}
+
+.puppeteer-item-list {
+  text-shadow: 0px 0px 14px #40e0d0;
+  color: #40e0d0;
+}
+.puppeteer-item-list img {
+  filter: drop-shadow(0px 0px 10px #40e0d0);
+  width: 1.2rem;
+}
+
+.swagger-item-list {
+  text-shadow: 0px 0px 14px #85ea2d;
+  color: #85ea2d;
+}
+.swagger-item-list img {
+  filter: drop-shadow(0px 0px 10px #85ea2d);
+  width: 1.2rem;
 }
 
 @keyframes blog-surge {
@@ -4457,7 +4630,7 @@ input:checked ~ * .admin-toggle__label, input:checked + * + .admin-toggle__label
   font-family: var(--font-primary);
 }
 
-@media (max-width: 559px) {
+@media (max-width: 600px) {
   .groupProjetos-filterGroups {
     display: flex;
     align-items: center;

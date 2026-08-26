@@ -302,3 +302,163 @@
     width: 1.1rem;
   }
 }
+
+.list-options-box-tec li {
+  background-color: #141414;
+  @include flex(row, flex-start, center, 5px);
+  padding: 2px 1rem 2px 0.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid lighten(#141414, 5%);
+  text-wrap: nowrap;
+
+  // Fallback de segurança: garante que QUALQUER ícone sem classe
+  // específica de estilo nunca estoure o card.
+  img {
+    width: 1.3rem;
+    height: 1.3rem;
+    object-fit: contain;
+  }
+}
+
+.react-item-list {
+  text-shadow: 0px 0px 21px #0dd9fd;
+  color: #00e5ff;
+  img {
+    animation: animatedSkill 1s ease 0s infinite normal forwards;
+    width: 1.5rem;
+    filter: drop-shadow(0px 0px 9px #2ac5e1);
+  }
+}
+
+/* ... todas as classes existentes continuam iguais ... */
+
+.emailjs-item-list {
+  text-shadow: 0px 0px 14px #f06717;
+  color: #ff7336;
+  img {
+    filter: drop-shadow(0px 0px 10px #f06717);
+    width: 1.1rem;
+  }
+}
+
+// =======================
+// CLASSES QUE FALTAVAM
+// =======================
+
+.html-item-list {
+  text-shadow: 0px 0px 14px #e34f26;
+  color: #ff6b3d;
+  img {
+    filter: drop-shadow(0px 0px 10px #e34f26);
+    width: 1.2rem;
+  }
+}
+
+.reactnative-item-list {
+  text-shadow: 0px 0px 21px #0dd9fd;
+  color: #00e5ff;
+  img {
+    width: 1.3rem;
+    filter: drop-shadow(0px 0px 9px #2ac5e1);
+  }
+}
+
+.expo-item-list {
+  text-shadow: 0px 0px 14px #ffffff9b;
+  color: #fff;
+  img {
+    filter: drop-shadow(0px 0px 10px #ffffffa3);
+    width: 1.3rem;
+  }
+}
+
+.tauri-item-list {
+  text-shadow: 0px 0px 14px #ffc131;
+  color: #ffc131;
+  img {
+    filter: drop-shadow(0px 0px 10px #ffc131);
+    width: 1.3rem;
+  }
+}
+
+.prisma-item-list {
+  text-shadow: 0px 0px 14px #2d3748;
+  color: #a3b8ff;
+  img {
+    filter: drop-shadow(0px 0px 10px #2d3748);
+    width: 1.2rem;
+  }
+}
+
+.whatsapp-item-list {
+  text-shadow: 0px 0px 14px #25d366;
+  color: #25d366;
+  img {
+    filter: drop-shadow(0px 0px 10px #25d366);
+    width: 1.3rem;
+  }
+}
+
+.cloudinary-item-list {
+  text-shadow: 0px 0px 14px #3448c5;
+  color: #6c92ff;
+  img {
+    filter: drop-shadow(0px 0px 10px #3448c5);
+    width: 1.3rem;
+  }
+}
+
+.tiptap-item-list {
+  text-shadow: 0px 0px 14px #000000;
+  color: #fff;
+  img {
+    filter: drop-shadow(0px 0px 10px #ffffff5c);
+    width: 1.2rem;
+  }
+}
+
+.mercadopago-item-list {
+  text-shadow: 0px 0px 14px #009ee3;
+  color: #00c1ff;
+  img {
+    filter: drop-shadow(0px 0px 10px #009ee3);
+    width: 1.3rem;
+  }
+}
+
+.sqlite-item-list {
+  text-shadow: 0px 0px 14px #5599aa;
+  color: #7fd1e6;
+  img {
+    filter: drop-shadow(0px 0px 10px #5599aa);
+    width: 1.2rem;
+  }
+}
+
+.notyf-item-list {
+  text-shadow: 0px 0px 14px #b84dff9b;
+  color: #cb5bff;
+  img {
+    filter: drop-shadow(0px 0px 10px #c64affa3);
+    width: 1.2rem;
+  }
+}
+
+.puppeteer-item-list {
+  text-shadow: 0px 0px 14px #40e0d0;
+  color: #40e0d0;
+  img {
+    filter: drop-shadow(0px 0px 10px #40e0d0);
+    width: 1.2rem;
+  }
+}
+
+.swagger-item-list {
+  text-shadow: 0px 0px 14px #85ea2d;
+  color: #85ea2d;
+  img {
+    filter: drop-shadow(0px 0px 10px #85ea2d);
+    width: 1.2rem;
+  }
+}

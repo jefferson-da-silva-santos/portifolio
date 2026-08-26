@@ -14,10 +14,10 @@ export interface IProject {
   gitHubUrl: string;
   deployUrl: string;
   isApi: boolean;
-  // NOVO: substitui o antigo `category: string` único.
-  // Um projeto agora pode pertencer a várias categorias ao mesmo tempo
-  // (ex: um desafio técnico que também é destaque e é frontend).
   categories: CategoryKey[];
+  // NOVO: link do vídeo do YouTube (opcional). Aceita qualquer formato:
+  // watch?v=, youtu.be/, shorts/ ou embed/. Configurado direto no dataConsts.ts.
+  videoUrl?: string;
 }
 
 export interface ModalProjectProviderProps {

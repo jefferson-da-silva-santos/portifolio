@@ -13,6 +13,7 @@ import {
 import { technologiesData } from "../../consts/dataConsts";
 import useModalProject from "../../hooks/useModalProject";
 import { showNotyf } from "../../utils/notyf";
+import { getYoutubeEmbedUrl } from "../../utils/videoUtilities";
 import { useTranslation } from "react-i18next";
 
 const ModalProject: React.FC<ModalProjectProps> = ({
@@ -26,14 +27,29 @@ const ModalProject: React.FC<ModalProjectProps> = ({
     return null;
   }
 
-  const { title, description, gitHubUrl, deployUrl, technologies, libs, infra, isApi } =
-    selectedProject;
+  const {
+    title,
+    description,
+    gitHubUrl,
+    deployUrl,
+    technologies,
+    libs,
+    infra,
+    isApi,
+    videoUrl,
+    categories,
+  } = selectedProject;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { closeModal } = useModalProject();
   const projectTechnologies: string[] = technologies || [];
   const projectLibs: string[] = libs || [];
   const projectInfra: string[] = infra || [];
+  const embedUrl = getYoutubeEmbedUrl(videoUrl);
+
+  // Projetos desktop/mobile não têm "site" — o botão vira "Baixar"
+  const isDownloadable =
+    categories?.includes("desktop") || categories?.includes("mobile");
 
   return (
     <aside
@@ -70,14 +86,25 @@ const ModalProject: React.FC<ModalProjectProps> = ({
           {description}
         </p>
 
+        {embedUrl && (
+          <div className="video-wrapper-project-modal">
+            <iframe
+              src={embedUrl}
+              title={title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        )}
+
         <div className="stack">
           <p
             className="text-tecnologias-options"
             style={textModalStyles(theme, themeObject)}
           >
-            {
-              t("messages.tech")
-            }
+            {t("messages.tech")}
           </p>
           <ul className="list-options-box-tec">
             {projectTechnologies.map((techKey, index) => {
@@ -92,71 +119,75 @@ const ModalProject: React.FC<ModalProjectProps> = ({
                   style={skillModalStyles(theme, themeObject)}
                   data-aos="zoom-in"
                 >
-                  <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} className="animate-stack-logo"/>
+                  <img src={techInfo.imageSrc} alt={`${techInfo.text} logo`} className="animate-stack-logo" />
                   {techInfo.text}
                 </li>
               );
             })}
           </ul>
-          <p
-            className="text-tecnologias-options"
-            style={textModalStyles(theme, themeObject)}
-          >
-           {
-            t("messages.lib")
-           }
-          </p>
-          <ul className="list-options-box-tec">
-            {projectLibs.map((libKey, index) => {
-              const libKeyLower =
-                libKey.toLowerCase() as keyof typeof technologiesData;
-              const libInfo = technologiesData[libKeyLower];
-              if (!libInfo) return null;
-              return (
-                <li
-                  key={index}
-                  className={libInfo.className}
-                  style={skillModalStyles(theme, themeObject)}
-                  data-aos="zoom-in"
-                >
-                  <img src={libInfo.imageSrc} alt={`${libInfo.text} logo`} className="animate-stack-logo"/>
-                  {libInfo.text}
-                </li>
-              );
-            })}
-          </ul>
-          <p
-            className="text-tecnologias-options"
-            style={textModalStyles(theme, themeObject)}
-          >
-            {
-              t("messages.infra")
-            }
-          </p>
-          <ul className="list-options-box-tec">
-            {projectInfra.map((infraKey, index) => {
-              const infraKeyLower =
-                infraKey.toLowerCase() as keyof typeof technologiesData;
-              const infraInfo = technologiesData[infraKeyLower];
-              if (!infraInfo) return null;
-              return (
-                <li
-                  key={index}
-                  className={infraInfo.className}
-                  style={skillModalStyles(theme, themeObject)}
-                  data-aos="zoom-in"
-                >
-                  <img src={infraInfo.imageSrc} alt={`${infraInfo.text} logo`} className="animate-stack-logo"/>
-                  {infraInfo.text}
-                </li>
-              );
-            })}
-          </ul>
+
+          {projectLibs.length > 0 && (
+            <>
+              <p
+                className="text-tecnologias-options"
+                style={textModalStyles(theme, themeObject)}
+              >
+                {t("messages.lib")}
+              </p>
+              <ul className="list-options-box-tec">
+                {projectLibs.map((libKey, index) => {
+                  const libKeyLower =
+                    libKey.toLowerCase() as keyof typeof technologiesData;
+                  const libInfo = technologiesData[libKeyLower];
+                  if (!libInfo) return null;
+                  return (
+                    <li
+                      key={index}
+                      className={libInfo.className}
+                      style={skillModalStyles(theme, themeObject)}
+                      data-aos="zoom-in"
+                    >
+                      <img src={libInfo.imageSrc} alt={`${libInfo.text} logo`} className="animate-stack-logo" />
+                      {libInfo.text}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
+
+          {projectInfra.length > 0 && (
+            <>
+              <p
+                className="text-tecnologias-options"
+                style={textModalStyles(theme, themeObject)}
+              >
+                {t("messages.infra")}
+              </p>
+              <ul className="list-options-box-tec">
+                {projectInfra.map((infraKey, index) => {
+                  const infraKeyLower =
+                    infraKey.toLowerCase() as keyof typeof technologiesData;
+                  const infraInfo = technologiesData[infraKeyLower];
+                  if (!infraInfo) return null;
+                  return (
+                    <li
+                      key={index}
+                      className={infraInfo.className}
+                      style={skillModalStyles(theme, themeObject)}
+                      data-aos="zoom-in"
+                    >
+                      <img src={infraInfo.imageSrc} alt={`${infraInfo.text} logo`} className="animate-stack-logo" />
+                      {infraInfo.text}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
         </div>
 
-        <p className="text-see-in-options">{
-          t('messages.see_in')
-          }</p>
+        <p className="text-see-in-options">{t('messages.see_in')}</p>
 
         <article className="groupBtn-options-box">
           <a
@@ -169,13 +200,10 @@ const ModalProject: React.FC<ModalProjectProps> = ({
             onClick={
               !gitHubUrl
                 ? (e) => {
-                    e.preventDefault();
-                    closeModal();
-                    showNotyf(
-                      "success",
-                      t("messages.repositoryNot")
-                    );
-                  }
+                  e.preventDefault();
+                  closeModal();
+                  showNotyf("success", t("messages.repositoryNot"));
+                }
                 : undefined
             }
           >
@@ -189,33 +217,28 @@ const ModalProject: React.FC<ModalProjectProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               role="button"
-              aria-label="Ver o site"
+              aria-label={isDownloadable ? "Baixar o aplicativo" : "Ver o site"}
               onClick={
                 !deployUrl
                   ? (e) => {
-                      e.preventDefault();
-                      closeModal();
-                      showNotyf(
-                        "success",
-                        t("messages.deployNot")
-                      );
-                    }
+                    e.preventDefault();
+                    closeModal();
+                    showNotyf("success", t("messages.deployNot"));
+                  }
                   : deployUrl === "here" ? (e) => {
                     e.preventDefault();
                     closeModal();
-                    showNotyf(
-                      "success",
-                      t("messages.here")
-                    )
+                    showNotyf("success", t("messages.here"))
                   } : undefined
               }
             >
-              <i className="bx bx-link-external"></i> Deploy
+              <i className={isDownloadable ? "bx bx-download" : "bx bx-link-external"}></i>{" "}
+              {isDownloadable ? "Baixar" : "Deploy"}
             </a>
           )}
         </article>
-      </section>
-    </aside>
+      </section >
+    </aside >
   );
 };
 
