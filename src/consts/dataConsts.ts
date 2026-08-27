@@ -59,6 +59,11 @@ import favFlix from '../assets/image/favflix.webp';
 import codePass from '../assets/image/codePass.webp';
 import cardapio from "../assets/image/cardapio.webp";
 import jessicaPlanilhas from "../assets/image/projeto-jessica-planilhas.webp";
+import arEspetinho from "../assets/image/ar-espetinho.webp";
+import batistaDog from "../assets/image/Batista.webp";
+import jtecSite from "../assets/image/JTec.webp";
+import referenceGeo from "../assets/image/Reference.webp";
+import promocao3D from "../assets/image/promocao3D.webp";
 import sushi from "../assets/image/sushi.webp";
 import infoccell from "../assets/image/infoccell.png";
 import leoDeLita from "../assets/image/leo_de_lita.webp";
@@ -188,7 +193,12 @@ export const ImageUrls = {
     infocell,
     marktplaceOngold,
     gicFront,
-    backGic
+    backGic,
+    arEspetinho,
+    batistaDog,
+    jtecSite,
+    referenceGeo,
+    promocao3D
   },
 };
 
@@ -1098,7 +1108,7 @@ export const useProjectsData = () => {
     {
       id: 33,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.arEspetinho,
       title: t("project.list.32.title"),
       description: t("project.list.32.description"),
       stack: t("project.list.32.stack"),
@@ -1108,14 +1118,14 @@ export const useProjectsData = () => {
       imageClass: "espetinhosAR",
       buttonClass: "espetinhosAR",
       gitHubUrl: "",
-      deployUrl: "",
+      deployUrl: "https://ar-espetinhos.netlify.app",
       isApi: false,
       categories: ["freelancer", "frontend"] as CategoryKey[],
     },
     {
       id: 34,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.batistaDog,
       title: t("project.list.33.title"),
       description: t("project.list.33.description"),
       stack: t("project.list.33.stack"),
@@ -1125,14 +1135,14 @@ export const useProjectsData = () => {
       imageClass: "hotdogBatista",
       buttonClass: "hotdogBatista",
       gitHubUrl: "",
-      deployUrl: "",
+      deployUrl: "https://hotdog-batista.netlify.app",
       isApi: false,
       categories: ["freelancer", "frontend"] as CategoryKey[],
     },
     {
       id: 35,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.jtecSite,
       title: t("project.list.34.title"),
       description: t("project.list.34.description"),
       stack: t("project.list.34.stack"),
@@ -1142,14 +1152,14 @@ export const useProjectsData = () => {
       imageClass: "jtecCliente",
       buttonClass: "jtecCliente",
       gitHubUrl: "",
-      deployUrl: "",
+      deployUrl: "https://jtecdev.com.br",
       isApi: false,
       categories: ["destaques", "freelancer", "frontend"] as CategoryKey[],
     },
     {
       id: 36,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.referenceGeo,
       title: t("project.list.35.title"),
       description: t("project.list.35.description"),
       stack: t("project.list.35.stack"),
@@ -1159,14 +1169,14 @@ export const useProjectsData = () => {
       imageClass: "referenceGeo",
       buttonClass: "referenceGeo",
       gitHubUrl: "",
-      deployUrl: "",
+      deployUrl: "https://www.referencegeo.com.br",
       isApi: false,
       categories: ["destaques", "freelancer", "frontend"] as CategoryKey[],
     },
     {
       id: 37,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.promocao3D,
       title: t("project.list.36.title"),
       description: t("project.list.36.description"),
       stack: t("project.list.36.stack"),
@@ -1176,7 +1186,7 @@ export const useProjectsData = () => {
       imageClass: "siteClienteSaude",
       buttonClass: "siteClienteSaude",
       gitHubUrl: "",
-      deployUrl: "",
+      deployUrl: "https://promocao3d.com",
       isApi: false,
       categories: ["destaques", "freelancer", "frontend"] as CategoryKey[],
     },
