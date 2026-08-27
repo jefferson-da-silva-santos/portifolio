@@ -63,6 +63,10 @@ import sushi from "../assets/image/sushi.webp";
 import infoccell from "../assets/image/infoccell.png";
 import leoDeLita from "../assets/image/leo_de_lita.webp";
 import calculadoraImc from "../assets/image/projeto-calculadora-de-imc.webp";
+import infocell from "../assets/image/infocell.webp";
+import marktplaceOngold from "../assets/image/marktplace.webp";
+import gicFront from "../assets/image/gicFront.webp";
+import backGic from "../assets/image/backGic.webp";
 import planner from "../assets/image/planner.png";
 import promocao3d from "../assets/image/promocao3d.png";
 import jtecPlatform from "../assets/image/jtec_web.webp";
@@ -180,7 +184,11 @@ export const ImageUrls = {
     calculadoraIMC,
     loginSpotify,
     favFlix,
-    codePass
+    codePass,
+    infocell,
+    marktplaceOngold,
+    gicFront,
+    backGic
   },
 };
 
@@ -886,7 +894,7 @@ export const useProjectsData = () => {
     {
       id: 21,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.infocell,
       title: t("project.list.20.title"),
       description: t("project.list.20.description"),
       stack: t("project.list.20.stack"),
@@ -903,7 +911,7 @@ export const useProjectsData = () => {
     {
       id: 22,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.marktplaceOngold,
       title: t("project.list.21.title"),
       description: t("project.list.21.description"),
       stack: t("project.list.21.stack"),
@@ -937,7 +945,7 @@ export const useProjectsData = () => {
     {
       id: 24,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.backGic,
       title: t("project.list.23.title"),
       description: t("project.list.23.description"),
       stack: t("project.list.23.stack"),
@@ -946,7 +954,7 @@ export const useProjectsData = () => {
       infra: ["docker"],
       imageClass: "gicBackend",
       buttonClass: "gicBackend",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/backend-gic-ongold",
       deployUrl: "",
       isApi: true,
       categories: ["desafios-tecnicos", "backend"] as CategoryKey[],
@@ -954,7 +962,7 @@ export const useProjectsData = () => {
     {
       id: 25,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.gicFront,
       title: t("project.list.24.title"),
       description: t("project.list.24.description"),
       stack: t("project.list.24.stack"),
@@ -963,7 +971,7 @@ export const useProjectsData = () => {
       infra: ["docker"],
       imageClass: "gicFrontend",
       buttonClass: "gicFrontend",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/frontend-gic-ongold",
       deployUrl: "",
       isApi: false,
       categories: ["desafios-tecnicos", "frontend"] as CategoryKey[],
