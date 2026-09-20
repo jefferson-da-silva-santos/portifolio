@@ -75,6 +75,7 @@ import backGic from "../assets/image/backGic.webp";
 import planner from "../assets/image/planner.png";
 import promocao3d from "../assets/image/promocao3d.png";
 import jtecPlatform from "../assets/image/jtec_web.webp";
+import solov from "../assets/image/solov.webp";
 import jtecApi from "../assets/image/api_jtec.png";
 import oticasLeal from "../assets/image/oticas_leal.webp";
 import idePlatform from "../assets/image/ide.webp";
@@ -198,7 +199,8 @@ export const ImageUrls = {
     batistaDog,
     jtecSite,
     referenceGeo,
-    promocao3D
+    promocao3D,
+    solov
   },
 };
 
@@ -1023,7 +1025,7 @@ export const useProjectsData = () => {
     {
       id: 28,
       videoUrl: "https://www.youtube.com/watch?v=SEU_ID_AQUI",
-      imgUrl: PLACEHOLDER_IMG,
+      imgUrl: ImageUrls.projects.solov,
       title: t("project.list.27.title"),
       description: t("project.list.27.description"),
       stack: t("project.list.27.stack"),
@@ -1032,7 +1034,7 @@ export const useProjectsData = () => {
       infra: [],
       imageClass: "sotov",
       buttonClass: "sotov",
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/jefferson-da-silva-santos/solotv",
       deployUrl: "",
       isApi: false,
       categories: ["projetos-independentes", "backend"] as CategoryKey[],
