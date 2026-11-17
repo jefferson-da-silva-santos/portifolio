@@ -209,7 +209,13 @@ export const ImageUrls = {
     jtecSite,
     referenceGeo,
     promocao3D,
-    solov
+    solov,
+    agroSol,
+    baraoBarber,
+    bemNatural,
+    curriculoPro,
+    holandaSite,
+    ianeRamos,
   },
 };
 
