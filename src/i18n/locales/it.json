@@ -657,34 +657,5 @@
     "photoAlt": "Foto di Jefferson Santos",
     "email": "Invia e-mail",
     "whatsappMessage": "Ciao Jefferson! Ho visto il tuo portfolio e vorrei parlare di un progetto."
-  },
-  "freelaCta": {
-    "eyebrow": "Freelance",
-    "titleA": "Hai un progetto in mente?",
-    "titleB": "Realizziamolo insieme.",
-    "text": "Dal sito aziendale al sistema su misura: mi occupo di design, codice e pubblicazione, e tu segui ogni fase direttamente con me, senza intermediari.",
-    "items": [
-      "Siti e landing page",
-      "App mobile",
-      "Sistemi web e SaaS",
-      "API e integrazioni"
-    ],
-    "stats": [
-      {
-        "value": "10+",
-        "label": "clienti serviti"
-      },
-      {
-        "value": "4",
-        "label": "anni di esperienza"
-      },
-      {
-        "value": "80+",
-        "label": "progetti nel portfolio"
-      }
-    ],
-    "primary": "Richiedi un preventivo",
-    "secondary": "Preferisco scrivere",
-    "whatsappMessage": "Ciao Jefferson! Ho visto il tuo portfolio e vorrei un preventivo per un progetto freelance."
   }
 }

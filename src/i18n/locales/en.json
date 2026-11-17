@@ -657,34 +657,5 @@
     "photoAlt": "Photo of Jefferson Santos",
     "email": "Send email",
     "whatsappMessage": "Hi Jefferson! I saw your portfolio and I'd like to talk about a project."
-  },
-  "freelaCta": {
-    "eyebrow": "Freelance",
-    "titleA": "Got a project in mind?",
-    "titleB": "Let's build it together.",
-    "text": "From a company website to a custom system: I handle design, code and launch, and you follow every step directly with me, no middlemen.",
-    "items": [
-      "Websites and landing pages",
-      "Mobile apps",
-      "Web systems and SaaS",
-      "APIs and integrations"
-    ],
-    "stats": [
-      {
-        "value": "10+",
-        "label": "clients served"
-      },
-      {
-        "value": "4",
-        "label": "years of experience"
-      },
-      {
-        "value": "80+",
-        "label": "portfolio projects"
-      }
-    ],
-    "primary": "Get a quote",
-    "secondary": "I'd rather send a message",
-    "whatsappMessage": "Hi Jefferson! I saw your portfolio and I'd like a quote for a freelance project."
   }
 }
