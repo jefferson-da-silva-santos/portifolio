@@ -14,6 +14,7 @@ import Habilidades from "./pages/Habilidades";
 import Inicio from "./pages/Inicio";
 import Projetos from "./pages/Projetos";
 import Servicos from "./pages/Servicos";
+import FreelaCTA from "./components/FreelaCTA";
 import Sobre from "./pages/Sobre";
 import ModalProject from "./components/ModalProject";
 import PrivacyPolicy from "./components/PrivacyPolicy";
@@ -63,6 +64,7 @@ function App() {
               <Habilidades />
               <Projetos />
               <Servicos />
+              <FreelaCTA />
               <Contato />
             </main>
             <Footer />
