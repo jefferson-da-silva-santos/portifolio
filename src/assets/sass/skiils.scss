@@ -6,13 +6,25 @@
   border: 1px solid #242323;
 }
 
+/* Zoom do logo: a transição fica no estado normal, então anima tanto ao entrar quanto ao sair do hover */
+.skill-element {
+  transition: border-color 0.4s ease;
+}
+
+.skill-element img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .skill-element:hover {
   img {
-    transform: scale(120%);
-    transition: all 1s ease;
+    transform: scale(1.2);
   }
 
   border: 1px solid var(--skill-color, #2ac5e1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-element img { transition: none; }
 }
 
 .skill-element img {
