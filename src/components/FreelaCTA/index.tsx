@@ -18,11 +18,16 @@ const FreelaCTA = () => {
   return (
     <section className={`fcta-section fcta--${theme}`} aria-labelledby="fcta-title">
       <div className="fcta" data-aos="fade-up">
-        <span className="fcta-light fcta-light--a" aria-hidden="true" />
-        <span className="fcta-light fcta-light--b" aria-hidden="true" />
+        <div className="fcta-bg" aria-hidden="true">
+          <span className="fcta-grid" />
+          <span className="fcta-aurora" />
+        </div>
 
         <div className="fcta-main">
-          <p className="fcta-eyebrow">{t("freelaCta.eyebrow")}</p>
+          <span className="fcta-eyebrow">
+            <i aria-hidden="true" />
+            {t("freelaCta.eyebrow")}
+          </span>
           <h2 id="fcta-title" className="fcta-title">
             {t("freelaCta.titleA")} <span>{t("freelaCta.titleB")}</span>
           </h2>
@@ -30,32 +35,34 @@ const FreelaCTA = () => {
           <ul className="fcta-items">
             {items.map((item) => (
               <li key={item}>
-                <i aria-hidden="true" />
+                <i className="bx bx-check" aria-hidden="true" />
                 {item}
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="fcta-side">
+          <dl className="fcta-stats">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt>{s.label}</dt>
+                <dd>{s.value}</dd>
+              </div>
+            ))}
+          </dl>
           <div className="fcta-actions">
-            <a className="fcta-btn" href={whatsapp} target="_blank" rel="noopener noreferrer">
+            <a className="fcta-btn fcta-btn--primary" href={whatsapp} target="_blank" rel="noopener noreferrer">
+              <i className="bx bxl-whatsapp" aria-hidden="true" />
               {t("freelaCta.primary")}
-              <span className="fcta-btn-icon" aria-hidden="true">
-                <i className="bx bx-right-arrow-alt" />
-              </span>
+              <i className="bx bx-right-arrow-alt fcta-arrow" aria-hidden="true" />
             </a>
-            <a className="fcta-link" href="#contact" onClick={goToContact}>
+            <a className="fcta-btn" href="#contact" onClick={goToContact}>
+              <i className="bx bx-envelope" aria-hidden="true" />
               {t("freelaCta.secondary")}
             </a>
           </div>
         </div>
-
-        <dl className="fcta-stats">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <dd>{s.value}</dd>
-              <dt>{s.label}</dt>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );
