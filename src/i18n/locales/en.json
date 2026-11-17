@@ -540,7 +540,16 @@
       "inicioCarreira": "Early Career"
     },
     "searchPlaceholder": "Search projects...",
-    "clearSearch": "Clear search"
+    "clearSearch": "Clear search",
+    "categoryDescriptions": {
+      "todos": "Everything I have built: my own products, client work, studies and the start of the journey.",
+      "autorais": "Products I conceived from scratch, with their own business case, target audience and features.",
+      "freelancer": "Work delivered to clients, companies and professionals — many of them live today.",
+      "pessoais": "Apps I built to solve my own problems, try out technologies or sharpen my skills.",
+      "desafiosTecnicos": "Projects built for hiring processes, technical tests and coding challenges.",
+      "estudo": "Projects to learn and go deeper into a technology, architecture or pattern.",
+      "inicioCarreira": "My very first repositories: where it all began."
+    }
   },
   "services": {
     "title": "Services",

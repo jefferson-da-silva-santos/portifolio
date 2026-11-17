@@ -1,160 +1,87 @@
-import { Fragment } from "react";
+import { useRef } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
 import { useTranslation } from "react-i18next";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import Select, { type SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
-import {
-  categoryTaxonomy,
-  type CategoryGroup,
-  type CategoryKey,
-} from "../../consts/categoryTaxonomy";
+import { categoryTaxonomy, type CategoryKey } from "../../consts/categoryTaxonomy";
 
-export type ActiveFilters = Partial<Record<CategoryGroup["id"], Set<CategoryKey>>>;
-
-const selectSx = {
-  width: 220,
-  "& .MuiOutlinedInput-notchedOutline": { borderColor: "#2e2e2e" },
-  "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#00ffff" },
-  "&.Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: "#00ffff" },
-  "& .MuiInputLabel-root": { color: "#9ca3af" },
-  "& .MuiInputLabel-root.Mui-focused": { color: "#00ffff" },
-  "& .MuiSvgIcon-root": { color: "#9ca3af" },
-  "& .MuiSelect-select": {
-    color: "#fff",
-    display: "block",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    paddingRight: "32px !important",
-  },
-};
-
-const menuProps = {
-  slotProps: {
-    paper: {
-      sx: {
-        bgcolor: "#141414",
-        border: "1px solid #2e2e2e",
-        maxHeight: 320,
-        "& .MuiMenuItem-root": { color: "#fff" },
-        "& .MuiMenuItem-root:hover": { bgcolor: "rgba(0,255,255,0.08)" },
-        "& .MuiMenuItem-root.Mui-selected": { bgcolor: "rgba(0,255,255,0.12)" },
-        "& .MuiMenuItem-root.Mui-selected:hover": { bgcolor: "rgba(0,255,255,0.18)" },
-      },
-    },
-  },
-};
-
+// Faixa de categorias em "chips": cada um com ícone, cor própria e contador.
+// O ativo acende na cor da categoria e a descrição dela aparece logo abaixo.
 interface CategoryFilterBarProps {
-  activeFilters: ActiveFilters;
-  onChange: (groupId: CategoryGroup["id"], values: CategoryKey[]) => void;
+  active: CategoryKey;
+  counts: Partial<Record<CategoryKey, number>>;
+  onChange: (key: CategoryKey) => void;
+  theme: string;
 }
 
-// Não renderiza wrapper próprio — os FormControls entram direto na linha flex
-// que a página (Projetos/index.tsx) controla, junto do campo de busca.
-const CategoryFilterBar = ({ activeFilters, onChange }: CategoryFilterBarProps) => {
+const items = categoryTaxonomy[0].items;
+
+const CategoryFilterBar = ({ active, counts, onChange, theme }: CategoryFilterBarProps) => {
   const { t } = useTranslation();
+  const listRef = useRef<HTMLDivElement>(null);
+  const activeItem = items.find((i) => i.key === active) ?? items[0];
+
+  const select = (key: CategoryKey, el?: HTMLButtonElement | null) => {
+    onChange(key);
+    // No celular a faixa rola de lado: centraliza o chip escolhido só dentro dela
+    const list = listRef.current;
+    if (el && list && list.scrollWidth > list.clientWidth) {
+      const left = el.offsetLeft - (list.clientWidth - el.offsetWidth) / 2;
+      list.scrollTo({ left, behavior: "smooth" });
+    }
+  };
+
+  // Setas do teclado andam entre as categorias (padrão de abas)
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(e.key)) return;
+    e.preventDefault();
+    const idx = items.findIndex((i) => i.key === active);
+    const next =
+      e.key === "Home" ? 0
+      : e.key === "End" ? items.length - 1
+      : (idx + (e.key === "ArrowRight" ? 1 : -1) + items.length) % items.length;
+    const buttons = listRef.current?.querySelectorAll<HTMLButtonElement>("button");
+    buttons?.[next]?.focus();
+    select(items[next].key, buttons?.[next]);
+  };
 
   return (
-    <Fragment>
-      {categoryTaxonomy.map((group) => {
-        const selected = activeFilters[group.id] ?? new Set<CategoryKey>();
-        const selectedValues = Array.from(selected);
-        const labelId = `${group.id}-select-label`;
-        const groupLabel = t(group.labelKey);
-
-        if (group.mode === "single") {
-          const currentValue = selectedValues[0] ?? "todos";
-
-          const handleSingleChange = (event: SelectChangeEvent) => {
-            const value = event.target.value as CategoryKey;
-            onChange(group.id, value === "todos" ? [] : [value]);
-          };
-
+    <div className={`categoryTabs categoryTabs--${theme}`}>
+      <div
+        className="categoryTabs-list"
+        role="tablist"
+        aria-label={t("project.groups.categoria")}
+        ref={listRef}
+        onKeyDown={handleKeyDown}
+      >
+        {items.map((item) => {
+          const isActive = item.key === active;
           return (
-            <FormControl key={group.id} sx={selectSx} size="small">
-              <InputLabel id={labelId}>{groupLabel}</InputLabel>
-              <Select
-                labelId={labelId}
-                value={currentValue}
-                onChange={handleSingleChange}
-                input={<OutlinedInput label={groupLabel} />}
-                renderValue={(value) =>
-                  t(group.items.find((i) => i.key === value)?.labelKey ?? String(value))
-                }
-                MenuProps={menuProps}
-              >
-                {group.items.map((item) => {
-                  const isActive = currentValue === item.key;
-                  const Icon = isActive ? RadioButtonCheckedIcon : RadioButtonUncheckedIcon;
-                  return (
-                    <MenuItem key={item.key} value={item.key}>
-                      <Icon
-                        fontSize="small"
-                        style={{ marginRight: 8, color: isActive ? item.color : "#5b5b5b" }}
-                      />
-                      <ListItemText primary={t(item.labelKey)} />
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </FormControl>
-          );
-        }
-
-        const handleMultiChange = (event: SelectChangeEvent<CategoryKey[]>) => {
-          const { value } = event.target;
-          const values = typeof value === "string" ? (value.split(",") as CategoryKey[]) : value;
-          onChange(group.id, values);
-        };
-
-        const renderValue = (values: CategoryKey[]) => {
-          if (values.length === 0) return t("project.categories.todos");
-          if (values.length <= 2) {
-            return values
-              .map((key) => t(group.items.find((i) => i.key === key)?.labelKey ?? key))
-              .join(", ");
-          }
-          return `${values.length} selecionadas`;
-        };
-
-        return (
-          <FormControl key={group.id} sx={selectSx} size="small">
-            <InputLabel id={labelId}>{groupLabel}</InputLabel>
-            <Select
-              labelId={labelId}
-              multiple
-              value={selectedValues}
-              onChange={handleMultiChange}
-              input={<OutlinedInput label={groupLabel} />}
-              renderValue={renderValue}
-              MenuProps={menuProps}
+            <button
+              key={item.key}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              tabIndex={isActive ? 0 : -1}
+              className={`categoryTabs-chip${isActive ? " is-active" : ""}`}
+              style={{ "--c": item.color } as CSSProperties}
+              onClick={(e) => select(item.key, e.currentTarget)}
             >
-              {group.items.map((item) => {
-                const isActive = selected.has(item.key);
-                const Icon = isActive ? CheckBoxIcon : CheckBoxOutlineBlankIcon;
-                return (
-                  <MenuItem key={item.key} value={item.key}>
-                    <Icon
-                      fontSize="small"
-                      style={{ marginRight: 8, color: isActive ? item.color : "#5b5b5b" }}
-                    />
-                    <ListItemText primary={t(item.labelKey)} />
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        );
-      })}
-    </Fragment>
+              <i className={item.icon} aria-hidden="true" />
+              <span>{t(item.labelKey)}</span>
+              <b className="categoryTabs-count">{counts[item.key] ?? 0}</b>
+            </button>
+          );
+        })}
+      </div>
+
+      <p
+        key={activeItem.key}
+        className="categoryTabs-description"
+        style={{ "--c": activeItem.color } as CSSProperties}
+        aria-live="polite"
+      >
+        {t(`project.categoryDescriptions.${activeItem.labelKey.split(".").pop()}`)}
+      </p>
+    </div>
   );
 };
 

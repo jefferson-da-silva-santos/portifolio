@@ -540,7 +540,16 @@
       "inicioCarreira": "Début de Carrière"
     },
     "searchPlaceholder": "Rechercher des projets...",
-    "clearSearch": "Effacer la recherche"
+    "clearSearch": "Effacer la recherche",
+    "categoryDescriptions": {
+      "todos": "Tout ce que j'ai construit : mes produits, mes clients, mes études et le début du parcours.",
+      "autorais": "Des produits conçus de zéro, avec leur modèle économique, leur public et leurs fonctionnalités.",
+      "freelancer": "Des projets livrés à des clients, entreprises et professionnels — beaucoup sont en ligne.",
+      "pessoais": "Des apps créées pour résoudre mes propres problèmes, tester des technologies ou progresser.",
+      "desafiosTecnicos": "Des projets réalisés lors de recrutements, tests techniques et défis de programmation.",
+      "estudo": "Des projets pour apprendre et approfondir une technologie, une architecture ou un pattern.",
+      "inicioCarreira": "Mes tout premiers dépôts : là où tout a commencé."
+    }
   },
   "services": {
     "title": "Services",

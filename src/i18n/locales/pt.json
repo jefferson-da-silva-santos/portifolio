@@ -540,7 +540,16 @@
       "inicioCarreira": "Início de Carreira"
     },
     "searchPlaceholder": "Buscar projetos...",
-    "clearSearch": "Limpar busca"
+    "clearSearch": "Limpar busca",
+    "categoryDescriptions": {
+      "todos": "Tudo o que eu construí: produtos próprios, clientes, estudos e o começo da jornada.",
+      "autorais": "Produtos que concebi do zero, com proposta de negócio, público-alvo e funcionalidades próprias.",
+      "freelancer": "Trabalhos entregues para clientes, empresas e profissionais — muitos deles no ar hoje.",
+      "pessoais": "Aplicações que criei para resolver problemas meus, testar tecnologias ou ganhar habilidade.",
+      "desafiosTecnicos": "Projetos feitos em processos seletivos, testes técnicos e desafios de programação.",
+      "estudo": "Projetos para aprender e aprofundar uma tecnologia, arquitetura ou padrão.",
+      "inicioCarreira": "Meus primeiros repositórios: onde tudo começou na programação."
+    }
   },
   "services": {
     "title": "Serviços",

@@ -6,8 +6,8 @@ import { containerStyles, titleStyles } from "./styles";
 import objectTheme from "../../assets/theme.json";
 import { useTranslation } from "react-i18next";
 import { getFirstLetterTitle, getRestOfTitle } from "../../utils/textUtilites";
-import CategoryFilterBar, { type ActiveFilters } from "../../components/Category";
-import { categoryTaxonomy, type CategoryGroup, type CategoryKey } from "../../consts/categoryTaxonomy";
+import CategoryFilterBar from "../../components/Category";
+import { categoryTaxonomy, type CategoryKey } from "../../consts/categoryTaxonomy";
 import Pagination from "@mui/material/Pagination";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -47,6 +47,17 @@ const searchSx = {
   "& .MuiSvgIcon-root": { color: "#9ca3af" },
 };
 
+const searchSxLight = {
+  ...searchSx,
+  "& .MuiOutlinedInput-root": {
+    color: "#111",
+    "& fieldset": { borderColor: "#d9d9d9" },
+    "&:hover fieldset": { borderColor: "#00b3c7" },
+    "&.Mui-focused fieldset": { borderColor: "#00b3c7" },
+  },
+  "& .MuiSvgIcon-root": { color: "#6b7280" },
+};
+
 // Remove acentos e caixa pra busca não ser sensível a "café" vs "cafe".
 const normalize = (value: string) =>
   value
@@ -59,36 +70,16 @@ const Projetos = () => {
   const { t } = useTranslation();
   const projectsData = useProjectsData();
 
-  const [activeFilters, setActiveFilters] = useState<ActiveFilters>({});
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleGroupChange = (groupId: CategoryGroup["id"], values: CategoryKey[]) => {
-    setActiveFilters((prev) => ({
-      ...prev,
-      [groupId]: new Set(values),
-    }));
-  };
-
-  // Filtro por categoria (facetas) + busca textual combinados com AND:
-  // o projeto precisa bater com os filtros de categoria E conter o termo buscado.
-  const filteredProjects = useMemo(() => {
+  // Busca em tudo: título, descrição, stack, technologies, libs e infra.
+  const searchedProjects = useMemo(() => {
     const term = normalize(searchTerm.trim());
-
-    return projectsData.filter((project) => {
-      const projectCategories = project.categories ?? [];
-
-      const matchesCategory = categoryTaxonomy.every((group) => {
-        const selected = activeFilters[group.id];
-        if (!selected || selected.size === 0) return true;
-        return Array.from(selected).some((key) => projectCategories.includes(key));
-      });
-
-      if (!matchesCategory) return false;
-      if (!term) return true;
-
-      // Busca em tudo: título, descrição, stack, technologies, libs e infra.
-      const searchableText = normalize(
+    if (!term) return projectsData;
+    return projectsData.filter((project) =>
+      normalize(
         [
           project.title,
           project.description,
@@ -97,18 +88,34 @@ const Projetos = () => {
           ...(project.libs ?? []),
           ...(project.infra ?? []),
         ].join(" ")
-      );
+      ).includes(term)
+    );
+  }, [searchTerm, projectsData]);
 
-      return searchableText.includes(term);
+  // Quantos projetos cada categoria tem (já considerando a busca)
+  const counts = useMemo(() => {
+    const result: Partial<Record<CategoryKey, number>> = { todos: searchedProjects.length };
+    categoryTaxonomy[0].items.forEach(({ key }) => {
+      if (key !== "todos")
+        result[key] = searchedProjects.filter((p) => (p.categories ?? []).includes(key)).length;
     });
-  }, [activeFilters, searchTerm, projectsData]);
+    return result;
+  }, [searchedProjects]);
+
+  const filteredProjects = useMemo(
+    () =>
+      activeCategory === "todos"
+        ? searchedProjects
+        : searchedProjects.filter((p) => (p.categories ?? []).includes(activeCategory)),
+    [activeCategory, searchedProjects]
+  );
 
   const pageCount = Math.max(1, Math.ceil(filteredProjects.length / ITEMS_PER_PAGE));
 
   // Volta pra página 1 sempre que filtro OU busca mudam.
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeFilters, searchTerm]);
+  }, [activeCategory, searchTerm]);
 
   useEffect(() => {
     if (currentPage > pageCount) setCurrentPage(pageCount);
@@ -149,7 +156,7 @@ const Projetos = () => {
         {/* Busca + filtros por facetas, tudo na mesma linha */}
         <div className="groupProjetos-filterGroups">
           <TextField
-            sx={searchSx}
+            sx={theme === "light" ? searchSxLight : searchSx}
             size="small"
             variant="outlined"
             placeholder={t("project.searchPlaceholder")}
@@ -177,8 +184,14 @@ const Projetos = () => {
             }}
           />
 
-          <CategoryFilterBar activeFilters={activeFilters} onChange={handleGroupChange} />
         </div>
+
+        <CategoryFilterBar
+          active={activeCategory}
+          counts={counts}
+          onChange={setActiveCategory}
+          theme={theme}
+        />
 
         {filteredProjects.length === 0 ? (
           <div className="groupProjetos-empty">
