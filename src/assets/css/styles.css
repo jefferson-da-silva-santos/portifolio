@@ -3818,5 +3818,16 @@ textarea:focus {
     animation: none;
   }
 }
+.contato .groupContact-terciary {
+  height: auto;
+  min-height: 0;
+  position: relative;
+}
+
+@media (max-width: 896px) {
+  .contato .groupContact-terciary {
+    padding: 3rem 0 3rem;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */

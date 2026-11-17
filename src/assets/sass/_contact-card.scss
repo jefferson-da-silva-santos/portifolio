@@ -219,3 +219,17 @@
   .ccard, .ccard-photo img { transition: none; }
   .ccard-glow { animation: none; }
 }
+
+// A coluna da foto tinha alturas fixas (da imagem antiga em losango) que
+// faziam o cartão vazar sobre o botão Enviar e o rodapé no celular
+.contato .groupContact-terciary {
+  height: auto;
+  min-height: 0;
+  position: relative;
+}
+
+@media (max-width: 896px) {
+  .contato .groupContact-terciary {
+    padding: 3rem 0 3rem;
+  }
+}
