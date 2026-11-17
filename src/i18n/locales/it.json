@@ -625,5 +625,23 @@
         "text": ""
       }
     }
+  },
+  "projectModal": {
+    "close": "Chiudi",
+    "stack": "Tecnologie",
+    "libs": "Librerie",
+    "infra": "Infrastruttura",
+    "want": "Voglio un progetto così",
+    "openSite": "Apri il sito",
+    "download": "Scarica",
+    "code": "Vedi codice",
+    "privateCode": "Codice sorgente privato (progetto cliente).",
+    "whatsappMessage": "Ciao Jefferson! Ho visto il progetto \"{{project}}\" nel tuo portfolio e voglio un progetto così.",
+    "kind": {
+      "web": "Web",
+      "api": "API",
+      "mobile": "App mobile",
+      "desktop": "Desktop"
+    }
   }
 }
