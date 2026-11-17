@@ -243,7 +243,6 @@ export const useNavLinks = (): INavLinks[] => {
   const { t } = useTranslation();
 
   return [
-    { text: t("navigation.links.home"), href: "#home", controls: "home" },
     { text: t("navigation.links.about"), href: "#about", controls: "about" },
     { text: t("navigation.links.skills"), href: "#skills", controls: "skills" },
     {

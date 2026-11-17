@@ -390,6 +390,39 @@ body {
 
 .itemsMenu-header {
   position: relative;
+  color: var(--nav-link-color, var(--white));
+}
+
+.itemsMenu-header:hover,
+.itemsMenu-header.is-active {
+  color: #00ffff;
+}
+
+.nav-icon-button {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* Compensa o menu fixo ao navegar para as seções */
+#about,
+#skills,
+#project,
+#service,
+#contact {
+  scroll-margin-top: 4.5rem;
 }
 
 .itemsMenu-header--dark:hover {
@@ -598,13 +631,20 @@ body {
     filter: drop-shadow(0px 0px 0px transparent) drop-shadow(0px 0px 0px transparent) drop-shadow(0px 0px 0px transparent);
   }
 }
+/* A foto é dimensionada pela ALTURA da tela (menos o menu fixo), e não pela
+   largura: assim ela nunca passa por baixo da navegação, nem em notebooks
+   largos e baixos (1366x768, 1280x720...). */
 .groupHeader-img img {
-  width: 86%;
   position: absolute;
-  object-fit: cover;
   bottom: 0;
+  height: calc(100vh - 5.5rem);
+  height: calc(100svh - 5.5rem);
+  width: auto;
+  max-width: 48vw;
+  min-width: 0;
+  object-fit: contain;
+  object-position: bottom center;
   animation: sombrasPiscando 5s ease-in-out infinite;
-  min-width: 25rem;
 }
 
 .groupSobre {
@@ -4146,6 +4186,16 @@ input:checked ~ * .admin-toggle__label, input:checked + * + .admin-toggle__label
   }
 }
 @media screen and (min-width: 896px) {
+  .itemsMenu-header.is-active::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to left, white, #00ffff, transparent);
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+  }
   .itemsMenu-header:hover::before {
     position: absolute;
     content: "";
@@ -4186,6 +4236,7 @@ input:checked ~ * .admin-toggle__label, input:checked + * + .admin-toggle__label
   }
   .groupHeader-img img {
     width: 100%;
+    height: auto;
     max-width: 27rem;
     min-width: auto;
   }
