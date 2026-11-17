@@ -82,18 +82,62 @@
   box-shadow: 0 0 40px rgba(0, 162, 255, 0.45), 0 20px 60px rgba(0, 0, 0, 0.5);
   animation: orbit-spin 8s linear infinite;
 
+  .orbit-photo-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #0b0b0b;
+    animation: orbit-spin 8s linear infinite reverse; // a foto não gira, só a borda
+    isolation: isolate;
+  }
+
   img {
     display: block;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #0b0b0b;
-    animation: orbit-spin 8s linear infinite reverse; // a foto não gira, só a borda
   }
 }
 
-.orbit--light .orbit-photo img { border-color: #fff; }
+.orbit--light .orbit-photo-inner { border-color: #fff; }
+
+// Linhas de scan (estilo monitor) + uma faixa que desce devagar
+.orbit-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(0, 220, 255, 0.22) 48%, rgba(170, 245, 255, 0.4) 50%, rgba(0, 220, 255, 0.22) 52%, transparent 100%) 0 -120% / 100% 40% no-repeat,
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
+  mix-blend-mode: screen;
+  animation: orbit-scanline 4.5s linear infinite;
+}
+
+// Brilho diagonal que passa pela foto de tempos em tempos
+.orbit-shine {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.05) 44%, rgba(190, 245, 255, 0.55) 50%, rgba(255, 255, 255, 0.05) 56%, transparent 62%);
+  transform: translateX(-80%);
+  mix-blend-mode: screen;
+  animation: orbit-shine 5.5s cubic-bezier(0.6, 0, 0.3, 1) infinite;
+}
+
+// Mira/HUD girando em volta da foto
+.orbit-hud {
+  position: absolute;
+  inset: -9%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(from 0deg, #00e5ff 0 9deg, transparent 9deg 81deg, #00e5ff 81deg 90deg, transparent 90deg 171deg, #7a5cff 171deg 180deg, transparent 180deg 261deg, #00e5ff 261deg 270deg, transparent 270deg);
+  -webkit-mask: radial-gradient(circle, transparent calc(70% - 2px), #000 calc(70% - 1px), #000 70%, transparent calc(70% + 1px));
+  mask: radial-gradient(circle, transparent calc(70% - 2px), #000 calc(70% - 1px), #000 70%, transparent calc(70% + 1px));
+  opacity: 0.85;
+  animation: orbit-spin 14s linear infinite reverse;
+}
 
 .orbit-status {
   position: absolute;
@@ -191,6 +235,13 @@
 }
 
 @keyframes orbit-spin { to { transform: rotate(360deg); } }
+@keyframes orbit-scanline {
+  to { background-position: 0 220%, 0 0; }
+}
+@keyframes orbit-shine {
+  0%, 55% { transform: translateX(-80%); }
+  85%, 100% { transform: translateX(80%); }
+}
 @keyframes orbit-breathe {
   from { transform: scale(0.92); opacity: 0.75; }
   to { transform: scale(1.08); opacity: 1; }
@@ -201,7 +252,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit-glow, .orbit-photo, .orbit-photo img, .orbit-status i { animation: none; }
+  .orbit-glow, .orbit-photo, .orbit-photo-inner, .orbit-status i, .orbit-scan, .orbit-shine, .orbit-hud { animation: none; }
 }
 
 @media (max-width: 896px) {

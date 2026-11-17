@@ -17,12 +17,28 @@ const RINGS = [
 ];
 const BASE_TILT = 62; // graus: quanto o anel "deita"
 
+// Ciclo do plano da órbita: horizontal → vertical → horizontal…
+// Cada anel gira o plano com um pequeno atraso, então eles se cruzam na troca.
+const HOLD = 6500; // ms parado em cada orientação
+const TURN = 2600; // ms girando de uma orientação para a outra
+const CYCLE = (HOLD + TURN) * 2;
+const RING_DELAY = [700, 0]; // o anel interno vira depois do externo
+const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const planeRoll = (t: number) => {
+  const p = ((t % CYCLE) + CYCLE) % CYCLE;
+  if (p < HOLD) return 0;
+  if (p < HOLD + TURN) return 90 * ease((p - HOLD) / TURN);
+  if (p < HOLD * 2 + TURN) return 90;
+  return 90 * (1 - ease((p - HOLD * 2 - TURN) / TURN));
+};
+
 const TechOrbit = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const stageRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const ringRefs = useRef<(SVGSVGElement | null)[]>([]);
+  const statusRef = useRef<HTMLSpanElement>(null);
   const [size, setSize] = useState(440);
   const [hovered, setHovered] = useState<string | null>(null);
   // A pausa no hover é lida dentro do loop sem reiniciá-lo
@@ -58,6 +74,7 @@ const TechOrbit = () => {
     let visible = true;
     let last = performance.now();
     const angle = [0, 0];
+    let clock = 0; // tempo da animação (para no hover)
     const pointer = { x: 0, y: 0 }; // -1..1, alvo
     const tilt = { x: 0, y: 0 }; // valor suavizado
 
@@ -78,6 +95,7 @@ const TechOrbit = () => {
       if (!reduce && !paused) {
         angle[0] += RINGS[0].speed * dt;
         angle[1] += RINGS[1].speed * dt;
+        clock += dt;
       }
       tilt.x += (pointer.x - tilt.x) * 0.06;
       tilt.y += (pointer.y - tilt.y) * 0.06;
@@ -85,14 +103,22 @@ const TechOrbit = () => {
       const w = stage.clientWidth;
       const tiltDeg = BASE_TILT - tilt.y * 14;
       const cosT = Math.cos((tiltDeg * Math.PI) / 180);
-      const roll = tilt.x * 10; // inclinação lateral
+      const mouseRoll = tilt.x * 10; // inclinação lateral pelo mouse
+      const rolls = RINGS.map((_, i) => (reduce ? 0 : planeRoll(clock - RING_DELAY[i])) + mouseRoll);
+
+      // O selo some enquanto a órbita está em pé (as logos passam por cima dele)
+      if (statusRef.current) {
+        const v = Math.min(1, Math.abs(rolls[1] - mouseRoll) / 90);
+        statusRef.current.style.opacity = (1 - Math.min(1, v * 1.6)).toFixed(3);
+        statusRef.current.style.transform = `translateX(-50%) translateY(${(-v * 10).toFixed(1)}px)`;
+      }
 
       ringRefs.current.forEach((svg, k) => {
         if (!svg) return;
         const r = RINGS[k % 2].radius * w;
         svg.style.setProperty("--ry", `${(r * cosT).toFixed(2)}px`);
         svg.style.setProperty("--rx", `${r.toFixed(2)}px`);
-        svg.style.transform = `translate(-50%, -50%) rotate(${roll}deg)`;
+        svg.style.transform = `translate(-50%, -50%) rotate(${rolls[k % 2]}deg)`;
       });
 
       items.forEach((item, idx) => {
@@ -104,7 +130,7 @@ const TechOrbit = () => {
         const x0 = Math.cos(a) * r;
         const y0 = Math.sin(a) * r * cosT;
         const depth = Math.sin(a); // -1 atrás, 1 na frente
-        const rad = (roll * Math.PI) / 180;
+        const rad = (rolls[item.ring] * Math.PI) / 180;
         const x = x0 * Math.cos(rad) - y0 * Math.sin(rad);
         const y = x0 * Math.sin(rad) + y0 * Math.cos(rad);
         const scale = 0.72 + (depth + 1) * 0.2;
@@ -164,10 +190,15 @@ const TechOrbit = () => {
 
       <div className="orbit-core">
         <div className="orbit-photo">
-          <img src={foto} alt="Jefferson Santos" loading="lazy" width={480} height={480} />
+          <div className="orbit-photo-inner">
+            <img src={foto} alt="Jefferson Santos" loading="lazy" width={560} height={560} />
+            <span className="orbit-scan" aria-hidden="true" />
+            <span className="orbit-shine" aria-hidden="true" />
+          </div>
         </div>
+        <span className="orbit-hud" aria-hidden="true" />
       </div>
-      <span className="orbit-status">
+      <span className="orbit-status" ref={statusRef}>
         <i aria-hidden="true" />
         {t("about.available")}
       </span>
