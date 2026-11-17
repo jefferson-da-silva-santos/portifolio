@@ -42,7 +42,13 @@
     "textPostgres": "Postgres é o meu banco de dados de escolha, e com o Neon, posso provisionar e gerenciar bancos de dados serverless de forma eficiente, garantindo a integridade e a disponibilidade dos dados.",
     "textMySQL": "Com o MySQL, armazeno e gerencio grandes volumes de dados de forma eficiente e escalável, garantindo a integridade e a disponibilidade dos dados.",
     "textGit": "Git e GitHub são as minhas ferramentas de escolha para gerenciar o versionamento de código e colaborar com outros desenvolvedores, garantindo a integridade e a rastreabilidade do código.",
-    "textDocker": "Com o Docker, posso containerizar aplicações e garantir a consistência e portabilidade em diferentes ambientes, simplificando o processo de desenvolvimento, teste e implantação, e garantindo a escalabilidade e a confiabilidade."
+    "textDocker": "Com o Docker, posso containerizar aplicações e garantir a consistência e portabilidade em diferentes ambientes, simplificando o processo de desenvolvimento, teste e implantação, e garantindo a escalabilidade e a confiabilidade.",
+    "textTypescript": "TypeScript é o padrão nos meus projetos atuais — front, back e mobile. A tipagem me dá segurança para refatorar sistemas grandes como o Vendaí e o Simbora Gerir sem quebrar o que já funciona.",
+    "textReactNative": "Com React Native e Expo desenvolvo apps Android e iOS a partir de uma única base de código: Propfy, Verbum, JeffPay e o app de leads da JTEC, com Expo Router, SQLite local e notificações.",
+    "textPrisma": "Prisma é o ORM que uso na maioria das minhas APIs com PostgreSQL. Modelagem clara, migrações versionadas e consultas tipadas em projetos como Cobraaí, CifreAqui e o sistema de pagamentos.",
+    "textRedis": "Uso Redis para cache, filas e controle de concorrência: com BullMQ processo tarefas em segundo plano (PDFs, cobranças, notificações) no Vendaí, no Simbora Gerir e no Cobraaí.",
+    "textTauri": "Com Tauri transformo aplicações web em apps desktop leves para Windows, Linux e macOS — como meu app de pomodoro, o CifreAqui e o FreelanceCalc.",
+    "textJest": "Escrevo testes automatizados com Jest e Supertest para garantir que as regras de negócio e os endpoints das minhas APIs continuem funcionando a cada mudança."
   },
   "project": {
     "title": "Projetos",
@@ -326,33 +332,212 @@
         "title": "Iane Ramos",
         "description": "Landing page pixel-perfect para uma personal trainer, com calculadora interativa de objetivos e frequência de treino.",
         "stack": "Stack: React | TypeScript | AOS"
+      },
+      {
+        "title": "Disparador WhatsApp",
+        "description": "Ferramenta local que envia mensagens de prospecção pelo WhatsApp a partir de lotes em JSON, com limite diário, modo simulação e uma interface web para acompanhar cada envio.",
+        "stack": "Stack: Node.js | whatsapp-web.js | HTML | CSS"
+      },
+      {
+        "title": "JTEC Leads API",
+        "description": "API do app de leads da JTEC: autenticação com refresh token, funil em Kanban com etapas reordenáveis, histórico e interações por lead, importação em lote e sincronização com o app mobile.",
+        "stack": "Stack: Node.js | Express | Sequelize | PostgreSQL"
+      },
+      {
+        "title": "Trilha — Pomodoro",
+        "description": "Pomodoro imersivo para foco e estudo, com trilha sonora, cenários e progresso visual. É 100% estático e está sendo levado para o desktop com Tauri.",
+        "stack": "Stack: React | TypeScript | Vite | Tauri"
+      },
+      {
+        "title": "Quiz da EBD",
+        "description": "Site para sortear alunos e conduzir as perguntas da revista na Escola Bíblica Dominical, com placar, presença e progresso salvos no navegador — sem login e sem servidor.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "FreelanceCalc",
+        "description": "Calculadora de preço para freelancers: parte dos custos fixos, das horas trabalhadas e da margem desejada para chegar ao valor do serviço, com histórico salvo localmente.",
+        "stack": "Stack: React | Node.js | Express | SQLite"
+      },
+      {
+        "title": "Projeto de Impressão",
+        "description": "Desafio técnico de um app desktop que envia um texto direto para a impressora com um clique, usando React na interface e Tauri para acessar o sistema operacional.",
+        "stack": "Stack: React | Tauri | Vite"
+      },
+      {
+        "title": "Auth HttpOnly — API",
+        "description": "API de autenticação feita em desafio técnico, com o JWT guardado em cookie HttpOnly, login, logout e rota de usuário protegida.",
+        "stack": "Stack: Node.js | Express | Sequelize | MySQL"
+      },
+      {
+        "title": "Auth HttpOnly — Front",
+        "description": "Interface do desafio de autenticação: login, cadastro e área protegida consumindo a API por cookie HttpOnly, sem expor o token no navegador.",
+        "stack": "Stack: React | Vite | Axios"
+      },
+      {
+        "title": "Vision Óptica",
+        "description": "Site institucional da Vision Óptica, em Jaboatão dos Guararapes (PE): coleção, serviços, envio de receita pelo WhatsApp e tema claro/escuro.",
+        "stack": "Stack: React | TypeScript | Vite | CSS"
+      },
+      {
+        "title": "Ótica Vitória Eyewear",
+        "description": "Site institucional da Ótica Vitória Eyewear, em Vitória de Santo Antão (PE), com ofertas, coleção, smartwatches, agendamento de exame e pré-renderização para SEO.",
+        "stack": "Stack: React | TypeScript | Vite | CSS"
+      },
+      {
+        "title": "Bio Sites de Beleza",
+        "description": "27 bio sites (link na bio) para profissionais de beleza e estética, cada um com identidade visual própria, reunidos em um único projeto React.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Alex Fonseca — Jornalista",
+        "description": "Portfólio do jornalista político Alex Fonseca, com matérias, crônicas e trajetória em um layout editorial.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Lorena Bellotti",
+        "description": "Site da designer de sobrancelhas Lorena Bellotti, com catálogo de procedimentos, diferenciais, dúvidas e agendamento pelo WhatsApp.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Planilhas da Jéssica",
+        "description": "Landing page que apresenta os modelos de planilhas financeiras da Jéssica, com foco em conversão.",
+        "stack": "Stack: HTML | SASS | JavaScript"
+      },
+      {
+        "title": "Arsenal Planware",
+        "description": "Conjunto de sistemas de gestão da Planware — barbearia, clientes, estoque, financeiro e outros — cada um como um produto independente em React e TypeScript.",
+        "stack": "Stack: React | TypeScript | SASS | Vite"
+      },
+      {
+        "title": "Planware Admin",
+        "description": "Painel administrativo da Planware para gerenciar empresas, usuários e permissões dos sistemas da plataforma.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Planware Server",
+        "description": "Backend multi-tenant da Planware que atende vários sistemas (clientes, estoque, finanças, clínica, ordens de serviço e fiado), com permissões por usuário e relatórios em PDF.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
+      },
+      {
+        "title": "Cobraaí",
+        "description": "SaaS de cobrança recorrente: envia as mensalidades dos clientes por e-mail e WhatsApp, recebe por Pix e cartão via Mercado Pago e mostra quem já pagou.",
+        "stack": "Stack: React | TypeScript | Material UI"
+      },
+      {
+        "title": "Cobraaí — API",
+        "description": "Backend multiempresa do Cobraaí: clientes, faturas, cobrança automática, cadastro público, rotinas agendadas e integração com o meu sistema de pagamentos.",
+        "stack": "Stack: Node.js | Express | Prisma | Redis"
+      },
+      {
+        "title": "Vendaí",
+        "description": "ERP/PDV para pequenas lojas e MEIs: balcão com leitor de código, estoque com grade de tamanho e cor, vitrine online e Pix, tudo em um só sistema.",
+        "stack": "Stack: React | TypeScript | TanStack Query"
+      },
+      {
+        "title": "Vendaí — API",
+        "description": "API do Vendaí com mais de 100 endpoints: pedidos, caixa, estoque, devoluções, loja online, assinaturas e auditoria, com filas no BullMQ e tempo real com Socket.IO.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL | Redis"
+      },
+      {
+        "title": "Simbora Gerir",
+        "description": "SaaS de agenda e gestão de atendimentos para salões, pet shops, clínicas e consultorias: horários sem conflito, histórico por cliente, orçamentos e financeiro.",
+        "stack": "Stack: React | TypeScript | TanStack Query"
+      },
+      {
+        "title": "Simbora Gerir — API",
+        "description": "API multi-tenant do Simbora Gerir: agenda, atendimentos, profissionais, serviços, despesas, orçamentos e arquivos, com filas, documentação OpenAPI e testes.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL | Redis"
+      },
+      {
+        "title": "SeuFreela — Página de Vendas",
+        "description": "Minha página de vendas como freelancer: oferta de sites com hospedagem inclusa, portfólio de projetos e contato direto pelo WhatsApp.",
+        "stack": "Stack: React | TypeScript | Material UI"
+      },
+      {
+        "title": "Verbum — API",
+        "description": "API do Verbum para perguntas bíblicas da comunidade, com comentários, reações, favoritos, ranking e painel administrativo documentado com Swagger.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
+      },
+      {
+        "title": "CifreAqui",
+        "description": "App para criar, transpor e exportar cifras musicais em PDF, com acordes personalizados, apostilas e pagamento por exportação. Roda na web e no desktop com Tauri.",
+        "stack": "Stack: React | TypeScript | Material UI | Tauri"
+      },
+      {
+        "title": "CifreAqui — API",
+        "description": "Backend do CifreAqui: cifras, acordes personalizados, geração de apostilas e PDFs com Puppeteer, pagamentos e downloads.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
+      },
+      {
+        "title": "Gerador de Senhas — API",
+        "description": "API que gera senhas simples, alfanuméricas, complexas ou personalizadas por tamanho e tipo, com cadastro e login de usuários.",
+        "stack": "Stack: Node.js | Express | PostgreSQL"
+      },
+      {
+        "title": "Gerador de Senhas — Front",
+        "description": "Interface para gerar e copiar senhas seguras escolhendo o tamanho e os tipos de caractere, consumindo a API do gerador.",
+        "stack": "Stack: React | Vite | SASS"
+      },
+      {
+        "title": "To-Do List — API",
+        "description": "Primeiro projeto fullstack de lista de tarefas: API em Express com cadastro de usuários, consultas SQL e senhas criptografadas.",
+        "stack": "Stack: Node.js | Express | MySQL"
+      },
+      {
+        "title": "Menu On-line",
+        "description": "Cardápio digital de hamburgueria com carrinho e pedido enviado pelo WhatsApp, feito em HTML, CSS e JavaScript puro.",
+        "stack": "Stack: HTML | CSS | JavaScript"
+      },
+      {
+        "title": "Sushi E-commerce (v1)",
+        "description": "Primeira versão da loja de sushi, em HTML, SASS e JavaScript puro, com seções de cardápio, populares e tema escuro.",
+        "stack": "Stack: HTML | SASS | JavaScript"
+      },
+      {
+        "title": "API To-Do (Node puro)",
+        "description": "API de tarefas feita só com o módulo http do Node.js, sem frameworks, para entender rotas, query string e respostas JSON na mão.",
+        "stack": "Stack: Node.js"
+      },
+      {
+        "title": "API de Pilotos",
+        "description": "API em Express que retorna a classificação de pilotos a partir de dados locais — um dos meus primeiros contatos com rotas versionadas (/api/v1).",
+        "stack": "Stack: Node.js | Express"
+      },
+      {
+        "title": "E-commerce em Java",
+        "description": "E-commerce em Java no terminal, com clientes, produtos, carrinho, estoque e saldo, feito para praticar orientação a objetos.",
+        "stack": "Stack: Java | POO"
+      },
+      {
+        "title": "Aston Martin DB5",
+        "description": "Site editorial sobre o Aston Martin DB5, feito para estudar tipografia, layout escuro e animações em React com TypeScript.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Serviço de Notificações",
+        "description": "Microsserviço de notificações com RabbitMQ que enfileira e envia e-mail, SMS, WhatsApp e push por diferentes provedores (SendGrid, Twilio, Meta, Firebase e OneSignal).",
+        "stack": "Stack: Node.js | Express | RabbitMQ"
+      },
+      {
+        "title": "Clone Prime Video",
+        "description": "Clone da interface do Prime Video em React Native com Expo, para estudar listas horizontais, layout de catálogo e navegação.",
+        "stack": "Stack: React Native | Expo | TypeScript"
       }
     ],
     "textButton": "Ver projeto",
     "filtersAriaLabel": "Filtros de categoria dos projetos",
     "emptyState": "Nenhum projeto encontrado com essa combinação de filtros.",
     "groups": {
-      "curadoria": "Curadoria",
-      "trajetoria": "Trajetória",
-      "plataforma": "Plataforma"
+      "categoria": "Categoria"
     },
     "categories": {
       "todos": "Todos",
-      "destaques": "Destaques",
-      "primeirosPassos": "Primeiros Passos",
+      "autorais": "Projetos Autorais",
+      "freelancer": "Projetos Freelancer",
+      "pessoais": "Projetos Pessoais",
       "desafiosTecnicos": "Desafios Técnicos",
-      "experienciaProfissional": "Experiência Profissional",
-      "freelancer": "Freelancer",
-      "projetosIndependentes": "Projetos Independentes",
-      "projetosProposito": "Projetos de Propósito",
-      "projetosExperimentais": "Projetos Experimentais",
-      "emDesenvolvimento": "Em Desenvolvimento",
-      "frontend": "Frontend",
-      "backend": "Backend",
-      "mobile": "Mobile",
-      "desktop": "Desktop",
-      "fullstack": "Full Stack",
-      "landingPages": "Landing Pages"
+      "estudo": "Projetos de Estudo",
+      "inicioCarreira": "Início de Carreira"
     },
     "searchPlaceholder": "Buscar projetos...",
     "clearSearch": "Limpar busca"

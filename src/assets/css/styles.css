@@ -807,7 +807,7 @@ c:Usersjeffr\d ownloads஬kground_light.png .circle {
 .groupSkills-secundary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   row-gap: 1.3em;
   -moz-column-gap: 1.3em;
   column-gap: 1.3em;
@@ -1390,45 +1390,12 @@ textarea:focus {
   border: 1px solid #242323;
 }
 
+.skill-element:hover {
+  border: 1px solid var(--skill-color, #2ac5e1);
+}
 .skill-element:hover img {
   transform: scale(120%);
   transition: all 1s ease;
-}
-.skill-element:hover:nth-child(1) {
-  border: 1px solid #93f02f;
-}
-.skill-element:hover:nth-child(2) {
-  border: 1px solid #f29057;
-}
-.skill-element:hover:nth-child(3) {
-  border: 1px solid #9956f6;
-}
-.skill-element:hover:nth-child(4) {
-  border: 1px solid #2ac5e1;
-}
-.skill-element:hover:nth-child(5) {
-  border: 1px solid #ffffff;
-}
-.skill-element:hover:nth-child(6) {
-  border: 1px solid #ff74b6;
-}
-.skill-element:hover:nth-child(7) {
-  border: 1px solid #9956f6;
-}
-.skill-element:hover:nth-child(8) {
-  border: 1px solid #93f02f;
-}
-.skill-element:hover:nth-child(9) {
-  border: 1px solid #ff80bd;
-}
-.skill-element:hover:nth-child(10) {
-  border: 1px solid #f5c022;
-}
-.skill-element:hover:nth-child(11) {
-  border: 1px solid #ff74b6;
-}
-.skill-element:hover:nth-child(12) {
-  border: 1px solid #2ac5e1;
 }
 
 .skill-element img {
@@ -1493,6 +1460,39 @@ textarea:focus {
 .flutter img {
   width: 50%;
   filter: drop-shadow(0px 0px 25px #9956f6);
+}
+
+.typescript img,
+.prisma img,
+.redis img,
+.tauri img,
+.reactnative img,
+.jest img {
+  width: 50%;
+}
+
+.typescript img {
+  filter: drop-shadow(0px 0px 25px #3178c6);
+}
+
+.prisma img {
+  filter: drop-shadow(0px 0px 25px #5a67d8);
+}
+
+.redis img {
+  filter: drop-shadow(0px 0px 25px #ff4438);
+}
+
+.tauri img {
+  filter: drop-shadow(0px 0px 25px #ffc131);
+}
+
+.reactnative img {
+  filter: drop-shadow(0px 0px 25px #8a8fff);
+}
+
+.jest img {
+  filter: drop-shadow(0px 0px 25px #c63d14);
 }
 
 .list-options-box-tec li {
@@ -4387,7 +4387,7 @@ input:checked ~ * .admin-toggle__label, input:checked + * + .admin-toggle__label
 }
 @media screen and (max-width: 767px) {
   .groupSkills-secundary {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     padding-bottom: 1em;
   }
@@ -4442,12 +4442,20 @@ input:checked ~ * .admin-toggle__label, input:checked + * + .admin-toggle__label
     font-size: 2em;
   }
   .groupSkills-secundary {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 0.8em;
+    column-gap: 0.8em;
     padding-bottom: 1em;
   }
+  .skill-element {
+    height: 5.5em;
+    padding: 0.6em;
+  }
   .skill-element img {
-    width: 5em;
+    width: 70%;
+    max-height: 80%;
+    object-fit: contain;
   }
   .groupProjetos-primary .titleProjetos {
     font-size: 2em;

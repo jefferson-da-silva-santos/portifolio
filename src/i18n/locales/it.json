@@ -42,7 +42,13 @@
     "textPostgres": "Postgres è il mio database di elezione, e con Neon, posso fornire e gestire database serverless in modo efficiente, garantendo l'integrità e la disponibilità dei dati.",
     "textMySQL": "Con MySQL, archivio e gestisco grandi volumi di dati in modo efficiente e scalabile, garantendo l'integrità e la disponibilità dei dati.",
     "textGit": "Git e GitHub sono i miei strumenti di scelta per gestire il versioning del codice e collaborare con altri sviluppatori, garantendo l'integrità e la tracciabilità del codice.",
-    "textDocker": "Con Docker, posso containerizzare applicazioni e garantire la coerenza e la portabilità in diversi ambienti, semplificando il processo di sviluppo, test e distribuzione, e garantendo la scalabilità e l'affidabilità."
+    "textDocker": "Con Docker, posso containerizzare applicazioni e garantire la coerenza e la portabilità in diversi ambienti, semplificando il processo di sviluppo, test e distribuzione, e garantendo la scalabilità e l'affidabilità.",
+    "textTypescript": "TypeScript è lo standard nei miei progetti attuali — front end, back end e mobile. La tipizzazione mi permette di rifattorizzare sistemi grandi come Vendaí e Simbora Gerir senza rompere ciò che già funziona.",
+    "textReactNative": "Con React Native ed Expo sviluppo app Android e iOS da un'unica base di codice: Propfy, Verbum, JeffPay e l'app dei lead di JTEC, con Expo Router, SQLite locale e notifiche.",
+    "textPrisma": "Prisma è l'ORM che uso nella maggior parte delle mie API con PostgreSQL. Modellazione chiara, migrazioni versionate e query tipizzate in progetti come Cobraaí, CifreAqui e il mio sistema di pagamenti.",
+    "textRedis": "Uso Redis per cache, code e controllo della concorrenza: con BullMQ eseguo attività in background (PDF, addebiti, notifiche) in Vendaí, Simbora Gerir e Cobraaí.",
+    "textTauri": "Con Tauri trasformo applicazioni web in app desktop leggere per Windows, Linux e macOS — come la mia app pomodoro, CifreAqui e FreelanceCalc.",
+    "textJest": "Scrivo test automatici con Jest e Supertest per garantire che le regole di business e gli endpoint delle mie API continuino a funzionare a ogni modifica."
   },
   "project": {
     "title": "Progetti",
@@ -326,33 +332,212 @@
         "title": "Iane Ramos",
         "description": "Landing page pixel-perfect per una personal trainer, con calcolatrice interattiva di obiettivi e frequenza di allenamento.",
         "stack": "Stack: React | TypeScript | AOS"
+      },
+      {
+        "title": "Disparador WhatsApp",
+        "description": "Local tool that sends WhatsApp prospecting messages from JSON batches, with a daily limit, a simulation mode and a web interface to follow every send.",
+        "stack": "Stack: Node.js | whatsapp-web.js | HTML | CSS"
+      },
+      {
+        "title": "JTEC Leads API",
+        "description": "API behind JTEC's leads app: refresh-token auth, a Kanban funnel with reorderable stages, per-lead history and interactions, bulk import and sync with the mobile app.",
+        "stack": "Stack: Node.js | Express | Sequelize | PostgreSQL"
+      },
+      {
+        "title": "Trilha — Pomodoro",
+        "description": "Immersive pomodoro for focus and study, with a soundtrack, scenery and visual progress. Fully static and being brought to the desktop with Tauri.",
+        "stack": "Stack: React | TypeScript | Vite | Tauri"
+      },
+      {
+        "title": "Quiz da EBD",
+        "description": "Site to draw students and run the magazine questions in Sunday School, with score, attendance and progress saved in the browser — no login, no server.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "FreelanceCalc",
+        "description": "Pricing calculator for freelancers: it starts from fixed costs, hours worked and the desired margin to reach the service price, with history saved locally.",
+        "stack": "Stack: React | Node.js | Express | SQLite"
+      },
+      {
+        "title": "Projeto de Impressão",
+        "description": "Technical challenge: a desktop app that sends text straight to the printer with one click, using React for the UI and Tauri to reach the operating system.",
+        "stack": "Stack: React | Tauri | Vite"
+      },
+      {
+        "title": "Auth HttpOnly — API",
+        "description": "Authentication API built for a technical challenge, keeping the JWT in an HttpOnly cookie, with login, logout and a protected user route.",
+        "stack": "Stack: Node.js | Express | Sequelize | MySQL"
+      },
+      {
+        "title": "Auth HttpOnly — Front",
+        "description": "Front end for the authentication challenge: login, sign-up and a protected area using the API through an HttpOnly cookie, never exposing the token in the browser.",
+        "stack": "Stack: React | Vite | Axios"
+      },
+      {
+        "title": "Vision Óptica",
+        "description": "Institutional website for Vision Óptica in Jaboatão dos Guararapes (Brazil): collection, services, prescription upload via WhatsApp and light/dark theme.",
+        "stack": "Stack: React | TypeScript | Vite | CSS"
+      },
+      {
+        "title": "Ótica Vitória Eyewear",
+        "description": "Institutional website for Ótica Vitória Eyewear in Vitória de Santo Antão (Brazil), with offers, collection, smartwatches, eye-exam booking and pre-rendering for SEO.",
+        "stack": "Stack: React | TypeScript | Vite | CSS"
+      },
+      {
+        "title": "Bio Sites de Beleza",
+        "description": "27 link-in-bio sites for beauty professionals, each with its own visual identity, all living in a single React project.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Alex Fonseca — Jornalista",
+        "description": "Portfolio for political journalist Alex Fonseca, with articles, chronicles and career history in an editorial layout.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Lorena Bellotti",
+        "description": "Website for brow designer Lorena Bellotti, with a procedures catalog, highlights, FAQ and WhatsApp booking.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Planilhas da Jéssica",
+        "description": "Landing page presenting Jéssica's personal-finance spreadsheet templates, focused on conversion.",
+        "stack": "Stack: HTML | SASS | JavaScript"
+      },
+      {
+        "title": "Arsenal Planware",
+        "description": "Planware's suite of management systems — barbershop, clients, inventory, finance and more — each one an independent React and TypeScript product.",
+        "stack": "Stack: React | TypeScript | SASS | Vite"
+      },
+      {
+        "title": "Planware Admin",
+        "description": "Planware's admin panel to manage companies, users and permissions across the platform's systems.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Planware Server",
+        "description": "Planware's multi-tenant back end serving several systems (clients, inventory, finance, clinic, work orders and store credit), with per-user permissions and PDF reports.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
+      },
+      {
+        "title": "Cobraaí",
+        "description": "Recurring-billing SaaS: sends customers' monthly charges by email and WhatsApp, collects via Pix and card through Mercado Pago and shows who has paid.",
+        "stack": "Stack: React | TypeScript | Material UI"
+      },
+      {
+        "title": "Cobraaí — API",
+        "description": "Cobraaí's multi-company back end: clients, invoices, automatic billing, public sign-up, scheduled jobs and integration with my payment system.",
+        "stack": "Stack: Node.js | Express | Prisma | Redis"
+      },
+      {
+        "title": "Vendaí",
+        "description": "ERP/POS for small shops: checkout with barcode scanner, inventory with size and color variants, online storefront and Pix, all in one system.",
+        "stack": "Stack: React | TypeScript | TanStack Query"
+      },
+      {
+        "title": "Vendaí — API",
+        "description": "Vendaí's API with 100+ endpoints: orders, cash register, inventory, returns, online store, subscriptions and audit logs, with BullMQ queues and Socket.IO real time.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL | Redis"
+      },
+      {
+        "title": "Simbora Gerir",
+        "description": "Scheduling and service-management SaaS for salons, pet shops, clinics and consultancies: conflict-free booking, client history, quotes and finances.",
+        "stack": "Stack: React | TypeScript | TanStack Query"
+      },
+      {
+        "title": "Simbora Gerir — API",
+        "description": "Simbora Gerir's multi-tenant API: schedule, appointments, staff, services, expenses, quotes and files, with queues, OpenAPI docs and tests.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL | Redis"
+      },
+      {
+        "title": "SeuFreela — Página de Vendas",
+        "description": "My freelance sales page: website offer with hosting included, project portfolio and direct contact via WhatsApp.",
+        "stack": "Stack: React | TypeScript | Material UI"
+      },
+      {
+        "title": "Verbum — API",
+        "description": "Verbum's API for community Bible questions, with comments, reactions, favorites, rankings and an admin panel documented with Swagger.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
+      },
+      {
+        "title": "CifreAqui",
+        "description": "App to create, transpose and export chord sheets to PDF, with custom chords, songbooks and pay-per-export billing. Runs on the web and on desktop with Tauri.",
+        "stack": "Stack: React | TypeScript | Material UI | Tauri"
+      },
+      {
+        "title": "CifreAqui — API",
+        "description": "CifreAqui's back end: chord sheets, custom chords, songbook and PDF generation with Puppeteer, payments and downloads.",
+        "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
+      },
+      {
+        "title": "Gerador de Senhas — API",
+        "description": "API that generates simple, alphanumeric, complex or custom passwords by length and type, with user sign-up and login.",
+        "stack": "Stack: Node.js | Express | PostgreSQL"
+      },
+      {
+        "title": "Gerador de Senhas — Front",
+        "description": "Interface to generate and copy secure passwords by choosing length and character types, using the generator API.",
+        "stack": "Stack: React | Vite | SASS"
+      },
+      {
+        "title": "To-Do List — API",
+        "description": "My first full-stack to-do project: an Express API with user sign-up, SQL queries and encrypted passwords.",
+        "stack": "Stack: Node.js | Express | MySQL"
+      },
+      {
+        "title": "Menu On-line",
+        "description": "Digital menu for a burger shop with a cart and orders sent via WhatsApp, built with plain HTML, CSS and JavaScript.",
+        "stack": "Stack: HTML | CSS | JavaScript"
+      },
+      {
+        "title": "Sushi E-commerce (v1)",
+        "description": "First version of the sushi store, in plain HTML, SASS and JavaScript, with menu and popular sections and a dark theme.",
+        "stack": "Stack: HTML | SASS | JavaScript"
+      },
+      {
+        "title": "API To-Do (Node puro)",
+        "description": "Task API built only with Node.js's http module, no frameworks, to understand routing, query strings and JSON responses by hand.",
+        "stack": "Stack: Node.js"
+      },
+      {
+        "title": "API de Pilotos",
+        "description": "Express API that returns the driver standings from local data — one of my first contacts with versioned routes (/api/v1).",
+        "stack": "Stack: Node.js | Express"
+      },
+      {
+        "title": "E-commerce em Java",
+        "description": "Terminal e-commerce in Java, with customers, products, cart, inventory and balance, built to practice object-oriented programming.",
+        "stack": "Stack: Java | POO"
+      },
+      {
+        "title": "Aston Martin DB5",
+        "description": "Editorial website about the Aston Martin DB5, built to study typography, dark layouts and animations in React with TypeScript.",
+        "stack": "Stack: React | TypeScript | Vite"
+      },
+      {
+        "title": "Serviço de Notificações",
+        "description": "Notification microservice with RabbitMQ that queues and sends email, SMS, WhatsApp and push through several providers (SendGrid, Twilio, Meta, Firebase and OneSignal).",
+        "stack": "Stack: Node.js | Express | RabbitMQ"
+      },
+      {
+        "title": "Clone Prime Video",
+        "description": "Prime Video interface clone in React Native with Expo, to study horizontal lists, catalog layouts and navigation.",
+        "stack": "Stack: React Native | Expo | TypeScript"
       }
     ],
     "textButton": "Vedi progetto",
     "filtersAriaLabel": "Filtri per categoria dei progetti",
     "emptyState": "Nessun progetto trovato con questa combinazione di filtri.",
     "groups": {
-      "curadoria": "Curatela",
-      "trajetoria": "Percorso",
-      "plataforma": "Piattaforma"
+      "categoria": "Categoria"
     },
     "categories": {
       "todos": "Tutti",
-      "destaques": "In Evidenza",
-      "primeirosPassos": "Primi Passi",
+      "autorais": "Progetti Originali",
+      "freelancer": "Progetti Freelance",
+      "pessoais": "Progetti Personali",
       "desafiosTecnicos": "Sfide Tecniche",
-      "experienciaProfissional": "Esperienza Professionale",
-      "freelancer": "Freelance",
-      "projetosIndependentes": "Progetti Indipendenti",
-      "projetosProposito": "Progetti con uno Scopo",
-      "projetosExperimentais": "Progetti Sperimentali",
-      "emDesenvolvimento": "In Sviluppo",
-      "frontend": "Frontend",
-      "backend": "Backend",
-      "mobile": "Mobile",
-      "desktop": "Desktop",
-      "fullstack": "Full Stack",
-      "landingPages": "Landing Page"
+      "estudo": "Progetti di Studio",
+      "inicioCarreira": "Inizio Carriera"
     },
     "searchPlaceholder": "Cerca progetti...",
     "clearSearch": "Cancella ricerca"

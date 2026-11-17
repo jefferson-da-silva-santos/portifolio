@@ -37,7 +37,6 @@ const ModalProject: React.FC<ModalProjectProps> = ({
     infra,
     isApi,
     videoUrl,
-    categories,
   } = selectedProject;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -47,9 +46,11 @@ const ModalProject: React.FC<ModalProjectProps> = ({
   const projectInfra: string[] = infra || [];
   const embedUrl = getYoutubeEmbedUrl(videoUrl);
 
-  // Projetos desktop/mobile não têm "site" — o botão vira "Baixar"
-  const isDownloadable =
-    categories?.includes("desktop") || categories?.includes("mobile");
+  // Apps mobile/desktop não têm "site" — o botão vira "Baixar"
+  const stackKeys = [...projectTechnologies, ...projectInfra].map((k) => k.toLowerCase());
+  const isDownloadable = ["reactnative", "expo", "tauri", "flutter"].some((k) =>
+    stackKeys.includes(k)
+  );
 
   return (
     <aside

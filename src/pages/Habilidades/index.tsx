@@ -76,12 +76,12 @@ const Habilidades = () => {
                   ? "skill-element-border-light"
                   : "skill-element-border-dark"
               }`}
-              style={styleCardSkill(theme, themeObject)}
+              style={{ ...styleCardSkill(theme, themeObject), "--skill-color": skill.color } as React.CSSProperties}
             >
               <img
                 loading="lazy"
                 src={skill.image}
-                alt={`Logo do ${skill.tech}`}
+                alt={`Logo ${skill.tech}`}
               />
             </article>
           ))}
