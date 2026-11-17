@@ -54,102 +54,102 @@
     "title": "Proyectos",
     "list": [
       {
-        "title": "JTec",
+        "title": "JTec Platform — Project & Team Management",
         "description": "Plataforma web enfocada en centralizar la gestión de proyectos y equipos en un solo entorno. Permite el seguimiento de clientes, empresas, usuarios, tareas, metas y accesos al sistema, ofreciendo visión estratégica, control operativo y seguridad para la toma de decisiones.",
         "stack": "Stack: NextJs | ChartJs | JavaScript | SASS"
       },
       {
-        "title": "JTec API",
+        "title": "JTec Platform API — Projects, Teams & Access",
         "description": "API responsable de soportar toda la lógica de negocio de la plataforma JTec. Gestiona autenticación, permisos, proyectos, usuarios, tareas y registros de acceso, siguiendo buenas prácticas de arquitectura, documentación y escalabilidad.",
         "stack": "Stack: NodeJs | Express | Postgres | Docker | Swagger"
       },
       {
-        "title": "Galletas Léo de Lita",
+        "title": "Léo de Lita — Artisan Cookies Website",
         "description": "Sitio web institucional desarrollado para presentar los productos de la marca de forma atractiva, reforzar su identidad visual y crear un canal digital de comunicación con clientes y socios.",
         "stack": "Stack: React | SASS | TypeScript | Boxicons"
       },
       {
-        "title": "Óticas Leal",
+        "title": "Óticas Leal — Optical Store Website",
         "description": "Sitio web institucional creado para destacar productos, servicios y la credibilidad de Óticas Leal, proporcionando una navegación sencilla y alineada con la identidad de la marca.",
         "stack": "Stack: React | SASS | JavaScript | Boxicons"
       },
       {
-        "title": "Jéssica Hojas de Cálculo",
+        "title": "Planware — Systems & Spreadsheets Website",
         "description": "Sitio web orientado a la presentación de soluciones en hojas de cálculo personalizadas, con enfoque en claridad, profesionalismo y conversión de visitantes en clientes potenciales.",
         "stack": "Stack: React | SASS | TypeScript | Boxicons"
       },
       {
-        "title": "IDE",
+        "title": "IDE — Evangelism Management Platform",
         "description": "Plataforma web desarrollada para centralizar y facilitar la gestión de proyectos de evangelización de la IEADPE. La interfaz fue diseñada para ofrecer una navegación simple, organizada y accesible.",
         "stack": "Stack: React | JavaScript | SASS | Boxicons"
       },
       {
-        "title": "IDE API",
+        "title": "IDE API — Evangelism Platform Back End",
         "description": "API responsable de la lógica de negocio y la persistencia de datos de la Plataforma IDE. Implementa reglas, integraciones y control de información, utilizando una arquitectura organizada y patrones de diseño.",
         "stack": "Stack: NodeJs | Express | Postgres | Factory"
       },
       {
-        "title": "Curso de Piano",
+        "title": "Teclado do Zero — Course Landing Page",
         "description": "Landing page creada para promocionar cursos de piano, enfocada en la presentación clara del contenido, captación de leads y conversión de visitantes.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Curso de React",
+        "title": "React Course — Landing Page",
         "description": "Landing page desarrollada para promocionar cursos de React, destacando beneficios, propuesta de valor y llamadas a la acción de forma moderna y objetiva.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Ebook de Recetas",
+        "title": "Recipe Ebook — Sales Landing Page",
         "description": "Landing page enfocada en la promoción y venta de ebooks de recetas, priorizando una experiencia visual agradable y estrategias de conversión.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Mentoría",
+        "title": "Paid Traffic Mentoring — Landing Page",
         "description": "Landing page creada para presentar servicios de mentoría en tráfico pago, con comunicación directa, estructura persuasiva y enfoque en la generación de contactos.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Dentista",
+        "title": "Dental Clinic — Landing Page",
         "description": "Landing page desarrollada para la promoción de servicios odontológicos, transmitiendo confianza, profesionalismo y facilitando el contacto con pacientes.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Tienda de Sushi",
+        "title": "Sushi Store — Website & Menu",
         "description": "Sitio web institucional desarrollado para promocionar productos de sushi, con enfoque en una presentación clara y captación de leads.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Portafolio Personal",
+        "title": "This Portfolio — jeffersonsantos.dev",
         "description": "Mi portafolio personal, donde presento proyectos, experiencias y habilidades desarrolladas a lo largo de mi carrera como desarrollador web.",
         "stack": "Stack: React | TypeScript | SASS | Boxicons"
       },
       {
-        "title": "Tres en Raya",
+        "title": "Tic-Tac-Toe — Java Swing",
         "description": "Aplicación de escritorio de Tres en Raya hecha en Java con Swing, uno de mis primeros proyectos en mi camino como desarrollador. Toda la lógica de partida, marcador y reinicio se construyó desde cero con NetBeans (GroupLayout).",
         "stack": "Stack: Java | Swing | NetBeans"
       },
       {
-        "title": "Calculadora Web",
+        "title": "Web Calculator — Light & Dark Theme",
         "description": "Calculadora responsiva con soporte de tema claro/oscuro, construida en JavaScript puro al inicio de mi camino en front-end, separando responsabilidades entre módulos.",
         "stack": "Stack: HTML5 | CSS3 | JavaScript"
       },
       {
-        "title": "Calculadora de IMC",
+        "title": "BMI Calculator — Vanilla JavaScript",
         "description": "Calculadora de Índice de Masa Corporal responsiva en HTML, CSS y JavaScript puro, con selección de género y clasificación del resultado. Reforzó mis bases de manipulación del DOM.",
         "stack": "Stack: HTML5 | CSS3 | JavaScript"
       },
       {
-        "title": "Clon de Spotify",
+        "title": "Spotify Login — UI Clone",
         "description": "Clon responsivo de la pantalla de inicio de sesión de Spotify, enfocado en fidelidad visual y pequeñas interacciones de JavaScript, como mostrar/ocultar contraseña.",
         "stack": "Stack: HTML5 | CSS3 | JavaScript"
       },
       {
-        "title": "FavFlix",
+        "title": "FavFlix — Favorite Movies List",
         "description": "Aplicación para buscar películas en la API de OMDb y armar una lista personal de favoritos persistida en localStorage, con identidad visual inspirada en Netflix.",
         "stack": "Stack: JavaScript | API OMDb | localStorage | Notyf"
       },
       {
-        "title": "CodePass",
+        "title": "CodePass — Full-stack Password Generator",
         "description": "Generador de contraseñas seguras con autenticación propia vía JWT, back-end en capas y generación de contraseñas mediante clases especializadas (patrón Strategy). Mi primer gran salto de páginas estáticas a una aplicación full-stack real.",
         "stack": "Stack: Node.js | Express | JWT | PostgreSQL"
       },
@@ -159,7 +159,7 @@
         "stack": "Stack: HTML5 | Sass | Vite"
       },
       {
-        "title": "Desafío Marketplace",
+        "title": "Marketplace — React Technical Challenge",
         "description": "Aplicación React que simula un flujo completo de marketplace (login, listado, carrito y pago), desarrollada como desafío técnico del proceso que me contrató en Ongold Tech.",
         "stack": "Stack: React | TypeScript"
       },
@@ -169,27 +169,27 @@
         "stack": "Stack: React | Tauri | Vite"
       },
       {
-        "title": "GIC API",
+        "title": "GIC API — Items with CFOP, CST & NCM",
         "description": "API REST para la gestión de ítems comerciales con códigos fiscales (CFOP, CST/CSOSN, NCM), desarrollada como desafío técnico. Arquitectura en capas con DTOs y Docker.",
         "stack": "Stack: Node.js | Express | Docker"
       },
       {
-        "title": "GIC",
+        "title": "GIC — Tax Items Registry",
         "description": "Interfaz web par del GIC, con alta/edición de ítems tributarios, papelera de ítems eliminados y generación de reportes en PDF.",
         "stack": "Stack: React | TypeScript | Docker"
       },
       {
-        "title": "API de Autenticación",
+        "title": "Authentication API — JWT & Password Hashing",
         "description": "API REST de estudio dirigido para consolidar la autenticación en Node.js: hash de contraseña, JWT y ruta protegida — practicada de forma aislada, sin dominio de negocio encima.",
         "stack": "Stack: Node.js | Express | JWT | Sequelize"
       },
       {
-        "title": "Autenticación de Usuarios",
+        "title": "User Authentication — React Front End",
         "description": "Interfaz React par de la API de Autenticación, con rutas privadas, contexto de autenticación y listado paginado de usuarios.",
         "stack": "Stack: React | TypeScript | Material UI"
       },
       {
-        "title": "Sotov",
+        "title": "Sotov — Node.js Back-end Framework",
         "description": "Framework backend propio publicado en npm, extrayendo los patrones de arquitectura que vengo consolidando (repository/service abstractos, JWT, caché, Swagger) en una herramienta reutilizable.",
         "stack": "Stack: Node.js | Express | Sequelize | Swagger"
       },
@@ -199,22 +199,22 @@
         "stack": "Stack: React Native | Expo | SQLite"
       },
       {
-        "title": "Consorcio Honda",
+        "title": "Honda Consortium — Tracking App",
         "description": "App móvil para acompañar visualmente el consorcio de mi moto — cuotas pagadas, proyección de finalización y ahorro estimado. Nació de una necesidad personal, no de un cliente.",
         "stack": "Stack: React Native | Expo Router | TypeScript"
       },
       {
-        "title": "Menú Online",
+        "title": "Online Menu API — Delivery via WhatsApp",
         "description": "API REST para delivery con integración vía WhatsApp, el primer proyecto real construido sobre el framework Sotov, con autenticación, carrito y pruebas automatizadas.",
         "stack": "Stack: Node.js | Express | PostgreSQL | WhatsApp API"
       },
       {
-        "title": "TáServido",
+        "title": "TáServido — Digital Menu",
         "description": "Front-end de un menú digital accesible directamente desde el navegador, con área de cliente y panel administrativo completo, consumiendo la API de Menú Online.",
         "stack": "Stack: React | TypeScript | Formik | Notyf"
       },
       {
-        "title": "Espetinhos A&R",
+        "title": "Espetinhos A&R — Online Ordering",
         "description": "Sitio de pedidos para una espetería en Ipojuca-PE, con flujo de pedido por pasos y una regla de negocio real: las guarniciones siempre consumen un pincho del carrito para formar un combo.",
         "stack": "Stack: React | TypeScript | i18next"
       },
@@ -224,37 +224,37 @@
         "stack": "Stack: React | TypeScript | AOS"
       },
       {
-        "title": "JTEC",
+        "title": "JTEC — Software House Website",
         "description": "Conversión fiel de un diseño ya listo a una aplicación React real, para una empresa en la intersección entre IA, ingeniería de software y diseño de producto.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Reference Geo",
+        "title": "Reference Geo — Land Surveying Website",
         "description": "Sitio institucional para una empresa de topografía y georreferenciación, estructurado como un centro de contenido SEO con decenas de páginas generadas a partir de datos estructurados.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Sitio Institucional",
+        "title": "Promoção 3D — UPE Project Website",
         "description": "Sitio institucional con hero animado tipo máquina de escribir, chatbot integrado con IA, blog con editor de texto enriquecido y página de descarga de app con mockup de celular animado.",
         "stack": "Stack: React | TypeScript | Sass"
       },
       {
-        "title": "API REST",
+        "title": "Promoção 3D API — Users, Scores & Blog",
         "description": "API par del sitio institucional anterior, con autenticación doble (admin y usuario), CRUD completo de publicaciones, sistema de puntuaciones y dashboard analítico.",
         "stack": "Stack: Node.js | Express | PostgreSQL"
       },
       {
-        "title": "Memória e Vida",
+        "title": "Memória e Vida — Educational Memory Game",
         "description": "Juego de memoria educativo con 72 cartas temáticas, ranking global y soporte offline completo.",
         "stack": "Stack: React Native | Expo | TypeScript"
       },
       {
-        "title": "@payment-system-mp/react-widget",
+        "title": "Payment Widget — React Checkout (npm)",
         "description": "Componente React de checkout (Pix, tarjeta, boleto) publicado como paquete instalable, con Material UI aislado mediante su propio ThemeProvider para nunca resetear la app anfitriona.",
         "stack": "Stack: React | Material UI | Mercado Pago"
       },
       {
-        "title": "Payment System MP",
+        "title": "Payment System MP — White-label Payments",
         "description": "Sistema de pagos white-label integrado con Mercado Pago, con autenticación en capas, split de comisión configurable y auditoría de webhooks.",
         "stack": "Stack: Node.js | Prisma | PostgreSQL | Docker"
       },
@@ -264,262 +264,262 @@
         "stack": "Stack: Markdown | Curaduría con IA"
       },
       {
-        "title": "Resume Generation Payment",
+        "title": "CurrículoPro API — PDF & Payment",
         "description": "Backend que transforma los datos del usuario en un currículum PDF de alta calidad vía Puppeteer, con exportación habilitada solo tras un pago único.",
         "stack": "Stack: Node.js | Prisma | Puppeteer | Cloudinary"
       },
       {
-        "title": "CurrículoPro",
+        "title": "CurrículoPro — PDF Resume Builder",
         "description": "Plataforma web para armar currículums profesionales con edición en tiempo real y descarga en PDF, sin necesidad de registro complejo.",
         "stack": "Stack: React | TypeScript"
       },
       {
-        "title": "Futebol Holandês API",
+        "title": "Dutch Football API — News Portal",
         "description": "API para un portal de noticias de fútbol neerlandés, con imágenes convertidas automáticamente a WebP al subirlas y un parser dedicado para enlaces de Google Drive.",
         "stack": "Stack: Node.js | Prisma | PostgreSQL | Cloudinary"
       },
       {
-        "title": "Futebol Holandês",
+        "title": "Dutch Football — News Portal",
         "description": "Front-end del portal, con editor de contenido enriquecido vía TipTap (con embed nativo de YouTube y X/Twitter) y despliegue continuo vía GitHub Actions.",
         "stack": "Stack: React | TypeScript | TipTap"
       },
       {
-        "title": "Barão Barbearia",
+        "title": "Barão Barbershop — WhatsApp Booking",
         "description": "Sitio para una barbería en Limoeiro-PE con agendamiento vía WhatsApp guiado por pasos, y una regla propia: la barba es un adicional que se suma al corte elegido.",
         "stack": "Stack: React | TypeScript | AOS"
       },
       {
-        "title": "Verbum App",
+        "title": "Verbum — Bible Study App",
         "description": "App de estudio bíblico 100% offline para Android, con lector multi-versión, planes de lectura, himnario, entrenamiento de evangelismo con sistema de XP y cuaderno del predicador.",
         "stack": "Stack: React Native | Expo | SQLite"
       },
       {
-        "title": "Verbum Sitio",
+        "title": "Verbum — Persona-based Landing Page",
         "description": "Landing page multi-persona (Predicador, Estudiante de Teología, Lector Devocional) que cambia contenido y paleta de colores en tiempo real según el perfil elegido por el visitante.",
         "stack": "Stack: React | TypeScript | AOS"
       },
       {
-        "title": "JeffPay",
+        "title": "JeffPay — Receivables & Payables App",
         "description": "App móvil para controlar dinero por cobrar y por pagar — no gestiona saldo bancario, solo responde qué vence y la previsión del mes.",
         "stack": "Stack: React Native | Expo | TypeScript"
       },
       {
-        "title": "Propfy",
+        "title": "Propfy — Sales Proposal App",
         "description": "App móvil para gestión comercial y seguimiento de propuestas, con arquitectura multiusuario preparada para roles y permisos corporativos.",
         "stack": "Stack: React Native | Expo | TypeScript"
       },
       {
-        "title": "Propfy API",
+        "title": "Propfy API — Proposals, Clients & PDFs",
         "description": "API RESTful multi-tenant para el ecosistema Propfy, con control de acceso basado en roles (Owner/Seller) y auditoría de propuestas.",
         "stack": "Stack: Node.js | Prisma"
       },
       {
-        "title": "Blog Server",
+        "title": "Jefferson Dev Server — Portfolio Back End",
         "description": "Backend central que sostiene el blog y las funcionalidades de mi propio portfolio, con autenticación JWT y módulos de cobranza y finanzas.",
         "stack": "Stack: Node.js | Express | PostgreSQL"
       },
       {
-        "title": "AgroSol",
+        "title": "AgroSol — Solar Energy Landing Page",
         "description": "Landing page de alta conversión para una empresa de energía solar en Carpina-PE, con simulador interactivo de ahorro en la cuenta de luz.",
         "stack": "Stack: React | TypeScript | AOS"
       },
       {
-        "title": "Bem Natural",
+        "title": "Bem Natural — Health Food Store",
         "description": "Vitrina digital para una tienda de productos naturales y suplementos en Limoeiro-PE, con guía interactiva de whey y menú de viandas fitness.",
         "stack": "Stack: React | TypeScript | AOS"
       },
       {
-        "title": "Iane Ramos",
+        "title": "Iane Ramos — Personal Trainer Website",
         "description": "Landing page pixel-perfect para una entrenadora personal, con calculadora interactiva de objetivos y frecuencia de entrenamiento.",
         "stack": "Stack: React | TypeScript | AOS"
       },
       {
-        "title": "Disparador WhatsApp",
+        "title": "WhatsApp Prospecting Sender",
         "description": "Local tool that sends WhatsApp prospecting messages from JSON batches, with a daily limit, a simulation mode and a web interface to follow every send.",
         "stack": "Stack: Node.js | whatsapp-web.js | HTML | CSS"
       },
       {
-        "title": "JTEC Leads API",
+        "title": "JTEC Leads API — Kanban CRM",
         "description": "API behind JTEC's leads app: refresh-token auth, a Kanban funnel with reorderable stages, per-lead history and interactions, bulk import and sync with the mobile app.",
         "stack": "Stack: Node.js | Express | Sequelize | PostgreSQL"
       },
       {
-        "title": "Trilha — Pomodoro",
+        "title": "Trilha — Immersive Pomodoro",
         "description": "Immersive pomodoro for focus and study, with a soundtrack, scenery and visual progress. Fully static and being brought to the desktop with Tauri.",
         "stack": "Stack: React | TypeScript | Vite | Tauri"
       },
       {
-        "title": "Quiz da EBD",
+        "title": "Sunday School Quiz — Draws & Questions",
         "description": "Site to draw students and run the magazine questions in Sunday School, with score, attendance and progress saved in the browser — no login, no server.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "FreelanceCalc",
+        "title": "FreelanceCalc — Freelance Pricing Calculator",
         "description": "Pricing calculator for freelancers: it starts from fixed costs, hours worked and the desired margin to reach the service price, with history saved locally.",
         "stack": "Stack: React | Node.js | Express | SQLite"
       },
       {
-        "title": "Projeto de Impressão",
+        "title": "Direct Print — Tauri Desktop App",
         "description": "Technical challenge: a desktop app that sends text straight to the printer with one click, using React for the UI and Tauri to reach the operating system.",
         "stack": "Stack: React | Tauri | Vite"
       },
       {
-        "title": "Auth HttpOnly — API",
+        "title": "HttpOnly Auth API — Secure Cookie Login",
         "description": "Authentication API built for a technical challenge, keeping the JWT in an HttpOnly cookie, with login, logout and a protected user route.",
         "stack": "Stack: Node.js | Express | Sequelize | MySQL"
       },
       {
-        "title": "Auth HttpOnly — Front",
+        "title": "HttpOnly Auth Front — Protected Area",
         "description": "Front end for the authentication challenge: login, sign-up and a protected area using the API through an HttpOnly cookie, never exposing the token in the browser.",
         "stack": "Stack: React | Vite | Axios"
       },
       {
-        "title": "Vision Óptica",
+        "title": "Vision Óptica — Optical Store Website",
         "description": "Institutional website for Vision Óptica in Jaboatão dos Guararapes (Brazil): collection, services, prescription upload via WhatsApp and light/dark theme.",
         "stack": "Stack: React | TypeScript | Vite | CSS"
       },
       {
-        "title": "Ótica Vitória Eyewear",
+        "title": "Ótica Vitória Eyewear — Optical Store Website",
         "description": "Institutional website for Ótica Vitória Eyewear in Vitória de Santo Antão (Brazil), with offers, collection, smartwatches, eye-exam booking and pre-rendering for SEO.",
         "stack": "Stack: React | TypeScript | Vite | CSS"
       },
       {
-        "title": "Bio Sites de Beleza",
+        "title": "Bio Sites — Link-in-Bio for Beauty Pros",
         "description": "27 link-in-bio sites for beauty professionals, each with its own visual identity, all living in a single React project.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Alex Fonseca — Jornalista",
+        "title": "Alex Fonseca — Journalist Portfolio",
         "description": "Portfolio for political journalist Alex Fonseca, with articles, chronicles and career history in an editorial layout.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Lorena Bellotti",
+        "title": "Lorena Bellotti — Brow Design Website",
         "description": "Website for brow designer Lorena Bellotti, with a procedures catalog, highlights, FAQ and WhatsApp booking.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Planilhas da Jéssica",
+        "title": "Jéssica's Spreadsheets — Landing Page",
         "description": "Landing page presenting Jéssica's personal-finance spreadsheet templates, focused on conversion.",
         "stack": "Stack: HTML | SASS | JavaScript"
       },
       {
-        "title": "Arsenal Planware",
+        "title": "Arsenal Planware — Management Systems Suite",
         "description": "Planware's suite of management systems — barbershop, clients, inventory, finance and more — each one an independent React and TypeScript product.",
         "stack": "Stack: React | TypeScript | SASS | Vite"
       },
       {
-        "title": "Planware Admin",
+        "title": "Planware Admin — Companies & Permissions Panel",
         "description": "Planware's admin panel to manage companies, users and permissions across the platform's systems.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Planware Server",
+        "title": "Planware Server — Multi-system Back End",
         "description": "Planware's multi-tenant back end serving several systems (clients, inventory, finance, clinic, work orders and store credit), with per-user permissions and PDF reports.",
         "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
       },
       {
-        "title": "Cobraaí",
+        "title": "Cobraaí — Recurring Billing",
         "description": "Recurring-billing SaaS: sends customers' monthly charges by email and WhatsApp, collects via Pix and card through Mercado Pago and shows who has paid.",
         "stack": "Stack: React | TypeScript | Material UI"
       },
       {
-        "title": "Cobraaí — API",
+        "title": "Cobraaí API — Invoices & Auto-Billing",
         "description": "Cobraaí's multi-company back end: clients, invoices, automatic billing, public sign-up, scheduled jobs and integration with my payment system.",
         "stack": "Stack: Node.js | Express | Prisma | Redis"
       },
       {
-        "title": "Vendaí",
+        "title": "Vendaí — Retail ERP & POS",
         "description": "ERP/POS for small shops: checkout with barcode scanner, inventory with size and color variants, online storefront and Pix, all in one system.",
         "stack": "Stack: React | TypeScript | TanStack Query"
       },
       {
-        "title": "Vendaí — API",
+        "title": "Vendaí API — Orders, Cash & Inventory",
         "description": "Vendaí's API with 100+ endpoints: orders, cash register, inventory, returns, online store, subscriptions and audit logs, with BullMQ queues and Socket.IO real time.",
         "stack": "Stack: Node.js | Express | Prisma | PostgreSQL | Redis"
       },
       {
-        "title": "Simbora Gerir",
+        "title": "Simbora Gerir — Scheduling & Service Management",
         "description": "Scheduling and service-management SaaS for salons, pet shops, clinics and consultancies: conflict-free booking, client history, quotes and finances.",
         "stack": "Stack: React | TypeScript | TanStack Query"
       },
       {
-        "title": "Simbora Gerir — API",
+        "title": "Simbora Gerir API — Multi-tenant Scheduling",
         "description": "Simbora Gerir's multi-tenant API: schedule, appointments, staff, services, expenses, quotes and files, with queues, OpenAPI docs and tests.",
         "stack": "Stack: Node.js | Express | Prisma | PostgreSQL | Redis"
       },
       {
-        "title": "SeuFreela — Página de Vendas",
+        "title": "SeuFreela — My Sales Page",
         "description": "My freelance sales page: website offer with hosting included, project portfolio and direct contact via WhatsApp.",
         "stack": "Stack: React | TypeScript | Material UI"
       },
       {
-        "title": "Verbum — API",
+        "title": "Verbum API — Community Bible Q&A",
         "description": "Verbum's API for community Bible questions, with comments, reactions, favorites, rankings and an admin panel documented with Swagger.",
         "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
       },
       {
-        "title": "CifreAqui",
+        "title": "CifreAqui — Chord Sheet Editor",
         "description": "App to create, transpose and export chord sheets to PDF, with custom chords, songbooks and pay-per-export billing. Runs on the web and on desktop with Tauri.",
         "stack": "Stack: React | TypeScript | Material UI | Tauri"
       },
       {
-        "title": "CifreAqui — API",
+        "title": "CifreAqui API — Chords, PDFs & Payments",
         "description": "CifreAqui's back end: chord sheets, custom chords, songbook and PDF generation with Puppeteer, payments and downloads.",
         "stack": "Stack: Node.js | Express | Prisma | PostgreSQL"
       },
       {
-        "title": "Gerador de Senhas — API",
+        "title": "Password Generator — API",
         "description": "API that generates simple, alphanumeric, complex or custom passwords by length and type, with user sign-up and login.",
         "stack": "Stack: Node.js | Express | PostgreSQL"
       },
       {
-        "title": "Gerador de Senhas — Front",
+        "title": "Password Generator — Web Interface",
         "description": "Interface to generate and copy secure passwords by choosing length and character types, using the generator API.",
         "stack": "Stack: React | Vite | SASS"
       },
       {
-        "title": "To-Do List — API",
+        "title": "To-Do List — Express & MySQL API",
         "description": "My first full-stack to-do project: an Express API with user sign-up, SQL queries and encrypted passwords.",
         "stack": "Stack: Node.js | Express | MySQL"
       },
       {
-        "title": "Menu On-line",
+        "title": "Menu On-line — Burger Shop Menu",
         "description": "Digital menu for a burger shop with a cart and orders sent via WhatsApp, built with plain HTML, CSS and JavaScript.",
         "stack": "Stack: HTML | CSS | JavaScript"
       },
       {
-        "title": "Sushi E-commerce (v1)",
+        "title": "Sushi Store v1 — HTML, SASS & JS",
         "description": "First version of the sushi store, in plain HTML, SASS and JavaScript, with menu and popular sections and a dark theme.",
         "stack": "Stack: HTML | SASS | JavaScript"
       },
       {
-        "title": "API To-Do (Node puro)",
+        "title": "Task API — Node.js without Frameworks",
         "description": "Task API built only with Node.js's http module, no frameworks, to understand routing, query strings and JSON responses by hand.",
         "stack": "Stack: Node.js"
       },
       {
-        "title": "API de Pilotos",
+        "title": "Driver Standings API",
         "description": "Express API that returns the driver standings from local data — one of my first contacts with versioned routes (/api/v1).",
         "stack": "Stack: Node.js | Express"
       },
       {
-        "title": "E-commerce em Java",
+        "title": "Terminal E-commerce — Java OOP",
         "description": "Terminal e-commerce in Java, with customers, products, cart, inventory and balance, built to practice object-oriented programming.",
         "stack": "Stack: Java | POO"
       },
       {
-        "title": "Aston Martin DB5",
+        "title": "Aston Martin DB5 — Editorial Website",
         "description": "Editorial website about the Aston Martin DB5, built to study typography, dark layouts and animations in React with TypeScript.",
         "stack": "Stack: React | TypeScript | Vite"
       },
       {
-        "title": "Serviço de Notificações",
+        "title": "RabbitMQ Notification Service",
         "description": "Notification microservice with RabbitMQ that queues and sends email, SMS, WhatsApp and push through several providers (SendGrid, Twilio, Meta, Firebase and OneSignal).",
         "stack": "Stack: Node.js | Express | RabbitMQ"
       },
       {
-        "title": "Clone Prime Video",
+        "title": "Prime Video Clone — React Native",
         "description": "Prime Video interface clone in React Native with Expo, to study horizontal lists, catalog layouts and navigation.",
         "stack": "Stack: React Native | Expo | TypeScript"
       }
