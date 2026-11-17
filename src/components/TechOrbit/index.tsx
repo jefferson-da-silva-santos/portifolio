@@ -38,7 +38,6 @@ const TechOrbit = () => {
   const stageRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const ringRefs = useRef<(SVGSVGElement | null)[]>([]);
-  const statusRef = useRef<HTMLSpanElement>(null);
   const [size, setSize] = useState(440);
   const [hovered, setHovered] = useState<string | null>(null);
   // A pausa no hover é lida dentro do loop sem reiniciá-lo
@@ -105,13 +104,6 @@ const TechOrbit = () => {
       const cosT = Math.cos((tiltDeg * Math.PI) / 180);
       const mouseRoll = tilt.x * 10; // inclinação lateral pelo mouse
       const rolls = RINGS.map((_, i) => (reduce ? 0 : planeRoll(clock - RING_DELAY[i])) + mouseRoll);
-
-      // O selo some enquanto a órbita está em pé (as logos passam por cima dele)
-      if (statusRef.current) {
-        const v = Math.min(1, Math.abs(rolls[1] - mouseRoll) / 90);
-        statusRef.current.style.opacity = (1 - Math.min(1, v * 1.6)).toFixed(3);
-        statusRef.current.style.transform = `translateX(-50%) translateY(${(-v * 10).toFixed(1)}px)`;
-      }
 
       ringRefs.current.forEach((svg, k) => {
         if (!svg) return;
@@ -198,10 +190,6 @@ const TechOrbit = () => {
         </div>
         <span className="orbit-hud" aria-hidden="true" />
       </div>
-      <span className="orbit-status" ref={statusRef}>
-        <i aria-hidden="true" />
-        {t("about.available")}
-      </span>
 
       {RINGS.map((_, i) => (
         <svg

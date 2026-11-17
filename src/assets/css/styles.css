@@ -3282,40 +3282,6 @@ textarea:focus {
   animation: orbit-spin 14s linear infinite reverse;
 }
 
-.orbit-status {
-  position: absolute;
-  left: 50%;
-  top: 12%;
-  transform: translateX(-50%);
-  z-index: 45;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--chip-bg);
-  border: 1px solid var(--chip-border);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  color: var(--tip-text);
-  font-size: 0.78rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-.orbit-status i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
-  animation: orbit-ping 1.8s ease-out infinite;
-}
-
-.orbit--light .orbit-status {
-  color: #10131a;
-}
-
 .orbit-items {
   position: absolute;
   inset: 0;
@@ -3408,26 +3374,14 @@ textarea:focus {
     opacity: 1;
   }
 }
-@keyframes orbit-ping {
-  70% {
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-  }
-}
 @media (prefers-reduced-motion: reduce) {
-  .orbit-glow, .orbit-photo, .orbit-photo-inner, .orbit-status i, .orbit-scan, .orbit-shine, .orbit-hud {
+  .orbit-glow, .orbit-photo, .orbit-photo-inner, .orbit-scan, .orbit-shine, .orbit-hud {
     animation: none;
   }
 }
 @media (max-width: 896px) {
   .orbit {
     width: min(92vw, 26rem);
-  }
-  .orbit-status {
-    font-size: 0.7rem;
-    padding: 5px 10px;
   }
 }
 
