@@ -586,3 +586,6 @@
     object-fit: contain;
   }
 }
+
+/* Sobre: a órbita ocupa a largura disponível */
+.groupSobre-secundary { width: 100%; min-width: 0; }

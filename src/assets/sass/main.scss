@@ -569,13 +569,14 @@ body {
 
 .sobre {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
   min-height: 34em;
   width: 90%;
   margin: auto;
-  max-width: 1024px;
-  -moz-column-gap: 1em;
-  column-gap: 1em;
+  max-width: 1100px;
+  -moz-column-gap: 3em;
+  column-gap: 3em;
 }
 
 .groupSobre-primary {
@@ -657,7 +658,6 @@ body {
   animation: img2 10s ease-in-out 0s infinite alternate-reverse;
   filter: drop-shadow(0px 0px 30px rgba(8, 0, 255, 0.603));
 }
-c:\Users\jeffr\Downloads\background_light.png
 .circle {
   position: absolute;
   width: 15em;
@@ -1336,3 +1336,4 @@ textarea:focus {
 @import "media.scss";
 @import "categories-filter.scss";@import "legal.scss";
 @import "project-modal.scss";
+@import "tech-orbit.scss";

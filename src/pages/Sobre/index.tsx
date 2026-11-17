@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { projectImages } from "../../consts/dataConsts";
 import useTheme from "../../hooks/useTheme";
 import { styleContainer, styleText, styleTitle } from "./styles";
 import { useEffect, useState } from "react";
 import { getFirstLetterTitle, getRestOfTitle, toggleClassInText } from "../../utils/textUtilites";
-import coffe from "../../assets/image/coffe.png";
-import coffe_coffe from "../../assets/image/coffe_coffe.png";
+import TechOrbit from "../../components/TechOrbit";
 
 const Sobre = () => {
   const { theme } = useTheme();
@@ -38,14 +36,7 @@ const Sobre = () => {
           <p className="textSobre" style={styleText(theme)} dangerouslySetInnerHTML={{ __html: description2 }}></p>
         </article>
         <article className="groupSobre-secundary" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
-          <div className="circle"></div>
-          <img className="minha-img-2" src={coffe_coffe} alt="" />
-          <img
-            loading="lazy"
-            className="minha-img"
-            src={coffe}
-            alt={projectImages[3].alt}
-          />
+          <TechOrbit />
         </article>
       </section>
     </div>

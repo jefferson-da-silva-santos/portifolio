@@ -1,0 +1,210 @@
+// Órbita 3D de tecnologias (seção Sobre)
+.orbit {
+  --ring: rgba(0, 200, 255, 0.35);
+  --ring-front: rgba(0, 220, 255, 0.55);
+  --chip-bg: rgba(14, 18, 28, 0.78);
+  --chip-border: rgba(255, 255, 255, 0.1);
+  --tip-bg: #0b0f17;
+  --tip-text: #f2f6ff;
+
+  position: relative;
+  width: 34rem;
+  max-width: 100%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  touch-action: pan-y;
+  user-select: none;
+
+  &--light {
+    --ring: rgba(0, 120, 200, 0.28);
+    --ring-front: rgba(0, 120, 200, 0.45);
+    --chip-bg: rgba(255, 255, 255, 0.92);
+    --chip-border: rgba(10, 20, 40, 0.1);
+    --tip-bg: #0b0f17;
+  }
+}
+
+.orbit-glow {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 162, 255, 0.45), rgba(120, 0, 255, 0.18) 55%, transparent 72%);
+  filter: blur(30px);
+  animation: orbit-breathe 6s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.orbit-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--rx, 100px) * 2);
+  height: calc(var(--ry, 40px) * 2);
+  overflow: visible;
+  z-index: 0;
+  pointer-events: none;
+
+  ellipse {
+    fill: none;
+    stroke: var(--ring);
+    stroke-width: 1.4;
+    stroke-dasharray: 2 6;
+    vector-effect: non-scaling-stroke;
+  }
+
+  &--1 ellipse { stroke-dasharray: none; stroke-width: 1; }
+
+  // Metade da frente do anel passa por cima da foto
+  &--front {
+    z-index: 25;
+    clip-path: inset(50% -2% -2% -2%);
+
+    ellipse { stroke: var(--ring-front); }
+  }
+}
+
+.orbit-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+.orbit-photo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(from 0deg, #00a2ff, #7a5cff, #00ffff, #00a2ff);
+  box-shadow: 0 0 40px rgba(0, 162, 255, 0.45), 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: orbit-spin 8s linear infinite;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0b0b0b;
+    animation: orbit-spin 8s linear infinite reverse; // a foto não gira, só a borda
+  }
+}
+
+.orbit--light .orbit-photo img { border-color: #fff; }
+
+.orbit-status {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  transform: translateX(-50%);
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--tip-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+  i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    animation: orbit-ping 1.8s ease-out infinite;
+  }
+}
+
+.orbit--light .orbit-status { color: #10131a; }
+
+.orbit-items {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  border-radius: 30%;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  cursor: default;
+  will-change: transform, opacity;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  img {
+    width: 58%;
+    height: 58%;
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &.is-hovered {
+    border-color: var(--c);
+    box-shadow: 0 0 0 1px var(--c), 0 0 26px color-mix(in srgb, var(--c) 60%, transparent);
+    z-index: 60 !important;
+    opacity: 1 !important;
+    filter: none !important;
+
+    img { transform: scale(1.18); }
+    .orbit-tip { opacity: 1; transform: translate(-50%, 0); }
+  }
+}
+
+.orbit-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translate(-50%, 6px);
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--tip-bg);
+  color: #f2f6ff;
+  border: 1px solid var(--c);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+@keyframes orbit-breathe {
+  from { transform: scale(0.92); opacity: 0.75; }
+  to { transform: scale(1.08); opacity: 1; }
+}
+@keyframes orbit-ping {
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-glow, .orbit-photo, .orbit-photo img, .orbit-status i { animation: none; }
+}
+
+@media (max-width: 896px) {
+  .orbit { width: min(92vw, 26rem); }
+  .orbit-status { font-size: 0.7rem; padding: 5px 10px; }
+}
