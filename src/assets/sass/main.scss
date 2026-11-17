@@ -189,6 +189,21 @@ body {
   background-attachment: fixed;
 }
 
+/* iOS (Safari/Chrome no iPhone) não suporta background-attachment: fixed
+   e acaba não mostrando a imagem: em telas de toque o fundo rola junto. */
+@supports (-webkit-touch-callout: none) {
+  .groupHeader {
+    background-attachment: scroll;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .groupHeader {
+    background-attachment: scroll;
+    background-position: center;
+  }
+}
+
 .logoNav {
   font-family: "Saira", sans-serif;
   font-weight: 500;
@@ -256,7 +271,15 @@ body {
 }
 
 .icon-idioma {
-  width: 1.26em;
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+.icon-theme {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .itemsMenu-header {
@@ -1310,6 +1333,5 @@ textarea:focus {
 
 @import "skiils.scss";
 @import "skiils_modal.scss";
-@import "blog.scss";
 @import "media.scss";
 @import "categories-filter.scss";

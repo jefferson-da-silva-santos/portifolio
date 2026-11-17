@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
-import { Link } from "react-router-dom";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
 import { listIconTheme, useNavLinks } from "../../consts/dataConsts";
@@ -151,26 +150,15 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
 
             return (
               <li key={link.href}>
-                {isSection ? (
-                  <a
-                    className={className}
-                    style={linkVars}
-                    href={link.href}
-                    aria-current={isActive ? "true" : undefined}
-                    onClick={(e) => handleSectionClick(e, id)}
-                  >
-                    {link.text}
-                  </a>
-                ) : (
-                  <Link
-                    className={className}
-                    style={linkVars}
-                    to={link.href}
-                    onClick={closeIfOpen}
-                  >
-                    {link.text}
-                  </Link>
-                )}
+                <a
+                  className={className}
+                  style={linkVars}
+                  href={link.href}
+                  aria-current={isActive ? "true" : undefined}
+                  onClick={(e) => (isSection ? handleSectionClick(e, id) : closeIfOpen())}
+                >
+                  {link.text}
+                </a>
               </li>
             );
           })}
