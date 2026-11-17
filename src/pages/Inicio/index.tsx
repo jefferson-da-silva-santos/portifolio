@@ -52,6 +52,8 @@ const Inicio = () => {
               style={styleTitle(theme, themeObject)}
             >
               Jefferson Santos
+              {/* O cargo aparece animado logo abaixo (só em CSS); aqui fica em texto para Google e leitores de tela */}
+              <span className="sr-only"> — {t("init.role")}</span>
             </h1>
             <p className="title-secundary-header"></p>
             <p className="text-header" style={{

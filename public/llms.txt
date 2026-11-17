@@ -1,0 +1,38 @@
+# Jefferson Santos
+
+> Desenvolvedor full-stack de Limoeiro (Pernambuco, Brasil) que cria sites, sistemas SaaS, APIs e aplicativos Android e iOS para empresas, profissionais e clientes de todo o Brasil.
+
+## Sobre
+Jefferson Santos (Jefferson da Silva Santos) é desenvolvedor full-stack com cerca de 4 anos de experiência. Trabalha como desenvolvedor na Ongold Tech, software house de automação comercial, onde desenvolveu sozinho o Portal do Cliente, e atende clientes como freelancer pela marca SeuFreela e pela JTEC, em Limoeiro (PE). Já entregou projetos para mais de 10 clientes. Está aberto a vagas CLT remotas, vagas no exterior e projetos freelance.
+
+## Serviços
+- **Sites institucionais e landing pages**: React e TypeScript, com SEO, foco em conversão e contato pelo WhatsApp.
+- **Sistemas web SaaS**: sistemas multiempresa com painel, agenda, cobrança, estoque e relatórios em PDF.
+- **APIs e backends**: Node.js com Express, Prisma, PostgreSQL, Redis, filas com BullMQ e integrações de pagamento (Mercado Pago).
+- **Aplicativos mobile**: Android e iOS com React Native e Expo.
+- **Apps desktop**: aplicações web levadas para Windows, Linux e macOS com Tauri.
+
+## Projetos em destaque
+- **Vendaí**: ERP e PDV para pequenas lojas (balcão, estoque com grade, vitrine online e Pix).
+- **Simbora Gerir**: SaaS de agenda e gestão de atendimentos para salões, clínicas e consultorias.
+- **Cobraaí**: SaaS de cobrança recorrente com Pix e cartão via Mercado Pago.
+- **Payment System MP**: sistema de pagamentos white-label sobre o Mercado Pago, com split de comissão.
+- **Propfy**: app de propostas comerciais em PDF, com recibos e assinatura.
+- **Sites de clientes**: Óticas Leal, Vision Óptica, Ótica Vitória Eyewear, Léo de Lita, Promoção 3D (UPE), Reference Geo, Bem Natural, Iane Ramos e outros.
+
+## Tecnologias
+React, TypeScript, Next.js, Node.js, Express, React Native, Expo, Prisma, PostgreSQL, MySQL, Redis, Docker, Tauri, Jest, Sass e Java.
+
+## Links importantes
+- [Home](https://jeffersonsantos.dev/): visão geral, sobre e habilidades
+- [Projetos](https://jeffersonsantos.dev/#project): 89 projetos organizados em autorais, freelancer, pessoais, desafios técnicos, estudo e início de carreira
+- [Serviços](https://jeffersonsantos.dev/#service): o que ele oferece
+- [Contato](https://jeffersonsantos.dev/#contact): formulário de contato
+- [GitHub](https://github.com/jefferson-da-silva-santos)
+- [LinkedIn](https://www.linkedin.com/in/jefferson-santos-a87b74277/)
+
+## Contato e localização
+- Cidade: Limoeiro, Pernambuco, Brasil (atende remotamente todo o Brasil)
+- E-mail: jefferson.santos.dev8051@gmail.com
+- WhatsApp: pelo botão no topo do site
+- Idiomas do site: português, inglês, espanhol, italiano e francês

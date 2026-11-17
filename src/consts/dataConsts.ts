@@ -271,11 +271,6 @@ export const useNavLinks = (): INavLinks[] => {
       href: "#contact",
       controls: "contact",
     },
-    {
-      text: t("navigation.links.blog"),
-      href: "/blog",
-      controls: "blog",
-    }
   ];
 };
 

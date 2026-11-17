@@ -13,4 +13,6 @@ export const contactFormSchema = Yup.object().shape({
     .required('O assunto é obrigatório.'),
   mensagem: Yup.string()
     .required('A mensagem é obrigatória.'),
+  // Marco Civil da Internet (Lei 12.965/2014), art. 7º, IX: consentimento expresso e destacado
+  aceite: Yup.boolean().oneOf([true], 'Para enviar, aceite o aviso de privacidade.'),
 });

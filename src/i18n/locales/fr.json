@@ -21,7 +21,8 @@
   },
   "init": {
     "text": "Développeur web spécialisé dans la création d’expériences modernes et efficaces.",
-    "textButton": "Voir mon travail"
+    "textButton": "Voir mon travail",
+    "role": "Développeur Full-Stack à Pernambuco, Brésil"
   },
   "about": {
     "title": "À propos",
@@ -582,5 +583,47 @@
     "tech": "Stack :",
     "lib": "Librairies :",
     "infra": "Infrastructure :"
+  },
+  "privacy": {
+    "title": "Privacy Notice",
+    "close": "Close",
+    "intro": "This website is maintained by {{name}}, the controller of the personal data processed here under Brazil's General Data Protection Law (LGPD, Law 13,709/2018).",
+    "consentPrefix": "I have read and agree to the",
+    "consentSuffix": ". My data will only be used to reply to this message.",
+    "updated": "Last updated: {{date}}",
+    "sections": {
+      "data": {
+        "title": "What we collect",
+        "text": "Only what you type in the contact form: name, email, subject and message. The site uses no tracking cookies, ads or visitor analytics."
+      },
+      "purpose": {
+        "title": "Why we use it",
+        "text": "Solely to reply to your message and, if applicable, to discuss a project or service proposal."
+      },
+      "basis": {
+        "title": "Legal basis",
+        "text": "Processing happens at your request, as preliminary steps toward a possible contract (LGPD, art. 7, V), and with your express consent when you submit the form (Brazilian Internet Civil Framework, art. 7, IX)."
+      },
+      "sharing": {
+        "title": "Sharing",
+        "text": "Your message is delivered by email through EmailJS and arrives in the owner's Gmail inbox. The site also loads fonts from Google Fonts and an image hosted on GitHub, which receive your browser's IP address when serving those files. These services may store data outside Brazil (LGPD, art. 33). Your data is never sold or used for other purposes."
+      },
+      "retention": {
+        "title": "How long",
+        "text": "Messages are kept only as long as needed to handle your request and are deleted whenever you ask."
+      },
+      "rights": {
+        "title": "Your rights",
+        "text": "At any time you may request confirmation of processing, access, correction, anonymization, portability or deletion of your data, information about sharing, and withdrawal of consent (LGPD, art. 18). Just send an email to the address below."
+      },
+      "storage": {
+        "title": "Browser storage",
+        "text": "The site stores only your chosen language and theme in your own browser (localStorage). This information never leaves your device."
+      },
+      "contact": {
+        "title": "Controller and contact",
+        "text": ""
+      }
+    }
   }
 }

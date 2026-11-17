@@ -21,7 +21,8 @@
   },
   "init": {
     "text": "Desenvolvedor web especializado em criar experiências modernas e eficientes.",
-    "textButton": "Veja meu trabalho"
+    "textButton": "Veja meu trabalho",
+    "role": "Desenvolvedor Full-Stack em Pernambuco"
   },
   "about": {
     "title": "Sobre",
@@ -582,5 +583,47 @@
     "tech": "Stack:",
     "lib": "Libs:",
     "infra": "Infra:"
+  },
+  "privacy": {
+    "title": "Aviso de Privacidade",
+    "close": "Fechar",
+    "intro": "Este site é mantido por {{name}}, responsável (controlador) pelos dados pessoais tratados aqui, nos termos da Lei Geral de Proteção de Dados (Lei 13.709/2018).",
+    "consentPrefix": "Li e concordo com o",
+    "consentSuffix": ". Meus dados serão usados só para responder a este contato.",
+    "updated": "Última atualização: {{date}}",
+    "sections": {
+      "data": {
+        "title": "Quais dados coletamos",
+        "text": "Somente o que você digita no formulário de contato: nome, e-mail, assunto e mensagem. O site não usa cookies de rastreamento, anúncios nem ferramentas de análise de visitantes."
+      },
+      "purpose": {
+        "title": "Para que usamos",
+        "text": "Exclusivamente para responder ao seu contato e, se for o caso, conversar sobre um projeto ou uma proposta de serviço."
+      },
+      "basis": {
+        "title": "Base legal",
+        "text": "O tratamento acontece a seu pedido, em procedimentos preliminares a um possível contrato (LGPD, art. 7º, V), e com o seu consentimento expresso no envio do formulário (Marco Civil da Internet, art. 7º, IX)."
+      },
+      "sharing": {
+        "title": "Compartilhamento",
+        "text": "A mensagem é entregue por e-mail pelo serviço EmailJS e chega à caixa do Gmail do responsável. O site também carrega fontes do Google Fonts e uma imagem hospedada no GitHub, que recebem o endereço IP do seu navegador ao exibir esses arquivos. Esses serviços podem armazenar dados fora do Brasil (LGPD, art. 33). Seus dados não são vendidos nem cedidos para outras finalidades."
+      },
+      "retention": {
+        "title": "Por quanto tempo",
+        "text": "As mensagens ficam guardadas só pelo tempo necessário para o atendimento e são apagadas quando você pedir."
+      },
+      "rights": {
+        "title": "Seus direitos",
+        "text": "A qualquer momento, você pode pedir a confirmação do tratamento, o acesso, a correção, a anonimização, a portabilidade ou a eliminação dos seus dados, informações sobre o compartilhamento e a revogação do consentimento (LGPD, art. 18). Basta enviar um e-mail para o endereço abaixo."
+      },
+      "storage": {
+        "title": "Armazenamento no navegador",
+        "text": "O site guarda no seu próprio navegador (localStorage) apenas o idioma e o tema escolhidos. Essas informações não saem do seu aparelho."
+      },
+      "contact": {
+        "title": "Responsável e contato",
+        "text": ""
+      }
+    }
   }
 }

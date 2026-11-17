@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Formik, Form, type FormikHelpers } from 'formik';
+import { Formik, Form, Field, ErrorMessage, type FormikHelpers } from 'formik';
 import FormField from '../../components/FormField';
 import { contactFormSchema } from '../../utils/validationUtilities';
 import type { ContactFormValues } from './types';
@@ -10,11 +10,12 @@ import { getFirstLetterTitle, getRestOfTitle } from '../../utils/textUtilites';
 import emailjs from "emailjs-com";
 import { showNotyf } from '../../utils/notyf';
 import { useState } from 'react';
+import { OWNER, openPrivacyPolicy } from '../../consts/legal';
 
 const SERVICE_ID = 'service_ykwz0ni';
 const TEMPLATE_ID = 'template_h37bm6s';
 const PUBLIC_KEY = 'LkWLwIyTgUZFuaPa1';
-const MY_EMAIL = "jefferson.santos.dev8051@gmail.com";
+const MY_EMAIL = OWNER.email;
 
 const Contato = () => {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ const Contato = () => {
     email: '',
     assunto: '',
     mensagem: '',
+    aceite: false,
   };
 
   const handleSubmit = async (
@@ -83,6 +85,20 @@ const Contato = () => {
               <FormField id="email" name="email" type="email" placeholder={t("contact.emailPlaceholder")} />
               <FormField id="assunto" name="assunto" placeholder={t("contact.subjectPlaceholder")} />
               <FormField id="mensagem" name="mensagem" type="textarea" placeholder={t("contact.messagePlaceholder")} />
+
+              <div className={`consent consent--${theme}`}>
+                <label htmlFor="aceite">
+                  <Field type="checkbox" id="aceite" name="aceite" />
+                  <span>
+                    {t("privacy.consentPrefix")}{" "}
+                    <button type="button" className="consent-link" onClick={openPrivacyPolicy}>
+                      {t("privacy.title")}
+                    </button>
+                    {t("privacy.consentSuffix")}
+                  </span>
+                </label>
+                <ErrorMessage name="aceite" component="small" className="consent-error" />
+              </div>
 
               <button
                 style={inputStyle(theme, objectTheme)}

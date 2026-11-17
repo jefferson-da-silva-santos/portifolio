@@ -3,4 +3,5 @@ export interface ContactFormValues {
   email: string;
   assunto: string;
   mensagem: string;
+  aceite: boolean;
 }
