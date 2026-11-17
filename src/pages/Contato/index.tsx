@@ -1,3 +1,4 @@
+import ContactCard from "../../components/ContactCard";
 import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field, ErrorMessage, type FormikHelpers } from 'formik';
 import FormField from '../../components/FormField';
@@ -115,12 +116,7 @@ const Contato = () => {
         </article>
 
         <div className="groupContact-terciary" data-aos="fade-left">
-          <div className="circle-2"></div>
-          <img
-            loading="lazy"
-            src="https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/NovoPortifolio/jefferson-image.jpeg"
-            alt="Foto do dono do portifólio"
-          />
+          <ContactCard />
         </div>
       </section>
     </div>

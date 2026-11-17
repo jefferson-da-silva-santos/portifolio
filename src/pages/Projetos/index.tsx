@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { getFirstLetterTitle, getRestOfTitle } from "../../utils/textUtilites";
 import CategoryFilterBar from "../../components/Category";
 import { categoryTaxonomy, type CategoryKey } from "../../consts/categoryTaxonomy";
-import Pagination from "@mui/material/Pagination";
+import Pager from "../../components/Pager";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -16,25 +16,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Close";
 
 const ITEMS_PER_PAGE = 6;
-
-const paginationSx = {
-  "& .MuiPaginationItem-root": {
-    color: "#9ca3af",
-    borderColor: "#2e2e2e",
-  },
-  "& .MuiPaginationItem-root:hover": {
-    backgroundColor: "rgba(0, 255, 255, 0.08)",
-    color: "#00ffff",
-  },
-  "& .MuiPaginationItem-root.Mui-selected": {
-    backgroundColor: "rgba(0, 255, 255, 0.15)",
-    color: "#00ffff",
-    borderColor: "#00ffff",
-  },
-  "& .MuiPaginationItem-root.Mui-selected:hover": {
-    backgroundColor: "rgba(0, 255, 255, 0.25)",
-  },
-};
 
 const searchSx = {
   width: 220,
@@ -126,7 +107,7 @@ const Projetos = () => {
     return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredProjects, currentPage]);
 
-  const handlePageChange = (_event: React.ChangeEvent<unknown>, page: number) => {
+  const handlePageChange = (page: number) => {
     setCurrentPage(page);
     document.getElementById("project")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -224,13 +205,7 @@ const Projetos = () => {
 
             {pageCount > 1 && (
               <div className="groupProjetos-pagination">
-                <Pagination
-                  count={pageCount}
-                  page={currentPage}
-                  onChange={handlePageChange}
-                  sx={paginationSx}
-                  shape="rounded"
-                />
+                <Pager count={pageCount} page={currentPage} onChange={handlePageChange} theme={theme} />
               </div>
             )}
           </>

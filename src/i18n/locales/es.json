@@ -644,5 +644,18 @@
       "mobile": "App móvil",
       "desktop": "Escritorio"
     }
+  },
+  "pager": {
+    "label": "Paginación de proyectos",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "page": "Página {{page}}"
+  },
+  "contactCard": {
+    "role": "Desarrollador Full-Stack · Mobile",
+    "reply": "Respondo rápido por WhatsApp",
+    "photoAlt": "Foto de Jefferson Santos",
+    "email": "Enviar correo",
+    "whatsappMessage": "¡Hola, Jefferson! Vi tu portafolio y quiero hablar sobre un proyecto."
   }
 }

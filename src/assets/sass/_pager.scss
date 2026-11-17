@@ -1,0 +1,157 @@
+// Paginação dos projetos
+.pager {
+  --pg-bg: rgba(255, 255, 255, 0.03);
+  --pg-border: rgba(255, 255, 255, 0.08);
+  --pg-text: #9ca3af;
+  --pg-strong: #f3f4f6;
+  --pg-accent: #00ffff;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-primary);
+
+  &--light {
+    --pg-bg: rgba(10, 20, 40, 0.03);
+    --pg-border: rgba(10, 20, 40, 0.1);
+    --pg-text: #6b7280;
+    --pg-strong: #111827;
+    --pg-accent: #0891b2;
+  }
+}
+
+.pager-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--pg-border);
+  background: var(--pg-bg);
+  color: var(--pg-strong);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+
+  i { font-size: 1.35rem; transition: transform 0.25s ease; }
+
+  &:hover:not(:disabled) {
+    border-color: var(--pg-accent);
+    color: var(--pg-accent);
+    i:first-child { transform: translateX(-3px); }
+    i:last-child { transform: translateX(3px); }
+  }
+
+  &:disabled { opacity: 0.3; cursor: not-allowed; }
+  &:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 3px; }
+}
+
+.pager-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid var(--pg-border);
+  background: var(--pg-bg);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.pager-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.pager-pill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 36px;
+  margin-top: -18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00e5ff, #00a2ff);
+  box-shadow: 0 0 18px rgba(0, 200, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.45s cubic-bezier(0.34, 1.45, 0.5, 1), width 0.3s ease, opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.pager-num {
+  position: relative;
+  z-index: 1;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--pg-text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: color 0.25s ease, background-color 0.25s ease;
+
+  &:hover:not(.is-active) { color: var(--pg-strong); background: rgba(127, 127, 127, 0.12); }
+  &.is-active { color: #001018; font-weight: 800; }
+  &:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 1px; }
+}
+
+.pager-gap {
+  min-width: 26px;
+  text-align: center;
+  color: var(--pg-text);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.pager-progress {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 2px;
+  background: transparent;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--pg-accent));
+    transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.pager-compact { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pager-pill, .pager-progress span { transition: none; }
+}
+
+// Celular: setas + "03 / 15" + barra de progresso
+@media (max-width: 600px) {
+  .pager { width: 100%; justify-content: space-between; }
+  .pager-step { width: 46px; padding: 0; justify-content: center; }
+  .pager-step-text { display: none; }
+  .pager-list { display: none; }
+  .pager-track { flex: 1; justify-content: center; padding: 0 18px; }
+
+  .pager-compact {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    font-variant-numeric: tabular-nums;
+
+    b { color: var(--pg-accent); font-size: 1.15rem; font-weight: 800; }
+    span { color: var(--pg-text); font-size: 0.9rem; }
+  }
+}

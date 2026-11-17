@@ -644,5 +644,18 @@
       "mobile": "Mobile app",
       "desktop": "Desktop"
     }
+  },
+  "pager": {
+    "label": "Projects pagination",
+    "prev": "Previous",
+    "next": "Next",
+    "page": "Page {{page}}"
+  },
+  "contactCard": {
+    "role": "Full-Stack Developer · Mobile",
+    "reply": "Quick replies on WhatsApp",
+    "photoAlt": "Photo of Jefferson Santos",
+    "email": "Send email",
+    "whatsappMessage": "Hi Jefferson! I saw your portfolio and I'd like to talk about a project."
   }
 }
