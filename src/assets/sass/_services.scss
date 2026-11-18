@@ -29,7 +29,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  animation: svc-scroll 42s linear infinite;
+  animation: svc-scroll 26s linear infinite;
 }
 
 // pausa quando o mouse entra (ou quando um card recebe foco pelo teclado)
@@ -61,8 +61,9 @@
     position: absolute;
     top: -20%;
     bottom: -20%;
-    left: -60%;
+    left: -110%;
     width: 45%;
+    opacity: 0;
     background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.04) 30%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.04) 70%, transparent);
     transform: skewX(-18deg) translateX(0);
     pointer-events: none;
@@ -70,7 +71,8 @@
   }
 
   &:hover::after {
-    transform: skewX(-18deg) translateX(420%);
+    opacity: 1;
+    transform: skewX(-18deg) translateX(560%);
     transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
@@ -139,5 +141,5 @@
 
 @media (max-width: 600px) {
   .svc-card { width: 260px; min-height: 310px; }
-  .svc-track { animation-duration: 34s; }
+  .svc-track { animation-duration: 20s; }
 }
