@@ -1,0 +1,143 @@
+// Serviços: carrossel contínuo que pausa no hover, com brilho passando no card
+.service { grid-template-rows: 4em auto; }
+
+.svc-marquee {
+  --svc-bg: #141414;
+  --svc-border: #1f1f1f;
+  --svc-title: #f3f4f6;
+  --svc-text: #9ca3af;
+
+  position: relative;
+  margin: 2.5em 0;
+  padding: 10px 0;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+
+  &.svc--light {
+    --svc-bg: #ffffff;
+    --svc-border: #e5e7eb;
+    --svc-title: #111827;
+    --svc-text: #5b6270;
+  }
+}
+
+.svc-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: svc-scroll 42s linear infinite;
+}
+
+// pausa quando o mouse entra (ou quando um card recebe foco pelo teclado)
+.svc-marquee:hover .svc-track,
+.svc-marquee:focus-within .svc-track {
+  animation-play-state: paused;
+}
+
+.svc-card {
+  position: relative;
+  flex: none;
+  width: 300px;
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 34px 26px 30px;
+  border-radius: 18px;
+  background: var(--svc-bg);
+  border: 1px solid var(--svc-border);
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+
+  // brilho que atravessa o card quando o mouse entra (e volta escondido ao sair, sem animar)
+  &::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: -60%;
+    width: 45%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.04) 30%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.04) 70%, transparent);
+    transform: skewX(-18deg) translateX(0);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &:hover::after {
+    transform: skewX(-18deg) translateX(420%);
+    transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.svc--light .svc-card::after {
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.2) 70%, transparent);
+}
+
+.svc-icon {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  border: 3px solid var(--c);
+  background: radial-gradient(circle, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--c) 35%, transparent), inset 0 0 18px color-mix(in srgb, var(--c) 25%, transparent);
+
+  i {
+    font-size: 3.2rem;
+    color: var(--c);
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--c) 70%, transparent));
+  }
+}
+
+.svc-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  color: var(--c);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.svc-title {
+  margin: 0;
+  color: var(--svc-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.svc-text {
+  margin: 0;
+  color: var(--svc-text);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@keyframes svc-scroll {
+  to { transform: translateX(calc(-50% - 12px)); }
+}
+
+// Sem animação: vira uma faixa com rolagem lateral
+@media (prefers-reduced-motion: reduce) {
+  .svc-marquee { overflow-x: auto; -webkit-mask: none; mask: none; }
+  .svc-track { animation: none; }
+  .svc-card[aria-hidden="true"] { display: none; }
+  .svc-card:hover::after { transition: none; }
+}
+
+@media (max-width: 600px) {
+  .svc-card { width: 260px; min-height: 310px; }
+  .svc-track { animation-duration: 34s; }
+}

@@ -566,6 +566,33 @@
     "card3": {
       "title": "API Creation",
       "text": "Creation of secure Rest APIs and integration experience with external databases."
+    },
+    "aiTag": "AI",
+    "items": {
+      "sites": {
+        "title": "Websites & Landing Pages",
+        "text": "Fast, responsive company websites and landing pages, ready for Google, with SEO and privacy compliance."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "text": "Android and iOS apps built with React Native and Expo, from prototype to a release-ready app."
+      },
+      "systems": {
+        "title": "Systems & APIs",
+        "text": "Web systems, SaaS and secure REST APIs, with payments, databases and third-party integrations."
+      },
+      "whatsapp": {
+        "title": "AI Customer Service on WhatsApp",
+        "text": "An assistant that answers your customers any time, handles questions, books appointments and hands off to you when needed."
+      },
+      "automation": {
+        "title": "AI Automations",
+        "text": "I connect systems, spreadsheets and email and automate repetitive tasks like billing, reports and follow-ups."
+      },
+      "content": {
+        "title": "AI Content & Videos",
+        "text": "Creatives, Reels and product videos made with AI and code, ready for social media."
+      }
     }
   },
   "contact": {
@@ -657,5 +684,40 @@
     "photoAlt": "Photo of Jefferson Santos",
     "email": "Send email",
     "whatsappMessage": "Hi Jefferson! I saw your portfolio and I'd like to talk about a project."
+  },
+  "claudeSkill": {
+    "subtitle": "my AI pair",
+    "short": "I use it every day to code, automate and create content. See where AI fits into my workflow.",
+    "cta": "See my workflow",
+    "eyebrow": "AI in my daily work",
+    "title": "How I work with Claude",
+    "intro": "Claude is my development partner. I define what needs to be done, the architecture and the quality bar; it speeds up execution and handles the repetitive checks. Everything goes through my review before it reaches a client.",
+    "flowLabel": "Workflow steps",
+    "flow": [
+      "Brief and scope",
+      "AI plans and writes",
+      "I review and adjust",
+      "AI tests and ships",
+      "Client delivery"
+    ],
+    "sections": {
+      "code": {
+        "title": "Code and projects",
+        "text": "I build and refactor websites, React Native apps and APIs with Claude, including in the style of my own backend framework. It writes, tests and commits straight to GitHub; I own the architecture and the review."
+      },
+      "quality": {
+        "title": "Quality and compliance",
+        "text": "I have my own skills that run on every website: technical SEO (meta tags, sitemap, structured data), checks against the applicable Brazilian laws such as LGPD and e-commerce rules, plus design and accessibility review."
+      },
+      "deploy": {
+        "title": "Deploys and automation",
+        "text": "I set up automatic deploys with GitHub Actions, generate project screenshots and images, organize repositories and automate repetitive tasks that used to take hours."
+      },
+      "content": {
+        "title": "Content and marketing",
+        "text": "Scripts, Reels, creatives and product videos made in code, plus copy for LinkedIn, sales pages and social media."
+      }
+    },
+    "foot": "The result: I ship faster without lowering quality, and I bring this same way of working to my clients' projects."
   }
 }

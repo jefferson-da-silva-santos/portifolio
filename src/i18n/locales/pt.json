@@ -566,6 +566,33 @@
     "card3": {
       "title": "Criação de APIs",
       "text": "Criação de APIs Rest seguras e experiência de integração com bancos de dados externos."
+    },
+    "aiTag": "IA",
+    "items": {
+      "sites": {
+        "title": "Sites e Landing Pages",
+        "text": "Sites institucionais e landing pages rápidos, responsivos e prontos para o Google, com SEO e adequação à LGPD."
+      },
+      "mobile": {
+        "title": "Apps Mobile",
+        "text": "Aplicativos para Android e iOS com React Native e Expo, do protótipo ao app pronto para publicar."
+      },
+      "systems": {
+        "title": "Sistemas e APIs",
+        "text": "Sistemas web, SaaS e APIs REST seguras, com pagamentos, banco de dados e integrações com outros serviços."
+      },
+      "whatsapp": {
+        "title": "Atendimento com IA no WhatsApp",
+        "text": "Um assistente que responde seus clientes a qualquer hora, tira dúvidas, agenda e passa para você quando precisa."
+      },
+      "automation": {
+        "title": "Automações com IA",
+        "text": "Conecto sistemas, planilhas e e-mails e automatizo tarefas repetitivas como cobranças, relatórios e retornos."
+      },
+      "content": {
+        "title": "Conteúdo e Vídeos com IA",
+        "text": "Criativos, Reels e vídeos de produto feitos com IA e código, prontos para as redes sociais."
+      }
     }
   },
   "contact": {
@@ -657,5 +684,40 @@
     "photoAlt": "Foto de Jefferson Santos",
     "email": "Enviar e-mail",
     "whatsappMessage": "Olá, Jefferson! Vi seu portfólio e quero conversar sobre um projeto."
+  },
+  "claudeSkill": {
+    "subtitle": "meu par de IA",
+    "short": "Uso no dia a dia para programar, automatizar e criar conteúdo. Veja como a IA entra no meu fluxo de trabalho.",
+    "cta": "Ver meu fluxo",
+    "eyebrow": "IA no meu dia a dia",
+    "title": "Como eu trabalho com o Claude",
+    "intro": "O Claude é meu parceiro de desenvolvimento. Eu defino o que precisa ser feito, a arquitetura e o padrão de qualidade; ele acelera a execução e cuida das checagens repetitivas. Tudo passa pela minha revisão antes de chegar ao cliente.",
+    "flowLabel": "Etapas do fluxo",
+    "flow": [
+      "Briefing e escopo",
+      "IA planeja e escreve",
+      "Eu reviso e ajusto",
+      "IA testa e publica",
+      "Entrega ao cliente"
+    ],
+    "sections": {
+      "code": {
+        "title": "Código e projetos",
+        "text": "Crio e refatoro sites, apps React Native e APIs junto com o Claude, inclusive no padrão do meu próprio framework de backend. Ele escreve, testa e faz commit direto no GitHub; eu cuido da arquitetura e da revisão."
+      },
+      "quality": {
+        "title": "Qualidade e conformidade",
+        "text": "Tenho skills próprias que rodam em todo site: SEO técnico (meta tags, sitemap, dados estruturados), checagem das leis aplicáveis como LGPD, Marco Civil e regras de comércio eletrônico, além de revisão de design e acessibilidade."
+      },
+      "deploy": {
+        "title": "Deploy e automações",
+        "text": "Configuro deploy automático com GitHub Actions, gero prints e imagens dos projetos, organizo repositórios e automatizo tarefas repetitivas que antes tomavam horas."
+      },
+      "content": {
+        "title": "Conteúdo e marketing",
+        "text": "Roteiros, Reels, criativos e vídeos de produto feitos em código, além de textos para LinkedIn, páginas de venda e redes sociais."
+      }
+    },
+    "foot": "Resultado: entrego mais rápido sem abrir mão da qualidade, e é essa mesma forma de trabalhar que levo para os projetos dos meus clientes."
   }
 }

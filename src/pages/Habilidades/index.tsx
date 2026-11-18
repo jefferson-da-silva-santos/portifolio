@@ -1,3 +1,4 @@
+import ClaudeSkill from "../../components/ClaudeSkill";
 import { useEffect, useState } from "react";
 import useTheme from "../../hooks/useTheme";
 import themeObject from "../../assets/theme.json";
@@ -86,6 +87,7 @@ const Habilidades = () => {
             </article>
           ))}
         </article>
+        <ClaudeSkill />
       </section>
     </div>
   );
