@@ -50,10 +50,10 @@
           "background": "#fff",
           "color": "rgb(49, 49, 49)",
           "boxShadow": "rgba(128, 128, 128, 0.576) 0px 0px 10px",
-          "hoverBoxShadow": "0px 0px 10px #00ffff",
+          "hoverBoxShadow": "0px 0px 10px rgb(var(--ac-cyan))",
           "icon": {
             "color": "#313131",
-            "hoverColor": "#00ffff"
+            "hoverColor": "rgb(var(--ac-cyan))"
           }
         }
       },
@@ -151,8 +151,8 @@
           "boxShadow": "rgb(49, 49, 49) 0px 0px 8px"
         },
         "title": {
-          "color": "rgb(0, 255, 255)",
-          "textShadow": "rgba(0, 255, 255, 0.604) 0px 0px 5px"
+          "color": "rgb(var(--ac-cyan))",
+          "textShadow": "rgba(var(--ac-cyan), 0.604) 0px 0px 5px"
         },
         "text": {
           "color": "#FFF"
@@ -191,10 +191,10 @@
           "background": "#ffffff17",
           "color": "#fff",
           "boxShadow": "none",
-          "hoverBoxShadow": "0px 0px 10px #00ffff",
+          "hoverBoxShadow": "0px 0px 10px rgb(var(--ac-cyan))",
           "icon": {
             "color": "white",
-            "hoverColor": "#00ffff"
+            "hoverColor": "rgb(var(--ac-cyan))"
           }
         }
       },
@@ -270,7 +270,7 @@
         },
         "form": {
           "input": {
-            "borderColor": "#0091ff",
+            "borderColor": "rgb(var(--ac))",
             "background": "#161616",
             "color": "#FFF"
           }

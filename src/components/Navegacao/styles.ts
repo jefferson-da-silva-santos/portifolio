@@ -43,7 +43,7 @@ export const getLinkStyle = (
   );
 
   return {
-    color: isHovering ? "#00ffff" : defaultColor,
+    color: isHovering ? "rgb(var(--ac-cyan))" : defaultColor,
   }; 
   
 };

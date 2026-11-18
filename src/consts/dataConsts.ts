@@ -45,6 +45,8 @@ import italy from "../assets/image/it_1.webp";
 import france from "../assets/image/france_1.webp";
 import lightTheme from "../assets/image/modo-claro.webp";
 import darkTheme from "../assets/image/modo-escuro.webp";
+import lightThemeOrange from "../assets/image/modo-claro-laranja.webp";
+import darkThemeOrange from "../assets/image/modo-escuro-laranja.webp";
 import coffee from "../assets/image/cafe_semfundo.png";
 
 // =======================
@@ -241,6 +243,9 @@ export const listIconTheme: string[] = [
   ImageUrls.icons.lightTheme,
   ImageUrls.icons.darkTheme,
 ];
+
+// mesmos ícones na cor laranja (cor de destaque)
+export const listIconThemeOrange: string[] = [lightThemeOrange, darkThemeOrange];
 
 export const listIconLenguage: string[] = [
   ImageUrls.icons.brazil,

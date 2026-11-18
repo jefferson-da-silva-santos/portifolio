@@ -1,7 +1,7 @@
 // Órbita 3D de tecnologias (seção Sobre)
 .orbit {
-  --ring: rgba(0, 200, 255, 0.35);
-  --ring-front: rgba(0, 220, 255, 0.55);
+  --ring: rgba(var(--ac-sky),0.35);
+  --ring-front: rgba(var(--ac-sky),0.55);
   --chip-bg: rgba(14, 18, 28, 0.78);
   --chip-border: rgba(255, 255, 255, 0.1);
   --tip-bg: #0b0f17;
@@ -16,8 +16,8 @@
   user-select: none;
 
   &--light {
-    --ring: rgba(0, 120, 200, 0.28);
-    --ring-front: rgba(0, 120, 200, 0.45);
+    --ring: rgba(var(--ac-dark),0.28);
+    --ring-front: rgba(var(--ac-dark),0.45);
     --chip-bg: rgba(255, 255, 255, 0.92);
     --chip-border: rgba(10, 20, 40, 0.1);
     --tip-bg: #0b0f17;
@@ -28,7 +28,7 @@
   position: absolute;
   inset: 22%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 162, 255, 0.45), rgba(120, 0, 255, 0.18) 55%, transparent 72%);
+  background: radial-gradient(circle, rgba(var(--ac),0.45), rgba(var(--ac-2),0.18) 55%, transparent 72%);
   filter: blur(30px);
   animation: orbit-breathe 6s ease-in-out infinite alternate;
   z-index: 0;
@@ -78,8 +78,8 @@
   inset: 0;
   border-radius: 50%;
   padding: 4px;
-  background: conic-gradient(from 0deg, #00a2ff, #7a5cff, #00ffff, #00a2ff);
-  box-shadow: 0 0 40px rgba(0, 162, 255, 0.45), 0 20px 60px rgba(0, 0, 0, 0.5);
+  background: conic-gradient(from 0deg, rgb(var(--ac)), rgb(var(--ac-2)), rgb(var(--ac-cyan)), rgb(var(--ac)));
+  box-shadow: 0 0 40px rgba(var(--ac),0.45), 0 20px 60px rgba(0, 0, 0, 0.5);
   animation: orbit-spin 8s linear infinite;
 
   .orbit-photo-inner {
@@ -109,7 +109,7 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, transparent 0%, rgba(0, 220, 255, 0.22) 48%, rgba(170, 245, 255, 0.4) 50%, rgba(0, 220, 255, 0.22) 52%, transparent 100%) 0 -120% / 100% 40% no-repeat,
+    linear-gradient(to bottom, transparent 0%, rgba(var(--ac-sky),0.22) 48%, rgba(var(--ac-pale),0.4) 50%, rgba(var(--ac-sky),0.22) 52%, transparent 100%) 0 -120% / 100% 40% no-repeat,
     repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
   mix-blend-mode: screen;
   animation: orbit-scanline 4.5s linear infinite;
@@ -120,7 +120,7 @@
   position: absolute;
   inset: -20%;
   pointer-events: none;
-  background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.05) 44%, rgba(190, 245, 255, 0.55) 50%, rgba(255, 255, 255, 0.05) 56%, transparent 62%);
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.05) 44%, rgba(var(--ac-pale),0.55) 50%, rgba(255, 255, 255, 0.05) 56%, transparent 62%);
   transform: translateX(-80%);
   mix-blend-mode: screen;
   animation: orbit-shine 5.5s cubic-bezier(0.6, 0, 0.3, 1) infinite;
@@ -132,7 +132,7 @@
   inset: -9%;
   border-radius: 50%;
   pointer-events: none;
-  background: conic-gradient(from 0deg, #00e5ff 0 9deg, transparent 9deg 81deg, #00e5ff 81deg 90deg, transparent 90deg 171deg, #7a5cff 171deg 180deg, transparent 180deg 261deg, #00e5ff 261deg 270deg, transparent 270deg);
+  background: conic-gradient(from 0deg, rgb(var(--ac-sky)) 0 9deg, transparent 9deg 81deg, rgb(var(--ac-sky)) 81deg 90deg, transparent 90deg 171deg, rgb(var(--ac-2)) 171deg 180deg, transparent 180deg 261deg, rgb(var(--ac-sky)) 261deg 270deg, transparent 270deg);
   -webkit-mask: radial-gradient(circle, transparent calc(70% - 2px), #000 calc(70% - 1px), #000 70%, transparent calc(70% + 1px));
   mask: radial-gradient(circle, transparent calc(70% - 2px), #000 calc(70% - 1px), #000 70%, transparent calc(70% + 1px));
   opacity: 0.85;

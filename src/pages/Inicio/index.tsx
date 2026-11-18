@@ -7,13 +7,18 @@ import { projectImages, socialButtonList } from "../../consts/dataConsts";
 import { handleSetHoverButtonIcon, styleContainer, styleTitle } from "./styles";
 import { stylesButton } from "./styles";
 import eu from '../../assets/image/jeff.webp';
+import euLaranja from '../../assets/image/jeff-laranja.webp';
 
 import background_dark from '../../assets/image/background.webp';
 import background_light from '../../assets/image/background_light.webp';
+import background_dark_orange from '../../assets/image/background_orange.webp';
+import background_light_orange from '../../assets/image/background_light_orange.webp';
+import useAccent from '../../hooks/useAccent';
 import { useTranslation } from "react-i18next";
 
 const Inicio = () => {
   const { theme, toggleTheme } = useTheme();
+  const { accent } = useAccent();
   const [isHoverButton, setIsHoverButton] = useState<boolean[]>([]);
 
   const handleSetHoverButtom = (index: number, state: boolean) => {
@@ -31,18 +36,18 @@ const Inicio = () => {
 
       style={{
         ...styleContainer(theme, themeObject),
-        backgroundImage: `url(${theme === 'dark' ? background_dark : background_light})`
+        backgroundImage: `url(${accent === 'orange' ? (theme === 'dark' ? background_dark_orange : background_light_orange) : (theme === 'dark' ? background_dark : background_light)})`
       }}
     >
       <div className="overlay" style={{
-        backgroundColor: theme === 'dark' ? '#010210a8' : 'transparent'
+        backgroundColor: theme === 'dark' ? (accent === 'orange' ? '#100602a8' : '#010210a8') : 'transparent'
       }}></div>
       <Navegacao toggleTheme={toggleTheme} />
       <header className="header" id="home">
         <section data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine" className="groupHeader-img">
           <img
             loading="lazy"
-            src={eu}
+            src={accent === 'orange' ? euLaranja : eu}
             alt={projectImages[0].alt}
           />
         </section>

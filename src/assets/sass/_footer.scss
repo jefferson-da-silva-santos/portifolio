@@ -4,7 +4,7 @@
   --ft-line: rgba(255, 255, 255, 0.08);
   --ft-text: #e5e7eb;
   --ft-muted: #8b919c;
-  --ft-accent: #00d4ff;
+  --ft-accent: rgb(var(--ac-sky));
 
   position: relative;
   background: var(--ft-bg);
@@ -22,7 +22,7 @@
     width: min(70%, 700px);
     height: 1px;
     transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, #00d4ff, #7a5cff, transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--ac-sky)), rgb(var(--ac-2)), transparent);
   }
 
   &.ft--light {
@@ -30,7 +30,7 @@
     --ft-line: rgba(10, 20, 40, 0.1);
     --ft-text: #111827;
     --ft-muted: #5b6270;
-    --ft-accent: #0284c7;
+    --ft-accent: rgb(var(--ac-dark));
   }
 }
 
@@ -56,7 +56,7 @@
   font-size: 1.7rem;
   text-decoration: none;
 
-  b { font-family: var(--font-secundary); font-weight: 400; color: #00a2ff; }
+  b { font-family: var(--font-secundary); font-weight: 400; color: rgb(var(--ac)); }
 }
 
 .ft-brand p {

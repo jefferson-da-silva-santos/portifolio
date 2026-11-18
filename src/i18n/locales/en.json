@@ -12,7 +12,8 @@
     "ariaLabels": {
       "changeLanguage": "Change language",
       "changeTheme": "Change theme",
-      "toggleMenu": "Open and close menu"
+      "toggleMenu": "Open and close menu",
+      "changeAccent": "Change accent color (blue/orange)"
     },
     "altTexts": {
       "languageIcon": "language icon",

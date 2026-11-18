@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
 import themeObject from "../../assets/theme.json";
 import useTheme from "../../hooks/useTheme";
-import { listIconTheme, useNavLinks } from "../../consts/dataConsts";
+import { listIconTheme, listIconThemeOrange, useNavLinks } from "../../consts/dataConsts";
 import type { INavegacaoProps } from "./types";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
@@ -10,6 +10,7 @@ import { useLanguage } from "../../hooks/useLenguage";
 import { containerStyle, iconStyles, linkStyle, listStyle } from "./styles";
 import { useMenu } from "../../hooks/useMenu";
 import { getThemeProps } from "../../utils/themeUtilities";
+import useAccent from "../../hooks/useAccent";
 
 const MOBILE_BREAKPOINT = 896;
 
@@ -19,6 +20,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
   const { t } = useTranslation();
   const navLinks = useNavLinks();
   const { theme } = useTheme();
+  const { accent, toggleAccent } = useAccent();
   const { icon, toggleLanguage } = useLanguage();
   const {
     isMenuMobileVisible,
@@ -178,6 +180,18 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
           <li>
             <button
               type="button"
+              className={`nav-icon-button accent-toggle accent-toggle--${accent}`}
+              onClick={toggleAccent}
+              aria-label={t("navigation.ariaLabels.changeAccent")}
+              title={t("navigation.ariaLabels.changeAccent")}
+            >
+              <span className="accent-dot" aria-hidden="true" />
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
               className="nav-icon-button icon-theme-1"
               aria-label={t("navigation.ariaLabels.changeTheme")}
               onClick={toggleTheme}
@@ -185,7 +199,7 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
               <img
                 id="btn-tema"
                 className="icon-theme"
-                src={theme === "light" ? listIconTheme[0] : listIconTheme[1]}
+                src={(accent === "orange" ? listIconThemeOrange : listIconTheme)[theme === "light" ? 0 : 1]}
                 alt=""
               />
             </button>

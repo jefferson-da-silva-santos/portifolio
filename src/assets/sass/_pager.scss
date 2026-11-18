@@ -4,7 +4,7 @@
   --pg-border: rgba(255, 255, 255, 0.08);
   --pg-text: #9ca3af;
   --pg-strong: #f3f4f6;
-  --pg-accent: #00ffff;
+  --pg-accent: rgb(var(--ac-cyan));
 
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
     --pg-border: rgba(10, 20, 40, 0.1);
     --pg-text: #6b7280;
     --pg-strong: #111827;
-    --pg-accent: #0891b2;
+    --pg-accent: rgb(var(--ac-dark));
   }
 }
 
@@ -77,8 +77,8 @@
   height: 36px;
   margin-top: -18px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #00e5ff, #00a2ff);
-  box-shadow: 0 0 18px rgba(0, 200, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgb(var(--ac-sky)), rgb(var(--ac)));
+  box-shadow: 0 0 18px rgba(var(--ac-sky),0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: transform 0.45s cubic-bezier(0.34, 1.45, 0.5, 1), width 0.3s ease, opacity 0.2s ease;
   pointer-events: none;
 }

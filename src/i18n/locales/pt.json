@@ -12,7 +12,8 @@
     "ariaLabels": {
       "changeLanguage": "Mudar idioma",
       "changeTheme": "Mudar tema",
-      "toggleMenu": "Abrir e fechar menu"
+      "toggleMenu": "Abrir e fechar menu",
+      "changeAccent": "Mudar cor de destaque (azul/laranja)"
     },
     "altTexts": {
       "languageIcon": "ícone do idioma",

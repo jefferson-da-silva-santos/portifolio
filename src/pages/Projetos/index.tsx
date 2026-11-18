@@ -22,8 +22,8 @@ const searchSx = {
   "& .MuiOutlinedInput-root": {
     color: "#fff",
     "& fieldset": { borderColor: "#2e2e2e" },
-    "&:hover fieldset": { borderColor: "#00ffff" },
-    "&.Mui-focused fieldset": { borderColor: "#00ffff" },
+    "&:hover fieldset": { borderColor: "rgb(var(--ac-cyan))" },
+    "&.Mui-focused fieldset": { borderColor: "rgb(var(--ac-cyan))" },
   },
   "& .MuiSvgIcon-root": { color: "#9ca3af" },
 };
@@ -33,8 +33,8 @@ const searchSxLight = {
   "& .MuiOutlinedInput-root": {
     color: "#111",
     "& fieldset": { borderColor: "#d9d9d9" },
-    "&:hover fieldset": { borderColor: "#00b3c7" },
-    "&.Mui-focused fieldset": { borderColor: "#00b3c7" },
+    "&:hover fieldset": { borderColor: "rgb(var(--ac-dark))" },
+    "&.Mui-focused fieldset": { borderColor: "rgb(var(--ac-dark))" },
   },
   "& .MuiSvgIcon-root": { color: "#6b7280" },
 };
