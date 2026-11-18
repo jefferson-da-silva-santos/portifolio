@@ -730,5 +730,16 @@
     "backToTop": "Voltar ao topo",
     "quote": "A IA está a serviço da eficiência, mas nem tudo na vida precisa ser eficiente.",
     "quoteLang": "pt-BR"
+  },
+  "cv": {
+    "button": "Baixar currículo",
+    "choose": "Escolha a área",
+    "areas": {
+      "fullstack": "Full-Stack",
+      "frontend": "Front-end",
+      "backend": "Back-end"
+    },
+    "preparing": "Preparando o currículo…",
+    "done": "Download iniciado"
   }
 }

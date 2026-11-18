@@ -1,0 +1,188 @@
+// Ícone "Baixar currículo" no menu + lista de áreas com ícone de baixar
+.cvd { position: relative; display: flex; }
+
+// Pílula "CV": pequena, com borda em degradê na cor de destaque e brilho no hover
+.cvd-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px 0 10px;
+  border: none;
+  border-radius: 999px;
+  background:
+    linear-gradient(#0d1016, #0d1016) padding-box,
+    linear-gradient(135deg, rgb(var(--ac-cyan)), rgb(var(--ac-2))) border-box;
+  border: 1.5px solid transparent;
+  color: rgb(var(--ac-cyan));
+  font-family: "Saira", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 0 0 rgba(var(--ac-cyan), 0);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, color 0.3s ease;
+
+  &:hover { transform: translateY(-1px); box-shadow: 0 0 16px rgba(var(--ac-cyan), 0.45); }
+  &:focus-visible { outline: 2px solid rgb(var(--ac-cyan)); outline-offset: 3px; }
+
+  &.is-filling, &.is-done { cursor: default; }
+}
+
+.cvd--light .cvd-btn {
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, rgb(var(--ac-dark)), rgb(var(--ac-2))) border-box;
+  color: rgb(var(--ac-dark));
+}
+
+.cvd-label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  i { font-size: 1.05rem; transition: transform 0.3s ease; }
+}
+
+.cvd-btn:hover:not(.is-filling) .cvd-label i { transform: translateY(1px); }
+
+// Água enchendo o botão (ondas girando no topo)
+.cvd-water {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(var(--ac-cyan), 0.95), rgba(var(--ac), 1));
+  transform: translateY(140%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cvd-wave {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 160px;
+  height: 160px;
+  margin-left: -80px;
+  margin-bottom: -152px;
+  border-radius: 42%;
+  background: rgba(var(--ac-cyan), 0.95);
+  animation: cvd-spin 1.4s linear infinite;
+
+  &--b {
+    border-radius: 38%;
+    background: rgba(var(--ac-pale), 0.45);
+    margin-bottom: -148px;
+    animation-duration: 2s;
+  }
+}
+
+.cvd-btn.is-filling {
+  .cvd-water { opacity: 1; animation: cvd-fill 1.6s cubic-bezier(0.45, 0, 0.3, 1) forwards; }
+  .cvd-label { color: #001018; transition: color 0.25s ease 0.45s; }
+  .cvd-label i { animation: cvd-bob 0.8s ease-in-out infinite; }
+}
+
+.cvd-btn.is-done {
+  .cvd-water { opacity: 1; transform: translateY(0); }
+  .cvd-wave { opacity: 0; }
+  .cvd-label { color: #001018; }
+  box-shadow: 0 0 18px rgba(var(--ac-cyan), 0.6);
+}
+
+@keyframes cvd-fill {
+  0% { transform: translateY(140%); }
+  100% { transform: translateY(0); }
+}
+@keyframes cvd-spin { to { transform: rotate(360deg); } }
+@keyframes cvd-bob { 50% { transform: translateY(2px); } }
+
+.cvd-menu {
+  position: absolute;
+  right: -10px;
+  top: calc(100% + 14px);
+  z-index: 200;
+  width: 240px;
+  padding: 8px;
+  border-radius: 14px;
+  background: #0f1218;
+  border: 1px solid rgba(var(--ac-cyan), 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  animation: cvd-in 0.2s ease both;
+
+  &[hidden] { display: none; }
+}
+
+.cvd--light .cvd-menu { background: #fff; border-color: rgba(10, 20, 40, 0.12); box-shadow: 0 20px 50px rgba(10, 20, 40, 0.18); }
+
+.cvd-hint {
+  margin: 4px 8px 6px;
+  color: #8b919c;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cvd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: #f3f4f6;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  span { display: grid; gap: 1px; }
+  b { font-size: 0.92rem; font-weight: 600; }
+  small { color: #8b919c; font-size: 0.74rem; }
+
+  i {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: rgba(var(--ac-cyan), 0.12);
+    color: rgb(var(--ac-cyan));
+    font-size: 1.15rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover, &:focus-visible {
+    background: rgba(var(--ac-cyan), 0.1);
+    outline: none;
+    i { transform: translateY(2px); }
+  }
+}
+
+.cvd--light .cvd-item { color: #111827; }
+.cvd--light .cvd-item i { color: rgb(var(--ac-dark)); background: rgba(var(--ac-dark), 0.1); }
+
+@keyframes cvd-in { from { opacity: 0; transform: translateY(-6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cvd-menu { animation: none; }
+  .cvd-wave { animation: none; }
+}
+
+// no menu lateral do celular a lista abre logo abaixo do ícone, dentro da gaveta
+@media (max-width: 896px) {
+  .cvd { flex-direction: column; align-items: center; }
+  .cvd-menu {
+    position: static;
+    width: min(180px, 100%);
+    margin-top: 10px;
+    padding: 6px;
+    box-shadow: none;
+  }
+  .cvd-hint { display: none; }
+  .cvd-item { padding: 8px; }
+}

@@ -11,6 +11,7 @@ import { containerStyle, iconStyles, linkStyle, listStyle } from "./styles";
 import { useMenu } from "../../hooks/useMenu";
 import { getThemeProps } from "../../utils/themeUtilities";
 import useAccent from "../../hooks/useAccent";
+import CvDownload from "../CvDownload";
 
 const MOBILE_BREAKPOINT = 896;
 
@@ -175,6 +176,10 @@ const Navegacao: React.FC<INavegacaoProps> = ({ toggleTheme }) => {
             >
               <img className="icon-idioma" src={icon} alt="" />
             </button>
+          </li>
+
+          <li>
+            <CvDownload />
           </li>
 
           <li>

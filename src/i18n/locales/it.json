@@ -730,5 +730,16 @@
     "backToTop": "Torna su",
     "quote": "L'IA è al servizio dell'efficienza, ma non tutto nella vita deve essere efficiente.",
     "quoteLang": "it"
+  },
+  "cv": {
+    "button": "Scarica il CV",
+    "choose": "Scegli l'area",
+    "areas": {
+      "fullstack": "Full-Stack",
+      "frontend": "Front-end",
+      "backend": "Back-end"
+    },
+    "preparing": "Preparazione del CV…",
+    "done": "Download avviato"
   }
 }
