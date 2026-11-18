@@ -298,3 +298,7 @@
   .cskill-mark { width: 54px; height: 54px; }
   .cskill-cta { width: 100%; justify-content: center; }
 }
+
+// respiro entre o card do Claude e a seção seguinte (Projetos)
+.groupSkills { padding-bottom: 6em; }
+@media (max-width: 700px) { .groupSkills { padding-bottom: 4.5em; } }

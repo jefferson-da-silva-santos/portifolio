@@ -4327,5 +4327,14 @@ textarea:focus {
     justify-content: center;
   }
 }
+.groupSkills {
+  padding-bottom: 6em;
+}
+
+@media (max-width: 700px) {
+  .groupSkills {
+    padding-bottom: 4.5em;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */
