@@ -27,7 +27,7 @@
   "about": {
     "title": "About",
     "description1": "My name is <strong className='strong-light'>Jefferson Santos</strong>, a <strong className='strong-light'>Full-Stack Developer with 4 years of experience</strong> and a technical degree in Systems Development. I currently work at a <strong className='strong-light'>software house focused on retail automation</strong>, where I have built <strong className='strong-light'>more than 3 projects from scratch</strong>, handling both back-end and front-end — systems that are <strong className='strong-light'>in use by clients</strong> today. I write code with <strong className='strong-light'>quality and longevity</strong> in mind, not just to make it work.",
-    "description2": "Outside of work, my priorities are clear: <strong className='strong-light'>my life with God, my family, my hobbies and my studies</strong>. I play a few instruments, enjoy reading about faith, personal growth, finance and technology, and I keep studying to <strong className='strong-light'>grow as a developer and as a person</strong>.",
+    "description2": "Outside of work, my priorities are clear: <strong className='strong-light'>my life with God, my family, my hobbies, my studies and working on my own ventures</strong>. I play a few instruments, enjoy reading about faith, personal growth, finance and technology, and I keep studying to <strong className='strong-light'>grow as a developer and as a person</strong>.",
     "orbitLabel": "Photo of Jefferson Santos surrounded by the technologies he uses: {{techs}}"
   },
   "skills": {

@@ -27,7 +27,7 @@
   "about": {
     "title": "Sobre",
     "description1": "Meu nome é <strong className='strong-light'>Jefferson Santos</strong>, sou <strong className='strong-light'>Desenvolvedor Full-Stack com 4 anos de experiência</strong> e formação técnica em Desenvolvimento de Sistemas. Hoje atuo em uma <strong className='strong-light'>software house de automação comercial</strong>, onde já desenvolvi <strong className='strong-light'>mais de 3 projetos do zero</strong>, cuidando tanto do back-end quanto do front-end — sistemas que estão <strong className='strong-light'>em uso por clientes</strong>. Escrevo código pensando em <strong className='strong-light'>qualidade e durabilidade</strong>, não apenas em fazer funcionar.",
-    "description2": "Fora do trabalho, minhas prioridades são claras: <strong className='strong-light'>minha vida com Deus, minha família, meus hobbies e meus estudos</strong>. Toco alguns instrumentos, gosto de ler sobre fé, desenvolvimento pessoal, finanças e tecnologia, e sigo estudando para <strong className='strong-light'>crescer como dev e como pessoa</strong>.",
+    "description2": "Fora do trabalho, minhas prioridades são claras: <strong className='strong-light'>minha vida com Deus, minha família, meus hobbies, meus estudos e trabalhar nos meus empreendimentos</strong>. Toco alguns instrumentos, gosto de ler sobre fé, desenvolvimento pessoal, finanças e tecnologia, e sigo estudando para <strong className='strong-light'>crescer como dev e como pessoa</strong>.",
     "orbitLabel": "Foto de Jefferson Santos cercada pelas tecnologias que ele usa: {{techs}}"
   },
   "skills": {
