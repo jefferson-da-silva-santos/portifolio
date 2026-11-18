@@ -51,7 +51,8 @@
     "textPrisma": "Prisma é o ORM que uso na maioria das minhas APIs com PostgreSQL. Modelagem clara, migrações versionadas e consultas tipadas em projetos como Cobraaí, CifreAqui e o sistema de pagamentos.",
     "textRedis": "Uso Redis para cache, filas e controle de concorrência: com BullMQ processo tarefas em segundo plano (PDFs, cobranças, notificações) no Vendaí, no Simbora Gerir e no Cobraaí.",
     "textTauri": "Com Tauri transformo aplicações web em apps desktop leves para Windows, Linux e macOS — como meu app de pomodoro, o CifreAqui e o FreelanceCalc.",
-    "textJest": "Escrevo testes automatizados com Jest e Supertest para garantir que as regras de negócio e os endpoints das minhas APIs continuem funcionando a cada mudança."
+    "textJest": "Escrevo testes automatizados com Jest e Supertest para garantir que as regras de negócio e os endpoints das minhas APIs continuem funcionando a cada mudança.",
+    "textClaude": "O Claude é meu parceiro de IA no dia a dia: uso para programar, revisar, automatizar deploys e criar conteúdo, sempre com a minha revisão no final. Clique para ver como ele entra no meu fluxo de trabalho."
   },
   "project": {
     "title": "Projetos",

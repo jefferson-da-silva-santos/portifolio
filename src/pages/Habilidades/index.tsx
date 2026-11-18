@@ -86,8 +86,13 @@ const Habilidades = () => {
               />
             </article>
           ))}
+          <ClaudeSkill
+            className={theme === "light" ? "skill-element-border-light" : "skill-element-border-dark"}
+            style={styleCardSkill(theme, themeObject)}
+            onMouseEnter={() => handleMouseEnter("textClaude")}
+            onMouseLeave={handleMouseLeave}
+          />
         </article>
-        <ClaudeSkill />
       </section>
     </div>
   );

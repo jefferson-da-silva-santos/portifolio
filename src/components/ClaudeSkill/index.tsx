@@ -26,7 +26,14 @@ const SECTIONS = [
   { key: "content", icon: "bx-movie-play" },
 ] as const;
 
-const ClaudeSkill = () => {
+interface ClaudeSkillProps {
+  className?: string;
+  style?: React.CSSProperties;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+const ClaudeSkill = ({ className = "", style, onMouseEnter, onMouseLeave }: ClaudeSkillProps) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const [open, setOpen] = useState(false);
@@ -51,20 +58,24 @@ const ClaudeSkill = () => {
 
   return (
     <>
-      <button type="button" className={`cskill cskill--${theme}`} onClick={() => setOpen(true)} data-aos="fade-up">
-        <span className="cskill-mark">
-          <ClaudeMark size={38} />
+      <button
+        type="button"
+        className={`skill-element skill-claude ${className}`}
+        style={{ ...style, "--skill-color": "#d97757" } as React.CSSProperties}
+        onClick={() => setOpen(true)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onFocus={onMouseEnter}
+        onBlur={onMouseLeave}
+        aria-label={`Claude — ${t("claudeSkill.cta")}`}
+      >
+        <span className="skill-claude-logo">
+          <ClaudeMark size={40} />
         </span>
-        <span className="cskill-copy">
-          <span className="cskill-title">
-            Claude <em>· {t("claudeSkill.subtitle")}</em>
-          </span>
-          <span className="cskill-text">{t("claudeSkill.short")}</span>
+        <span className="skill-claude-name">
+          Claude <em>· {t("claudeSkill.subtitle")}</em>
         </span>
-        <span className="cskill-cta">
-          {t("claudeSkill.cta")}
-          <i className="bx bx-right-arrow-alt" aria-hidden="true" />
-        </span>
+        <i className="bx bx-right-arrow-alt skill-claude-arrow" aria-hidden="true" />
       </button>
 
       <dialog

@@ -51,7 +51,8 @@
     "textPrisma": "Prisma è l'ORM che uso nella maggior parte delle mie API con PostgreSQL. Modellazione chiara, migrazioni versionate e query tipizzate in progetti come Cobraaí, CifreAqui e il mio sistema di pagamenti.",
     "textRedis": "Uso Redis per cache, code e controllo della concorrenza: con BullMQ eseguo attività in background (PDF, addebiti, notifiche) in Vendaí, Simbora Gerir e Cobraaí.",
     "textTauri": "Con Tauri trasformo applicazioni web in app desktop leggere per Windows, Linux e macOS — come la mia app pomodoro, CifreAqui e FreelanceCalc.",
-    "textJest": "Scrivo test automatici con Jest e Supertest per garantire che le regole di business e gli endpoint delle mie API continuino a funzionare a ogni modifica."
+    "textJest": "Scrivo test automatici con Jest e Supertest per garantire che le regole di business e gli endpoint delle mie API continuino a funzionare a ogni modifica.",
+    "textClaude": "Claude è il mio partner IA di ogni giorno: lo uso per programmare, rivedere, automatizzare i deploy e creare contenuti, sempre con la mia revisione finale. Clicca per vedere come entra nel mio flusso di lavoro."
   },
   "project": {
     "title": "Progetti",

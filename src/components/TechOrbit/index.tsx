@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import useTheme from "../../hooks/useTheme";
 import { getSkillsData } from "../../consts/dataConsts";
 import foto from "../../assets/image/jeff-orbit.webp";
+import fotoLaranja from "../../assets/image/jeff-orbit-laranja.webp";
+import useAccent from "../../hooks/useAccent";
 
 // Órbita 3D de tecnologias: a foto no centro e as logos girando em dois anéis
 // inclinados. A posição de cada logo é calculada a cada quadro (cos/sen), então
@@ -34,6 +36,7 @@ const planeRoll = (t: number) => {
 
 const TechOrbit = () => {
   const { theme } = useTheme();
+  const { accent } = useAccent();
   const { t } = useTranslation();
   const stageRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -183,7 +186,7 @@ const TechOrbit = () => {
       <div className="orbit-core">
         <div className="orbit-photo">
           <div className="orbit-photo-inner">
-            <img src={foto} alt="Jefferson Santos" loading="lazy" width={560} height={560} />
+            <img src={accent === "orange" ? fotoLaranja : foto} alt="Jefferson Santos" loading="lazy" width={560} height={560} />
             <span className="orbit-scan" aria-hidden="true" />
             <span className="orbit-shine" aria-hidden="true" />
           </div>

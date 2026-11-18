@@ -1,112 +1,62 @@
-// Card do Claude na seção de Habilidades + painel com o fluxo de trabalho com IA
-.skills { grid-template-rows: 27em auto; }
+// Claude como mais um bloco da grade de skills (mesmo fundo, borda e zoom no hover)
+@media (min-width: 897px) {
+  .skills { grid-template-rows: auto; }
 
-.cskill {
-  --cs-bg: linear-gradient(110deg, #17110e 0%, #141414 45%, #121212 100%);
-  --cs-border: rgba(217, 119, 87, 0.35);
-  --cs-title: #f5efe9;
-  --cs-text: #b3aaa3;
+  .groupSkills-secundary {
+    grid-template-rows: repeat(4, 5.9em);
+    grid-auto-rows: 5.9em;
+  }
+}
 
+@media (max-width: 896px) {
+  .groupSkills-secundary { grid-auto-rows: minmax(5em, auto); }
+  .skill-claude { min-height: 5em; }
+}
+
+.skill-claude {
   grid-column: 1 / -1;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 22px;
+  gap: 14px;
   width: 100%;
-  margin-top: 2.2em;
-  padding: 22px 26px;
-  border-radius: 20px;
-  border: 1px solid var(--cs-border);
-  background: var(--cs-bg);
+  border: 1px solid transparent;
   color: inherit;
   font: inherit;
-  text-align: left;
   cursor: pointer;
-  overflow: hidden;
-  isolation: isolate;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
-  &::before {
-    content: "";
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    left: -110px;
-    top: 50%;
-    margin-top: -160px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(217, 119, 87, 0.35), transparent 65%);
-    filter: blur(20px);
-    z-index: -1;
-    animation: cskill-pulse 5s ease-in-out infinite alternate;
+  .skill-claude-logo {
+    display: grid;
+    place-items: center;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  &:hover {
-    transform: translateY(-3px);
-    border-color: #d97757;
-    box-shadow: 0 18px 50px -18px rgba(217, 119, 87, 0.55);
+  .skill-claude-name {
+    color: var(--color-texts);
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: color 0.4s ease;
 
-    .cskill-cta i { transform: translateX(4px); }
-    .cskill-mark svg { transform: rotate(45deg); }
+    em { font-style: normal; font-weight: 400; color: #d97757; }
   }
 
-  &:focus-visible { outline: 2px solid #d97757; outline-offset: 3px; }
+  .skill-claude-arrow {
+    color: #d97757;
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
 
-  &.cskill--light {
-    --cs-bg: linear-gradient(110deg, #fff4ee 0%, #ffffff 55%);
-    --cs-title: #1f1712;
-    --cs-text: #6b5d54;
+  &:hover,
+  &:focus-visible {
+    border: 1px solid var(--skill-color);
+    outline: none;
+
+    .skill-claude-logo { transform: scale(1.2) rotate(45deg); }
+    .skill-claude-name { color: var(--white); }
+    .skill-claude-arrow { opacity: 1; transform: translateX(0); }
   }
 }
 
-.cskill-mark {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
-  background: rgba(217, 119, 87, 0.12);
-  border: 1px solid rgba(217, 119, 87, 0.35);
-
-  svg { transition: transform 0.6s cubic-bezier(0.34, 1.45, 0.5, 1); }
-}
-
-.cskill-copy {
-  display: grid;
-  gap: 4px;
-  flex: 1;
-  min-width: 0;
-}
-
-.cskill-title {
-  color: var(--cs-title);
-  font-size: 1.3rem;
-  font-weight: 800;
-
-  em { color: #d97757; font-style: normal; font-weight: 600; font-size: 1rem; }
-}
-
-.cskill-text {
-  color: var(--cs-text);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.cskill-cta {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: #d97757;
-  color: #1a0d07;
-  font-weight: 700;
-  font-size: 0.92rem;
-
-  i { font-size: 1.2rem; transition: transform 0.25s ease; }
-}
+.skill-element-border-light.skill-claude:hover .skill-claude-name { color: #111827; }
 
 // Painel
 .cdlg {
@@ -283,22 +233,16 @@
   font-size: 0.95rem;
 }
 
-@keyframes cskill-pulse {
-  from { opacity: 0.7; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1.08); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .cskill::before { animation: none; }
-  .cskill-mark svg, .cskill, .cdlg[open] { transition: none; animation: none; }
+  .skill-claude-logo, .cdlg[open] { transition: none; animation: none; }
 }
 
-@media (max-width: 700px) {
-  .cskill { flex-wrap: wrap; gap: 14px; padding: 20px; }
-  .cskill-mark { width: 54px; height: 54px; }
-  .cskill-cta { width: 100%; justify-content: center; }
-}
 
 // respiro entre o card do Claude e a seção seguinte (Projetos)
 .groupSkills { padding-bottom: 6em; }
 @media (max-width: 700px) { .groupSkills { padding-bottom: 4.5em; } }
+
+// mesmo brilho dos logos das outras skills e borda na cor do Claude no hover
+.skill-claude .skill-claude-logo svg { filter: drop-shadow(0 0 10px rgba(217, 119, 87, 0.6)); }
+.skill-element.skill-claude:hover,
+.skill-element.skill-claude:focus-visible { border-color: #d97757 !important; }
