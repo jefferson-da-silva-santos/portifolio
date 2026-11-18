@@ -1496,7 +1496,7 @@ export const useProjectsData = () => {
       gitHubUrl: "",
       deployUrl: "",
       isApi: false,
-      categories: ["desafios-tecnicos"] as CategoryKey[],
+      categories: ["autorais"] as CategoryKey[],
     },
     {
       id: 137,
