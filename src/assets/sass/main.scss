@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap");
 @import "mixins.scss";
 @import "keyframes.scss";
 
@@ -1341,3 +1342,4 @@ textarea:focus {
 @import "contact-card.scss";
 @import "services.scss";
 @import "claude-skill.scss";
+@import "footer.scss";

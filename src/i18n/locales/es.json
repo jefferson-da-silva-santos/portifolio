@@ -719,5 +719,14 @@
       }
     },
     "foot": "Resultado: entrego más rápido sin renunciar a la calidad, y llevo esta misma forma de trabajar a los proyectos de mis clientes."
+  },
+  "footer": {
+    "tagline": "Desarrollador Full-Stack y Mobile. Creo sitios, apps y sistemas que resuelven problemas reales de negocio.",
+    "navigation": "Navegación",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados.",
+    "backToTop": "Volver arriba",
+    "quote": "La IA está al servicio de la eficiencia, pero no todo en la vida necesita ser eficiente.",
+    "quoteLang": "es"
   }
 }
