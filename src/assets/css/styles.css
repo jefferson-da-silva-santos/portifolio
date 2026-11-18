@@ -4372,7 +4372,7 @@ textarea:focus {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 64px 0 40px;
+  padding: 64px 0 28px;
 }
 
 .ft-top {
@@ -4501,18 +4501,18 @@ textarea:focus {
 
 .ft-quote {
   position: relative;
-  margin: 56px auto 0;
+  margin: 26px auto 0;
   max-width: 760px;
   text-align: center;
 }
 .ft-quote p {
   margin: 0;
   font-family: "Caveat", "Segoe Script", cursive;
-  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   font-weight: 500;
-  line-height: 1.25;
-  color: var(--ft-text);
-  opacity: 0.85;
+  line-height: 1.3;
+  color: var(--ft-muted);
+  opacity: 0.8;
 }
 .ft-quote p {
   -webkit-mask: linear-gradient(90deg, #000 45%, transparent 55%) 100% 0/220% 100% no-repeat;
@@ -4526,19 +4526,19 @@ textarea:focus {
 
 .ft-quote-line {
   display: block;
-  width: min(70%, 420px);
-  height: 18px;
-  margin: 6px auto 0;
+  width: min(50%, 220px);
+  height: 10px;
+  margin: 2px auto 0;
   overflow: visible;
 }
 .ft-quote-line path {
   fill: none;
   stroke: var(--ft-accent);
-  stroke-width: 2.2;
+  stroke-width: 1.4;
   stroke-linecap: round;
   stroke-dasharray: 420;
   stroke-dashoffset: 420;
-  opacity: 0.7;
+  opacity: 0.45;
   vector-effect: non-scaling-stroke;
   transition: stroke-dashoffset 1.4s ease 2.2s;
 }
